@@ -1,5 +1,5 @@
 'use strict';
-//Added comment to check Git plug-in
+
 IndexModule.controller("indexController", function($rootScope,$scope) {
 
     $(function(){
