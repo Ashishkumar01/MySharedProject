@@ -1,0 +1,8 @@
+<body>
+    <div ng-include src="partials/navigationbar.html"></div>
+    <div id = "sidebar" ng-include src="partials/storysnippet.html" ng-controller = 'storySnippetController'></div>
+
+    <!-- Use it for dynamic template generation   <div ng-include ="template" ng-controller ='storyController'></div> -->
+    <div ng-include src="'partials/story.html'" ng-controller = 'storyController'></div>
+
+</body>
