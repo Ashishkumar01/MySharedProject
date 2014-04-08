@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7802322b-2377-49bb-86d5-9a5caad47f5e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/controllers/indexController.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/controllers/indexController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MySharedProject.iws" />
@@ -37,7 +38,7 @@
       <file leaf-file-name="indexController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/indexController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="14" selection-end="14" vertical-scroll-proportion="0.046961326" vertical-offset="0" max-vertical-offset="1207">
+            <state line="3" column="0" selection-start="61" selection-end="61" vertical-scroll-proportion="0.046961326" vertical-offset="34" max-vertical-offset="1241">
               <folding />
             </state>
           </provider>
@@ -196,7 +197,11 @@
       <created>1396913976818</created>
       <updated>1396913976818</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Checking Git plug-in from WebStorm&#10;">
+      <created>1396914013231</created>
+      <updated>1396914013231</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -237,7 +242,8 @@
     </option>
     <MESSAGE value="Checking Git plug-in" />
     <MESSAGE value="Checking Git plug-in from WebStorm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking Git plug-in from WebStorm" />
+    <MESSAGE value="Checking Git plug-in from WebStorm&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checking Git plug-in from WebStorm&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -252,7 +258,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="14" selection-end="14" vertical-scroll-proportion="0.046961326" vertical-offset="0" max-vertical-offset="1207">
+        <state line="3" column="0" selection-start="61" selection-end="61" vertical-scroll-proportion="0.046961326" vertical-offset="34" max-vertical-offset="1241">
           <folding />
         </state>
       </provider>

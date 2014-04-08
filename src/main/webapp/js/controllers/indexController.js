@@ -1,5 +1,7 @@
 'use strict';
 
+//Added code to check ecplise plug-in for Git
+
 IndexModule.controller("indexController", function($rootScope,$scope) {
 
     $(function(){
