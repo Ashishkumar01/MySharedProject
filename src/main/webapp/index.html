@@ -189,7 +189,10 @@
 <!--</div>-->
 
 <div class="ui-layout-east">
-    <p>Comments</p>
+    <dir-disqus disqus-shortname="omoknow"
+                disqus-identifier="111111"
+                disqus-url="http://localhost:50973/webapp/index.html">
+    </dir-disqus>
 </div>
 
 <div ng-controller="userRegisterController">
@@ -201,7 +204,7 @@
 <script src="lib/angular/angular-resource.min.js"></script>
 <script src="lib/angular/angular-cookies.min.js"></script>
 <script src="lib/angular/angular-sanitize.min.js"></script>
-<!--<script src="lib/angular/angular-route.min.js"></script>-->
+<script src="lib/angular/angular-route.min.js"></script>
 <!--<script src="lib/angular/ng-infinite-scroll.js"></script>-->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/bootstrap/docs.min.js"></script>
@@ -214,5 +217,6 @@
 <script src="js/controllers/storyController.js"></script>
 <script src="js/controllers/userRegisterController.js"></script>
 <script src="js/directives/infinite.scroll.js"></script>
+<script src="js/directives/dir.disqus.js"></script>
 </body>
 </html>

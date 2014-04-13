@@ -1,7 +1,5 @@
 'use strict';
 
-//Added code to check ecplise plug-in for Git
-
 IndexModule.controller("indexController", function($rootScope,$scope) {
 
     $(function(){
@@ -23,7 +21,7 @@ IndexModule.controller("indexController", function($rootScope,$scope) {
             ,	west__spacing_closed:		20
             ,	west__togglerLength_closed: '100%'
 
-            ,	east__size:					.1   //10%
+            ,	east__size:					.2   //20%
             ,	east__spacing_closed:		10
             ,	east__togglerLength_closed: '100%'
             ,	east__initClosed:				true
