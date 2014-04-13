@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.edu</groupId>
-	<artifactId>Educomp</artifactId>
+	<artifactId>Omoknow</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Educomp</name>
+	<name>Omoknow</name>
 	<!-- <url>http://maven.apache.org</url> -->
 
 	<properties>
@@ -96,7 +96,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<path>/educomp</path>
+					<path>/omoknow</path>
 				</configuration>
 			</plugin>
 		</plugins>
