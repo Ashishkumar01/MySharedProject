@@ -56,6 +56,9 @@
 </div>
 <!--<div ng-controller="storyController">-->
     <div class="ui-layout-west">
+        <div id="fixedContainer">
+            <div data-toggle="modal" data-target="#learningModule">Launch Learning Module</div>
+        </div>
         <nav ng-controller="storySnippetController">
             <ul class="nav sidenav">
                 <li ng-class="{active: snippet.id==activeId}" ng-repeat="snippet in storySnippet">
@@ -199,6 +202,10 @@
     <div ng-include src="registerUser()"/>
 </div>
 
+<div ng-controller="learningModuleController">
+    <div ng-include src="learningModule()"/>
+</div>
+
 
 <script src="lib/angular/angular.min.js"></script>
 <script src="lib/angular/angular-resource.min.js"></script>
@@ -216,6 +223,7 @@
 <script src="js/controllers/storySnippetController.js"></script>
 <script src="js/controllers/storyController.js"></script>
 <script src="js/controllers/userRegisterController.js"></script>
+<script src="js/controllers/learningModuleController.js"></script>
 <script src="js/directives/infinite.scroll.js"></script>
 <script src="js/directives/dir.disqus.js"></script>
 </body>

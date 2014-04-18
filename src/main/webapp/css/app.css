@@ -156,3 +156,14 @@ ul.specs dt {
 h1 {
     border-bottom: 1px solid gray;
 }
+
+#fixedContainer
+{
+    background-color:#101010;
+    color: #999;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    padding-left: 15px;
+    font-size: 18px;
+    line-height: 40px;
+    cursor: pointer;
+}
