@@ -1,0 +1,36 @@
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Review Questions
+    </div>
+    <div class="panel-body">
+        <h3>Test Name: {{selectedExam.package_name}}</h3>
+
+        <div class="col-md-12">
+            <div  style="margin-top: 10px" ng-repeat="currentQuestion in questions">
+                <div>
+                    <p><b>Q {{$index+1}}</b> {{currentQuestion.statement}}</p>
+                    <ul class="nav">
+                        <li ng-repeat="currentOption in currentQuestion.options">
+                            <input type="radio" ng-model="currentQuestion.user_selected_option" disabled
+                                   value="{{$index}}" />
+                            <label>{{currentOption}}</label>
+                        </li>
+                    </ul>
+                    <p class="bg-success"><b>Correct Option</b> {{currentQuestion.correct_option*1+1}}</p>
+                </div>
+                <hr/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="panel-footer clearfix">
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-primary" ng-click="close()">
+                <span class="glyphicon glyphicon-log-out"></span> Close
+            </button>
+        </div>
+
+    </div>
+</div>

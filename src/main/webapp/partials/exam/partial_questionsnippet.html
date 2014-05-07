@@ -1,0 +1,14 @@
+<br/>
+<div class="col-md-6" ng-show="currentQuestion.direction">
+    {{currentQuestion.direction}}
+</div>
+<div class="col-md-6">
+    <p><b>Q {{currentQuestionNumber+1}}</b> {{currentQuestion.statement}}</p>
+    <ul class="nav">
+        <li ng-repeat="currentOption in currentQuestion.options">
+            <input type="radio" ng-model="currentQuestion.user_selected_option" name="answer_q{{currentQuestionNumber+1}}"
+                   value="{{$index}}" />
+            <label>{{currentOption}}</label>
+        </li>
+    </ul>
+</div>

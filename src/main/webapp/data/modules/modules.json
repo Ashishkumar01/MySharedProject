@@ -1,0 +1,38 @@
+[
+    {
+        "id": "ibps-banking-exams",
+        "imageUrl": "img/learning/online_exam.png",
+        "name": "Online IBPS Exams",
+        "snippet": "Platform to practice online exams for banking."
+    }
+    ,{
+        "id": "ibps-po-exam",
+        "imageUrl": "img/learning/bank_exam.png",
+        "name": "IBPS PO Exam",
+        "snippet": "Platform to practice online tests."
+     }
+    ,{
+        "id": "sbi-po-exam",
+        "imageUrl": "img/learning/bank_exam.png",
+        "name": "SBI PO Exam",
+        "snippet": "Platform to practice online tests."
+     }
+    ,{
+        "id": "ibps-it-officer-exam",
+        "imageUrl": "img/learning/bank_exam.png",
+        "name": "IBPS IT Officer Exam",
+        "snippet": "Platform to practice online tests."
+     }
+    ,{
+        "id": "sef",
+        "imageUrl": "img/learning/bank_exam.png",
+        "name": "SEF",
+        "snippet": "Investment banking OTC regulation body."
+     }
+    ,{
+        "id": "fxo",
+        "imageUrl": "img/learning/bank_exam.png",
+        "name": "FXO",
+        "snippet": "Foreign exchange derivatives."
+     }
+]

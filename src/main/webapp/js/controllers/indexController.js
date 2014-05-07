@@ -1,7 +1,7 @@
 'use strict';
 
-IndexModule.controller("indexController", function($rootScope,$scope) {
-
+IndexModule.controller("indexController", function($rootScope,$scope, $window) {
+    /*var childWindow=null;*/
     $(function(){
         $('body').layout({
                 closable:					true
@@ -60,6 +60,36 @@ IndexModule.controller("indexController", function($rootScope,$scope) {
         {'id':'motorola-xoom-with-wi-fi'},{'id':'motorola-xoom'},{'id':'motorola-atrix-4g'},{'id':'dell-streak-7'},{'id':'samsung-gem'}
     ];*/
 
+/*    $scope.openModel = function () {
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/partial_learningModules.html',
+            controller: 'modalInstanceCtrl',
+            size: 'lg',
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        });
+    };*/
+
 });
+
+/*IndexModule.controller("modalInstanceCtrl", function ($scope, $modalInstance, items) {
+
+    $scope.items = items;
+
+    $scope.ok = function () {
+        $modalInstance.close();
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});*/
 
 

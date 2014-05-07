@@ -1,0 +1,7 @@
+<nav>
+    <ul class="nav">
+        <li ng-repeat="currentExam in exams">
+            <a ng-click="selectExam(currentExam,'/showInstruction')">{{currentExam.test_code}}</a>
+        </li>
+    </ul>
+</nav>

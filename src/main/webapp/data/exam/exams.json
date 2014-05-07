@@ -1,0 +1,60 @@
+[
+    {
+        "id": "sbi-po-2014-01",
+        "category": "Online Test Series",
+        "package_name": "Test Series for Bank PO & Clerk",
+        "test_code": "Mock Test SBI PO 2014 - 01",
+        "snippet": "Mock test SBI PO.",
+        "total_questions": "40",
+        "maximum_marks": "40",
+        "total_questions_attempted": "",
+        "total_questions_correct": "",
+        "score_obtained": "",
+        "score_percentile": "",
+        "total_time": "40 min",
+        "total_time_taken": "",
+        "start_time": "",
+        "start_date": ""
+    }
+    ,{
+        "id": "sbi-po-2014-02",
+        "category": "Online Test Series",
+        "package_name": "Test Series for Bank PO & Clerk",
+        "test_code": "Mock Test SBI PO 2014 - 02",
+        "snippet": "Mock test SBI PO.",
+        "total_questions": "40",
+        "maximum_marks": "40",
+        "total_questions_attempted": "",
+        "total_questions_correct": "",
+        "score_obtained": "",
+        "score_percentile": "",
+        "total_time": "40 min",
+        "total_time_taken": "",
+        "start_time": "",
+        "start_date": ""
+    }
+    ,{
+        "id": "sbi-po-2014-03",
+        "category": "Online Test Series",
+        "package_name": "Test Series for Bank PO & Clerk",
+        "test_code": "Mock Test SBI PO 2014 - 03",
+        "snippet": "Mock test SBI PO.",
+        "total_questions": "40",
+        "total_time": "60 min",
+        "maximum_marks": "40",
+        "start_time": "",
+        "start_date": ""
+    }
+    ,{
+        "id": "sbi-po-2014-04",
+        "category": "Online Test Series",
+        "package_name": "Test Series for Bank PO & Clerk",
+        "test_code": "Mock Test SBI PO 2014 - 04",
+        "snippet": "Mock test SBI PO.",
+        "total_questions": "40",
+        "total_time": "60 min",
+        "maximum_marks": "40",
+        "start_time": "",
+        "start_date": ""
+    }
+]

@@ -1,0 +1,52 @@
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Exam Summary
+    </div>
+    <div class="panel-body">
+        <h2>Your test submitted successfully</h2>
+        <h5>Thank you for submitting your test. The summary for test is given below.</h5>
+
+        <p>Test Name: {{selectedExam.package_name}}</p>
+
+        <!-- Table -->
+        <table class="table  table-bordered">
+            <thead>
+                <tr class="info">
+                    <th>Total Questions</th>
+                    <th>Maximum Marks</th>
+                    <th>Total Attempted</th>
+                    <th>Total Left Unattempted</th>
+                    <th>Correct</th>
+                    <th>Incorrect</th>
+                    <th>Score</th>
+                    <th>Total Time Allowed</th>
+                    <th>Total Time Taken</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{selectedExam.total_questions}}</td>
+                    <td>{{selectedExam.maximum_marks}}</td>
+                    <td>{{selectedExam.total_questions_attempted}}</td>
+                    <td>{{selectedExam.total_questions - selectedExam.total_questions_attempted}}</td>
+                    <td>{{selectedExam.total_questions_correct}}</td>
+                    <td>{{selectedExam.total_questions_attempted - selectedExam.total_questions_correct}}</td>
+                    <td>{{selectedExam.score_obtained}}</td>
+                    <td>{{selectedExam.total_time}}</td>
+                    <td>{{selectedExam.total_time_taken}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="panel-footer clearfix">
+        <button type="button" class="btn btn-primary" ng-click="close()">
+            <span class="glyphicon glyphicon-log-out"></span> Close
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="reviewQuestions()">
+            <span class="glyphicon glyphicon-eye-open"></span> Review Questions
+        </button>
+    </div>
+</div>

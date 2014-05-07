@@ -55,155 +55,155 @@
     </div>
 </div>
 <!--<div ng-controller="storyController">-->
-    <div class="ui-layout-west">
-        <div id="fixedContainer">
-            <div data-toggle="modal" data-target="#learningModule">Launch Learning Module</div>
-        </div>
-        <nav ng-controller="storySnippetController">
-            <ul class="nav sidenav">
-                <li ng-class="{active: snippet.id==activeId}" ng-repeat="snippet in storySnippet">
-                    <a ng-click ="snippetclickHandler(snippet.id)">{{snippet.id}}</a>
-                </li>
-            </ul>
-        </nav>
+<div class="ui-layout-west">
+    <div id="fixedContainer">
+        <div ng-click="openModel()">Launch Learning Module</div>
     </div>
-    <div id="stories" class="ui-layout-center" when-scrolled="loadAStory()" ng-controller="storyController">
-        <section >
-            <div>
-                <div ng-repeat="phone in storyDetails">
-                    <!--<h2 id="{{story.id}}" ng-bind-html="renderHtml(story.name)"></h2>
-                    <div ng-bind-html="renderHtml(story.description)"></div>-->
-                    <h2 id="{{phone.id}}" ng-bind-html="renderHtml(phone.name)"></h2>
-                    <p ng-bind-html="renderHtml(phone.description)"></p>
+    <nav ng-controller="storySnippetController">
+        <ul class="nav sidenav">
+            <li ng-class="{active: snippet.id==activeId}" ng-repeat="snippet in storySnippet">
+                <a ng-click ="snippetclickHandler(snippet.id)">{{snippet.id}}</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div id="stories" class="ui-layout-center" when-scrolled="loadAStory()" ng-controller="storyController">
+    <section >
+        <div>
+            <div ng-repeat="phone in storyDetails">
+                <!--<h2 id="{{story.id}}" ng-bind-html="renderHtml(story.name)"></h2>
+                <div ng-bind-html="renderHtml(story.description)"></div>-->
+                <h2 id="{{phone.id}}" ng-bind-html="renderHtml(phone.name)"></h2>
+                <p ng-bind-html="renderHtml(phone.description)"></p>
 
-                    <div class="phone-images">
-                        <img ng-src="{{img}}"
-                             class="phone"
-                             ng-repeat="img in phone.images"
-                             ng-class="{active: mainImageUrl==img}">
-                    </div>
-
-                    <ul class="specs">
-                        <li>
-                            <span>Availability and Networks</span>
-                            <dl>
-                                <dt>Availability</dt>
-                                <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Battery</span>
-                            <dl>
-                                <dt>Type</dt>
-                                <dd>{{phone.battery.type}}</dd>
-                                <dt>Talk Time</dt>
-                                <dd>{{phone.battery.talkTime}}</dd>
-                                <dt>Standby time (max)</dt>
-                                <dd>{{phone.battery.standbyTime}}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Storage and Memory</span>
-                            <dl>
-                                <dt>RAM</dt>
-                                <dd>{{phone.storage.ram}}</dd>
-                                <dt>Internal Storage</dt>
-                                <dd>{{phone.storage.flash}}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Connectivity</span>
-                            <dl>
-                                <dt>Network Support</dt>
-                                <dd>{{phone.connectivity.cell}}</dd>
-                                <dt>WiFi</dt>
-                                <dd>{{phone.connectivity.wifi}}</dd>
-                                <dt>Bluetooth</dt>
-                                <dd>{{phone.connectivity.bluetooth}}</dd>
-                                <dt>Infrared</dt>
-                                <dd>{{phone.connectivity.infrared}}</dd>
-                                <dt>GPS</dt>
-                                <dd>{{phone.connectivity.gps}}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Android</span>
-                            <dl>
-                                <dt>OS Version</dt>
-                                <dd>{{phone.android.os}}</dd>
-                                <dt>UI</dt>
-                                <dd>{{phone.android.ui}}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Size and Weight</span>
-                            <dl>
-                                <dt>Dimensions</dt>
-                                <dd ng-repeat="dim in phone.sizeAndWeight.dimensions">{{dim}}</dd>
-                                <dt>Weight</dt>
-                                <dd>{{phone.sizeAndWeight.weight}}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Display</span>
-                            <dl>
-                                <dt>Screen size</dt>
-                                <dd>{{phone.display.screenSize}}</dd>
-                                <dt>Screen resolution</dt>
-                                <dd>{{phone.display.screenResolution}}</dd>
-                                <dt>Touch screen</dt>
-                                <dd>{{phone.display.touchScreen }}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Hardware</span>
-                            <dl>
-                                <dt>CPU</dt>
-                                <dd>{{phone.hardware.cpu}}</dd>
-                                <dt>USB</dt>
-                                <dd>{{phone.hardware.usb}}</dd>
-                                <dt>Audio / headphone jack</dt>
-                                <dd>{{phone.hardware.audioJack}}</dd>
-                                <dt>FM Radio</dt>
-                                <dd>{{phone.hardware.fmRadio }}</dd>
-                                <dt>Accelerometer</dt>
-                                <dd>{{phone.hardware.accelerometer }}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Camera</span>
-                            <dl>
-                                <dt>Primary</dt>
-                                <dd>{{phone.camera.primary}}</dd>
-                                <dt>Features</dt>
-                                <dd>{{phone.camera.features.join(', ')}}</dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <span>Additional Features</span>
-                            <dd>{{phone.additionalFeatures}}</dd>
-                        </li>
-                    </ul>
-                    <hr>
+                <div class="phone-images">
+                    <img ng-src="{{img}}"
+                         class="phone"
+                         ng-repeat="img in phone.images"
+                         ng-class="{active: mainImageUrl==img}">
                 </div>
+
+                <ul class="specs">
+                    <li>
+                        <span>Availability and Networks</span>
+                        <dl>
+                            <dt>Availability</dt>
+                            <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Battery</span>
+                        <dl>
+                            <dt>Type</dt>
+                            <dd>{{phone.battery.type}}</dd>
+                            <dt>Talk Time</dt>
+                            <dd>{{phone.battery.talkTime}}</dd>
+                            <dt>Standby time (max)</dt>
+                            <dd>{{phone.battery.standbyTime}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Storage and Memory</span>
+                        <dl>
+                            <dt>RAM</dt>
+                            <dd>{{phone.storage.ram}}</dd>
+                            <dt>Internal Storage</dt>
+                            <dd>{{phone.storage.flash}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Connectivity</span>
+                        <dl>
+                            <dt>Network Support</dt>
+                            <dd>{{phone.connectivity.cell}}</dd>
+                            <dt>WiFi</dt>
+                            <dd>{{phone.connectivity.wifi}}</dd>
+                            <dt>Bluetooth</dt>
+                            <dd>{{phone.connectivity.bluetooth}}</dd>
+                            <dt>Infrared</dt>
+                            <dd>{{phone.connectivity.infrared}}</dd>
+                            <dt>GPS</dt>
+                            <dd>{{phone.connectivity.gps}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Android</span>
+                        <dl>
+                            <dt>OS Version</dt>
+                            <dd>{{phone.android.os}}</dd>
+                            <dt>UI</dt>
+                            <dd>{{phone.android.ui}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Size and Weight</span>
+                        <dl>
+                            <dt>Dimensions</dt>
+                            <dd ng-repeat="dim in phone.sizeAndWeight.dimensions">{{dim}}</dd>
+                            <dt>Weight</dt>
+                            <dd>{{phone.sizeAndWeight.weight}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Display</span>
+                        <dl>
+                            <dt>Screen size</dt>
+                            <dd>{{phone.display.screenSize}}</dd>
+                            <dt>Screen resolution</dt>
+                            <dd>{{phone.display.screenResolution}}</dd>
+                            <dt>Touch screen</dt>
+                            <dd>{{phone.display.touchScreen }}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Hardware</span>
+                        <dl>
+                            <dt>CPU</dt>
+                            <dd>{{phone.hardware.cpu}}</dd>
+                            <dt>USB</dt>
+                            <dd>{{phone.hardware.usb}}</dd>
+                            <dt>Audio / headphone jack</dt>
+                            <dd>{{phone.hardware.audioJack}}</dd>
+                            <dt>FM Radio</dt>
+                            <dd>{{phone.hardware.fmRadio }}</dd>
+                            <dt>Accelerometer</dt>
+                            <dd>{{phone.hardware.accelerometer }}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Camera</span>
+                        <dl>
+                            <dt>Primary</dt>
+                            <dd>{{phone.camera.primary}}</dd>
+                            <dt>Features</dt>
+                            <dd>{{phone.camera.features.join(', ')}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span>Additional Features</span>
+                        <dd>{{phone.additionalFeatures}}</dd>
+                    </li>
+                </ul>
+                <hr>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 <!--</div>-->
 
 <div class="ui-layout-east">
-    <dir-disqus disqus-shortname="omoknow"
+    <div ng-controller="learningModuleController">
+        <div ng-include src="learningModule()"/>
+    </div>
+    <!--Comments will be per article-->
+    <!--<dir-disqus disqus-shortname="omoknow"
                 disqus-identifier="111111"
                 disqus-url="http://localhost:50973/webapp/index.html">
-    </dir-disqus>
+    </dir-disqus>-->
 </div>
 
 <div ng-controller="userRegisterController">
     <div ng-include src="registerUser()"/>
-</div>
-
-<div ng-controller="learningModuleController">
-    <div ng-include src="learningModule()"/>
 </div>
 
 
@@ -214,7 +214,8 @@
 <script src="lib/angular/angular-route.min.js"></script>
 <!--<script src="lib/angular/ng-infinite-scroll.js"></script>-->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
-<script src="lib/bootstrap/docs.min.js"></script>
+<!--<script src="lib/bootstrap/ui-bootstrap-0.9.0.min.js"></script>
+<script src="lib/bootstrap/ui-bootstrap-tpls-0.9.0.min.js"></script>-->
 
 <script src="js/app.js"></script>
 <script src="js/services/modules.js"></script>
