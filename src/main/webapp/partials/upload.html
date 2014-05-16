@@ -1,0 +1,35 @@
+<div ng-hide="uploadQuestions">
+	<h1>Upload Question xls</h1>
+
+	<a class="btn btn-success" href="QuestionSample.xls">Download
+		Sample Excel</a> <input type="file"
+		onchange="angular.element(this).scope().setFiles(this)" /> <br>
+
+	<div class="btn btn-primary" ng-click="upload()">upload</div>
+</div>
+
+<h1 ng-show="uploadQuestions">Question</h1>
+
+<div ng-class="{'btn btn-mini':$index!=currentPage,'btn btn-mini btn-info': $index==currentPage}" ng-click="setPage($index)" ng-repeat="questiontab in uploadQuestions">Sheet {{$index+1}}</div> <div class="btn btn-success" ng-click="save()">Save All</div>
+
+
+<div ng-repeat="questiontab in uploadQuestions">
+	
+	<div id="QuestionDiv_{{$index}}" ng-show="$index==currentPage">
+		<div class="btn btn-success" ng-click="save($index)">Save Sheet {{$index+1}}</div>
+		Meta Data
+		<div class="span2" ng-repeat="metadata in questiontab.metaData">
+			<input type="text" ng-model="questiontab.metaData[$index]"> <label ng-show="$index==0">Direction</label>
+		</div>
+
+		<div ng-repeat="question in questiontab.questions">
+			Question : - <input type="textarea" ng-model="question.question">
+
+			<div class="span2" ng-repeat="option in question.options">
+				<input type="checkbox" ng-model="question.options[$index].correct">
+
+				<input type="text" ng-model="question.options[$index].optionValue">
+			</div>
+		</div>
+	</div>
+</div>
