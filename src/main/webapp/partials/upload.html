@@ -17,9 +17,12 @@
 		
 		<div id="QuestionDiv_{{$index}}" ng-show="$index==currentPage">
 			<div class="btn btn-success" ng-click="save($index)">Save Sheet {{$index+1}}</div>
+			
+			Grouped Questions : <input type="checkbox" ng-model="questiontab.grouped">
+			Direction : <input type="text" ng-model="questiontab.directions">
 			Meta Data
 			<div class="span2" ng-repeat="metadata in questiontab.metaData">
-				<input type="text" ng-model="questiontab.metaData[$index]"> <label ng-show="$index==0">Direction</label>
+				<input type="text" ng-model="questiontab.metaData[$index]">
 			</div>
 	
 			<div ng-repeat="question in questiontab.questions">

@@ -60,6 +60,6 @@
           	<property name="jdbcUrl" value="jdbc:h2:file:D:/H2/test;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090;USER=admin;PASSWORD=admin"></property>
     </bean>    
 		
-    
+    <bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper"></bean>
 
 </beans>

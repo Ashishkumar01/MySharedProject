@@ -58,13 +58,26 @@ public class QuestionBeanProcessor {
 				Row metaDataRow = itrMetaDataRow.next();
 				List<String> metaData = new LinkedList<String>();
 				Iterator<Cell> itrMetaDataCell = metaDataRow.cellIterator();
-				boolean firstColumn = true;
+				int index = 0;
+				boolean isGrouped = false;
+				String direction=null;
 				while (itrMetaDataCell.hasNext()) {
-					if (firstColumn) {
-						questionSheet = getCellValue(itrMetaDataCell.next());
-						firstColumn = false;
-					} else {
-						metaData.add(getCellValue(itrMetaDataCell.next()));
+					String cellValue = getCellValue(itrMetaDataCell.next());
+					switch(index){
+						case 0:
+							questionSheet = cellValue;
+							index++;
+							break;
+						case 1:
+							isGrouped = "GROUPED".equals(cellValue);
+							index++;
+							break;
+						case 2:
+							index++;
+							direction = cellValue;
+							break;
+						default:
+							metaData.add(cellValue);
 					}
 				}
 				metaDataArray = metaData;
@@ -85,7 +98,7 @@ public class QuestionBeanProcessor {
 					}
 
 					questionList.add(createQuestionElement(metaDataArray,
-							questions));
+							questions,direction,questionSheet,isGrouped));
 				}
 			}
 		} catch (Exception e) {
@@ -125,11 +138,15 @@ public class QuestionBeanProcessor {
 
 			for (int rowIndex = 0; rowIndex < rows; rowIndex++) {
 				String questionSheetName = null;
+				String direction = null;
+				boolean isGrouped = false;
 				jxl.Cell[] metaDataCells = metaDatasheet.getRow(rowIndex);
 				if (metaDataCells.length > 0) {
 					List<String> metaData = new LinkedList<String>();
 					questionSheetName = metaDataCells[0].getContents();
-					for (int cellIndex = 1; cellIndex < metaDataCells.length; cellIndex++) {
+					isGrouped = "GROUPED".equals(metaDataCells[1].getContents());
+					direction = metaDataCells[2].getContents();
+					for (int cellIndex = 3; cellIndex < metaDataCells.length; cellIndex++) {
 						metaData.add(metaDataCells[cellIndex].getContents());
 					}
 
@@ -153,7 +170,7 @@ public class QuestionBeanProcessor {
 						}
 
 						questionList.add(createQuestionElement(metaData,
-								questions));
+								questions,direction,questionSheetName,isGrouped));
 					}
 
 				}
@@ -171,11 +188,13 @@ public class QuestionBeanProcessor {
 	
 
 	private QuestionDocument createQuestionElement(List<String> metaDataArray,
-			List<Question> questionArray) {
+			List<Question> questionArray,String direction,String sheetName,boolean isGrouped) {
 		QuestionDocument questionDocument = QuestionDocument.newBeanInstance();
 		questionDocument.setMetaData(metaDataArray);
 		questionDocument.setQuestions(questionArray);
-
+		questionDocument.setSheetName(sheetName);
+		questionDocument.setGrouped(isGrouped);
+		questionDocument.setDirections(direction);
 		return questionDocument;
 	}
 

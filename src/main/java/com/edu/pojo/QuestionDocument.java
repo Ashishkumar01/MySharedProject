@@ -1,21 +1,34 @@
 package com.edu.pojo;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 
-
-@PersistenceCapable(detachable = "true")
-public class QuestionDocument extends SimulatorBean {
-	@Persistent
+public class QuestionDocument {
 	private List<Question> question;
 	
-	@Persistent
 	private String directions;
+
+	private String sheetName;
 	
+	public String getSheetName() {
+		return sheetName;
+	}
+
+	public void setSheetName(String sheetName) {
+		this.sheetName = sheetName;
+	}
+
+	private boolean isGrouped;
+	
+	public boolean isGrouped() {
+		return isGrouped;
+	}
+
+	public void setGrouped(boolean isGrouped) {
+		this.isGrouped = isGrouped;
+	}
+
 	public String getDirections() {
 		return directions;
 	}
@@ -24,7 +37,6 @@ public class QuestionDocument extends SimulatorBean {
 		this.directions = directions;
 	}
 
-	@Persistent
 	private List<String> metaData;
 
 	public QuestionDocument() {
@@ -46,10 +58,6 @@ public class QuestionDocument extends SimulatorBean {
 
 	public void setMetaData(List<String> metaData) {
 		this.metaData = metaData;
-	}
-
-	public static QuestionDocument loadFile(File src) throws Exception {
-		return (QuestionDocument) JaxbBean.load(src, QuestionDocument.class);
 	}
 
 	public static QuestionDocument newBeanInstance() {

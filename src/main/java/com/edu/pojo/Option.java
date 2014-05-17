@@ -1,15 +1,10 @@
 package com.edu.pojo;
 
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 
 
-@PersistenceCapable(detachable = "true")
-public class Option extends SimulatorBean {
+public class Option{
 
-	@Persistent
 	private String optionValue;
-	@Persistent
 	private boolean correct;
 
 	public final static String CORRECT = "CORRECT";

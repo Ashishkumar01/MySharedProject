@@ -2,27 +2,28 @@ package com.edu.pojo;
 
 import java.util.List;
 
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
+public class Question{
 
-@XmlRootElement
-@PersistenceCapable(detachable="true")
-public class Question extends SimulatorBean {
-
-	@Persistent
 	private String question;
 
-	@Persistent
 	private List<Option> options;
+
+	private String directions;
+	public String getDirections() {
+		return directions;
+	}
+
+	public void setDirections(String directions) {
+		this.directions = directions;
+	}
+
+	private List<String> metaData;
 
 	public String getQuestion() {
 		return question;
 	}
 
-	@XmlElement
 	public void setQuestion(String question) {
 		this.question = question;
 	}
@@ -31,9 +32,16 @@ public class Question extends SimulatorBean {
 		return options;
 	}
 
-	@XmlElement
 	public void setOptions(List<Option> options) {
 		this.options = options;
+	}
+
+	public List<String> getMetaData() {
+		return metaData;
+	}
+
+	public void setMetaData(List<String> metaData) {
+		this.metaData = metaData;
 	}
 
 	public static Question newBeanInstance() {

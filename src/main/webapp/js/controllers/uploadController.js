@@ -35,7 +35,7 @@ IndexModule.controller("UploadController", function($scope,$http) {
 	        transformRequest: angular.identity
 	    }).then(function success(result){
 	    	$scope.setPage(0);
-			$scope.uploadQuestions = result.data.questionDocList;
+			$scope.uploadQuestions = result.data;
 		},function failure(data){
 			alert('fail');
 		});
