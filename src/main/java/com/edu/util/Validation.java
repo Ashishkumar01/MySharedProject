@@ -14,7 +14,7 @@ public class Validation {
 	 * @return true if string is null or empty
 	 */
 	public static boolean isNullOrEmpty(String string){
-		return string==null || string.equals("");
+		return string==null || string.trim().equals("");
 	}
 	/**
 	 * 

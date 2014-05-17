@@ -19,19 +19,19 @@
 			<div class="btn btn-success" ng-click="save($index)">Save Sheet {{$index+1}}</div>
 			
 			Grouped Questions : <input type="checkbox" ng-model="questiontab.grouped">
-			Direction : <input type="text" ng-model="questiontab.directions">
+			Direction : <div ckeditor contenteditable="true" ng-model="questiontab.directions" ></div>
 			Meta Data
 			<div class="span2" ng-repeat="metadata in questiontab.metaData">
 				<input type="text" ng-model="questiontab.metaData[$index]">
 			</div>
 	
 			<div ng-repeat="question in questiontab.questions">
-				Question : - <input type="textarea" ng-model="question.question">
+				Question : - <div ckeditor contenteditable="true" ng-model="question.question"></div>
 	
 				<div class="span2" ng-repeat="option in question.options">
 					<input type="checkbox" ng-model="question.options[$index].correct">
 	
-					<input type="text" ng-model="question.options[$index].optionValue">
+					<div ckeditor contenteditable="true" ng-model="question.options[$index].optionValue"></div>
 				</div>
 			</div>
 		</div>
