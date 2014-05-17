@@ -11,7 +11,6 @@ IndexModule.controller("UploadController", function($scope,$http) {
 	$scope.save = function(index){
 		var dataToSave=new Array();
 		if(index==undefined){
-			
 			dataToSave = $scope.uploadQuestions;
 		}else{
 			

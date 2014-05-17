@@ -1,5 +1,7 @@
 package com.edu.controller.question;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItemIterator;
@@ -8,6 +10,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,7 +52,7 @@ public class FileUploadController{
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = { "saveQuestions.do" },produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody QuestionDocList saveQuestions(QuestionDocument[] request) {
+	public @ResponseBody QuestionDocList saveQuestions(@RequestBody Map<String,Object>[] request) {
 
 		
 
