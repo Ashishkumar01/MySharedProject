@@ -1,0 +1,98 @@
+{
+    "id": "sbi-po-2014-01",
+    "name": "Mock Test SBI PO 2014 - 01",
+    "snippet": "Mock test SBI PO.",
+    "duration": "120",
+    "start_time": "",
+    "start_date": "",
+    "modules": [
+                    {"module_name":"Quantitative Aptitude","start_number":0,"end_number":2,"active": true},
+                    {"module_name":"Reasoning","start_number":3,"end_number":4,"active": false},
+                    {"module_name":"English Language","start_number":5,"end_number":6,"active": false},
+                    {"module_name":"General Awareness","start_number":7,"end_number":8,"active": false}
+                ],
+    "total_questions": 40,
+    "questions":[
+            {   "id": 1,
+                "direction":"Direction(1-3): In each of these select one correct answer",
+                "statement":"If the digits-of a two digit number are inter­changed, the newly formed number is  45 more than the original number, and sum of the digits of this number is 7  then what was the original number?",
+                "image":"",
+                "options":["16","61","86","Can't be determined"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"0"
+            }
+            ,{   "id": 2,
+                "direction":"Direction(1-3): In each of these select one correct answer",
+                "statement":"If the digits-of a two digit number are inter­changed, the newly formed number is  45 more than the original number, and sum of the digits of this number is 11  then what was the original number?",
+                "image":"",
+                "options":["38","83","51","Can't be determined"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"0"
+            }
+            ,{  "id": 3,
+                "direction":"Direction(1-3): In each of these select one correct answer",
+                "statement":"If the digits-of a two digit number are inter­changed, the newly formed number is  36 less than the original number, and sum of the digits of this number is 10  then what was the original number?",
+                "image":"",
+                "options":["73","37","72","Can't be determined"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"0"
+            }
+            ,{  "id": 4,
+                "direction":"Direction(4-5): Select your options",
+                "statement":"If the digits-of a two digit number are inter­changed, the newly formed number is  63 more than the original number, and sum of the digits of this number is 9  then what was the original number?",
+                "image":"",
+                "options":["18","81","47","Can't be determined"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"0"
+            }
+            ,{  "id": 5,
+                "direction":"Direction(4-5): Select your options",
+                "statement":"If the digits-of a two digit number are inter­changed, the newly formed number is  45 less than the original number, and sum of the digits of this number is 9  then what was the original number?",
+                "image":"",
+                "options":["72","27","53","Can't be determined"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"0"
+            }
+            ,{   "id": 6,
+                "direction":"Direction(6-7): Select the correctly spelled words",
+                "statement":"",
+                "image":"",
+                "options":["tset","neighbour","knwledge","All are wrong","All are correct"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"1"
+            }
+            ,{  "id": 7,
+                "direction":"Direction(6-7): Select the correctly spelled words",
+                "statement":"",
+                "image":"",
+                "options":["hand","nose","eye","All are wrong","All are correct"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"4"
+            }
+            ,{  "id": 8,
+                "direction":"",
+                "statement":"Durand Cup is associated with ____",
+                "image":"",
+                "options":["Hockey","Football","Basket ball","Cricket"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"1"
+            }
+            ,{  "id": 9,
+                "direction":"",
+                "statement":"Who was known as Punjab Kesari?",
+                "image":"",
+                "options":["Lalalajapathi Roy","Rajarammohan Roy","Bala Gangadhar Tilak","Bhagath Singh"],
+                "status":"unattempted"
+                ,"user_selected_option":"-1"
+                ,"correct_option":"0"
+            }
+        ]
+}

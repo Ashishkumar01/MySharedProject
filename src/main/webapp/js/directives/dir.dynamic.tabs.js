@@ -12,18 +12,18 @@ IndexModule.directive('dynamicTabs', function () {
               <div class="tab-pane" ng-class="{active: item.active}" id="{{contentBaseId}}-{{$index}}" ng-repeat="item in tabsData">\
               <br/>\
                                 <div class="col-md-6" ng-show="currentQuestion.direction">\
-                    {{currentQuestion.direction}}\
-                </div>\
-                    <div class="col-md-6">\
-                        <p><b>Q {{currentQuestionNumber+1}}</b> {{currentQuestion.statement}}</p>\
-                        <ul class="nav">\
-                            <li ng-repeat="currentOption in currentQuestion.options">\
-                                <input type="radio" ng-model="currentQuestion.user_selected_option" ng-value="$index"\
-                                value="{{$index}}" ng-click="currentQuestion.user_selected_option=$index"/>\
-                                <label>{{currentOption}}</label>\
-                            </li>\
-                        </ul>\
-                    </div>\
+                                    <p ng-bind-html="renderHtml(currentQuestion.direction)"></p>\
+                                </div>\
+                                <div class="col-md-6">\
+                                    <p><b>Q {{currentQuestionNumber+1}}</b> {{currentQuestion.statement}}</p>\
+                                    <ul class="nav">\
+                                        <li ng-repeat="currentOption in currentQuestion.options">\
+                                            <input type="radio" ng-model="currentQuestion.user_selected_option" ng-value="$index"\
+                                            value="{{$index}}" ng-click="currentQuestion.user_selected_option=$index"/>\
+                                            <label>{{currentOption}}</label>\
+                                        </li>\
+                                    </ul>\
+                                </div>\
               </div>\
             </div>',
             link: function(scope, el, attrs){

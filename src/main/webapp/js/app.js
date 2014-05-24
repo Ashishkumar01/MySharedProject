@@ -64,12 +64,12 @@ app.config(['$routeProvider','$locationProvider',function( $routeProvider,$locat
         controller: 'loginController'
     });
 
-    $routeProvider.when('/showInstruction', {
+    $routeProvider.when('/showInstruction/:id', {
             templateUrl: 'partials/exam/partial_instruction.html',
             controller: 'instructionController'
         });
 
-    $routeProvider.when('/beginExam/:id', {
+    $routeProvider.when('/beginExam', {
             templateUrl: 'partials/exam/partial_startExam.html',
             controller:  'startExamController'
         });

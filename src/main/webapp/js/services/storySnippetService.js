@@ -50,7 +50,7 @@ IndexModule.factory('moduleSnippetService', function($http) {
     return moduleSnippetService;
 });
 
-IndexModule.factory('examsService', function($http) {
+IndexModule.factory('examsService', function($http, $q) {
     var examsService = {
         getExams: function() {
             // $http returns a promise, which has a then function, which also returns a promise
@@ -65,9 +65,15 @@ IndexModule.factory('examsService', function($http) {
         },
 
         getThisExam: function(examId) {
-            // $http returns a promise, which has a then function, which also returns a promise
             var examPromise = $http.get('data/exam/'+examId+'.json').then(function (response) {
-                // The return value gets picked up by the then in the controller.
+                return response.data;
+            });
+            // Return the promise to the controller
+            return examPromise;
+        },
+
+        getThisQuestion: function(questionId) {
+            var examPromise = $http.get('data/questiondir/'+questionId+'.json').then(function (response) {
                 return response.data;
             });
             // Return the promise to the controller

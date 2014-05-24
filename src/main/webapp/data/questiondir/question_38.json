@@ -1,0 +1,20 @@
+{
+	"subject":"QUANTITATIVE_APTITUDE",
+	"subject_category":"TIME_WORK",
+	"meta-data":"Bank PO",
+	
+	"question_type":"OBJ",
+	"question_category":"General",
+	"option_type":"single",
+	
+	"isPassage":"N",
+	"passage":"",
+	"Passage_question_count":"1",
+	
+	"toughnessLevel":"5",
+	"timeAllowed":"60s",
+	"Passage_question_count":"1",
+	
+	"questionStatement":"Sample Sheet1 Question 38",
+	"options":[{"optionValue":"Option 1","correct":false},{"optionValue":"Option 2","correct":false},{"optionValue":"Option 3","correct":false},{"optionValue":"Option 4","correct":true}]
+}

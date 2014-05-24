@@ -1,10 +1,7 @@
 'use strict';
 
-IndexModule.controller("startExamController", function($rootScope,$scope,$http,$sce,$routeParams,$location,$window,examsService) {
-    $scope.currentExam={ };
+IndexModule.controller("startExamController", function($rootScope,$scope,$http,$sce,$location,$window,examsService) {
     $scope.currentQuestionNumber=0;
-    $scope.currentQuestion={};
-    $rootScope.questions=[];
     var countDownInterval=null;
     $rootScope.questionCount=0;
     $rootScope.template={'url':'partials/exam/partial_questionstatus.html'};
@@ -13,18 +10,18 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     $scope.questionToReview=[];
     var testStartTime=new Date();
 
-    //gets questions of current exam
-    examsService.getThisExam($routeParams.id).then(function(exam){
-        console.log('modules received:'+exam);
-        $scope.currentExam  = exam;
-        $rootScope.questions  = exam.questions;
-        $scope.currentQuestion=$rootScope.questions[0];
-        $scope.tabsData = $scope.currentExam.modules;
-        //$rootScope.questionCount=$scope.questions.length;
+    $rootScope.questions  = $rootScope.currentExam.questions;
+    $scope.currentQuestion=$rootScope.questions[0];
+    $scope.tabsData = $rootScope.currentExam.modules;
+    //$rootScope.questionCount=$scope.questions.length;
 
-        initialize_timer(0,40,0);
-        countDownInterval = setInterval(countDown, 1000 );
-    });
+    //timer code
+    var timerElement=$("#timer"),hourElem = '',
+        minuteElem = '',secondElem = '';
+    var startTime = new Date(),
+        expiryTime = new Date();
+    initialize_timer(0,40,0);
+    countDownInterval = setInterval(countDown, 1000 );
 
     $scope.nextQuestion=function(){
         markIfQuestionAttempted();
@@ -60,14 +57,14 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     }
 
     /*$scope.reviewAndNextQuestion=function(){
-        $scope.questionToReview.push($scope.currentQuestionNumber);
-        if($scope.currentQuestion.user_selected_option!='-1'){
-                broadcastQuestionSubmitEvents('ATTEMPTED_REVIEW');
-        }else{
-                broadcastQuestionSubmitEvents('UNATTEMPTED_REVIEW');
-        }
-        $scope.nextQuestion();
-    }*/
+     $scope.questionToReview.push($scope.currentQuestionNumber);
+     if($scope.currentQuestion.user_selected_option!='-1'){
+     broadcastQuestionSubmitEvents('ATTEMPTED_REVIEW');
+     }else{
+     broadcastQuestionSubmitEvents('UNATTEMPTED_REVIEW');
+     }
+     $scope.nextQuestion();
+     }*/
     $scope.reviewAndNextQuestion=function(){
         if($scope.currentQuestion.user_selected_option!='-1'){
             $scope.currentQuestion.reviewState='ATTEMPTED_REVIEW';
@@ -132,22 +129,26 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
                 }
             }
         }
-        $rootScope.selectedExam.total_questions_attempted=totalAttempted;
-        $rootScope.selectedExam.total_questions_correct=totalCorrect;
-        $rootScope.selectedExam.score_obtained=totalCorrect;
-        $rootScope.selectedExam.total_time_taken=findTimeDifference(testStartTime,testFinishTime);
+        $rootScope.currentExam.total_questions_attempted=totalAttempted;
+        $rootScope.currentExam.total_questions_correct=totalCorrect;
+        $rootScope.currentExam.score_obtained=totalCorrect;
+        $rootScope.currentExam.total_time_taken=findTimeDifference(testStartTime,testFinishTime);
 
         //update modal & save in DB
         $location.path("/submitExam");
     }
 
+    $scope.renderHtml = function (htmlCode) {
+        return $sce.trustAsHtml(htmlCode);
+    };
+
 
 
     //TODO flush out this timer code to separate js
-    var timerElement=$("#timer"),hourElem = '',
+/*    var timerElement=$("#timer"),hourElem = '',
         minuteElem = '',secondElem = '';
     var startTime = new Date(),
-        expiryTime = new Date();
+        expiryTime = new Date();*/
     function initialize_timer(hrs,mins,seconds){
         // Set up expiry time
         expiryTime.setHours( expiryTime.getHours() + hrs );
@@ -253,7 +254,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     function countDownOnComplete() {
         console.log('Countdown timer has completed!');
         $window.alert('Time allowed has expired. Test will be submitted now.');
-        $scope.submitTest(autoSubmit);
+        $scope.submitTest(true);
     }
 
 

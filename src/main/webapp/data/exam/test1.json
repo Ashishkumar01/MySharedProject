@@ -1,0 +1,35 @@
+{
+    "id": "test1",
+    "category": "Online Test Series",
+    "package_name": "Test Series for Bank PO & Clerk",
+    "test_code": "Mock Test SBI PO 2014 - 01",
+    "snippet": "Mock test SBI PO.",
+    "total_questions": "40",
+    "maximum_marks": "40",
+    "total_questions_attempted": "",
+    "total_questions_correct": "",
+    "score_obtained": "",
+    "score_percentile": "",
+    "total_time": "40 min",
+    "total_time_taken": "",
+    "duration": "40",
+    "start_time": "",
+    "start_date": "",
+    "modules": [
+                    { "module_name":"Quantitative Aptitude","start_number":0,"end_number":9,"active": true,
+                      "linked_questions":["question_0","question_1","question_2", "question_3","question_4", "question_5","question_6",
+                                          "question_7","question_8", "question_9"]
+                    },
+                    { "module_name":"Reasoning","start_number":10,"end_number":19,"active": false,
+                        "linked_questions":["question_10", "question_11","question_12", "question_13","question_14", "question_15",
+                                            "question_16", "question_17", "question_18", "question_19"]
+                    },
+                    { "module_name":"English Language","start_number":20,"end_number":29,"active": false,
+                        "linked_questions":["question_20","question_25","question_26", "question_27","question_28", "question_29"]
+                    },
+                    { "module_name":"General Awareness","start_number":30,"end_number":39,"active": false,
+                        "linked_questions":["question_30", "question_31","question_32", "question_33","question_34", "question_35",
+                                            "question_36", "question_37", "question_38", "question_39"]
+                    }
+                ]
+}

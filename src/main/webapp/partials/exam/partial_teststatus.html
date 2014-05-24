@@ -7,7 +7,7 @@
         <h2>Your test submitted successfully</h2>
         <h5>Thank you for submitting your test. The summary for test is given below.</h5>
 
-        <p>Test Name: {{selectedExam.package_name}}</p>
+        <p>Test Name: {{currentExam.package_name}}</p>
 
         <!-- Table -->
         <table class="table  table-bordered">
@@ -26,15 +26,15 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{selectedExam.total_questions}}</td>
-                    <td>{{selectedExam.maximum_marks}}</td>
-                    <td>{{selectedExam.total_questions_attempted}}</td>
-                    <td>{{selectedExam.total_questions - selectedExam.total_questions_attempted}}</td>
-                    <td>{{selectedExam.total_questions_correct}}</td>
-                    <td>{{selectedExam.total_questions_attempted - selectedExam.total_questions_correct}}</td>
-                    <td>{{selectedExam.score_obtained}}</td>
-                    <td>{{selectedExam.total_time}}</td>
-                    <td>{{selectedExam.total_time_taken}}</td>
+                    <td>{{currentExam.total_questions}}</td>
+                    <td>{{currentExam.maximum_marks}}</td>
+                    <td>{{currentExam.total_questions_attempted}}</td>
+                    <td>{{currentExam.total_questions - currentExam.total_questions_attempted}}</td>
+                    <td>{{currentExam.total_questions_correct}}</td>
+                    <td>{{currentExam.total_questions_attempted - currentExam.total_questions_correct}}</td>
+                    <td>{{currentExam.score_obtained}}</td>
+                    <td>{{currentExam.total_time}}</td>
+                    <td>{{currentExam.total_time_taken}}</td>
                 </tr>
             </tbody>
         </table>

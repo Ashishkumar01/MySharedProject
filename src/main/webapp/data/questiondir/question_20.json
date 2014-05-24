@@ -1,0 +1,34 @@
+{
+	"subject":"ENGLISH",
+	"subject_category":"COMPREHENSION",
+	"meta-data":"Bank PO",
+	
+	"question_type":"PAS",
+	"question_category":"General",
+	"option_type":"single",
+	
+	"isPassage":"Y",
+	"passage":"<strong>Instructions: Read the passage then answer the questions.</strong><br/> This is a test passage.Once there was a crow. he was very thirsty.He went here and there but no water. He went to a garden.He saw a jug of water. The water was very low.",
+	"Passage_question_count":"5",
+	
+	"toughnessLevel":"5",
+	"timeAllowed":"60s",
+	
+	"questions":[
+		{	"questionStatement":"Sample Passage Question 1",
+			"options":[{"optionValue":"Option 1","correct":false},{"optionValue":"Option 2","correct":false},{"optionValue":"Option 3","correct":false},{"optionValue":"Option 4","correct":true}]
+		},
+		{	"questionStatement":"Sample Passage Question 2",
+			"options":[{"optionValue":"Option 1","correct":false},{"optionValue":"Option 2","correct":false},{"optionValue":"Option 3","correct":false},{"optionValue":"Option 4","correct":true}]
+		},
+		{	"questionStatement":"Sample Passage Question 3",
+			"options":[{"optionValue":"Option 1","correct":false},{"optionValue":"Option 2","correct":false},{"optionValue":"Option 3","correct":false},{"optionValue":"Option 4","correct":true}]
+		},
+		{	"questionStatement":"Sample Passage Question 4",
+			"options":[{"optionValue":"Option 1","correct":false},{"optionValue":"Option 2","correct":false},{"optionValue":"Option 3","correct":false},{"optionValue":"Option 4","correct":true}]
+		},
+		{	"questionStatement":"Sample Passage Question 5",
+			"options":[{"optionValue":"Option 1","correct":false},{"optionValue":"Option 2","correct":false},{"optionValue":"Option 3","correct":false},{"optionValue":"Option 4","correct":true}]
+		}
+	]
+}

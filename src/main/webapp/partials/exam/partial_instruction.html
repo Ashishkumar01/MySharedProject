@@ -15,12 +15,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{selectedExam.category}}</td>
-                    <td>{{selectedExam.package_name}}</td>
-                    <td>{{selectedExam.test_code}}</td>
-                    <td>{{selectedExam.total_questions}}</td>
-                    <td>{{selectedExam.total_time}}</td>
-                    <td>{{selectedExam.maximum_marks}}</td>
+                    <td>{{currentExam.category}}</td>
+                    <td>{{currentExam.package_name}}</td>
+                    <td>{{currentExam.test_code}}</td>
+                    <td>{{currentExam.total_questions}}</td>
+                    <td>{{currentExam.total_time}}</td>
+                    <td>{{currentExam.maximum_marks}}</td>
                 </tr>
             </tbody>
         </table>
@@ -29,8 +29,8 @@
             <h4><b>General Instructions:</b></h4>
             <h5><b>Please read the following instructions very carefully:</b></h5>
 
-            <h5>1. You have {{selectedExam.total_time}} to complete the test.</h5>
-            <h5>2. The test contains a total of {{selectedExam.total_questions}} questions.</h5>
+            <h5>1. You have {{currentExam.total_time}} to complete the test.</h5>
+            <h5>2. The test contains a total of {{currentExam.total_questions}} questions.</h5>
             <h5>3. There is only one correct answer to each question. Click on the most appropriate option to mark it as your answer.</h5>
             <h5>4. You will be awarded One mark for each correct answer.</h5>
             <h5>5. There is 0.25 penalty mark for each wrong answer.</h5>
@@ -49,7 +49,7 @@
             <h6 class="text-danger"><input type="checkbox" ng-model="agreementDone">  I have read and understood the instructions. I agree that in case of not adhering to exam instructions, I will be disqualified from giving the exam.
         <!--</div>
         <div class="col-md-3">-->
-            <a href="#/beginExam/{{selectedExam.id}}" style="color: #f5f5f5" class="pull-right" ng-show="agreementDone">
+            <a href="#/beginExam" style="color: #f5f5f5" class="pull-right" ng-show="agreementDone">
                 <div class="btn btn-primary">Start Exam <span class="glyphicon glyphicon-play"></span></div>
             </a>
             </h6>

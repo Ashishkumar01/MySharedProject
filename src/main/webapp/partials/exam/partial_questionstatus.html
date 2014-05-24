@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-12">
-        <div  style="text-align: center; margin-top: 10px" class="col-md-2" ng-repeat="q in questions">
+        <div  style="text-align: center; margin-top: 10px" class="col-md-3" ng-repeat="q in questions">
             <button ng-class="{'btn btn-default':(q.user_selected_option==-1 && !q.reviewState), 'btn btn-primary':(q.reviewState && q.reviewState=='ATTEMPTED_REVIEW'), 'btn btn-warning':(q.reviewState && q.reviewState=='UNATTEMPTED_REVIEW'), 'btn btn-success':(q.user_selected_option!=-1 && !q.reviewState)}" id="questionBtn{{$index}}" ng-click="thisQuestion($index)">{{$index+1}}</button>
         </div>
     </div>
