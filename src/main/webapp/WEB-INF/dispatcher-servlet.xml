@@ -43,7 +43,7 @@
           		<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
           		<prop key="hibernate.default_catalog">test</prop>
           		<prop key="hibernate.default_schema">public</prop>
-          		<prop key="hibernate.show_sql">true"</prop>
+          		<prop key="hibernate.show_sql">true</prop>
           	</props>
           </property>
           
@@ -61,5 +61,7 @@
     </bean>    
 		
     <bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper"></bean>
+    
+    <bean id="gson" class="com.google.gson.Gson"></bean>
 
 </beans>

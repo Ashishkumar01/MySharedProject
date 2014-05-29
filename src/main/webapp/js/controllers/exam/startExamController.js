@@ -9,9 +9,11 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     $scope.currentActiveTab=0;
     $scope.questionToReview=[];
     var testStartTime=new Date();
+    $scope.currentQuestionStartTime=new Date();
 
     $rootScope.questions  = $rootScope.currentExam.questions;
     $scope.currentQuestion=$rootScope.questions[0];
+    $scope.currentQuestion.timeTaken="00:00:00";
     $scope.tabsData = $rootScope.currentExam.modules;
     //$rootScope.questionCount=$scope.questions.length;
 
@@ -28,6 +30,8 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $scope.currentQuestionNumber++;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
         activateRespectiveTab();
+        
+        $scope.currentQuestionStartTime=new Date();
     }
 
     $scope.previousQuestion=function(){
@@ -35,11 +39,18 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $scope.currentQuestionNumber--;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
         activateRespectiveTab();
+        
+        $scope.currentQuestionStartTime=new Date();
     }
 
+    /**
+     * called when user directly clicks on the tab
+     */
     $scope.setThisQuestion=function(index){
         $scope.currentQuestionNumber=index;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
+        
+        $scope.currentQuestionStartTime=new Date();
     }
 
     //show the question as selected from buttons in question list
@@ -47,6 +58,8 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $scope.currentQuestionNumber=data;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
         activateRespectiveTab();
+        
+        $scope.currentQuestionStartTime=new Date();
     });
 
     function broadcastQuestionSubmitEvents(eventName){
@@ -75,6 +88,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $scope.currentQuestionNumber++;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
         activateRespectiveTab();
+        $scope.currentQuestionStartTime=new Date();
     }
 
     /**
@@ -84,6 +98,8 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     function markIfQuestionAttempted(){
         if($scope.currentQuestion.user_selected_option!='-1'){
             $scope.currentQuestion.reviewState=undefined;
+            //get how much time is taken for this
+            $scope.currentQuestion.timeTaken=findTimeDifference($scope.currentQuestionStartTime,new Date());
         }
     }
 
@@ -121,26 +137,116 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     function submitPage(){
         var testFinishTime=new Date();
         var totalAttempted= 0,totalCorrect=0;
+        var questionStatsList=[];
+        var questionStats={};
         for(var j=0; j<$rootScope.questions.length;j++){
+        	questionStats={};
+        	questionStats.examId=$rootScope.currentExam.id;
+        	questionStats.userId='singhcl';
+        	questionStats.examDate=getDateTime();
+        	
+        	questionStats.moduleName=getModuleName(j);
+        	questionStats.questionId="question_"+j;
+        	questionStats.isCorrect='N';
+        	questionStats.userAnswer=$rootScope.questions[j].user_selected_option;
+        	questionStats.correctAnswer=$rootScope.questions[j].correct_option;
+        	questionStats.score=0;
+        	questionStats.timeTaken="00:00:00";
+        	
             if($rootScope.questions[j].user_selected_option!='-1'){
                 totalAttempted++;
                 if($rootScope.questions[j].user_selected_option==$rootScope.questions[j].correct_option){
                     totalCorrect++;
+                    questionStats.isCorrect='Y';
+                    questionStats.score=$rootScope.currentExam.correct_marks;
+                }else{
+                	if($rootScope.currentExam.is_negative_marks_applicable){
+                		questionStats.score=$rootScope.currentExam.negative_marks;
+                	}
                 }
+                questionStats.timeTaken=$rootScope.questions[j].timeTaken;
             }
+            
+            questionStatsList.push(questionStats);
         }
         $rootScope.currentExam.total_questions_attempted=totalAttempted;
         $rootScope.currentExam.total_questions_correct=totalCorrect;
-        $rootScope.currentExam.score_obtained=totalCorrect;
+        
+        if($rootScope.currentExam.is_negative_marks_applicable){
+        	$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correct_marks-(totalAttempted-totalCorrect)*$rootScope.currentExam.negative_marks;
+    	}else{
+    		$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correct_marks;
+    	}        
         $rootScope.currentExam.total_time_taken=findTimeDifference(testStartTime,testFinishTime);
 
         //update modal & save in DB
-        $location.path("/submitExam");
+        saveExamStats(questionStatsList);
+    }
+    
+    /**
+     * persist the exam report in DB
+     */
+    function saveExamStats(questionStatsList){
+    	var examStats={};
+    	examStats.examId=$rootScope.currentExam.id;
+
+    	examStats.userId='singhcl';
+    	examStats.examDate=getDateTime();
+    	examStats.totalQuestions=$rootScope.currentExam.total_questions;
+    	examStats.totalAttempted=$rootScope.currentExam.total_questions_attempted;
+    	examStats.maximumMarks=$rootScope.currentExam.maximum_marks;
+    	examStats.scoreObtained=$rootScope.currentExam.score_obtained;
+    	examStats.totalCorrect=$rootScope.currentExam.total_questions_correct;
+    	examStats.totalTimeAllowed=$rootScope.currentExam.total_time;
+    	examStats.totalTimeTaken=$rootScope.currentExam.total_time_taken;
+    	if($rootScope.currentExam.credit_required && $rootScope.currentExam.credit_required!=""){
+    		examStats.credits=$rootScope.currentExam.credit_required;
+    	}    	
+    	
+    	var examReport={};
+    	examReport.examScore=examStats;
+    	examReport.examStatList=questionStatsList;
+    	
+    	$http({method: 'POST', url: 'rest/exam/save', data:examReport}).
+        success(function(data, status, headers, config) {
+          console.log('exam save successfully. Status:'+status);          
+          $location.path("/submitExam");
+        }).
+        error(function(data, status, headers, config) {
+        	console.log('exam save failed. Status:'+status);
+        	$location.path("/submitExam");
+        });
+    	
+    }
+    
+    function getDateTime(){
+    	// For todays date;
+    	Date.prototype.today = function () { 
+    	    return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
+    	}
+    	// For the time now
+    	Date.prototype.timeNow = function () {
+    	     return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
+    	}
+    	
+    	return new Date().today() + " " + new Date().timeNow();
     }
 
     $scope.renderHtml = function (htmlCode) {
         return $sce.trustAsHtml(htmlCode);
     };
+    
+    /**
+     * finds module name for the selected question
+     */
+    function getModuleName(questionNo){
+        for(var i=0; i<$scope.tabsData.length; i++){
+            if(questionNo>=$scope.tabsData[i].start_number
+                && questionNo<=$scope.tabsData[i].end_number){
+                return $scope.tabsData[i].module_name;
+            }
+        }
+    }
 
 
 
