@@ -77,11 +77,11 @@
 			      </div>
 			      <div class="col-sm-2"></div>
 			   </div>  
-			   <div class="form-group">
+			   <!-- <div class="form-group">
 			      <div class="col-sm-11">
 			         <button type="button" class="btn btn-primary pull-right">Add Question</button>
 			      </div>
-			   </div>  
+			   </div>  --> 
 			</form>			        	
       </div>
     </div>
@@ -101,12 +101,14 @@
 			   	  <br>
 			      <label for="subject" class="col-sm-2 control-label">Subject</label>
 			      <div class="col-sm-3">
-			         <input type="text" class="form-control" id="subject" ng-model="subject" placeholder="Enter subject">
+			         <!-- <input type="text" class="form-control" id="subject" ng-model="subject" placeholder="Enter subject"> -->
+			         <select class="form-control" id="subject" ng-model="subject" ng-options="x.key as x.value for x in subjectArray"></select>
 			      </div>
 			      
 			      <label for="searchCriteria" class="col-sm-2 control-label">Subject Criteria</label>
 			      <div class="col-sm-3">
-			         <input type="text" class="form-control" id="searchCriteria" ng-model="subjectCriteria" placeholder="Enter subject criteria">
+			         <!-- <input type="text" class="form-control" id="searchCriteria" ng-model="subjectCriteria" placeholder="Enter subject criteria"> -->
+			         <select class="form-control" id="subjectCriteria" ng-model="subjectCriteria" ng-options="x.key as x.value for x in subjectCriteriaArray"></select>
 			      </div>
 			      <div class="col-sm-2"></div>
 			   </div>
@@ -119,18 +121,34 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree">
-          Select Questions
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+  <div class="panel panel-default" ng-show="questions && questions.length>0">
+    	<div class="panel-body">
+      		<div ng-hide="questions && questions.length>0">
+      			No Questions Found.
+      		</div>
+        	<table class="table table-bordered" ng-show="questions && questions.length>0">
+			    <thead class="success">
+			        <tr>
+			            <th>Select</th>
+			            <th>Subject</th>
+			            <th>Subject Category</th>
+			            <th>Question Type</th>					            
+			            <th>Question/Passage</th>
+			            <th>No. of Questions</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	<tr ng-repeat="question in questions">
+			            <td class="text-center"> <input type="checkbox" value="{{question.id}}"> </td>
+			            <td class="text-center">{{question.subject}}</td>
+			            <td class="text-center">{{question.subjectCategory}}</td>
+			            <td class="text-center">{{question.questionType}}</td>
+			            
+			            <td class="text-center">{{question.passage}}</td>
+			            <td class="text-center">{{question.passageQuestionCount}}</td>
+			        </tr>					        
+			    </tbody>
+			</table>	
       </div>
-    </div>
   </div>
 </div>

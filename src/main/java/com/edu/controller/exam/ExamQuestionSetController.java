@@ -16,21 +16,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edu.db.domain.ExamScore;
 import com.edu.db.domain.ExamStats;
-import com.edu.db.repository.ExamScoreRepository;
 import com.edu.db.repository.ExamStatsRepository;
+import com.edu.db.repository.QuestionBankRepository;
 import com.edu.model.ExamReport;
+import com.edu.pojo.QuestionDocument;
 import com.google.gson.Gson;
 
 
 @Controller
-@RequestMapping("exam")
-public class ExamStatsController{
+@RequestMapping("set")
+public class ExamQuestionSetController{
 	
 	@Autowired
-	ExamScoreRepository examRepo;
-	
-	@Autowired
-	ExamStatsRepository examStatsRepo;
+	QuestionBankRepository bankRepo;
 	
 	@Autowired
 	Gson gson;
@@ -39,8 +37,8 @@ public class ExamStatsController{
 	 * persists exam stats
 	 * @param examReport
 	 */
-	@RequestMapping(value = "/save", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public void saveExamStats(@RequestBody ExamReport examReport,HttpServletResponse response) {
+	/*@RequestMapping(value = "/save", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void saveExamSet(@RequestBody ExamReport examReport,HttpServletResponse response) {
 		System.out.println("saveExamStats() examScore received:"+examReport);
 		try {
 			//ExamReport examReportObj = gson.fromJson(examReport, ExamReport.class);
@@ -56,34 +54,29 @@ public class ExamStatsController{
 		}
 		
 		response.setStatus(HttpStatus.OK.value());		
-	}
+	}*/
 	
 	/**
 	 * fetches exam stats
 	 */
-	@RequestMapping(value = "/report/{examId}/{attemptNo}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ExamReport getExamStats(@PathVariable String examId,@PathVariable String attemptNo) {
-		System.out.println("getExamStats() request received. examId:"+examId+" attemptNo:"+attemptNo);
-		ExamReport examReport=new ExamReport();
+	@RequestMapping(value = "/questions/{subject}/{subjectCategory}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<QuestionDocument> getExamStats(@PathVariable String subject,@PathVariable String subjectCategory) {
+		System.out.println("getExamStats() request received. subject:"+subject+" subjectCategory:"+subjectCategory);
+		List<QuestionDocument> questionDocList=null;
 		try {
-			//code to fetch exam stats
-			List<ExamScore> examScoreList=examRepo.findByExamIdAndUserIdAndAttemptNo(examId, "singhcl", Integer.parseInt(attemptNo));
-			if(examScoreList!=null && examScoreList.size()>0){
-				System.out.println("examScoreList size:"+examScoreList.size());
-				examReport.setExamScore(examScoreList.get(0));
-				
-				List<ExamStats> examStatsList=examStatsRepo.findByExamIdAndUserIdAndAttemptNo(examId, "singhcl", Integer.parseInt(attemptNo));
-				if(examStatsList!=null){
-					System.out.println("examStatsList size:"+examStatsList.size());
-					examReport.setExamStatList(examStatsList);
-				}				
-			}
-			
+			if((subject!=null && !"".equals(subject)) || (subjectCategory!=null && !"".equals(subjectCategory))){
+				if(subjectCategory!=null && !"".equals(subjectCategory)){
+					questionDocList=bankRepo.findBySubjectAndSubjectCategory(subject, subjectCategory);
+				}else{
+					questionDocList=bankRepo.findBySubject(subject);
+				}
+			}else{
+				questionDocList=bankRepo.findAll();
+			}			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return examReport;		
+		return questionDocList;		
 	}	
-	
 
 }
