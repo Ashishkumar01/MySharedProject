@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.edu.pojo.Question;
+import com.edu.db.repository.QuestionBankRepository;
 import com.edu.pojo.QuestionDocument;
 
 
@@ -35,8 +35,12 @@ public class FileUploadController{
 	@Autowired
 	ObjectMapper mapper;
 	
+	@Autowired
+	QuestionBankRepository bankRepo;
+	
 	private File questionDir;
 	int dirFileCount = 0;
+	
 	public FileUploadController(){
 		questionDir = FileUtils.getFile("../../questiondir");
 		
@@ -50,6 +54,11 @@ public class FileUploadController{
 		dirFileCount = questionDir.listFiles().length;
 	}
 	
+	/**
+	 * uploads question xls and returns list to client UI for edit
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = { "uploadFile.do" },produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<QuestionDocument> uploadFile(HttpServletRequest request) {
 
@@ -74,38 +83,44 @@ public class FileUploadController{
 		return null;
 	}
 	
-	
-	
-	private String objectToJSON(Object object) throws JsonGenerationException, JsonMappingException, IOException{
-		return mapper.writeValueAsString(object);
-	}
-	
+	/**
+	 * persists question matadata in DB and create json file for questions
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = { "saveQuestions.do" },produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody int saveQuestions(@RequestBody QuestionDocument[] request) throws IOException {
 		int count=0;
+		QuestionDocument savedQuestionDocument;
 		for (QuestionDocument questionDocument : request) {
-			if(questionDocument.isGrouped()){
-				FileUtils.writeByteArrayToFile(getQuestionFile(), objectToJSON(questionDocument).getBytes());
-				count++;
-			}else{
-				for (Question question : questionDocument.getQuestions()) {
-					question.setDirections(questionDocument.getDirections());
-					question.setMetaData(questionDocument.getMetaData());
-					FileUtils.writeByteArrayToFile(getQuestionFile(), objectToJSON(question).getBytes());
-					count++;
-				}
-			}
+			savedQuestionDocument=bankRepo.save(questionDocument);
+			FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId()), objectToJSON(questionDocument).getBytes());
+			count++;
 		}
 		return count;
 	}
+	
+	/**
+	 * converts object to JSON
+	 * @param object
+	 * @return
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
+	private String objectToJSON(Object object) throws JsonGenerationException, JsonMappingException, IOException{
+		return mapper.writeValueAsString(object);
+	}
 
-	private File getQuestionFile() {
-		File questionFile = null;
-		do{
-			questionFile = new File(questionDir, "question_"+this.dirFileCount+".json");
-			this.dirFileCount++;
-			System.out.println(questionFile.getAbsolutePath());
-		}while(questionFile.exists());
+	/**
+	 * gets file instance
+	 * @param fileId
+	 * @return
+	 */
+	private File getQuestionFile(Long fileId) {
+		File questionFile = new File(questionDir, "Question_"+fileId+".json");
+		System.out.println(questionFile.getAbsolutePath());
 		
 		return questionFile;
 	}

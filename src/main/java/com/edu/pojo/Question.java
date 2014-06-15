@@ -5,28 +5,10 @@ import java.util.List;
 
 public class Question{
 
-	private String question;
+	private String questionStatement;
 
 	private List<Option> options;
 
-	private String directions;
-	public String getDirections() {
-		return directions;
-	}
-
-	public void setDirections(String directions) {
-		this.directions = directions;
-	}
-
-	private List<String> metaData;
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
 
 	public List<Option> getOptions() {
 		return options;
@@ -36,15 +18,15 @@ public class Question{
 		this.options = options;
 	}
 
-	public List<String> getMetaData() {
-		return metaData;
-	}
-
-	public void setMetaData(List<String> metaData) {
-		this.metaData = metaData;
-	}
-
 	public static Question newBeanInstance() {
 		return new Question();
+	}
+
+	public String getQuestionStatement() {
+		return questionStatement;
+	}
+
+	public void setQuestionStatement(String questionStatement) {
+		this.questionStatement = questionStatement;
 	}
 }

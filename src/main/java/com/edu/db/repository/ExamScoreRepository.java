@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 import com.edu.db.domain.ExamScore;
-import com.edu.db.domain.ExamStats;
 
 public interface ExamScoreRepository extends CrudRepository<ExamScore, Long> {
 	/**
@@ -21,4 +20,13 @@ public interface ExamScoreRepository extends CrudRepository<ExamScore, Long> {
 	 * @return
 	 */
 	List<ExamScore> findByExamId(String examId);
+	
+	/**
+	 * finds all exam scores 
+	 * @param examId
+	 * @param userId
+	 * @param attemptNo
+	 * @return
+	 */
+	List<ExamScore> findByExamIdAndUserIdAndAttemptNo(String examId, String userId, int attemptNo);
 }

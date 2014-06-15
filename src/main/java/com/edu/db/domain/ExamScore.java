@@ -58,7 +58,7 @@ public class ExamScore{
 	@Column
 	private int credits;
 	
-	@Column(name="attempt_no")
+	@Column(name="attempt_no", nullable=false)
 	private int attemptNo;
 	
 	@Column(name="exam_status")

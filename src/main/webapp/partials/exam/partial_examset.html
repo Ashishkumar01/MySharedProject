@@ -1,0 +1,136 @@
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+          Enter Exam Set Details
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        	<form class="form-horizontal" role="form" name="examSetForm">
+			   <div class="form-group">
+			   	  <br>
+			      <label for="name" class="col-sm-2 control-label">Name</label>
+			      <div class="col-sm-3">
+			         <input type="text" class="form-control" id="name" 
+			            placeholder="Enter Exam Set Name">
+			      </div>
+			      
+			      <label for="CodeId" class="col-sm-2 control-label">Code</label>
+			      <div class="col-sm-3">
+			         <input type="text" class="form-control" id="CodeId" 
+			            placeholder="Enter Set Code">
+			      </div>
+			      <div class="col-sm-2"></div>
+			   </div>
+			   <div class="form-group">
+			      <label for="PackageId" class="col-sm-2 control-label">Package</label>
+			      <div class="col-sm-3">
+			         <input type="text" class="form-control" id="PackageId" 
+			            placeholder="Enter Package Name">
+			      </div>
+			      <label for="SnippetId" class="col-sm-2 control-label">Snippet</label>
+			      <div class="col-sm-3">
+			         <input type="text" class="form-control" id="SnippetId" 
+			            placeholder="Enter Exam Snippet">
+			      </div>
+			      <div class="col-sm-2"></div>
+			   </div>
+			   <div class="form-group">
+			      <label for="TotalQuestionsId" class="col-sm-2 control-label">Total Questions</label>
+			      <div class="col-sm-3">
+			         <input type="text" class="form-control" id="TotalQuestionsId" 
+			            placeholder="Total Questions in the set">
+			      </div>
+			      <label for="MaxMarksId" class="col-sm-2 control-label">Max. Marks</label>
+			      <div class="col-sm-3">
+			         <input type="number" class="form-control" id="MaxMarksId" 
+			            placeholder="Maximum Marks for the set">
+			      </div>
+			      <div class="col-sm-2"></div>
+			   </div>  
+			    <div class="form-group">
+			      <label for="TotalTimeId" class="col-sm-2 control-label">Total Time</label>
+			      <div class="col-sm-3">
+			         <input type="number" class="form-control" id="TotalTimeId" 
+			            placeholder="Total Time allowed for the set">
+			      </div>
+			      <label for="CorrectMarksId" class="col-sm-2 control-label">Correct Marks</label>
+			      <div class="col-sm-3">
+			         <input type="number" class="form-control" id="CorrectMarksId" 
+			            placeholder="Marks for every Correct Question">
+			      </div>
+			      <div class="col-sm-2"></div>
+			   </div>  
+			   <div class="form-group">
+			      <label for="NegativeMarkingId" class="col-sm-2 control-label">Negative Marking</label>
+			      <div class="col-sm-3">
+			         <input type="checkbox" id="NegativeMarkingId" 
+			            placeholder="Negative Marking">
+			      </div>
+			      <label for="NegativeMarksId" class="col-sm-2 control-label">Negative Marks</label>
+			      <div class="col-sm-3">
+			         <input type="number" class="form-control" id="NegativeMarksId" 
+			            placeholder="Negative Marks">
+			      </div>
+			      <div class="col-sm-2"></div>
+			   </div>  
+			   <div class="form-group">
+			      <div class="col-sm-11">
+			         <button type="button" class="btn btn-primary pull-right">Add Question</button>
+			      </div>
+			   </div>  
+			</form>			        	
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">
+          Enter Question Search Criteria
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        	<form class="form-horizontal" role="form" name="examSetForm">
+			   <div class="form-group">
+			   	  <br>
+			      <label for="subject" class="col-sm-2 control-label">Subject</label>
+			      <div class="col-sm-3">
+			         <input type="text" class="form-control" id="subject" ng-model="subject" placeholder="Enter subject">
+			      </div>
+			      
+			      <label for="searchCriteria" class="col-sm-2 control-label">Subject Criteria</label>
+			      <div class="col-sm-3">
+			         <input type="text" class="form-control" id="searchCriteria" ng-model="subjectCriteria" placeholder="Enter subject criteria">
+			      </div>
+			      <div class="col-sm-2"></div>
+			   </div>
+			   <div class="form-group">
+			      <div class="col-sm-11">
+			         <button type="button" class="btn btn-primary pull-right" ng-click="searchQuestions()">Get Questions</button>
+			      </div>
+			   </div>
+			</form>			        	
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree">
+          Select Questions
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>

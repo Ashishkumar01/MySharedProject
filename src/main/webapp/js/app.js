@@ -83,9 +83,20 @@ app.config(['$routeProvider','$locationProvider',function( $routeProvider,$locat
         templateUrl: 'partials/exam/partial_examReview.html',
         controller:  'instructionController'
     });
+    
     $routeProvider.when('/upload', {
         templateUrl: 'partials/upload.html',
         controller: 'UploadController'
+    });
+    
+    $routeProvider.when('/examset', {
+        templateUrl: 'partials/exam/partial_examset.html',
+        controller: 'ExamsetController'
+    });
+    
+    $routeProvider.when('/viewReports', {
+        templateUrl: 'partials/reports/partial_examReports.html',
+        controller: 'reportsController'
     });
     /*$routeProvider.otherwise({ redirectTo: '/home' });*/
 }]);

@@ -52,6 +52,9 @@ public class ExamStats{
 	@Column
 	private int level;
 	
+	@Column(name="attempt_no", nullable=false)
+	private int attemptNo;
+	
 	public Long getId() {
 		return id;
 	}
@@ -154,6 +157,14 @@ public class ExamStats{
 
 	public void setExamDate(String examDate) {
 		this.examDate = examDate;
+	}
+
+	public int getAttemptNo() {
+		return attemptNo;
+	}
+
+	public void setAttemptNo(int attemptNo) {
+		this.attemptNo = attemptNo;
 	}
 
 	

@@ -37,57 +37,120 @@ public class QuestionBeanProcessor {
 	}
 	public List<QuestionDocument> getQuestionListFromExcel(InputStream file)
 			throws Exception {
-		return getQuestionListFromExcel(file, "MetaData");
+		return getQuestionListFromExcel(file, "Question_Bank");
 	}
 
 	public List<QuestionDocument> getQuestionListFromExcel(
 			InputStream inputStream, String metaDataSheet) throws Exception {
 
 		List<QuestionDocument> questionList = new LinkedList<QuestionDocument>();
-
+		QuestionDocument questionDocument = null;
+		int rowIndex=0;
 		Workbook workbook;
 		try {
+			String passageQuestionSheet = null;
+			List<String> questionData=null;
+			List<Question> questions=null;
 			workbook = WorkbookFactory.create(inputStream);
-
 			Sheet meataDatasheet = workbook.getSheet(metaDataSheet);
 			Iterator<Row> itrMetaDataRow = meataDatasheet.rowIterator();
 
-			List<String> metaDataArray = null;
 			while (itrMetaDataRow.hasNext()) {
-				String questionSheet = null;
 				Row metaDataRow = itrMetaDataRow.next();
-				List<String> metaData = new LinkedList<String>();
+				//Since first row is header, so skip it.
+				if(rowIndex==0){
+					rowIndex++;
+					continue;
+				}
+				
+				//terminate the processing if empty row is encountered
+				if(isBlankRow(metaDataRow,0,2)){
+					break;
+				}
+				questionDocument = QuestionDocument.newBeanInstance();
+				passageQuestionSheet = "NA";	
+				questionData = new LinkedList<String>();
+				questions = new LinkedList<Question>();				
 				Iterator<Cell> itrMetaDataCell = metaDataRow.cellIterator();
 				int index = 0;
-				boolean isGrouped = false;
-				String direction=null;
+
 				while (itrMetaDataCell.hasNext()) {
 					String cellValue = getCellValue(itrMetaDataCell.next());
+					//columns before questions
 					switch(index){
 						case 0:
-							questionSheet = cellValue;
-							index++;
+							questionDocument.setSubject(cellValue);							
 							break;
 						case 1:
-							isGrouped = "GROUPED".equals(cellValue);
-							index++;
+							questionDocument.setSubjectCategory(cellValue);
 							break;
 						case 2:
-							index++;
-							direction = cellValue;
+							questionDocument.setMetaData(cellValue);
 							break;
+						case 3:
+							questionDocument.setQuestionType(cellValue);							
+							break;
+						case 4:
+							questionDocument.setQuestionCategory(cellValue);
+							break;
+						case 5:
+							questionDocument.setOptionType(cellValue);
+							break;
+							
+						case 6:
+							questionDocument.setIsPassage(cellValue);
+							break;
+						case 7:
+							questionDocument.setPassageSheetName(cellValue);
+							passageQuestionSheet = cellValue;
+							break;
+						case 8:
+							questionDocument.setPassage(cellValue);
+							break;
+						case 9:
+							questionDocument.setIsGraph(cellValue);							
+							break;
+						case 10:
+							questionDocument.setPassageQuestionCount(cellValue);
+							break;
+						case 11:
+							questionDocument.setHasImage(cellValue);
+							break;
+							
+						case 12:
+							questionDocument.setImagePath(cellValue);
+							break;
+						case 13:
+							questionDocument.setToughnessLevel(cellValue);
+							break;
+						case 14:
+							questionDocument.setTimeAllowed(cellValue);							
+							break;
+						
 						default:
-							metaData.add(cellValue);
+							if(Validation.isNullOrEmpty(passageQuestionSheet)){
+								questionData.add(cellValue);
+							}
 					}
+					index++;
 				}
-				metaDataArray = metaData;
-				if (!Validation.isNullOrEmpty(questionSheet)) {
-					Sheet questionsheet = workbook.getSheet(questionSheet);
+				
+				if (!Validation.isNullOrEmpty(passageQuestionSheet)) {
+					Sheet questionsheet = workbook.getSheet(passageQuestionSheet);
 					Iterator<Row> itrRow = questionsheet.rowIterator();
-					List<Question> questions = new LinkedList<Question>();
+					int counter=0;
 					while (itrRow.hasNext()) {
 						Row row = itrRow.next();
-						List<String> questionData = new LinkedList<String>();
+						//skip header row
+						if(counter==0){
+							counter++;
+							continue;
+						}
+						//terminate the processing if empty row is encountered
+						if(isBlankRow(row,0,1)){
+							break;
+						}
+						questionData = new LinkedList<String>();
 						Iterator<Cell> itrCell = row.cellIterator();
 						while (itrCell.hasNext()) {
 							Cell cell = itrCell.next();
@@ -95,12 +158,16 @@ public class QuestionBeanProcessor {
 
 						}
 						questions.add(createQuestion(questionData));
-					}
-
-					questionList.add(createQuestionElement(metaDataArray,
-							questions,direction,questionSheet,isGrouped));
+					}					
+				}else{
+					questions.add(createQuestion(questionData));
 				}
+				
+				questionDocument.setQuestions(questions);
+				
+				questionList.add(questionDocument);
 			}
+			
 		} catch (Exception e) {
 			throw e;
 		}
@@ -123,6 +190,20 @@ public class QuestionBeanProcessor {
 		}
 		return returnVal;
 	}
+	
+	//checks mandatory columns. If any of them is empty, skip that row.
+	private boolean isBlankRow(Row row, int fcell, int lcell) 
+	{
+	    boolean flag = false;
+	    for (int i = fcell; i < lcell; i++) {
+		    if (row.getCell(i) == null || "".equals(String.valueOf(row.getCell(i))) || String.valueOf(row.getCell(i)).length() == 0) 
+		    {
+		    	flag = true;
+		    } 	    
+	    }
+	    
+	    return flag;
+	}
 
 	public List<QuestionDocument> getQuestionListFromJExcel(File file,
 			String metaDataSheetName) throws Exception {
@@ -138,14 +219,12 @@ public class QuestionBeanProcessor {
 
 			for (int rowIndex = 0; rowIndex < rows; rowIndex++) {
 				String questionSheetName = null;
-				String direction = null;
-				boolean isGrouped = false;
+
 				jxl.Cell[] metaDataCells = metaDatasheet.getRow(rowIndex);
 				if (metaDataCells.length > 0) {
 					List<String> metaData = new LinkedList<String>();
 					questionSheetName = metaDataCells[0].getContents();
-					isGrouped = "GROUPED".equals(metaDataCells[1].getContents());
-					direction = metaDataCells[2].getContents();
+
 					for (int cellIndex = 3; cellIndex < metaDataCells.length; cellIndex++) {
 						metaData.add(metaDataCells[cellIndex].getContents());
 					}
@@ -169,8 +248,8 @@ public class QuestionBeanProcessor {
 							}
 						}
 
-						questionList.add(createQuestionElement(metaData,
-								questions,direction,questionSheetName,isGrouped));
+						/*questionList.add(createQuestionElement(metaData,
+								questions,direction,questionSheetName,isGrouped));*/
 					}
 
 				}
@@ -183,28 +262,16 @@ public class QuestionBeanProcessor {
 
 	}
 
-	
-
-	
-
-	private QuestionDocument createQuestionElement(List<String> metaDataArray,
-			List<Question> questionArray,String direction,String sheetName,boolean isGrouped) {
-		QuestionDocument questionDocument = QuestionDocument.newBeanInstance();
-		questionDocument.setMetaData(metaDataArray);
-		questionDocument.setQuestions(questionArray);
-		questionDocument.setSheetName(sheetName);
-		questionDocument.setGrouped(isGrouped);
-		questionDocument.setDirections(direction);
-		return questionDocument;
-	}
-
+	/**
+	 * creates question
+	 */
 	private Question createQuestion(List<String> question) {
 		Question questionType = Question.newBeanInstance();
 
 		if (question.size() > 0) {
 			Iterator<String> itrCell = question.iterator();
 
-			questionType.setQuestion(itrCell.next());
+			questionType.setQuestionStatement(itrCell.next());
 			List<Option> optionList = new LinkedList<Option>();
 			while (itrCell.hasNext()) {
 				optionList.add(new Option(itrCell.next(), Option.CORRECT

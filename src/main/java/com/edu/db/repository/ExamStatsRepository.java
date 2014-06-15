@@ -20,4 +20,13 @@ public interface ExamStatsRepository extends CrudRepository<ExamStats, Long> {
 	 * @return
 	 */
 	List<ExamStats> findByExamId(String examId);
+	
+	/**
+	 * finds all exam scores 
+	 * @param examId
+	 * @param userId
+	 * @param attemptNo
+	 * @return
+	 */
+	List<ExamStats> findByExamIdAndUserIdAndAttemptNo(String examId, String userId, int attemptNo);
 }

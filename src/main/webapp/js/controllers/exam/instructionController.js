@@ -37,6 +37,10 @@ IndexModule.controller("instructionController", function($rootScope,$scope,$loca
     $scope.reviewQuestions=function(){
         $location.path('/reviewQuestions');
     }
+    
+    $scope.viewReports=function(){
+    	$location.path('/viewReports');
+    }
 
 });
 

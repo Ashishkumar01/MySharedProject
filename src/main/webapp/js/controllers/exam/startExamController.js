@@ -144,6 +144,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         	questionStats.examId=$rootScope.currentExam.id;
         	questionStats.userId='singhcl';
         	questionStats.examDate=getDateTime();
+        	questionStats.attemptNo=1;
         	
         	questionStats.moduleName=getModuleName(j);
         	questionStats.questionId="question_"+j;
@@ -189,6 +190,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     function saveExamStats(questionStatsList){
     	var examStats={};
     	examStats.examId=$rootScope.currentExam.id;
+    	examStats.attemptNo=1;
 
     	examStats.userId='singhcl';
     	examStats.examDate=getDateTime();
