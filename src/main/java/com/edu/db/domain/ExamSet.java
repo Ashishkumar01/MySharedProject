@@ -6,6 +6,7 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,7 +18,8 @@ public class ExamSet{
 	@Id
 	@GeneratedValue
 	@PrimaryKey
-	private Long id;
+	@Column(name="exam_set_id")
+	private Long examSetId;
 	
 	@Column(name="set_name", nullable=false)
 	private String name;
@@ -55,16 +57,8 @@ public class ExamSet{
 	@Column(name="attempt_allowed")
 	private int attemptAllowed;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="examSet")
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="examSet")
 	private List<ExamSetDtl> examSetDetails;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -169,6 +163,13 @@ public class ExamSet{
 	public void setExamSetDetails(List<ExamSetDtl> examSetDetails) {
 		this.examSetDetails = examSetDetails;
 	}
-	
+
+	public Long getExamSetId() {
+		return examSetId;
+	}
+
+	public void setExamSetId(Long examSetId) {
+		this.examSetId = examSetId;
+	}
 	
 }

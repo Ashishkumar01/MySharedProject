@@ -14,13 +14,13 @@
 			   	  <br>
 			      <label for="name" class="col-sm-2 control-label">Name</label>
 			      <div class="col-sm-3">
-			         <input type="text" class="form-control" id="name" 
+			         <input type="text" class="form-control" id="name" ng-model="examSet.name"
 			            placeholder="Enter Exam Set Name">
 			      </div>
 			      
 			      <label for="CodeId" class="col-sm-2 control-label">Code</label>
 			      <div class="col-sm-3">
-			         <input type="text" class="form-control" id="CodeId" 
+			         <input type="text" class="form-control" id="CodeId" ng-model="examSet.code"
 			            placeholder="Enter Set Code">
 			      </div>
 			      <div class="col-sm-2"></div>
@@ -28,12 +28,12 @@
 			   <div class="form-group">
 			      <label for="PackageId" class="col-sm-2 control-label">Package</label>
 			      <div class="col-sm-3">
-			         <input type="text" class="form-control" id="PackageId" 
+			         <input type="text" class="form-control" id="PackageId" ng-model="examSet.packageName"
 			            placeholder="Enter Package Name">
 			      </div>
 			      <label for="SnippetId" class="col-sm-2 control-label">Snippet</label>
 			      <div class="col-sm-3">
-			         <input type="text" class="form-control" id="SnippetId" 
+			         <input type="text" class="form-control" id="SnippetId" ng-model="examSet.packageSnippet"
 			            placeholder="Enter Exam Snippet">
 			      </div>
 			      <div class="col-sm-2"></div>
@@ -41,12 +41,12 @@
 			   <div class="form-group">
 			      <label for="TotalQuestionsId" class="col-sm-2 control-label">Total Questions</label>
 			      <div class="col-sm-3">
-			         <input type="text" class="form-control" id="TotalQuestionsId" 
+			         <input type="text" class="form-control" id="TotalQuestionsId"  ng-model="examSet.totalQuestions"
 			            placeholder="Total Questions in the set">
 			      </div>
 			      <label for="MaxMarksId" class="col-sm-2 control-label">Max. Marks</label>
 			      <div class="col-sm-3">
-			         <input type="number" class="form-control" id="MaxMarksId" 
+			         <input type="number" class="form-control" id="MaxMarksId" ng-model="examSet.maxMarks"
 			            placeholder="Maximum Marks for the set">
 			      </div>
 			      <div class="col-sm-2"></div>
@@ -54,12 +54,12 @@
 			    <div class="form-group">
 			      <label for="TotalTimeId" class="col-sm-2 control-label">Total Time</label>
 			      <div class="col-sm-3">
-			         <input type="number" class="form-control" id="TotalTimeId" 
+			         <input type="number" class="form-control" id="TotalTimeId" ng-model="examSet.totalTimeAllowed" 
 			            placeholder="Total Time allowed for the set">
 			      </div>
 			      <label for="CorrectMarksId" class="col-sm-2 control-label">Correct Marks</label>
 			      <div class="col-sm-3">
-			         <input type="number" class="form-control" id="CorrectMarksId" 
+			         <input type="number" class="form-control" id="CorrectMarksId" ng-model="examSet.correctMarks"
 			            placeholder="Marks for every Correct Question">
 			      </div>
 			      <div class="col-sm-2"></div>
@@ -67,12 +67,12 @@
 			   <div class="form-group">
 			      <label for="NegativeMarkingId" class="col-sm-2 control-label">Negative Marking</label>
 			      <div class="col-sm-3">
-			         <input type="checkbox" id="NegativeMarkingId" 
+			         <input type="checkbox" id="NegativeMarkingId" ng-model="examSet.isNegativeMarks" 
 			            placeholder="Negative Marking">
 			      </div>
 			      <label for="NegativeMarksId" class="col-sm-2 control-label">Negative Marks</label>
 			      <div class="col-sm-3">
-			         <input type="number" class="form-control" id="NegativeMarksId" 
+			         <input type="number" class="form-control" id="NegativeMarksId" ng-model="examSet.negativeMarks" 
 			            placeholder="Negative Marks">
 			      </div>
 			      <div class="col-sm-2"></div>
@@ -96,7 +96,7 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse">
       <div class="panel-body">
-        	<form class="form-horizontal" role="form" name="examSetForm">
+        	<form class="form-horizontal" role="form" name="examSearchForm">
 			   <div class="form-group">
 			   	  <br>
 			      <label for="subject" class="col-sm-2 control-label">Subject</label>
@@ -114,7 +114,8 @@
 			   </div>
 			   <div class="form-group">
 			      <div class="col-sm-11">
-			         <button type="button" class="btn btn-primary pull-right" ng-click="searchQuestions()">Get Questions</button>
+			      		<button type="button" class="btn btn-primary pull-right" ng-click="saveSet()" ng-show="totalQuestionsMarked>0">Save Set</button>
+			        	<button type="button" class="btn btn-primary pull-right" ng-click="searchQuestions()">Get Questions</button>			         
 			      </div>
 			   </div>
 			</form>			        	
@@ -123,9 +124,6 @@
   </div>
   <div class="panel panel-default" ng-show="questions && questions.length>0">
     	<div class="panel-body">
-      		<div ng-hide="questions && questions.length>0">
-      			No Questions Found.
-      		</div>
         	<table class="table table-bordered" ng-show="questions && questions.length>0">
 			    <thead class="success">
 			        <tr>
@@ -139,7 +137,9 @@
 			    </thead>
 			    <tbody>
 			    	<tr ng-repeat="question in questions">
-			            <td class="text-center"> <input type="checkbox" value="{{question.id}}"> </td>
+			            <td class="text-center"> 
+			            	<input type="checkbox" ng-model="questionsSelected[question.id]" ng-change="addQuestion(question)"> 
+			            </td>
 			            <td class="text-center">{{question.subject}}</td>
 			            <td class="text-center">{{question.subjectCategory}}</td>
 			            <td class="text-center">{{question.questionType}}</td>

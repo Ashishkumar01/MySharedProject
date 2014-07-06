@@ -4,7 +4,7 @@ self.addEventListener('message', function(e) {
     var data = e.data;
     //get question from json
     var tempQuestion= {};
-    load('../../../data/questiondir/'+data.questionId+'.json', function(xhr) {
+    load('../../../data/questiondir/question_'+data.questionId+'.json', function(xhr) {
         console.log('questionResponse.....:'+xhr.responseText);
         var thisQuestion=JSON.parse(xhr.responseText);
         tempQuestion= {};

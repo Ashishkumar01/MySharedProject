@@ -7,7 +7,7 @@
         <h2>Your test submitted successfully</h2>
         <h5>Thank you for submitting your test. The summary for test is given below.</h5>
 
-        <p>Test Name: {{currentExam.package_name}}</p>
+        <p>Test Name: {{currentExam.name}}</p>
 
         <!-- Table -->
         <table class="table  table-bordered">
@@ -26,14 +26,14 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{currentExam.total_questions}}</td>
-                    <td>{{currentExam.maximum_marks}}</td>
+                    <td>{{currentExam.totalQuestions}}</td>
+                    <td>{{currentExam.maxMarks}}</td>
                     <td>{{currentExam.total_questions_attempted}}</td>
                     <td>{{currentExam.total_questions - currentExam.total_questions_attempted}}</td>
                     <td>{{currentExam.total_questions_correct}}</td>
                     <td>{{currentExam.total_questions_attempted - currentExam.total_questions_correct}}</td>
                     <td>{{currentExam.score_obtained}}</td>
-                    <td>{{currentExam.total_time}}</td>
+                    <td>{{currentExam.totalTimeAllowed}}</td>
                     <td>{{currentExam.total_time_taken}}</td>
                 </tr>
             </tbody>

@@ -46,7 +46,7 @@ IndexModule.controller("examController", function($rootScope,$scope,$http,$locat
     });
 
     $scope.selectExam=function(exam,path){
-        $rootScope.selectedExam=exam;
+        //$rootScope.selectedExam=exam;
         $location.path(path);
     };
 

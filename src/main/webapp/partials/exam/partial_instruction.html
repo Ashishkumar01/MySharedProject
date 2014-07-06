@@ -15,12 +15,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{currentExam.category}}</td>
-                    <td>{{currentExam.package_name}}</td>
-                    <td>{{currentExam.test_code}}</td>
-                    <td>{{currentExam.total_questions}}</td>
-                    <td>{{currentExam.total_time}}</td>
-                    <td>{{currentExam.maximum_marks}}</td>
+                    <td>{{currentExam.packageName}}</td>
+                    <td>{{currentExam.name}}</td>
+                    <td>{{currentExam.code}}</td>
+                    <td>{{currentExam.totalQuestions}}</td>
+                    <td>{{currentExam.totalTimeAllowed}}</td>
+                    <td>{{currentExam.maxMarks}}</td>
                 </tr>
             </tbody>
         </table>
@@ -29,8 +29,8 @@
             <h4><b>General Instructions:</b></h4>
             <h5><b>Please read the following instructions very carefully:</b></h5>
 
-            <h5>1. You have {{currentExam.total_time}} to complete the test.</h5>
-            <h5>2. The test contains a total of {{currentExam.total_questions}} questions.</h5>
+            <h5>1. You have {{currentExam.totalTimeAllowed}} to complete the test.</h5>
+            <h5>2. The test contains a total of {{currentExam.totalQuestions}} questions.</h5>
             <h5>3. There is only one correct answer to each question. Click on the most appropriate option to mark it as your answer.</h5>
             <h5>4. You will be awarded One mark for each correct answer.</h5>
             <h5>5. There is 0.25 penalty mark for each wrong answer.</h5>

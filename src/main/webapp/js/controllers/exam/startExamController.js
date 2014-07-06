@@ -14,7 +14,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     $rootScope.questions  = $rootScope.currentExam.questions;
     $scope.currentQuestion=$rootScope.questions[0];
     $scope.currentQuestion.timeTaken="00:00:00";
-    $scope.tabsData = $rootScope.currentExam.modules;
+    $scope.tabsData = $rootScope.currentExam.examSetDetails;
     //$rootScope.questionCount=$scope.questions.length;
 
     //timer code
@@ -108,8 +108,8 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
      */
     function activateRespectiveTab(){
         for(var i=0; i<$scope.tabsData.length; i++){
-            if($scope.currentQuestionNumber>=$scope.tabsData[i].start_number
-                && $scope.currentQuestionNumber<=$scope.tabsData[i].end_number){
+            if($scope.currentQuestionNumber>=$scope.tabsData[i].startIndex
+                && $scope.currentQuestionNumber<=$scope.tabsData[i].endIndex){
                 if(i!=$scope.currentActiveTab){
                     $scope.toggleActive(i,false);
                 }
@@ -141,7 +141,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         var questionStats={};
         for(var j=0; j<$rootScope.questions.length;j++){
         	questionStats={};
-        	questionStats.examId=$rootScope.currentExam.id;
+        	questionStats.examId=$rootScope.currentExam.examSetId;
         	questionStats.userId='singhcl';
         	questionStats.examDate=getDateTime();
         	questionStats.attemptNo=1;
@@ -159,10 +159,10 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
                 if($rootScope.questions[j].user_selected_option==$rootScope.questions[j].correct_option){
                     totalCorrect++;
                     questionStats.isCorrect='Y';
-                    questionStats.score=$rootScope.currentExam.correct_marks;
+                    questionStats.score=$rootScope.currentExam.correctMarks;
                 }else{
-                	if($rootScope.currentExam.is_negative_marks_applicable){
-                		questionStats.score=$rootScope.currentExam.negative_marks;
+                	if($rootScope.currentExam.isNegativeMarks){
+                		questionStats.score=$rootScope.currentExam.negativeMarks;
                 	}
                 }
                 questionStats.timeTaken=$rootScope.questions[j].timeTaken;
@@ -174,9 +174,9 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $rootScope.currentExam.total_questions_correct=totalCorrect;
         
         if($rootScope.currentExam.is_negative_marks_applicable){
-        	$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correct_marks-(totalAttempted-totalCorrect)*$rootScope.currentExam.negative_marks;
+        	$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correct_marks-(totalAttempted-totalCorrect)*$rootScope.currentExam.negativeMarks;
     	}else{
-    		$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correct_marks;
+    		$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correctMarks;
     	}        
         $rootScope.currentExam.total_time_taken=findTimeDifference(testStartTime,testFinishTime);
 
@@ -189,17 +189,17 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
      */
     function saveExamStats(questionStatsList){
     	var examStats={};
-    	examStats.examId=$rootScope.currentExam.id;
+    	examStats.examId=$rootScope.currentExam.examSetId;
     	examStats.attemptNo=1;
 
     	examStats.userId='singhcl';
     	examStats.examDate=getDateTime();
-    	examStats.totalQuestions=$rootScope.currentExam.total_questions;
+    	examStats.totalQuestions=$rootScope.currentExam.totalQuestions;
     	examStats.totalAttempted=$rootScope.currentExam.total_questions_attempted;
-    	examStats.maximumMarks=$rootScope.currentExam.maximum_marks;
+    	examStats.maximumMarks=$rootScope.currentExam.maxMarks;
     	examStats.scoreObtained=$rootScope.currentExam.score_obtained;
     	examStats.totalCorrect=$rootScope.currentExam.total_questions_correct;
-    	examStats.totalTimeAllowed=$rootScope.currentExam.total_time;
+    	examStats.totalTimeAllowed=$rootScope.currentExam.totalTimeAllowed;
     	examStats.totalTimeTaken=$rootScope.currentExam.total_time_taken;
     	if($rootScope.currentExam.credit_required && $rootScope.currentExam.credit_required!=""){
     		examStats.credits=$rootScope.currentExam.credit_required;
@@ -243,9 +243,9 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
      */
     function getModuleName(questionNo){
         for(var i=0; i<$scope.tabsData.length; i++){
-            if(questionNo>=$scope.tabsData[i].start_number
-                && questionNo<=$scope.tabsData[i].end_number){
-                return $scope.tabsData[i].module_name;
+            if(questionNo>=$scope.tabsData[i].startIndex
+                && questionNo<=$scope.tabsData[i].endIndex){
+                return $scope.tabsData[i].subject;
             }
         }
     }

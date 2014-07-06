@@ -5,7 +5,7 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     $scope.examStats={};
     $scope.currentActiveTab='#scoreCard';
 
-    $http({method: 'GET', url: 'rest/exam/report/test1/1'})
+    $http({method: 'GET', url: 'rest/exam/report/1/1'})
     .success(function(data, status, headers, config) {
       console.log('exam data fetched:'+data);
       $scope.examStats=data;
