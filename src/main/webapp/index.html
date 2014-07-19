@@ -1,231 +1,230 @@
+
 <!DOCTYPE html>
-<html lang="en" ng-app="myProjectApp">
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Omoknow</title>
+    <title>OmoKnow</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/layout-default-latest.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-    <script src="lib/jquery/jquery-1.11.0.min.js"></script>
-    <script src="lib/jquery/jquery-ui-1.10.4.custom.min.js"></script>
-    <script src="lib/jquery/jquery.layout-latest.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- Add custom CSS here -->
+    <link href="css/index.css" rel="stylesheet">
+	
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700italic,700,500,100italic,100|Oswald:400,700,300' rel='stylesheet' type='text/css'>
+   
 </head>
-<body ng-controller="indexController">
-<div class="ui-layout-north">
-    <div class="navbar navbar-inverse" role="navigation">
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Omoknow</a>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+                <a class="navbar-brand" href="index.html" id="logoOmoknow"></a>
             </div>
-            <div class="navbar-collapse collapse">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-list"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Login</a></li>
-                            <li><a data-toggle="modal" data-target="#registerUser"> <i class="icon icon-user"></i><span class="text"> Register</span></a></li>
-                        </ul>
+					<li><a class="btn btn-lg btn-primary pull-right" id="signUp" href="#">Sign in</a></li>
+                    <li><a href="about.html">About</a>
+                    </li>
+                    <li><a href="courses.html">Courses</a>
+                    </li>
+                    <li><a href="newsandviews.html">News and views</a>
+                    </li>
+					 <li><a href="#">Contact us</a>
                     </li>
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-    </div>
-</div>
-<!--<div ng-controller="storyController">-->
-<div class="ui-layout-west">
-    <div id="fixedContainer">
-        <div ng-click="openModel()">Launch Learning Module</div>
-    </div>
-    <nav ng-controller="storySnippetController">
-        <ul class="nav sidenav">
-            <li ng-class="{active: snippet.id==activeId}" ng-repeat="snippet in storySnippet">
-                <a ng-click ="snippetclickHandler(snippet.id)">{{snippet.id}}</a>
-            </li>
-        </ul>
+        <!-- /.container -->
     </nav>
+<div id="socialLink">
+	<img src="img/socialLink.png" alt="social link"/>
+	<div class="socialLinkToggle">
+	<ul class="socialIcon">
+		<li class="google" title='Google'>Google</li>
+		<li class="facebook" title='Facebook'>Facebook</li>
+		<li class="linkedIn" title='LinkedIn'>LinkedIn</li>
+		<li class="yahoo" title='Yahoo'>Yahoo</li>
+		<li class="windows" title='Windows'>Windows</li>
+		<li class="github" title='GitHub'>GitHub</li>
+		<li class="twitter" title='Twitter'>Twitter</li>
+		<li class="dropBox" title='DropBox'>DropBox</li>
+		<li class="instagram" title='Instagram'>Instagram</li>
+		<li class="soundcloud" title='Soundcloud'>Soundcloud</li>
+		<li class="foursquare" title='Foursquare'>Foursquare</li>
+		<li class="flickr" title='Flickr'>Flickr</li>
+	</ul>	
+	</div>
 </div>
-<div id="stories" class="ui-layout-center" when-scrolled="loadAStory()" ng-controller="storyController">
-    <section >
-        <div>
-            <div ng-repeat="phone in storyDetails">
-                <!--<h2 id="{{story.id}}" ng-bind-html="renderHtml(story.name)"></h2>
-                <div ng-bind-html="renderHtml(story.description)"></div>-->
-                <h2 id="{{phone.id}}" ng-bind-html="renderHtml(phone.name)"></h2>
-                <p ng-bind-html="renderHtml(phone.description)"></p>
+    <div id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-                <div class="phone-images">
-                    <img ng-src="{{img}}"
-                         class="phone"
-                         ng-repeat="img in phone.images"
-                         ng-class="{active: mainImageUrl==img}">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="fill" style="background-image:url('img/hero.jpg');"></div>
+                <div class="carousel-caption">
+                    <h1>Quotation goes here</h1>
                 </div>
-
-                <ul class="specs">
-                    <li>
-                        <span>Availability and Networks</span>
-                        <dl>
-                            <dt>Availability</dt>
-                            <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Battery</span>
-                        <dl>
-                            <dt>Type</dt>
-                            <dd>{{phone.battery.type}}</dd>
-                            <dt>Talk Time</dt>
-                            <dd>{{phone.battery.talkTime}}</dd>
-                            <dt>Standby time (max)</dt>
-                            <dd>{{phone.battery.standbyTime}}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Storage and Memory</span>
-                        <dl>
-                            <dt>RAM</dt>
-                            <dd>{{phone.storage.ram}}</dd>
-                            <dt>Internal Storage</dt>
-                            <dd>{{phone.storage.flash}}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Connectivity</span>
-                        <dl>
-                            <dt>Network Support</dt>
-                            <dd>{{phone.connectivity.cell}}</dd>
-                            <dt>WiFi</dt>
-                            <dd>{{phone.connectivity.wifi}}</dd>
-                            <dt>Bluetooth</dt>
-                            <dd>{{phone.connectivity.bluetooth}}</dd>
-                            <dt>Infrared</dt>
-                            <dd>{{phone.connectivity.infrared}}</dd>
-                            <dt>GPS</dt>
-                            <dd>{{phone.connectivity.gps}}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Android</span>
-                        <dl>
-                            <dt>OS Version</dt>
-                            <dd>{{phone.android.os}}</dd>
-                            <dt>UI</dt>
-                            <dd>{{phone.android.ui}}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Size and Weight</span>
-                        <dl>
-                            <dt>Dimensions</dt>
-                            <dd ng-repeat="dim in phone.sizeAndWeight.dimensions">{{dim}}</dd>
-                            <dt>Weight</dt>
-                            <dd>{{phone.sizeAndWeight.weight}}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Display</span>
-                        <dl>
-                            <dt>Screen size</dt>
-                            <dd>{{phone.display.screenSize}}</dd>
-                            <dt>Screen resolution</dt>
-                            <dd>{{phone.display.screenResolution}}</dd>
-                            <dt>Touch screen</dt>
-                            <dd>{{phone.display.touchScreen }}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Hardware</span>
-                        <dl>
-                            <dt>CPU</dt>
-                            <dd>{{phone.hardware.cpu}}</dd>
-                            <dt>USB</dt>
-                            <dd>{{phone.hardware.usb}}</dd>
-                            <dt>Audio / headphone jack</dt>
-                            <dd>{{phone.hardware.audioJack}}</dd>
-                            <dt>FM Radio</dt>
-                            <dd>{{phone.hardware.fmRadio }}</dd>
-                            <dt>Accelerometer</dt>
-                            <dd>{{phone.hardware.accelerometer }}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Camera</span>
-                        <dl>
-                            <dt>Primary</dt>
-                            <dd>{{phone.camera.primary}}</dd>
-                            <dt>Features</dt>
-                            <dd>{{phone.camera.features.join(', ')}}</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <span>Additional Features</span>
-                        <dd>{{phone.additionalFeatures}}</dd>
-                    </li>
-                </ul>
-                <hr>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('img/heroClimb.jpg');"></div>
+                <div class="carousel-caption">
+                    <h1>Quotation goes here</h1>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('img/hero2.jpg');"></div>
+                <div class="carousel-caption">
+                    <h1>Quotation goes here</h1>
+                </div>
             </div>
         </div>
-    </section>
-</div>
-<!--</div>-->
 
-<div class="ui-layout-east">
-    <div ng-controller="learningModuleController">
-        <div ng-include src="learningModule()"/>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
     </div>
-    <!--Comments will be per article-->
-    <!--<dir-disqus disqus-shortname="omoknow"
-                disqus-identifier="111111"
-                disqus-url="http://localhost:50973/webapp/index.html">
-    </dir-disqus>-->
-</div>
 
-<div ng-controller="userRegisterController">
-    <div ng-include src="registerUser()"/>
-</div>
+    <div class="section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <h3><i class="fa fa-check-circle"></i> About Us</h3>
+					<img src="img/course1.jpg">
+                    <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+					Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+					</p>
+					<p>
+					<a class="pull-left btn btn-primary" href="#">call to action</a>
+
+					</p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h3><i class="fa fa-pencil"></i> Courses</h3>
+					<img src="img/course1.jpg">
+                            <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+					Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+					</p>
+					<p>
+					<a class="pull-left btn btn-primary" href="courses.html">call to action</a>
+
+					</p>
+            </div>
+                <div class="col-lg-4 col-md-4">
+                    <h3><i class="fa fa-folder-open"></i> News and Views</h3>
+					<img src="img/course1.jpg">
+                            <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+					Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+					</p>
+					<p>
+					<a class="pull-left btn btn-primary" href="#">call to action</a>
+
+					</p>
+            </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.section -->
 
 
-<script src="lib/angular/angular.min.js"></script>
-<script src="lib/angular/angular-resource.min.js"></script>
-<script src="lib/angular/angular-cookies.min.js"></script>
-<script src="lib/angular/angular-sanitize.min.js"></script>
-<script src="lib/angular/angular-route.min.js"></script>
-<!--<script src="lib/angular/ng-infinite-scroll.js"></script>-->
-<script src="lib/bootstrap/bootstrap.min.js"></script>
-<!--<script src="lib/bootstrap/ui-bootstrap-0.9.0.min.js"></script>
-<script src="lib/bootstrap/ui-bootstrap-tpls-0.9.0.min.js"></script>-->
+    <div class="container">
 
-<script src="js/app.js"></script>
-<script src="js/services/modules.js"></script>
-<script src="js/controllers/indexController.js"></script>
-<script src="js/services/storySnippetService.js"></script>
-<script src="js/controllers/storySnippetController.js"></script>
-<script src="js/controllers/storyController.js"></script>
-<script src="js/controllers/userRegisterController.js"></script>
-<script src="js/controllers/learningModuleController.js"></script>
-<script src="js/directives/infinite.scroll.js"></script>
-<script src="js/directives/dir.disqus.js"></script>
+        <div class="row well">
+            <div class="col-lg-8 col-md-8">
+                <h4>Test modules are ready you can go and test yourself!</h4>
+                <p>For more courses go to courses section and explore more!</p>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <a class="btn btn-lg btn-primary pull-right" href="#">call to action</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Company 2013</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+	<div class="popup socialLinkToggle">
+		<p> Login here to access the courses</p>
+		<ul class="socialIcon">
+		<span class="close">X</span>
+		<li class="google" title='Google'>Google</li>
+		<li class="facebook" title='Facebook'>Facebook</li>
+		<li class="linkedIn" title='LinkedIn'>LinkedIn</li>
+		<li class="yahoo" title='Yahoo'>Yahoo</li>
+		<li class="windows" title='Windows'>Windows</li>
+		<li class="github" title='GitHub'>GitHub</li>
+		<li class="twitter" title='Twitter'>Twitter</li>
+		<li class="dropBox" title='DropBox'>DropBox</li>
+		<li class="instagram" title='Instagram'>Instagram</li>
+		<li class="soundcloud" title='Soundcloud'>Soundcloud</li>
+		<li class="foursquare" title='Foursquare'>Foursquare</li>
+		<li class="flickr" title='Flickr'>Flickr</li>
+	</ul>	
+
+	</div>
+	<div id="overlay"></div>
+	<div class="popupInstruction">
+		<div class="closeWrapper">
+		<span class="close">X</span>
+		</div>
+		<p> Do you want to submit the test</p>
+		<p><a class="btn btn-primary"> OK </a><a class="btn btn-default"> Cancel</a>
+	</ul>	
+
+	</div>
+	<a class="btn btn-primary submit">Submit test</a>
+
+    <!-- JavaScript -->
+    <script src="lib/jquery/jquery-1.11.0.min.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+
 </body>
+
 </html>

@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7802322b-2377-49bb-86d5-9a5caad47f5e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/QuestionSample.xls" afterPath="$PROJECT_DIR$/src/main/webapp/QuestionSample.xls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/directives/dir.dynamic.tabs.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/directives/dir.dynamic.tabs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/data/exam/exams.json" afterPath="$PROJECT_DIR$/src/main/webapp/data/exam/exams.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/controllers/exam/instructionController.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/controllers/exam/instructionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_examlist.html" afterPath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_examlist.html" />
+    <list default="true" id="7802322b-2377-49bb-86d5-9a5caad47f5e" name="Default" comment="adding exam function&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/lib/angular/angular.js" afterPath="$PROJECT_DIR$/src/main/webapp/lib/angular/angular.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/exam.html" afterPath="$PROJECT_DIR$/src/main/webapp/exam.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_examset.html" afterPath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_examset.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_instruction.html" afterPath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_instruction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_questionstatus.html" afterPath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_questionstatus.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_startExam.html" afterPath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_startExam.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_teststatus.html" afterPath="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_teststatus.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/controllers/exam/questionsController.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/controllers/exam/questionsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/controllers/exam/startExamController.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/controllers/exam/startExamController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/services/storySnippetService.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/services/storySnippetService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/newsandviews.html" />
     </list>
     <ignored path="MySharedProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,61 +34,18 @@
       <file leaf-file-name="loadQuestions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/exam/loadQuestions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="810" selection-end="810" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1921">
+            <state line="19" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1921">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instructionController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/exam/instructionController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="31" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="partial_startExam.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="partial_startExam.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_startExam.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="31" selection-start="63" selection-end="63" vertical-scroll-proportion="0.061594203" vertical-offset="0" max-vertical-offset="850">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="startExamController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/exam/startExamController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="21" selection-start="4851" selection-end="4861" vertical-scroll-proportion="-3.4166667" vertical-offset="2216" max-vertical-offset="4590">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/data/exam/tests.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="41" selection-start="544" selection-end="544" vertical-scroll-proportion="-10.961538" vertical-offset="4" max-vertical-offset="595">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dir.dynamic.tabs.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/directives/dir.dynamic.tabs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="89" selection-start="795" selection-end="795" vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="1377">
+            <state line="44" column="6" selection-start="2036" selection-end="2036" vertical-scroll-proportion="-5.881579" vertical-offset="301" max-vertical-offset="850">
               <folding>
-                <marker date="1400957294224" expanded="true" signature="204:417" placeholder="..." />
-                <marker date="1400957294224" expanded="true" signature="456:1663" placeholder="..." />
-                <marker date="1400957294224" expanded="true" signature="590:1643" placeholder="..." />
-                <marker date="1400957294224" expanded="true" signature="703:841" placeholder="..." />
-                <marker date="1400957294224" expanded="true" signature="897:1621" placeholder="..." />
-                <marker date="1400957294224" expanded="true" signature="1062:1581" placeholder="..." />
-                <marker date="1400957294224" expanded="true" signature="1161:1538" placeholder="..." />
-                <marker date="1400957294224" expanded="true" signature="1293:1413" placeholder="..." />
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,7 +54,7 @@
       <file leaf-file-name="test1.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/data/exam/test1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="14" selection-start="119" selection-end="128" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="697">
+            <state line="4" column="14" selection-start="119" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="782">
               <folding />
             </state>
           </provider>
@@ -113,16 +63,61 @@
       <file leaf-file-name="exam.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/exam.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="10" selection-start="2408" selection-end="2408" vertical-scroll-proportion="-15.384615" vertical-offset="518" max-vertical-offset="1598">
+            <state line="13" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="-0.0" vertical-offset="221" max-vertical-offset="2295">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="newsandviews.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/newsandviews.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="4624">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="partial_instruction.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_instruction.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="22" selection-start="2941" selection-end="2941" vertical-scroll-proportion="0.0" vertical-offset="506" max-vertical-offset="1122">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="81" selection-start="3428" selection-end="3493" vertical-scroll-proportion="-2.7297297" vertical-offset="1073" max-vertical-offset="4012">
+            <state line="17" column="0" selection-start="250" selection-end="418" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="4012">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="courses.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/courses.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3247">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/css/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5304">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/custom.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="58" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="1513">
               <folding />
             </state>
           </provider>
@@ -138,8 +133,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="singhcl" />
         <option value="Ashish" />
+        <option value="singhcl" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -155,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/js/controllers/login/loginController.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/controllers/learningModuleController.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/partials/login/partial_login.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/exam.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/app.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/data/exam/sbi-po-2014-01.json" />
         <option value="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_examReview.html" />
@@ -174,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/data/exam/tests.json" />
         <option value="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_examlist.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/app.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_instruction.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_teststatus.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/data/questiondir/question_2.json" />
         <option value="$PROJECT_DIR$/src/main/webapp/data/questiondir/question_3.json" />
@@ -184,15 +177,21 @@
         <option value="$PROJECT_DIR$/src/main/webapp/js/directives/dir.dynamic.tabs.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/data/exam/test1.json" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/controllers/exam/instructionController.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/courses.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/newsandviews.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_instruction.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/exam.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/partials/exam/partial_startExam.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/custom.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -220,6 +219,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -364,11 +364,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -394,131 +390,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="directives" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MySharedProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MySharedProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MySharedProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MySharedProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exam" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MySharedProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MySharedProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MySharedProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MySharedProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exam" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -568,11 +440,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/css" />
+    <property name="last_opened_file_path" value="E:/eduProduct/MySharedProject/MySharedProject" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -594,14 +465,15 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="SearchEverywhereHistory" value="" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JAVATEST\MySharedProject\src\main\webapp" />
+      <recent name="E:\JAVATEST\MySharedProject\src\main\webapp\img" />
+      <recent name="E:\JAVATEST\MySharedProject\src\main\webapp\css" />
+      <recent name="E:\JAVATEST\MySharedProject\src\main\webapp\js" />
       <recent name="D:\GitRepos\MySharedProject\src\main\webapp\js\controllers\exam" />
-      <recent name="D:\GitRepos\MySharedProject\src\main\webapp\data\exam" />
-      <recent name="D:\GitRepos\MySharedProject\src\main\webapp\partials\exam" />
-      <recent name="D:\GitRepos\MySharedProject\src\main\webapp\lib\jquery" />
-      <recent name="D:\GitRepos\MySharedProject\src\main\webapp\js\controllers\login" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GitRepos\MySharedProject\src\main\webapp\css" />
@@ -652,6 +524,23 @@
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="7802322b-2377-49bb-86d5-9a5caad47f5e" name="Default" comment="" />
@@ -674,14 +563,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="false" />
+    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962406" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24304539" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2425816" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -689,12 +578,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35209003" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35702747" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -721,26 +610,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_thumbnail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="101" selection-end="101" vertical-scroll-proportion="0.05964912" vertical-offset="0" max-vertical-offset="570" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/bootstrap/bootstrap-tabs-dynamic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="25" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2448" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/directives/infinite.scroll.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="41" selection-end="52" vertical-scroll-proportion="0.11111111" vertical-offset="0" max-vertical-offset="612" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/data/modules/modules.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/login/partial_login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="41" selection-start="637" selection-end="637" vertical-scroll-proportion="0.21672355" vertical-offset="213" max-vertical-offset="799" />
@@ -843,204 +712,177 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/services/storySnippetService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="0" selection-start="3308" selection-end="3308" vertical-scroll-proportion="0.0" vertical-offset="1017" max-vertical-offset="1666">
-          <folding />
-        </state>
+        <state line="81" column="0" selection-start="3308" selection-end="3308" vertical-scroll-proportion="0.0" vertical-offset="1017" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/storySnippetController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/exam/questionsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="65" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <folding>
-            <element signature="e#246#313#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="3" column="65" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/exam/examController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="31" selection-start="1655" selection-end="1678" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1105">
-          <folding />
-        </state>
+        <state line="48" column="31" selection-start="1655" selection-end="1678" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_examlist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="6" selection-start="192" selection-end="192" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="204">
-          <folding />
-        </state>
+        <state line="6" column="6" selection-start="192" selection-end="192" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="204" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="35" selection-start="2136" selection-end="2136" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="1632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_instruction.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="20" selection-start="517" selection-end="517" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="1105">
-          <folding>
-            <element signature="n#style#0;n#a#0;n#h6#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+        <state line="71" column="35" selection-start="2136" selection-end="2136" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="1632" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_questionstatus.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="31" selection-start="391" selection-end="391" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="289">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+        <state line="8" column="31" selection-start="391" selection-end="391" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="289" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_examReview.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="96" selection-start="894" selection-end="908" vertical-scroll-proportion="-12.423077" vertical-offset="0" max-vertical-offset="714">
-          <folding />
-        </state>
+        <state line="19" column="96" selection-start="894" selection-end="908" vertical-scroll-proportion="-12.423077" vertical-offset="0" max-vertical-offset="714" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_teststatus.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="73" selection-start="1761" selection-end="1761" vertical-scroll-proportion="-18.923077" vertical-offset="256" max-vertical-offset="986">
-          <folding />
-        </state>
+        <state line="44" column="73" selection-start="1761" selection-end="1761" vertical-scroll-proportion="-18.923077" vertical-offset="256" max-vertical-offset="986" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/data/questiondir/question_0.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="50" selection-start="435" selection-end="442" vertical-scroll-proportion="-12.423077" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="19" column="50" selection-start="435" selection-end="442" vertical-scroll-proportion="-12.423077" vertical-offset="0" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/data/questiondir/question_2.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="1" selection-start="558" selection-end="558" vertical-scroll-proportion="0.58514494" vertical-offset="0" max-vertical-offset="552">
-          <folding />
-        </state>
+        <state line="19" column="1" selection-start="558" selection-end="558" vertical-scroll-proportion="0.58514494" vertical-offset="0" max-vertical-offset="552" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/data/questiondir/question_7.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="1" selection-start="558" selection-end="558" vertical-scroll-proportion="0.58514494" vertical-offset="0" max-vertical-offset="552">
-          <folding />
-        </state>
+        <state line="19" column="1" selection-start="558" selection-end="558" vertical-scroll-proportion="0.58514494" vertical-offset="0" max-vertical-offset="552" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/data/questiondir/question_3.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="142" selection-start="512" selection-end="512" vertical-scroll-proportion="0.5543478" vertical-offset="0" max-vertical-offset="552">
-          <folding />
-        </state>
+        <state line="18" column="142" selection-start="512" selection-end="512" vertical-scroll-proportion="0.5543478" vertical-offset="0" max-vertical-offset="552" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/data/exam/tests.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="41" selection-start="544" selection-end="544" vertical-scroll-proportion="-10.961538" vertical-offset="4" max-vertical-offset="595">
-          <folding />
-        </state>
+        <state line="17" column="41" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="595" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/exam/startExamController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="21" selection-start="4851" selection-end="4861" vertical-scroll-proportion="-3.4166667" vertical-offset="2216" max-vertical-offset="4590">
-          <folding />
-        </state>
+        <state line="140" column="21" selection-start="4851" selection-end="4861" vertical-scroll-proportion="0.0" vertical-offset="2380" max-vertical-offset="6426" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/storyController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="18" selection-start="2222" selection-end="2222" vertical-scroll-proportion="0.0" vertical-offset="616" max-vertical-offset="1207">
-          <folding />
-        </state>
+        <state line="54" column="18" selection-start="2222" selection-end="2222" vertical-scroll-proportion="0.0" vertical-offset="616" max-vertical-offset="1207" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/story.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/storysnippet.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="81" selection-start="3428" selection-end="3493" vertical-scroll-proportion="-2.7297297" vertical-offset="1073" max-vertical-offset="4012">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/directives/dir.dynamic.tabs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="89" selection-start="795" selection-end="795" vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="1377">
-          <folding>
-            <marker date="1400957294224" expanded="true" signature="204:417" placeholder="..." />
-            <marker date="1400957294224" expanded="true" signature="456:1663" placeholder="..." />
-            <marker date="1400957294224" expanded="true" signature="590:1643" placeholder="..." />
-            <marker date="1400957294224" expanded="true" signature="703:841" placeholder="..." />
-            <marker date="1400957294224" expanded="true" signature="897:1621" placeholder="..." />
-            <marker date="1400957294224" expanded="true" signature="1062:1581" placeholder="..." />
-            <marker date="1400957294224" expanded="true" signature="1161:1538" placeholder="..." />
-            <marker date="1400957294224" expanded="true" signature="1293:1413" placeholder="..." />
-          </folding>
-        </state>
+        <state line="14" column="89" selection-start="791" selection-end="791" vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="1377" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/exam/instructionController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="31" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
-          <folding />
-        </state>
+        <state line="4" column="31" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1020" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/controllers/exam/loadQuestions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="810" selection-end="810" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1921">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/exam.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="10" selection-start="2408" selection-end="2408" vertical-scroll-proportion="-15.384615" vertical-offset="518" max-vertical-offset="1598">
+        <state line="19" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1921">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/data/exam/test1.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="14" selection-start="119" selection-end="128" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="697">
+        <state line="4" column="14" selection-start="119" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5304">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/newsandviews.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="4624">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_instruction.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="22" selection-start="2941" selection-end="2941" vertical-scroll-proportion="0.0" vertical-offset="506" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/exam.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="2295">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/exam/partial_startExam.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="31" selection-start="63" selection-end="63" vertical-scroll-proportion="0.061594203" vertical-offset="0" max-vertical-offset="850">
+        <state line="44" column="6" selection-start="2036" selection-end="2036" vertical-scroll-proportion="-5.881579" vertical-offset="301" max-vertical-offset="850">
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/courses.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3247">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="58" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="1513">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="250" selection-end="418" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="4012">
           <folding />
         </state>
       </provider>

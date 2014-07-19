@@ -3,7 +3,7 @@
     <div class="panel-heading">
         <b>{{currentExam.name}}</b>
         <ul class="nav navbar-nav navbar-right">
-            <li><span class="glyphicon glyphicon-time"></span> Time Remaining: <span id="timer"/> </li>
+            <li><h3><span class="glyphicon glyphicon-time"></span> Time Remaining:<br> <span id="timer"/></h3> </li>
         </ul>
     </div>
 
@@ -13,33 +13,33 @@
 
     <div class="panel-footer clearfix">
         <div class="col-md-4">
-            <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-default" ng-click="previousQuestion()" ng-disabled="currentQuestionNumber<1">
+            <!--div class="btn-group btn-group-sm"-->
+                <button type="button" class="btn btn-primary" ng-click="previousQuestion()" ng-disabled="currentQuestionNumber<1">
                     <span class="glyphicon glyphicon-chevron-left"></span> Previous
                 </button>
-                <button type="button" class="btn btn-default" ng-click="nextQuestion()" ng-disabled="currentQuestionNumber>questions.length-2">
+                <button type="button" class="btn btn-primary" ng-click="nextQuestion()" ng-disabled="currentQuestionNumber>questions.length-2">
                     Next <span class="glyphicon glyphicon-chevron-right"></span>
                 </button>
-            </div>
+            <!--/div-->
         </div>
 
         <div class="col-md-4">
-            <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-default" ng-click="reviewAndNextQuestion()" ng-disabled="currentQuestionNumber>questions.length-2">
+            <!--div class="btn-group btn-group-sm"-->
+                <button type="button" class="btn btn-primary" ng-click="reviewAndNextQuestion()" ng-disabled="currentQuestionNumber>questions.length-2">
                     <span class="glyphicon glyphicon-flag"></span> Review & Next
                 </button>
-                <button type="button" class="btn btn-default" ng-click="nextQuestion()" disabled>
+                <button type="button" class="btn btn-primary" ng-click="nextQuestion()" disabled>
                     <span class="glyphicon glyphicon-eye-open"></span> Review Questions
                 </button>
-            </div>
+            <!--/div-->
         </div>
 
         <div class="col-md-4">
-            <div class="btn-group btn-group-sm pull-right">
-                <button type="button" class="btn btn-default" ng-click="submitTest()">
+            <!--div class="btn-group btn-group-sm pull-right"-->
+                <button type="button" class="btn btn-primary" ng-click="submitTest()">
                     <span class="glyphicon glyphicon-log-out"></span> Submit Test
                 </button>
-            </div>
+            <!--/div-->
         </div>
     </div>
 </div>
