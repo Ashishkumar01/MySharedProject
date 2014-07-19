@@ -50,7 +50,7 @@ $(".close").bind("click", function(){
 	})
 $(".socialIcon li").bind('click', function(){
         var socialId= $(this).prop("title");
-    alert(socialId)
+
 		if(isHomePage){
 		//window.location= "courses.html"
         initiateAuthentication(socialId)
