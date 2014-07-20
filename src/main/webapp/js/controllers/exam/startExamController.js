@@ -99,7 +99,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         if($scope.currentQuestion.user_selected_option!='-1'){
             $scope.currentQuestion.reviewState=undefined;
             //get how much time is taken for this
-            $scope.currentQuestion.timeTaken=findTimeDifference($scope.currentQuestionStartTime,new Date());
+            $scope.currentQuestion.timeTaken=findQuestionAttemptTimeDifference($scope.currentQuestionStartTime,new Date());
         }
     }
 
@@ -126,6 +126,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
             submitPage();
         } else {
             if($window.confirm('Do you want to submit the test?')){
+            	clearInterval(countDownInterval);
                 submitPage();
             }
         }
@@ -248,6 +249,45 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
                 return $scope.tabsData[i].subject;
             }
         }
+    };
+    
+    function findQuestionAttemptTimeDifference(inTime, outTime){
+        var diffInMs = outTime - inTime,hrElement='',mintElement='',scndElement='',
+            diffInSecs = Math.round( diffInMs / 1000 ),
+            amountOfHours = Math.floor( diffInSecs / 3600 ),
+            amountOfSeconds = diffInSecs - (amountOfHours * 3600),
+            amountOfMinutes = Math.floor( amountOfSeconds / 60 ),
+            amountOfSeconds = amountOfSeconds - ( amountOfMinutes * 60 );
+
+        // Set up the countdown timer for display
+        // Set up the hours
+        if( amountOfHours > 0 ) {
+        	hrElement = (amountOfHours < 10)
+                ? '0' + amountOfHours + ' : '
+                : amountOfHours + ' : ';
+        } else {
+        	hrElement = '00 : ';
+        }
+
+        // Set up the minutes
+        if( amountOfMinutes > 0 ) {
+        	mintElement = ( amountOfMinutes < 10 )
+                ? '0' + amountOfMinutes + ' : '
+                : amountOfMinutes + ' : ';
+        } else {
+        	mintElement = '00 : ';
+        }
+
+        // Set up the seconds
+        if( amountOfSeconds > 0 ) {
+            scndElement = (amountOfSeconds < 10)
+                ? '0' + amountOfSeconds
+                : amountOfSeconds;
+        } else {
+        	scndElement = '00';
+        }
+
+        return hrElement+mintElement+scndElement+"";
     }
 
 

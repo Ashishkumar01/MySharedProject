@@ -1,0 +1,302 @@
+/* 
+Custom CSS for...
+'Modern Business' HTML Theme by Start Bootstrap
+
+All Start Bootstrap themes are licensed under Apache 2.0. 
+For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
+*/
+
+/* Global Styles */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  padding-top: 50px;
+ /* body padding for fixed top nav */
+}
+body{
+	font-family: 'Roboto', sans-serif; 
+	color:#666; 
+	margin:0; 
+	padding:0;
+	font-weight:100;
+
+	}
+
+.img-home-portfolio,
+.img-customer,
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.tab-pane {
+  margin-top: 15px;
+}
+
+/* Page Sections */
+.section,
+.section-colored {
+  padding: 50px 0;
+}
+
+.section-colored {
+  background-color: #e1e1e1;
+ /* change this to change the background color of a colored section */
+}
+
+.sidebar {
+  margin-top: 40px;
+}
+
+.sidebar ul {
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #cccccc;
+}
+
+/* Half Page Height Carousel Customization */
+.carousel {
+  height: 80%;
+  background:transparent url('../img/hero.jpg') 0 0 no-repeat;
+}
+
+.item,
+.active,
+.carousel-inner {
+  height: 100%;
+}
+
+.fill {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Social Icons Styles */
+.list-social-icons {
+  margin-bottom: 45px;
+}
+
+.tooltip-social a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.facebook-link a:hover {
+  color: #3b5998;
+}
+
+.linkedin-link a:hover {
+  color: #007fb1;
+}
+
+.twitter-link a:hover {
+  color: #39a9e0;
+}
+
+.google-plus-link a:hover {
+  color: #d14836;
+}
+
+/* Service Page Styles */
+.service-icon {
+  font-size: 50px;
+}
+
+/* 404 Page Styles */
+.error-404 {
+  font-size: 8em;
+}
+
+/* Pricing Page Styles */
+.price {
+  font-size: 4em;
+}
+
+.price-cents {
+  vertical-align: super;
+  font-size: 50%;
+}
+
+.price-month {
+  font-size: 35%;
+  font-style: italic;
+}
+
+/* Footer Styles */
+footer {
+  margin: 50px 0;
+}
+#signUp{
+margin:10px 10px 0 0;
+padding:4px;
+font-size:1em;
+    color:#fff;
+}
+#logoOmoknow{
+display:block;
+width:131px;
+height:44px;
+background:transparent url("../img/logo.png") 0 0 no-repeat;
+}
+#socialLink{
+	position:fixed;
+	z-index:1000;
+	width:340px;
+	right:-300px;
+	top:200px;
+	
+}
+#socialLink img{
+	float:left;
+	cursor:pointer;
+}
+.socialLinkToggle{
+	width:300px;
+	background:#fff;
+	overflow:hidden;
+	border-top:1px solid #efefef;
+	border-bottom:1px solid #efefef;
+	margin:0 auto;
+}
+.socialLinkToggle ul{
+margin:0;
+padding:0;
+text-align:left;
+}
+.socialLinkToggle ul li{
+	list-style-type:none;
+	float:left;
+	width:40px;
+	height:40px;
+	margin:8px;
+	text-indent:-999999px;
+	background-image: url("../img/socialIcon.png");
+	background-repeat:no-repeat;
+	cursor:pointer;
+}
+.google{
+	background-position:-429px 0;
+}
+.linkedIn{
+background-position:-198px 0;
+}
+.twitter{
+background-position: -116px 0;
+}
+.facebook{
+background-position: -76px 0;
+}
+.yahoo{
+background-position: -429px -146px;
+}
+.windows{
+background-position: -157px -146px;}
+.github{
+background-position: -584px -146px}
+.dropBox{
+background-position: -624px -146px}
+.instagram{
+background-position: -544px 0;}
+.soundcloud{
+background-position: -429px -110px}
+.foursquare{
+background-position: -40px -74px}
+.flickr{
+background-position: -506px 0}
+/* Responsive Styles */
+.popup{
+	padding:20px;
+	top:50%;
+	left:50%;
+	margin-left:-160px;
+	margin-top:-150px;
+	background:#fff;
+	border:1px solid #666;
+	border-radius:20px;
+	position:absolute;
+	z-index:10000;
+	display:none;
+	}
+#overlay{
+	width:100%;
+	height:100%;
+	background:#000;
+	opacity:.6;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:9999;
+	display:none;
+	}
+.close{
+	padding:10px;
+	font-size:10px;
+	position:absolute;
+	right:10px;
+	top:10px;
+	
+}
+
+#exam .panel-footer{
+    background-color: #CCCCCC;
+    overflow:hidden;
+}
+#exam .panel-footer .text-danger{
+    color:#000 !important;
+    font-size:14px;
+    width:75%;
+    display:block;
+    float:left;
+}
+#exam .panel-footer input{
+    width:25px;
+    height:25px;
+    float:left;
+    margin-right:10px;
+}
+#exam .panel-heading h2{
+    float:left;
+}
+#exam .panel-heading h3{
+    margin-right:20px;
+    text-align: center;
+    font-size:10px;
+}
+
+#timer{
+    font-size:30px;
+    font-weight:bold;
+}
+#exam .panel-heading{
+    font-size: 18px;
+
+}
+/* News and Views */
+.sidenav{
+    background-color:#fff;
+    padding-top:0;
+}
+.sidenav li{
+    padding:8px;
+    background-color: #F8F9FA;
+    border-bottom:1px dotted #e0dfe3;
+    margin-bottom:4px;
+}
+.jumbotron {
+	background: transparent url("../img/coursesBack.gif") center center;
+}
+.jumbotron h1{
+    color:#E5E8E9;
+}
+
+@media (max-width: 767px) {
+
+  .carousel {
+    height: 70%;
+ /* increases the carousel height so it looks good on phones */
+  }
+}

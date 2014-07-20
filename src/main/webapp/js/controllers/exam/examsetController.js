@@ -28,6 +28,7 @@ IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$lo
 	                    ];
 	$scope.subjectCriteriaArray=[
 		    	                     {key:'TIME_WORK', value:'Time and work'},
+		    	                     {key:'HCF', value:'HCF'},
 		    	                     {key:'MENSURATION', value:'Mensuration'},
 		    	                     {key:'DATA_ANALYSSIS', value:'Data Analyssis'},
 		    	                     {key:'HISTORY', value:'History'}
