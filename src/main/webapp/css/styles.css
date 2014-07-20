@@ -1,0 +1,103 @@
+.no-support-message { display:none; }
+.impress-not-supported .no-support-message { display:block; }
+#impress{
+z-index:1000000
+}
+/* additional styles just to make things look a bit nicer */
+body { background:#F6F6F6 url('../images/background.gif') repeat center center; 
+	font-size:30px;  
+	font-family: 'Roboto', sans-serif; 
+	color:#efefef; 
+	margin:0; 
+	padding:0;
+	font-weight:100;
+
+	}
+.step {color:#B5B5B5; 
+	width:1400px; 
+	margin:0 auto 24px auto; 
+	line-height:10px; 
+	text-align:center;
+	transition: all .5s;
+	-webkit-transition: all .5s; /* Safari */ 
+	opacity:.2;
+ 	}
+.step.present{
+	opacity:1
+}
+h2{ 
+	font-family: 'Roboto', sans-serif; 
+	color:#9C9C61; 
+	font-weight:900; 
+	transition: all 3s;
+	-webkit-transition: all 3s; /* Safari */ 
+	transform:translate(200px);
+	-webkit-transform:translate(200px);
+	opacity:0;
+ 	}
+h2.sec{transition: all 3s 1s;
+	-webkit-transition: all 3s 1s; /* Safari */ 
+	 }
+h2.third{transition: all 3s 2s;
+	-webkit-transition: all 3s 2s; /* Safari */ 
+	 }
+
+.present h2{ transform:translate(0px);
+-webkit-transform:translate(0px) ;
+opacity:1;	}
+
+.color1{color:#B5B5B5;}
+.stepColor1{ background:#DDEBFB; opacity:.2}
+.stepColor2{ background:#D2D7DD; opacity:.2}
+.stepColor3{ background:#DBE2E9; opacity:.2}
+.deco{
+
+	width: 0; 
+	height: 0; 
+	border-top: 200px solid transparent;
+	border-bottom: 200px solid transparent;
+	
+	border-left: 200px solid green;
+
+	position:absolute;
+	transform: rotate(45deg)
+	z-index:0;
+	}
+	#callToAction{
+		width:250px; 
+		text-align:center; 
+		padding:.5%; 
+		position:fixed; 
+		z-index:1000; 
+		left:50%; 
+		bottom:10%; 
+		margin-left:-150px; 
+		margin-top:-20px; 
+		font-size:.7em; 
+		border-radius:30px; 
+		/*background:#BBAB3F;*/
+		background:#075093;
+		color:#fff;
+		font-weight:100;
+		text-decoration:none;
+	}
+#callToAction:hover{
+     background:#DA1D45;
+color:#fff;
+
+	
+	 }	
+.activeShoot{
+	position:absolute; 
+	bottom:67px; 
+	left:203px;
+	transition: all 3s;
+	-webkit-transition: all 3s; /* Safari */ 
+	opacity:1;
+	z-index:100000;
+	}
+	
+.present .activeShoot{
+		left:280px; 
+		bottom:-125%;
+}

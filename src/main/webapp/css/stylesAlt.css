@@ -1,0 +1,41 @@
+body{
+	font-family: 'Roboto', sans-serif; 
+	color:#B5B5B5; 
+	margin:0; 
+	padding:0;
+	font-weight:100;
+
+	}
+.navbar{
+	 min-height:90px;
+	 background:#fff;
+	 }
+.navbar-toggle{
+	margin-top:50px;
+}
+.jumbotron{
+background:#C0BAA9 url('../images/background.gif') repeat center center}
+.jumbotron h1{
+padding-top:20px;
+color:#C0BAA9;
+}
+
+img{
+max-width:100%;
+}
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-nav>li>a {
+color: #3476B0;
+background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+color: #efefef;
+background-color: transparent;
+}
+	 
+@media screen and (min-width: 768px){
+.jumbotron {
+padding-top: 90px;
+padding-bottom: 48px;
+}
+}

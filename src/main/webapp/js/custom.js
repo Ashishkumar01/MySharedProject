@@ -48,16 +48,23 @@ $(".close").bind("click", function(){
 	$(this).parent().parent().hide();
 	$("#overlay").hide()
 	})
-$(".socialIcon li").bind('click', function(){
-        var socialId= $(this).prop("title");
-
+/*$(".socialIcon li").bind('click', function(){
 		if(isHomePage){
-		//window.location= "courses.html"
-        initiateAuthentication(socialId)
+		window.location= "courses.html"
 		}else{
-            initiateAuthentication(socialId)
-		//	window.location= "exam.html#/showInstruction/1"
+			window.location= "exam.html#/showInstruction/test1"
 		}
+})*/
+$(".socialIcon li").bind('click', function(){
+  var socialId= $(this).prop("title");
+
+ 	if(isHomePage){
+ 	//window.location= "courses.html"
+  initiateAuthentication(socialId)
+ 	}else{
+  initiateAuthentication(socialId)
+ 	//	window.location= "exam.html#/showInstruction/1"
+ 	}
 })
 $(".submit").bind("click", function(){
 	var scrollTop= $(window).scrollTop()
