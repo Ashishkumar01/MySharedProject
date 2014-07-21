@@ -15,38 +15,10 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/layout-default-latest.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
-    <!-- START -  Code for OAuth 2.0 authentication -->
-    <link   href="css/zocial.css" rel="stylesheet">
-    <!-- END - Code for OAuth 2.0 authentication -->
     <link   href="css/index.css" rel="stylesheet">
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/jquery/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="lib/jquery/jquery.layout-latest.js"></script>
-
-    <!--START  - Code added to provide the OAuth 2.0 authentication ASHISH 24-Jun-2014-->
-    <script src="lib/helloJS/hello.all.min.js"></script>
-    <script>
-        hello.init({
-            facebook : FACEBOOK_CLIENT_ID,
-            google   : 579318156331
-        },{redirect_uri:'redirect.html'});
-    </script>
-
-    <script>
-
-        hello.on('auth.login', function(auth){
-
-            // call user information, for the given network
-            hello( auth.network ).api( '/me' ).success(function(r){
-                var $target = $("#profile_"+ auth.network );
-                if($target.length==0){
-                    $target = $("<div id='profile_"+auth.network+"'></div>").appendTo("#profile");
-                }
-                $target.html('<img src="'+ r.thumbnail +'" /> Hey '+r.name).attr('title', r.name + " on "+ auth.network);
-            });
-        });
-    </script>
-    <!--END  -   Code added to provide the OAuth 2.0 authentication ASHISH 24-Jun-2014-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
