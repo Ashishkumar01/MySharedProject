@@ -209,6 +209,7 @@
 
 	</div>
 	<div id="overlay"></div>
+    <input id=”mytxt” type=”text” />
 	<!-- <div class="popupInstruction">
 		<div class="closeWrapper">
 		<span class="close">X</span>
@@ -223,8 +224,17 @@
     <!-- JavaScript -->
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/bootstrap/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="lib/helloJs/hello.js"></script>
 
+    <script src="js/services/authenticationService.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+        function GetValueFromChild(myVal){
+
+          document.getElementById('mytxt').value = myVal;
+
+    }
+        </script>
 </body>
 
 </html>
