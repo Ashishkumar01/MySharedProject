@@ -33,16 +33,23 @@ function login(provider){
     var providerName = provider.toString().toLowerCase();   //Convert to lower case as the helloJS API requires lower case name
     initializeHello();
     hello(providerName).login({force: false}, function(){
-        if(checkAuthenticationStatus() != null){
+        if(checkAuthenticationStatus().length != 0){
             $("#signUp")
                 .off("click")
                 .html("Logout")
                 .attr("id","logout")
                 .on("click", function(e){
                     e.preventDefault();
-                    //hello js logout function
+                    openState= false;
+                    logOut();
                 })
-            $("#socialLink").hide()        }
+            if(openState){
+                $("#socialLink").trigger("click").hide()
+            }
+            $("#overlay, .popup").hide();
+            $(".testLoginActive").trigger("click")
+
+        }
     });
 }
 
@@ -51,8 +58,8 @@ function login(provider){
 function checkAuthenticationStatus(){
     var currentProviders    = [];
     var current_time = (new Date()).getTime() / 1000;
-    for(var i=0; i<listOfProviders-1; i++){
-        var Session = hello(listOfProviders[i]).getAuthResponse();
+    for(var i=0; i<listOfProviders.length; i++){
+        var session = hello.getAuthResponse(listOfProviders[i]);
         if(session && session.access_token && session.expires > current_time){
             currentProviders[i] = listOfProviders[i];
         }
@@ -73,6 +80,7 @@ function logOut(){
                 .on("click", function(e){
                     e.preventDefault();
                     isHomePage = true;
+                    openState= true;
                     if($(".popup").is(":hidden")){
                         if($(this).hasClass("testLogin")){
                             isHomePage = false;
@@ -81,7 +89,8 @@ function logOut(){
                         $("#overlay").show()
                     }
                 })
-            $("#socialLink").show()
+            $("#socialLink").show();
+            $("#courseList .closeWrapper span").trigger("click")
         });
     }
 }

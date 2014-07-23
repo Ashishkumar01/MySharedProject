@@ -9,6 +9,44 @@ $('.tooltip-social').tooltip({
 })
 var openState= false;
 var isHomePage = false;
+if(checkAuthenticationStatus().length != 0){
+    $("#signUp")
+        .off("click")
+        .html("Logout")
+        .attr("id","logout")
+        .on("click", function(e){
+            e.preventDefault();
+            openState=false;
+            logOut();
+        })
+    if(openState){
+          $("#socialLink").trigger("click").hide()
+    }else{
+        $("#socialLink").hide()
+    }
+    $("#overlay, .popup").hide();
+    //$("#courseList .closeWrapper span").trigger("click")
+}else{
+    $("#logout")
+        .off("click")
+        .html("Sign in")
+        .attr("id","signUp")
+        .on("click", function(e){
+            e.preventDefault();
+            isHomePage = true;
+            openState= true;
+            if($(".popup").is(":hidden")){
+                if($(this).hasClass("testLogin")){
+                    isHomePage = false;
+                }
+                centerDiv(".popup");
+                $("#overlay").show()
+            }
+        })
+    $("#socialLink").show()
+
+
+}
 $("#socialLink img").bind("click", function(){
 	if(openState== false){
 	isHomePage = true;
@@ -23,6 +61,7 @@ $("#socialLink img").bind("click", function(){
 $("#signUp").on("click", function(e){
 	e.preventDefault();
 	isHomePage = true;
+    openState= true;
 	
 	if($(".popup").is(":hidden")){
 		if($(this).hasClass("testLogin")){
@@ -62,9 +101,9 @@ $(".socialIcon li").bind('click', function(){
 
  	if(isHomePage){
  	//window.location= "courses.html"
-  initiateAuthentication(socialId)
+  login(socialId)
  	}else{
-  initiateAuthentication(socialId)
+  login(socialId)
  	//	window.location= "exam.html#/showInstruction/1"
  	}
 })
@@ -129,32 +168,38 @@ Onsuccessful Login
 var isAuthenticated = true;
 //Multiple test exam on single course
 $(".testLogin").on("click", function(e){
-    e.preventDefault()
+    e.preventDefault();
+    $(".testLogin").removeClass("testLoginActive");
+    $("#courseList .closeWrapper span").trigger("click")
+    $(this).addClass("testLoginActive")
+    if(checkAuthenticationStatus().length != 0){
+        showCourseListing(this)
+    }else{
+        e.preventDefault();
+        $("#signUp").trigger("click")
+
+    }
+})
+function showCourseListing(obj){
     var htmlContainer = '<div id="courseList">' +
         '<div class="closeWrapper"><h3> Click to browse the test exams</h3><span>x</span></div>'
         +'<ul id="courseListItem"></ul>'
         +'</div>';
 
-    $(this).parent().prepend(htmlContainer);
+    $(obj).parent().prepend(htmlContainer);
     $("#courseList .closeWrapper span").bind('click', function(){
         $("#courseList").remove();
     })
     $.ajax({
-    url: "data/courses/courses.json"})
-    .done(function( data ) {
-        var liString ="";
-        for( var i =0; i<data.length; i++){
+        url: "data/courses/courses.json"})
+        .done(function( data ) {
+            var liString ="";
+            for( var i =0; i<data.length; i++){
                 liString+="<li><a href="+"'exam.html#/showInstruction/"+data[i].id+"'>"+data[i].name+"<\/a><\/li>";
             }
             $("#courseListItem").html(liString);
-            $("#courseList").addClass("noBg")
-            $("#courseList a").bind('click', function(e){
-                if(isAuthenticated){
+            $("#courseList").animate({top:"0px"}, "fast").addClass("noBg")
 
-                }else{
-                    e.preventDefault();
-                    $("#signUp").trigger("click")
-                }
-            })
         });
-})
+
+}

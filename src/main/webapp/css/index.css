@@ -130,7 +130,7 @@ body{
 footer {
   margin: 50px 0;
 }
-#signUp{
+#signUp,#logout{
 margin:10px 10px 0 0;
 padding:4px;
 font-size:1em;
@@ -210,10 +210,6 @@ background-position: -506px 0}
 /* Responsive Styles */
 .popup{
 	padding:20px;
-	top:50%;
-	left:50%;
-	margin-left:-160px;
-	margin-top:-150px;
 	background:#fff;
 	border:1px solid #666;
 	border-radius:20px;
@@ -297,7 +293,7 @@ background-position: -506px 0}
     width:98%;
     height:98%;
     position:absolute;
-    top:0;
+    top:376px;
     left:0;
     border:1px solid #efefef;
     overflow-y: auto;
@@ -348,6 +344,7 @@ background-position: -506px 0}
 
 .col-md-4{
     position: relative;
+    overflow:hidden;
 }
 @media (max-width: 767px) {
 
