@@ -1,12 +1,9 @@
 /**
  * Created with JetBrains WebStorm.
- * User: kumaaer
+ * User: Ashish
  * Date: 19/07/14
  * Time: 17:39
  * To change this template use File | Settings | File Templates.
- */
-/* AUTHOR  Ashish
- Date     19-July-14
 
  Use cases that this Script covers -
 
@@ -16,7 +13,7 @@
  4.  Provide the user details like email etc
  5.  Provide the authentication provider name
 
- */
+ **/
 
 var listOfProviders     =   ["google", "facebook"];     //Add new providers in this array
 
@@ -29,26 +26,24 @@ function initializeHello(){
     hello.init({
         facebook : FACEBOOK_CLIENT_ID,
         google   : GOOGLE_CLIENT_ID
-    },{redirect_uri:'http://localhost:8080/omoknow/authenticationSample.html'});}
+    },{redirect_uri:'http://localhost:63342/MySharedProject/src/main/webapp/index.html'});}
 
 //Allow the authentication process to kick-in
-function initiateAuthentication(provider){
+function login(provider){
     var providerName = provider.toString().toLowerCase();   //Convert to lower case as the helloJS API requires lower case name
     initializeHello();
-    hello(providerName).login({force: false}, onSuccessfulLogin());
-}
-
-//What to do if the user successfully logs in? For example, disable the Login button now?
-function onSuccessfulLogin(){
-    document.getElementsByClassName("socialIcon").style.visibility   =    "hidden";
-    document.getElementsByClassName("logOut").style.visibility   =    "visible";
-}
-
-
-//What to do if the user successfully logs out? For example, disable the Logout button now?
-function onSuccessfulLogout(){
-    document.getElementsByClassName("socialIcon").style.visibility   =    "visible";
-    document.getElementsByClassName("logOut").style.visibility   =    "hidden";
+    hello(providerName).login({force: false}, function(){
+        if(checkAuthenticationStatus() != null){
+            $("#signUp")
+                .off("click")
+                .html("Logout")
+                .attr("id","logout")
+                .on("click", function(e){
+                    e.preventDefault();
+                    //hello js logout function
+                })
+            $("#socialLink").hide()        }
+    });
 }
 
 
@@ -70,7 +65,24 @@ function logOut(){
 //Find the authentication provider and logout from all provider network
     var currentProviders    = checkAuthenticationStatus();
     for(var i =0; i<currentProviders.length; i ++){
-        hello.logout(currentProviders[i], {force:false}, onSuccessfulLogout());
+        hello.logout(currentProviders[i], {force:false}, function(){
+            $("#logout")
+                .off("click")
+                .html("Sign in")
+                .attr("id","signUp")
+                .on("click", function(e){
+                    e.preventDefault();
+                    isHomePage = true;
+                    if($(".popup").is(":hidden")){
+                        if($(this).hasClass("testLogin")){
+                            isHomePage = false;
+                        }
+                        centerDiv(".popup");
+                        $("#overlay").show()
+                    }
+                })
+            $("#socialLink").show()
+        });
     }
 }
 
@@ -81,7 +93,6 @@ function logOut(){
  * Returns a JSON containing the details asked for
  */
 function getUserDetails(parameter){
-
     var validQuery = ["me", "me/friends", "me/contacts", "me/followers", "me/following", "me/share"];
     var correctParameter = false;
     for(var i = 0; i<validQuery.length; i++){
