@@ -292,7 +292,63 @@ background-position: -506px 0}
 .jumbotron h1{
     color:#E5E8E9;
 }
+/*Course list ajax call */
+#courseList{
+    width:98%;
+    height:98%;
+    position:absolute;
+    top:0;
+    left:0;
+    border:1px solid #efefef;
+    overflow-y: auto;
+    background: #1985A4 url("../img/ajax-loader.gif") center center no-repeat;
+    border-radius: 10px;
+    color:#fff;
+}
+.noBg{
+    background-image: none !important;
+}
+.closeWrapper{
+    position:relative;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+}
+.closeWrapper h3{
+    float:left;
+    margin:5px 0 0 5px;
+    padding:0;
+}
+.closeWrapper span{
+    display: block;
+    float:right;
+    padding:6px;
+}
+.closeWrapper span:hover{
+    color: #efefef;
+}
+#courseListItem{
+    margin: 6px;
+    padding:6px;
+}
+#courseListItem li{
 
+    list-style: none;
+    margin:3px;
+}
+#courseListItem li a{
+    display: block;
+    cursor: pointer;
+    background-color: #e0dfe3;
+    padding:3px;
+}
+#courseListItem li a:hover{
+    background-color: #fff;
+}
+
+.col-md-4{
+    position: relative;
+}
 @media (max-width: 767px) {
 
   .carousel {
