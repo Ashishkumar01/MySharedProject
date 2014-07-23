@@ -19,7 +19,8 @@ $("#socialLink img").bind("click", function(){
 	}
 
 })
-$("#signUp,.testLogin").bind("click", function(e){
+
+$("#signUp").on("click", function(e){
 	e.preventDefault();
 	isHomePage = true;
 	
@@ -31,6 +32,7 @@ $("#signUp,.testLogin").bind("click", function(e){
 		$("#overlay").show()
 	}
 })
+
 function centerDiv(obj){
 	var scrollTop= $(window).scrollTop();
 	var scrollLeft= $(window).scrollLeft();
@@ -92,4 +94,67 @@ $(window).resize(function(){
 	else if($(".popup").is(":visible")){
 			centerDiv(".popup");
 		}
+})
+
+
+/*
+Onsuccessful Login
+ $("#signUp")
+     .off("click")
+     .html("Logout")
+     .attr("id","logout")
+     .on("click", function(){
+            e.preventDefault();
+            //hello js logout function
+     })
+     $("#socialLink").hide()
+ Onsuccessful Logout
+ $("#logout")
+     .off("click")
+     .html("Sign in")
+     .attr("id","signUp")
+     .on("click", function(e){
+     e.preventDefault();
+     isHomePage = true;
+     if($(".popup").is(":hidden")){
+     if($(this).hasClass("testLogin")){
+     isHomePage = false;
+     }
+     centerDiv(".popup");
+     $("#overlay").show()
+     }
+     })
+ $("#socialLink").show()
+*/
+var isAuthenticated = true;
+//Multiple test exam on single course
+$(".testLogin").on("click", function(e){
+    e.preventDefault()
+    var htmlContainer = '<div id="courseList">' +
+        '<div class="closeWrapper"><h3> Click to browse the test exams</h3><span>x</span></div>'
+        +'<ul id="courseListItem"></ul>'
+        +'</div>';
+
+    $(this).parent().prepend(htmlContainer);
+    $("#courseList .closeWrapper span").bind('click', function(){
+        $("#courseList").remove();
+    })
+    $.ajax({
+    url: "data/courses/courses.json"})
+    .done(function( data ) {
+        var liString ="";
+        for( var i =0; i<data.length; i++){
+                liString+="<li><a href="+"'exam.html#/showInstruction/"+data[i].id+"'>"+data[i].name+"<\/a><\/li>";
+            }
+            $("#courseListItem").html(liString);
+            $("#courseList").addClass("noBg")
+            $("#courseList a").bind('click', function(e){
+                if(isAuthenticated){
+
+                }else{
+                    e.preventDefault();
+                    $("#signUp").trigger("click")
+                }
+            })
+        });
 })
