@@ -198,7 +198,20 @@ function showCourseListing(obj){
                 liString+="<li><a href="+"'exam.html#/showInstruction/"+data[i].id+"'>"+data[i].name+"<\/a><\/li>";
             }
             $("#courseListItem").html(liString);
-            $("#courseList").animate({top:"0px"}, "fast").addClass("noBg")
+            $("#courseList").animate({top:"0px"}, "fast",function(){
+
+                var offset =$("#courseList").offset().top;
+                var baseTop = 75;
+                var scrollTop =$(window).scrollTop();
+                var diff =offset-baseTop;
+                
+                if (diff>0){
+                    var body = $("body");
+                    body.animate({scrollTop:diff+"px"}, '500');
+                }
+
+            }).addClass("noBg");
+
 
         });
 
