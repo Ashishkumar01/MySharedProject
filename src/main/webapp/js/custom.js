@@ -183,7 +183,7 @@ $(".testLogin").on("click", function(e){
 function showCourseListing(obj){
     var htmlContainer = '<div id="courseList">' +
         '<div class="closeWrapper"><h3> Click to browse the test exams</h3><span>x</span></div>'
-        +'<ul id="courseListItem"></ul>'
+        +'<div id="courseListItemWrapper"><ul id="courseListItem"></ul></div>'
         +'</div>';
 
     $(obj).parent().prepend(htmlContainer);
