@@ -102,7 +102,7 @@
         return result;
     };
 
-    config.defaults = {};
+     config.defaults = {};
 
     $.removeCookie = function (key, options) {
         if ($.cookie(key) === undefined) {

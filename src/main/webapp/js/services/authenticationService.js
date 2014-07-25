@@ -42,7 +42,7 @@ function login(provider){
                     e.preventDefault();
                     openState= false;
                     logOut();
-                })
+                 })
 
             if(openState){
                 console.log("inside open state")

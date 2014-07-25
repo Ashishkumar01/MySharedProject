@@ -130,7 +130,7 @@ $(".popupInstruction .btn").on('click', function(){
 $("#redirectCallToAction .btn").on("click", function(){
     $(".popup").hide();
     $("#overlay").hide()
-    if($(this).hasClass("btn-primary")){
+     if($(this).hasClass("btn-primary")){
         if($("#redirectCallToAction input:checked").length && !$.cookie("doNotAskMeAgain")){
             $.cookie("doNotAskMeAgain",true)
         }
