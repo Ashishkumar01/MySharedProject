@@ -191,21 +191,26 @@
     <!-- /.container -->
 	<div class="popup socialLinkToggle">
 		<p> Login here to access the courses</p>
-		<ul class="socialIcon">
-		<span class="close">X</span>
-		<li class="google" title='Google'>Google</li>
-		<li class="facebook" title='Facebook'>Facebook</li>
-		<li class="linkedIn" title='LinkedIn'>LinkedIn</li>
-		<li class="yahoo" title='Yahoo'>Yahoo</li>
-		<li class="windows" title='Windows'>Windows</li>
-		<li class="github" title='GitHub'>GitHub</li>
-		<li class="twitter" title='Twitter'>Twitter</li>
-		<li class="dropBox" title='DropBox'>DropBox</li>
-		<li class="instagram" title='Instagram'>Instagram</li>
-		<li class="soundcloud" title='Soundcloud'>Soundcloud</li>
-		<li class="foursquare" title='Foursquare'>Foursquare</li>
-		<li class="flickr" title='Flickr'>Flickr</li>
-	</ul>	
+        <ul class="socialIcon">
+            <span class="close">X</span>
+            <li class="google" title='Google'>Google</li>
+            <li class="facebook" title='Facebook'>Facebook</li>
+            <li class="linkedIn" title='LinkedIn'>LinkedIn</li>
+            <li class="yahoo" title='Yahoo'>Yahoo</li>
+            <li class="windows" title='Windows'>Windows</li>
+            <li class="github" title='GitHub'>GitHub</li>
+            <li class="twitter" title='Twitter'>Twitter</li>
+            <li class="dropBox" title='DropBox'>DropBox</li>
+            <li class="instagram" title='Instagram'>Instagram</li>
+            <li class="soundcloud" title='Soundcloud'>Soundcloud</li>
+            <li class="foursquare" title='Foursquare'>Foursquare</li>
+            <li class="flickr" title='Flickr'>Flickr</li>
+        </ul>
+        <ul id="redirectCallToAction">
+            <p> You will be redirecting to courses page</p>
+            <p> <input type="checkbox" id="doNotAskMeAgain" /> <label for="doNotAskMeAgain">Do not ask me again</label> </p>
+            <p><a class="btn btn-primary"> OK </a><a class="btn btn-default"> Cancel</a></p>
+        </ul>
 
 	</div>
 	<div id="overlay"></div>
@@ -223,6 +228,7 @@
 
     <!-- JavaScript -->
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"></script>
     <script src="lib/bootstrap/bootstrap.min.js"></script>
     <script src="lib/helloJs/hello.js"></script>
 

@@ -40,7 +40,7 @@ if(checkAuthenticationStatus().length != 0){
                     isHomePage = false;
                 }
                 centerDiv(".popup");
-                $("#overlay").show()
+
             }
         })
     $("#socialLink").show()
@@ -68,7 +68,7 @@ $("#signUp").on("click", function(e){
 			isHomePage = false;
 		}
 		centerDiv(".popup");
-		$("#overlay").show()
+
 	}
 })
 
@@ -78,6 +78,7 @@ function centerDiv(obj){
 	var windowWidth=$(window).width()/2;
 	var windowHeight = $(window).height()/2;
 	$(obj).show();
+    $("#overlay").show()
 	var divWidth = $(obj).width()/2;
 	var divHeight = $(obj).height()/2;
 	var divLeft= windowWidth - divWidth;
@@ -126,6 +127,19 @@ $(".popupInstruction .btn").on('click', function(){
 	}
 	
 })
+$("#redirectCallToAction .btn").on("click", function(){
+    $(".popup").hide();
+    $("#overlay").hide()
+    if($(this).hasClass("btn-primary")){
+        if($("#redirectCallToAction input:checked").length && !$.cookie("doNotAskMeAgain")){
+            $.cookie("doNotAskMeAgain",true)
+        }
+        window.location="courses.html";
+
+    }else{
+
+    }
+})
 
 $(window).resize(function(){
 	if($(".popupInstruction").is(":visible")){
@@ -136,35 +150,6 @@ $(window).resize(function(){
 })
 
 
-/*
-Onsuccessful Login
- $("#signUp")
-     .off("click")
-     .html("Logout")
-     .attr("id","logout")
-     .on("click", function(){
-            e.preventDefault();
-            //hello js logout function
-     })
-     $("#socialLink").hide()
- Onsuccessful Logout
- $("#logout")
-     .off("click")
-     .html("Sign in")
-     .attr("id","signUp")
-     .on("click", function(e){
-     e.preventDefault();
-     isHomePage = true;
-     if($(".popup").is(":hidden")){
-     if($(this).hasClass("testLogin")){
-     isHomePage = false;
-     }
-     centerDiv(".popup");
-     $("#overlay").show()
-     }
-     })
- $("#socialLink").show()
-*/
 var isAuthenticated = true;
 //Multiple test exam on single course
 $(".testLogin").on("click", function(e){
@@ -204,9 +189,9 @@ function showCourseListing(obj){
                 var baseTop = 75;
                 var scrollTop =$(window).scrollTop();
                 var diff =offset-baseTop;
-                
+
                 if (diff>0){
-                    var body = $("body");
+                    var body = $("body,html");
                     body.animate({scrollTop:diff+"px"}, '500');
                 }
 

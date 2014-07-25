@@ -131,16 +131,16 @@ footer {
   margin: 50px 0;
 }
 #signUp,#logout{
-margin:10px 10px 0 0;
-padding:4px;
-font-size:1em;
+    margin:10px 10px 0 0;
+    padding:4px;
+    font-size:1em;
     color:#fff;
 }
 #logoOmoknow{
-display:block;
-width:131px;
-height:44px;
-background:transparent url("../img/logo.png") 0 0 no-repeat;
+    display:block;
+    width:131px;
+    height:44px;
+    background:transparent url("../img/logo.png") 0 0 no-repeat;
 }
 #socialLink{
 	position:fixed;
@@ -163,9 +163,9 @@ background:transparent url("../img/logo.png") 0 0 no-repeat;
 	margin:0 auto;
 }
 .socialLinkToggle ul{
-margin:0;
-padding:0;
-text-align:left;
+    margin:0;
+    padding:0;
+    text-align:left;
 }
 .socialLinkToggle ul li{
 	list-style-type:none;
@@ -348,7 +348,13 @@ background-position: -506px 0}
 #courseListItem li a:hover{
     background-color: #3c3c3c;
 }
-
+#redirectCallToAction{
+    display: none;
+    text-align:center;
+}
+#redirectCallToAction .btn{
+    margin:10px;
+}
 .col-md-4{
     position: relative;
     overflow:hidden;

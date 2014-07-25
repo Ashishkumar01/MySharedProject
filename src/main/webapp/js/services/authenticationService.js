@@ -43,12 +43,22 @@ function login(provider){
                     openState= false;
                     logOut();
                 })
+
             if(openState){
+                console.log("inside open state")
                 $("#socialLink").trigger("click").hide()
             }
             $("#overlay, .popup").hide();
             $(".testLoginActive").trigger("click")
-
+            if(isHomePage){
+                if($.cookie("doNotAskMeAgain")){
+                        window.location= "courses.html"
+                }else{
+                    centerDiv(".popup");
+                    $("#redirectCallToAction").show()
+                    $(".socialIcon,.socialLinkToggle p:first").hide();
+                }
+            }
         }
     });
 }
