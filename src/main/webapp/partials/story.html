@@ -2,7 +2,8 @@
 <div infinite-scroll="loadAStory()" infinite-scroll-distance="1">
     <div ng-repeat="story in storyDetails">
         <article>
-            <h2 id='{{story.id}}'>{{story.id}}</h2>
+            <span class="fake" id='{{story.id}}'></span>
+            <h2 class="initFake">{{story.name}}</h2>
             <p>{{story.description}}</p>
         </article>
         <hr/>

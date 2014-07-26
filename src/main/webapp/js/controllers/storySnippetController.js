@@ -16,9 +16,11 @@ IndexModule.controller("storySnippetController", function($scope, $rootScope, st
      })
 
     $scope.snippetclickHandler  = function(id){
+
         $rootScope.$broadcast('snippetClicked', id );
         $rootScope.activeId = id;
         $rootScope.snippetClicked = true;
+
     }
 
 

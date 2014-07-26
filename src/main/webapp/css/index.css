@@ -277,10 +277,21 @@ background-position: -506px 0}
     padding-top:0;
 }
 .sidenav li{
-    padding:8px;
+    padding:0px;
+    color:#245269 !important;
     background-color: #F8F9FA;
     border-bottom:1px dotted #e0dfe3;
-    margin-bottom:4px;
+    margin-bottom:0px;
+}
+.sidenav li a{
+
+    padding:10px !important;
+}
+.sidenav li.active{
+    font-weight:normal !important;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+
 }
 .jumbotron {
 	background: transparent url("../img/coursesBack.gif") center center;
@@ -359,6 +370,42 @@ background-position: -506px 0}
     position: relative;
     overflow:hidden;
 }
+
+/*News and {views */
+#fixedContainer{
+    background-color: #FFCC66;
+    color:#fff;
+}
+#newsAndViews{
+   /* overflow:hidden;*/
+    height:100%;
+    padding-top:60px;
+}
+#newsAndViews .ui-layout-west{
+    width:20%;
+    position: fixed;
+    top:50px;
+    height:98%;
+    overflow-y:auto;
+}
+#stories{
+    width:80%;
+    float:left;
+    overflow-y: auto;
+    margin-left:20%;
+}
+#stories h2{
+    margin-top:60px;
+    padding: 0 25%;
+}
+#stories p{
+    padding:0 25%;
+}
+.fake{
+    display:block;
+    border:1px solid #fff;
+ }
+
 @media (max-width: 767px) {
 
   .carousel {

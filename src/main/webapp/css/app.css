@@ -66,11 +66,11 @@ li.active{
 /*Phone CSS*/
 .phone-images {
     background-color: white;
-    width: 450px;
-    height: 450px;
+    max-width: 100%;
+    max-height: 100%;
     overflow: hidden;
     position: relative;
-    float: left;
+
 }
 
 .phones {
@@ -93,9 +93,10 @@ li.active{
 
 /** Detail View **/
 img.phone {
-    float: left;
+    /*float: left;
     margin-right: 3em;
-    margin-bottom: 2em;
+    margin-bottom: 2em;*/
+    margin:0 auto;
     background-color: white;
     padding: 2em;
     height: 400px;

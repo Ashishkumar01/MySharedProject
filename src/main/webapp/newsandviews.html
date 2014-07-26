@@ -12,13 +12,15 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700italic,700,500,100italic,100|Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/layout-default-latest.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     <link   href="css/index.css" rel="stylesheet">
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/jquery/jquery-ui-1.10.4.custom.min.js"></script>
-    <script src="lib/jquery/jquery.layout-latest.js"></script>
+    <!--script src="lib/jquery/jquery.layout-latest.js"></script-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -27,7 +29,7 @@
 
     <![endif]-->
 </head>
-<body ng-controller="indexController">
+<body ng-controller="indexController" id="newsAndViews">
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -60,7 +62,7 @@
     </div>
     <!-- /.container -->
 </nav>
-<div class="ui-layout-north">
+<!--div class="ui-layout-north">
     <div class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -76,10 +78,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!-- START -  Code for OAuth 2.0 authentication -->
                     <li><a href="#" class="zocial icon facebook" onclick="hello('facebook').login()">Facebook</a></li>
                     <li><a href="#" class="zocial icon googleplus" onclick="hello('google').login()">Google+</a></li>
-                    <!-- END -  Code for OAuth 2.0 authentication -->
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-list"></i></a>
                         <ul class="dropdown-menu">
@@ -88,19 +89,20 @@
                         </ul>
                     </li>
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
         </div>
     </div>
-</div>
+</div-->
 <!--<div ng-controller="storyController">-->
 <div class="ui-layout-west">
     <div id="fixedContainer">
-        <div ng-click="openModel()">Launch Learning Module</div>
+        <!--div ng-click="openModel()">Launch Learning Module</div-->
+        <div> Check out latest news</div>
     </div>
     <nav ng-controller="storySnippetController">
         <ul class="nav sidenav">
             <li ng-class="{active: snippet.id==activeId}" ng-repeat="snippet in storySnippet">
-                <a ng-click ="snippetclickHandler(snippet.id)">{{snippet.id}}</a>
+                <a ng-click ="snippetclickHandler(snippet.id)">{{snippet.name}}</a>
             </li>
         </ul>
     </nav>
@@ -111,7 +113,8 @@
             <div ng-repeat="phone in storyDetails">
                 <!--<h2 id="{{story.id}}" ng-bind-html="renderHtml(story.name)"></h2>
                 <div ng-bind-html="renderHtml(story.description)"></div>-->
-                <h2 id="{{phone.id}}" ng-bind-html="renderHtml(phone.name)"></h2>
+                <span class="fake" id="{{phone.id}}"></span>
+                <h2 ng-bind-html="renderHtml(phone.name)"></h2>
                 <p ng-bind-html="renderHtml(phone.description)"></p>
 
                 <div class="phone-images">
@@ -229,7 +232,7 @@
 </div>
 <!--</div>-->
 
-<div class="ui-layout-east">
+<!--div class="ui-layout-east">
     <div ng-controller="learningModuleController">
         <div ng-include src="learningModule()"/>
     </div>
@@ -244,7 +247,19 @@
     <div ng-include src="registerUser()"/>
 </div>
 
-
+<script type="text/javascript">
+    WebFontConfig = {
+        google: { families: [ 'Roboto:400,900,700italic,700,500,100italic,100:latin', 'Oswald:400,700,300:latin' ] }
+    };
+    (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })(); </script>
 <script src="lib/angular/angular.min.js"></script>
 <script src="lib/angular/angular-resource.min.js"></script>
 <script src="lib/angular/angular-cookies.min.js"></script>

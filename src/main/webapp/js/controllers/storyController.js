@@ -59,6 +59,7 @@ IndexModule.controller("storyController", function($rootScope,$location,$anchorS
         });
 
         $scope.renderHtml = function (htmlCode) {
+
             return $sce.trustAsHtml(htmlCode);
         };
 });

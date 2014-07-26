@@ -2,7 +2,7 @@
 
 IndexModule.controller("indexController", function($rootScope,$scope, $window) {
     /*var childWindow=null;*/
-    $(function(){
+/*    $(function(){
         $('body').layout({
                 closable:					true
             ,	resizable:					true
@@ -30,7 +30,7 @@ IndexModule.controller("indexController", function($rootScope,$scope, $window) {
             ,	showDebugMessages:			true // log and/or display messages from debugging & testing code
         });
 
-    });
+    });*/
 
     $scope.navigatorBar=function(){
         return "partials/navigationbar.html";

@@ -1,31 +1,31 @@
 [
     {
         "age": 0, 
-        "id": "motorola-xoom-with-wi-fi", 
+        "id": "motorola-xoom-with-wi-fi",
         "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg", 
-        "name": "Motorola XOOM\u2122 with Wi-Fi", 
+        "name": "A big myth about connectivity in the developing world, busted",
         "snippet": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
     }, 
     {
         "age": 1, 
-        "id": "motorola-xoom", 
+        "id": "motorola-xoom",
         "imageUrl": "img/phones/motorola-xoom.0.jpg", 
-        "name": "MOTOROLA XOOM\u2122", 
+        "name": "VCs in India ask women entrepreneurs a different set of questions from the men",
         "snippet": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb)."
     }, 
     {
         "age": 2, 
         "carrier": "AT&amp;T", 
-        "id": "motorola-atrix-4g", 
+        "id": "motorola-atrix-4g",
         "imageUrl": "img/phones/motorola-atrix-4g.0.jpg", 
-        "name": "MOTOROLA ATRIX\u2122 4G", 
+        "name": "These four charts break down India’s complex relationship with Hindi",
         "snippet": "MOTOROLA ATRIX 4G the world's most powerful smartphone."
     }, 
     {
         "age": 3, 
         "id": "dell-streak-7", 
         "imageUrl": "img/phones/dell-streak-7.0.jpg", 
-        "name": "Dell Streak 7", 
+        "name": "The bittersweet tale of the new exciting seedless mango",
         "snippet": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
     }, 
     {
@@ -33,7 +33,7 @@
         "carrier": "Cellular South", 
         "id": "samsung-gem", 
         "imageUrl": "img/phones/samsung-gem.0.jpg", 
-        "name": "Samsung Gem\u2122", 
+        "name": "The idea of Chindia never really got very far; Jindia has better prospects",
         "snippet": "The Samsung Gem\u2122 brings you everything that you would expect and more from a touch display smart phone \u2013 more apps, more features and a more affordable price."
     }, 
     {
@@ -41,7 +41,7 @@
         "carrier": "Dell", 
         "id": "dell-venue", 
         "imageUrl": "img/phones/dell-venue.0.jpg", 
-        "name": "Dell Venue", 
+        "name": "Right now, Indian business leaders are the most optimistic in the world",
         "snippet": "The Dell Venue; Your Personal Express Lane to Everything"
     }, 
     {
@@ -49,7 +49,7 @@
         "carrier": "Best Buy", 
         "id": "nexus-s", 
         "imageUrl": "img/phones/nexus-s.0.jpg", 
-        "name": "Nexus S", 
+        "name": "No, Indonesia is not proof that Muslim democracy can work",
         "snippet": "Fast just got faster with Nexus S. A pure Google experience, Nexus S is the first phone to run Gingerbread (Android 2.3), the fastest version of Android yet."
     }, 
     {
