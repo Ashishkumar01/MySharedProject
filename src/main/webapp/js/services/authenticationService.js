@@ -20,13 +20,16 @@ var listOfProviders     =   ["google", "facebook"];     //Add new providers in t
 var GOOGLE_CLIENT_ID    =  "554103276018-sc8i6m4161gv9ambbna7q0g55sn3rdqi.apps.googleusercontent.com";
 var FACEBOOK_CLIENT_ID    =  '';
 
+var OAUTH_PROXY_URL = {
+    'local.knarly.com' : 'http://local.knarly.com:5500/proxy'
+}[window.location.hostname] || 'https://auth-server.herokuapp.com/proxy';
 
 //Initialize the helloJS library
 function initializeHello(){
     hello.init({
         facebook : FACEBOOK_CLIENT_ID,
         google   : GOOGLE_CLIENT_ID
-    },{redirect_uri:'http://localhost:63342/MySharedProject/src/main/webapp/index.html'});}
+    },{redirect_uri:'http://localhost:63342/MySharedProject/src/main/webapp/index.html',oauth_proxy:OAUTH_PROXY_URL});}
 
 //Allow the authentication process to kick-in
 function login(provider){
