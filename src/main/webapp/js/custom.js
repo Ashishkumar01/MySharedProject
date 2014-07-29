@@ -19,6 +19,11 @@ if(checkAuthenticationStatus().length != 0){
             openState=false;
             logOut();
         })
+    if($("#home").length){
+        isHomePage = true;
+    }else{
+        isHomePage = false;
+    }
     if(openState){
           $("#socialLink").trigger("click").hide()
     }else{
@@ -33,7 +38,11 @@ if(checkAuthenticationStatus().length != 0){
         .attr("id","signUp")
         .on("click", function(e){
             e.preventDefault();
+            if($("#home").length){
             isHomePage = true;
+            }else{
+                isHomePage = false;
+            }
             openState= true;
             if($(".popup").is(":hidden")){
                 if($(this).hasClass("testLogin")){
@@ -167,7 +176,7 @@ $(".testLogin").on("click", function(e){
 })
 function showCourseListing(obj){
     var htmlContainer = '<div id="courseList">' +
-        '<div class="closeWrapper"><h3> Click to browse the test exams</h3><span>x</span></div>'
+        '<div class="closeWrapper"><h3> Select exam of your choice</h3><span>x</span></div>'
         +'<div id="courseListItemWrapper"><ul id="courseListItem"></ul></div>'
         +'</div>';
 

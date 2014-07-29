@@ -3,7 +3,7 @@
 IndexModule.controller("instructionController", function($rootScope,$scope,$location,$http,$routeParams,examsService) {
     $rootScope.template.url='partials/exam/partial_thumbnail.html';
     $scope.agreementDone=false;
-
+console.log("$routeParams.id::"+ $routeParams.id)
     //gets current exam set
     if($routeParams.id){
         //load questions of selected exam

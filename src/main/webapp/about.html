@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="ico/favicon.ico">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700italic,700,500,100italic,100|Oswald:400,700,300' rel='stylesheet' type='text/css'>
 
     <title></title>
@@ -113,25 +113,32 @@
         <p>&copy; Company 2014</p>
       </footer>
     </div> <!-- /container -->
-		<div class="popup socialLinkToggle">
-			<p> Login here to access the courses</p>
-			<ul class="socialIcon">
-				<span class="close">X</span>
-				<li class="google" title='Google'>Google</li>
-				<li class="facebook" title='Facebook'>Facebook</li>
-				<li class="linkedIn" title='LinkedIn'>LinkedIn</li>
-				<li class="yahoo" title='Yahoo'>Yahoo</li>
-				<li class="windows" title='Windows'>Windows</li>
-				<li class="github" title='GitHub'>GitHub</li>
-				<li class="twitter" title='Twitter'>Twitter</li>
-				<li class="dropBox" title='DropBox'>DropBox</li>
-				<li class="instagram" title='Instagram'>Instagram</li>
-				<li class="soundcloud" title='Soundcloud'>Soundcloud</li>
-				<li class="foursquare" title='Foursquare'>Foursquare</li>
-				<li class="flickr" title='Flickr'>Flickr</li>
-			</ul>	
-		</div>
-	<div id="overlay"></div>
+    <div class="popup socialLinkToggle">
+        <p> Login here to access the courses</p>
+        <ul class="socialIcon">
+            <span class="close">X</span>
+            <li class="google" title='Google'>Google</li>
+            <li class="facebook" title='Facebook'>Facebook</li>
+            <li class="linkedIn" title='LinkedIn'>LinkedIn</li>
+            <li class="yahoo" title='Yahoo'>Yahoo</li>
+            <li class="windows" title='Windows'>Windows</li>
+            <li class="github" title='GitHub'>GitHub</li>
+            <li class="twitter" title='Twitter'>Twitter</li>
+            <li class="dropBox" title='DropBox'>DropBox</li>
+            <li class="instagram" title='Instagram'>Instagram</li>
+            <li class="soundcloud" title='Soundcloud'>Soundcloud</li>
+            <li class="foursquare" title='Foursquare'>Foursquare</li>
+            <li class="flickr" title='Flickr'>Flickr</li>
+        </ul>
+        <ul id="redirectCallToAction">
+            <p> You will be redirecting to courses page</p>
+            <p> <input type="checkbox" id="doNotAskMeAgain" /> <label for="doNotAskMeAgain">Do not ask me again</label> </p>
+            <p><a class="btn btn-primary"> OK </a><a class="btn btn-default"> Cancel</a></p>
+        </ul>
+
+    </div>
+    <div id="overlay"></div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -152,6 +159,7 @@
   })(); </script>
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"> </script>
     <script src="lib/helloJs/hello.js"></script>
 
     <script src="js/services/authenticationService.js"></script>

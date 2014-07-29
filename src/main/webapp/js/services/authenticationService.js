@@ -29,7 +29,9 @@ function initializeHello(){
     hello.init({
         facebook : FACEBOOK_CLIENT_ID,
         google   : GOOGLE_CLIENT_ID
-    },{redirect_uri:'http://localhost:63342/MySharedProject/src/main/webapp/index.html',oauth_proxy:OAUTH_PROXY_URL});}
+    },{redirect_uri:'http://localhost:8080/omoknow/index.html',oauth_proxy:OAUTH_PROXY_URL});}
+
+//        {redirect_uri:'http://localhost:63342/MySharedProject/src/main/webapp/index.html',oauth_proxy:OAUTH_PROXY_URL});}
 
 //Allow the authentication process to kick-in
 function login(provider){
@@ -51,15 +53,16 @@ function login(provider){
                 console.log("inside open state")
                 $("#socialLink").trigger("click").hide()
             }
-            $("#overlay, .popup").hide();
+
             $(".testLoginActive").trigger("click")
-            if(isHomePage){
+            $("#overlay, .popup").hide();
+            if(!$("#course").length){
                 if($.cookie("doNotAskMeAgain")){
                         window.location= "courses.html"
                 }else{
                     centerDiv(".popup");
                     $("#redirectCallToAction").show()
-                    $(".socialIcon,.socialLinkToggle p:first").hide();
+                    $(".popup .socialIcon,.socialLinkToggle p:first").hide();
                 }
             }
         }
@@ -92,7 +95,11 @@ function logOut(){
                 .attr("id","signUp")
                 .on("click", function(e){
                     e.preventDefault();
-                    isHomePage = true;
+                    if($("#home").length){
+                        isHomePage = true;
+                    }else{
+                        isHomePage = false;
+                    }
                     openState= true;
                     if($(".popup").is(":hidden")){
                         if($(this).hasClass("testLogin")){

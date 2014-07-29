@@ -6,7 +6,7 @@ IndexModule.directive('dynamicTabs', function () {
             require: '?ngModel',
             template: '\
             <ul class="nav nav-tabs">\
-                <li ng-class="{active: item.active}" ng-repeat="item in tabsData"><a ng-click="toggleActive($index,true)"  ng-mouseover="showTooltip(item,$event)">{{item.subject}}</a></li>\
+                <li ng-class="{active: item.active}" ng-repeat="item in tabsData"><a ng-click="toggleActive($index,true)" >{{item.subject}}</a></li>\
             </ul>\
             <div class="tab-content">\
               <div class="tab-pane" ng-class="{active: item.active}" id="{{contentBaseId}}-{{$index}}" ng-repeat="item in tabsData">\
