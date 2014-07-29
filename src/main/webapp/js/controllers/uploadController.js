@@ -1,5 +1,5 @@
 /* UploadController.*/
-IndexModule.controller("UploadController", function($scope,$http) {
+IndexModule.controller("UploadController", function($scope,$http,$location) {
 	$scope.setFiles = function(element){
 		$scope.questionfile = element.files[0];
 	};
@@ -18,10 +18,11 @@ IndexModule.controller("UploadController", function($scope,$http) {
 		}
 		
 		$http.post('rest/upload/saveQuestions.do',dataToSave).then(function (){
-			alert("Sheet saved.");
+			alert("Questions uploaded successfully.");
+			$location.path('/examHome');
 		},
 		function(){
-			alert("Sheet Save failed..");
+			alert("Question Upload failed.");
 		});
 	};
 	
@@ -37,7 +38,7 @@ IndexModule.controller("UploadController", function($scope,$http) {
 	    	$scope.setPage(0);
 			$scope.uploadQuestions = result.data;
 		},function failure(data){
-			alert('fail');
+			alert('Upload failed.');
 		});
 		
 	};

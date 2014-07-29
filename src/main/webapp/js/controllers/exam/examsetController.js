@@ -46,7 +46,10 @@ IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$lo
 		$http({method: 'POST', url: 'rest/set/questions', data:searchParams})
 	    .success(function(data, status, headers, config) {
 	      console.log('question data fetched:'+data);
-	      $scope.questions=data;      
+	      $scope.questions=data;  
+	      if($scope.questions && $scope.questions.length==0){
+	    	  alert('No question selected for entered search criteria. Please query again.');
+	      }	      
 	    })
 	    .error(function(data, status, headers, config) {
 	    	console.log('question data fetch failed. Status:'+status);
@@ -66,6 +69,7 @@ IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$lo
 	    .success(function(data, status, headers, config) {
 	      console.log('Set saved successfully:'+data);
 	      alert('Exam Set saved successfully.');
+	      $location.path('/examHome');
 	    })
 	    .error(function(data, status, headers, config) {
 	    	console.log('set save failed. Status:'+status);

@@ -9,6 +9,44 @@ $('.tooltip-social').tooltip({
 })
 var openState= false;
 var isHomePage = false;
+if(checkAuthenticationStatus().length != 0){
+    $("#signUp")
+        .off("click")
+        .html("Logout")
+        .attr("id","logout")
+        .on("click", function(e){
+            e.preventDefault();
+            openState=false;
+            logOut();
+        })
+    if(openState){
+          $("#socialLink").trigger("click").hide()
+    }else{
+        $("#socialLink").hide()
+    }
+    $("#overlay, .popup").hide();
+    //$("#courseList .closeWrapper span").trigger("click")
+}else{
+    $("#logout")
+        .off("click")
+        .html("Sign in")
+        .attr("id","signUp")
+        .on("click", function(e){
+            e.preventDefault();
+            isHomePage = true;
+            openState= true;
+            if($(".popup").is(":hidden")){
+                if($(this).hasClass("testLogin")){
+                    isHomePage = false;
+                }
+                centerDiv(".popup");
+                $("#overlay").show()
+            }
+        })
+    $("#socialLink").show()
+
+
+}
 $("#socialLink img").bind("click", function(){
 	if(openState== false){
 	isHomePage = true;
@@ -19,9 +57,11 @@ $("#socialLink img").bind("click", function(){
 	}
 
 })
-$("#signUp,.testLogin").bind("click", function(e){
+
+$("#signUp").on("click", function(e){
 	e.preventDefault();
 	isHomePage = true;
+    openState= true;
 	
 	if($(".popup").is(":hidden")){
 		if($(this).hasClass("testLogin")){
@@ -31,6 +71,7 @@ $("#signUp,.testLogin").bind("click", function(e){
 		$("#overlay").show()
 	}
 })
+
 function centerDiv(obj){
 	var scrollTop= $(window).scrollTop();
 	var scrollLeft= $(window).scrollLeft();
@@ -60,9 +101,9 @@ $(".socialIcon li").bind('click', function(){
 
  	if(isHomePage){
  	//window.location= "courses.html"
-  initiateAuthentication(socialId)
+  login(socialId)
  	}else{
-  initiateAuthentication(socialId)
+  login(socialId)
  	//	window.location= "exam.html#/showInstruction/1"
  	}
 })
@@ -93,3 +134,85 @@ $(window).resize(function(){
 			centerDiv(".popup");
 		}
 })
+
+
+/*
+Onsuccessful Login
+ $("#signUp")
+     .off("click")
+     .html("Logout")
+     .attr("id","logout")
+     .on("click", function(){
+            e.preventDefault();
+            //hello js logout function
+     })
+     $("#socialLink").hide()
+ Onsuccessful Logout
+ $("#logout")
+     .off("click")
+     .html("Sign in")
+     .attr("id","signUp")
+     .on("click", function(e){
+     e.preventDefault();
+     isHomePage = true;
+     if($(".popup").is(":hidden")){
+     if($(this).hasClass("testLogin")){
+     isHomePage = false;
+     }
+     centerDiv(".popup");
+     $("#overlay").show()
+     }
+     })
+ $("#socialLink").show()
+*/
+var isAuthenticated = true;
+//Multiple test exam on single course
+$(".testLogin").on("click", function(e){
+    e.preventDefault();
+    $(".testLogin").removeClass("testLoginActive");
+    $("#courseList .closeWrapper span").trigger("click")
+    $(this).addClass("testLoginActive")
+    if(checkAuthenticationStatus().length != 0){
+        showCourseListing(this)
+    }else{
+        e.preventDefault();
+        $("#signUp").trigger("click")
+
+    }
+})
+function showCourseListing(obj){
+    var htmlContainer = '<div id="courseList">' +
+        '<div class="closeWrapper"><h3> Click to browse the test exams</h3><span>x</span></div>'
+        +'<div id="courseListItemWrapper"><ul id="courseListItem"></ul></div>'
+        +'</div>';
+
+    $(obj).parent().prepend(htmlContainer);
+    $("#courseList .closeWrapper span").bind('click', function(){
+        $("#courseList").remove();
+    })
+    $.ajax({
+        url: "data/courses/courses.json"})
+        .done(function( data ) {
+            var liString ="";
+            for( var i =0; i<data.length; i++){
+                liString+="<li><a href="+"'exam.html#/showInstruction/"+data[i].id+"'>"+data[i].name+"<\/a><\/li>";
+            }
+            $("#courseListItem").html(liString);
+            $("#courseList").animate({top:"0px"}, "fast",function(){
+
+                var offset =$("#courseList").offset().top;
+                var baseTop = 75;
+                var scrollTop =$(window).scrollTop();
+                var diff =offset-baseTop;
+                
+                if (diff>0){
+                    var body = $("body");
+                    body.animate({scrollTop:diff+"px"}, '500');
+                }
+
+            }).addClass("noBg");
+
+
+        });
+
+}

@@ -130,7 +130,7 @@ body{
 footer {
   margin: 50px 0;
 }
-#signUp{
+#signUp,#logout{
 margin:10px 10px 0 0;
 padding:4px;
 font-size:1em;
@@ -210,10 +210,6 @@ background-position: -506px 0}
 /* Responsive Styles */
 .popup{
 	padding:20px;
-	top:50%;
-	left:50%;
-	margin-left:-160px;
-	margin-top:-150px;
 	background:#fff;
 	border:1px solid #666;
 	border-radius:20px;
@@ -292,7 +288,71 @@ background-position: -506px 0}
 .jumbotron h1{
     color:#E5E8E9;
 }
+/*Course list ajax call */
+#courseList{
+    width:98%;
+    height:98%;
+    position:absolute;
+    top:376px;
+    left:0;
+    border:1px solid #efefef;
+    background: #1985A4 url("../img/ajax-loader.gif") center center no-repeat;
+    border-radius: 10px;
+    color:#fff;
+}
+.noBg{
+    background-image: none !important;
+}
+.closeWrapper{
+    position:relative;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+}
+.closeWrapper h3{
+    float:left;
+    margin:5px 0 0 5px;
+    padding:0;
+}
+.closeWrapper span{
+    display: block;
+    float:right;
+    padding:6px;
+    margin-right:15px;
+    cursor:pointer;
+}
+.closeWrapper span:hover{
+    color: #efefef;
+}
+#courseListItemWrapper{
+    overflow-y: auto;
+    width:95%;
+    height:85%;
+    margin-top:10px;
+}
+#courseListItem{
+    margin: 6px 6px 6px 20px;
+    padding:6px;
 
+}
+#courseListItem li{
+
+        margin:3px;
+}
+#courseListItem li a{
+    display: block;
+    cursor: pointer;
+    color:#fff;
+    padding:3px;
+}
+#courseListItem li a:hover{
+    background-color: #3c3c3c;
+}
+
+.col-md-4{
+    position: relative;
+    overflow:hidden;
+}
 @media (max-width: 767px) {
 
   .carousel {

@@ -91,39 +91,42 @@ public class QuestionBeanProcessor {
 							questionDocument.setQuestionType(cellValue);							
 							break;
 						case 4:
-							questionDocument.setQuestionCategory(cellValue);
+							questionDocument.setQuestionSubType(cellValue);							
 							break;
 						case 5:
+							questionDocument.setQuestionCategory(cellValue);
+							break;
+						case 6:
 							questionDocument.setOptionType(cellValue);
 							break;
 							
-						case 6:
+						case 7:
 							questionDocument.setIsPassage(cellValue);
 							break;
-						case 7:
+						case 8:
 							questionDocument.setPassageSheetName(cellValue);
 							passageQuestionSheet = cellValue;
 							break;
-						case 8:
+						case 9:
 							questionDocument.setPassage(cellValue);
 							break;
-						case 9:
+						case 10:
 							questionDocument.setIsGraph(cellValue);							
 							break;
-						case 10:
+						case 11:
 							questionDocument.setPassageQuestionCount(cellValue);
 							break;
-						case 11:
+						case 12:
 							questionDocument.setHasImage(cellValue);
 							break;
 							
-						case 12:
+						case 13:
 							questionDocument.setImagePath(cellValue);
 							break;
-						case 13:
+						case 14:
 							questionDocument.setToughnessLevel(cellValue);
 							break;
-						case 14:
+						case 15:
 							questionDocument.setTimeAllowed(cellValue);							
 							break;
 						
@@ -187,6 +190,12 @@ public class QuestionBeanProcessor {
 			returnVal = cell.getStringCellValue();
 		} else {
 			returnVal = cell.getStringCellValue();
+		}
+		
+		if(returnVal!=null){
+			returnVal=returnVal.trim();
+		}else{
+			returnVal="";
 		}
 		return returnVal;
 	}

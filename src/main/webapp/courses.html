@@ -44,7 +44,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-					<li><a class="btn btn-lg btn-primary pull-right" id="signUp" href="exam.html#/examHome">Sign in</a></li>
+					<li><a class="btn btn-lg btn-primary pull-right" id="signUp" href="#">Sign in</a></li>
                     <li><a href="about.html">About</a>
                     </li>
                     <li><a href="courses.html">Courses</a>
@@ -61,6 +61,25 @@
     </nav>
 
 
+    <div id="socialLink">
+        <img src="img/socialLink.png" alt="social link"/>
+        <div class="socialLinkToggle">
+            <ul class="socialIcon">
+                <li class="google" title='Google'>Google</li>
+                <li class="facebook" title='Facebook'>Facebook</li>
+                <li class="linkedIn" title='LinkedIn'>LinkedIn</li>
+                <li class="yahoo" title='Yahoo'>Yahoo</li>
+                <li class="windows" title='Windows'>Windows</li>
+                <li class="github" title='GitHub'>GitHub</li>
+                <li class="twitter" title='Twitter'>Twitter</li>
+                <li class="dropBox" title='DropBox'>DropBox</li>
+                <li class="instagram" title='Instagram'>Instagram</li>
+                <li class="soundcloud" title='Soundcloud'>Soundcloud</li>
+                <li class="foursquare" title='Foursquare'>Foursquare</li>
+                <li class="flickr" title='Flickr'>Flickr</li>
+            </ul>
+        </div>
+    </div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -142,9 +161,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  
+
 		<script type="text/javascript">
   WebFontConfig = {
     google: { families: [ 'Roboto:400,900,700italic,700,500,100italic,100:latin', 'Oswald:400,700,300:latin' ] }
@@ -158,8 +175,11 @@
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wf, s);
   })(); </script>
-	 <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="lib/jquery/jquery-1.11.0.min.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/helloJs/hello.js"></script>
+
+    <script src="js/services/authenticationService.js"></script>
     <script src="js/custom.js"></script>
   </body>
 </html>

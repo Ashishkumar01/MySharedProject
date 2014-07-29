@@ -18,7 +18,7 @@
 		        Questions Uploaded
 		    </div>
 		    <div class="panel-body">
-		        <div ng-class="{'btn btn-mini':$index!=currentPage,'btn btn-mini btn-info': $index==currentPage}" ng-click="setPage($index)" 
+		        <div ng-class="{'btn btn-mini bth-default':$index!=currentPage,'btn btn-mini btn-info': $index==currentPage}" ng-click="setPage($index)" 
 				 ng-repeat="questiontab in uploadQuestions">
 				 	Page {{$index+1}}
 				 </div> 
@@ -42,9 +42,9 @@
 									<div class="col-md-1"> <input type="checkbox" ng-model="question.options[$index].correct"> </div>
 									<div class="col-md-10"> <div ckeditor contenteditable="true" ng-model="question.options[$index].optionValue"></div> </div>
 								</div>
-							</div>			
-						</div>
-		                <hr/>
+							</div>
+							<hr/>			
+						</div>		                
 		            </div>
 		        </div>
 		

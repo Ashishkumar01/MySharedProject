@@ -4,7 +4,7 @@ self.addEventListener('message', function(e) {
     var data = e.data;
     //get question from json
     var tempQuestion= {};
-    load('../../../data/questiondir/question_'+data.questionId+'.json', function(xhr) {
+    load('../../../data/questiondir/Question_'+data.questionId+'.json', function(xhr) {
         console.log('questionResponse.....:'+xhr.responseText);
         var thisQuestion=JSON.parse(xhr.responseText);
         tempQuestion= {};
@@ -17,10 +17,12 @@ self.addEventListener('message', function(e) {
 
         //should be last addition in question object as passage includes cloning of above setups
         console.log('isPassage: '+thisQuestion.isPassage);
+        console.log('data.questionId: '+data.questionId);
         if(thisQuestion.isPassage=='Y'){
             tempQuestion.direction=thisQuestion.passage;
             var passageQuestion={};
             for(var j=0; j<thisQuestion.questions.length; j++){
+            	console.log('Creating question from Passage : '+j);
                 //copy all above fields
                 passageQuestion=tempQuestion;
                 passageQuestion.statement=thisQuestion.questions[j].questionStatement;
@@ -41,15 +43,15 @@ self.addEventListener('message', function(e) {
                 self.postMessage(passageQuestion);
             }
         }else{
-            tempQuestion.statement=thisQuestion.questionStatement;
+            tempQuestion.statement=thisQuestion.questions[0].questionStatement;
             console.log('tempQuestion.statement: '+tempQuestion.statement);
 
             tempQuestion.options=[];
-            console.log('thisQuestion.options: '+thisQuestion.options);
-            console.log('thisQuestion.options.length: '+thisQuestion.options.length);
-            for(var j=0; j<thisQuestion.options.length; j++){
-                tempQuestion.options.push(thisQuestion.options[j].optionValue);
-                if(thisQuestion.options[j].correct){
+            console.log('thisQuestion.options: '+thisQuestion.questions[0].options);
+            console.log('thisQuestion.options.length: '+thisQuestion.questions[0].options.length);
+            for(var j=0; j<thisQuestion.questions[0].options.length; j++){
+                tempQuestion.options.push(thisQuestion.questions[0].options[j].optionValue);
+                if(thisQuestion.questions[0].options[j].correct){
                     if(tempQuestion.correct_option){
                         tempQuestion.correct_option=","+j;
                     }else{
@@ -103,6 +105,6 @@ function load(url, callback) {
         }
     }
 
-    xhr.open('GET', url, true);
+    xhr.open('GET', url, false);
     xhr.send('');
 }
