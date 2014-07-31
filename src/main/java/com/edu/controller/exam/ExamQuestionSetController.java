@@ -64,17 +64,19 @@ public class ExamQuestionSetController{
 			/*convert dtls to below format
 			 * "subject":"Quantitative Aptitude","start_number":0,"end_number":9,"active": true,"linked_questions": "0,1,2"
 			 * */
+			int questionNo=1;
 			for(int i=0; i<tempDtlList.size(); i++){
+				questionNo=i+1;
 				tempDtl=tempDtlList.get(i);
 				if(tempMap.containsKey(tempDtl.getSubject())){
 					ExamSetDtl tempSetDtl=tempMap.get(tempDtl.getSubject());
-					tempSetDtl.setEndIndex(i);
-					tempSetDtl.setLinkedQuestions(tempSetDtl.getLinkedQuestions()+","+i);					
+					tempSetDtl.setEndIndex(questionNo);
+					tempSetDtl.setLinkedQuestions(tempSetDtl.getLinkedQuestions()+","+questionNo);					
 				}else{
 					ExamSetDtl tempSetDtl=new ExamSetDtl();
-					tempSetDtl.setStartIndex(i);
-					tempSetDtl.setEndIndex(i);
-					tempSetDtl.setLinkedQuestions(""+i);
+					tempSetDtl.setStartIndex(questionNo);
+					tempSetDtl.setEndIndex(questionNo);
+					tempSetDtl.setLinkedQuestions(""+questionNo);
 					tempSetDtl.setSubject(tempDtl.getSubject());
 					tempSetDtl.setActive(true);
 					tempSetDtl.setExamSet(examSet);

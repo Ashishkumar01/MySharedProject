@@ -35,6 +35,9 @@ public class QuestionDocument {
 	@Column(name="question_type", nullable=false)
 	private String questionType;
 	
+	@Column(name="question_sub_type", nullable=true)
+	private String questionSubType;
+	
 	@Column(name="question_category", nullable=false)
 	private String questionCategory;
 	
@@ -209,6 +212,14 @@ public class QuestionDocument {
 
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
+	}
+
+	public String getQuestionSubType() {
+		return questionSubType;
+	}
+
+	public void setQuestionSubType(String questionSubType) {
+		this.questionSubType = questionSubType;
 	}
 	
 	

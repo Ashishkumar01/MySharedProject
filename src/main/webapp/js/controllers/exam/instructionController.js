@@ -20,6 +20,7 @@ console.log("$routeParams.id::"+ $routeParams.id)
 	      for(var i=0; i<data.examSetDetails.length;i++){
 	    	  data.examSetDetails[i].linkedQuestions=data.examSetDetails[i].linkedQuestions.split(',');
 	      }
+	      
 	      $rootScope.currentExam  = data;
 	      console.log('Final current exam data:\n'+JSON.stringify($rootScope.currentExam));
 	      
