@@ -269,7 +269,22 @@ background-position: -506px 0}
     text-align: center;
     font-size:10px;
 }
+#exam .userName{
+    color:#00FF00;
+    font-size:24px;
+    font-weight: bold;
+}
+#exam .btn-success{
+    background: #82fc00; /* Old browsers */
+    background: -moz-linear-gradient(top,  #82fc00 0%, #64db29 25%, #80e825 75%, #4ee524 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#82fc00), color-stop(25%,#64db29), color-stop(75%,#80e825), color-stop(100%,#4ee524)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #82fc00 0%,#64db29 25%,#80e825 75%,#4ee524 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #82fc00 0%,#64db29 25%,#80e825 75%,#4ee524 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #82fc00 0%,#64db29 25%,#80e825 75%,#4ee524 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #82fc00 0%,#64db29 25%,#80e825 75%,#4ee524 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82fc00', endColorstr='#4ee524',GradientType=0 ); /* IE6-9 */
 
+}
 #timer{
     font-size:30px;
     font-weight:bold;

@@ -71,8 +71,10 @@ IndexModule.controller("examController", function($rootScope,$scope,$http,$locat
 //Added by PK
     $scope.isAdminLinks = true;
     if($.cookie("providerJSON")){
-        $scope.thumbnail = JSON.parse($.cookie("providerJSON")).thumbnail
-        console.log("$scope.thumbnail:::::::::::::::::"+$scope.thumbnail)
+        var userProfileObject =JSON.parse($.cookie("providerJSON"))
+        console.log(userProfileObject)
+        $scope.thumbnail = userProfileObject.thumbnail
+        $scope.userName = userProfileObject.name;
     }
 
 });
