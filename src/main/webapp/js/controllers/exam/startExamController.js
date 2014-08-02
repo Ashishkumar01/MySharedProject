@@ -1,6 +1,20 @@
 'use strict';
 
 IndexModule.controller("startExamController", function($rootScope,$scope,$http,$sce,$location,$window,examsService) {
+    //added by PK;
+    if(!$.cookie("providerJSON")){
+        alert("Either you have used the browser back button or you have submitted your test. You will be redirecting to home page!!!");
+       var checkCookie= setInterval(function(){
+            if(btnClicked && isOk){
+                logOut();
+           clearInterval(checkCookie)
+                window.location="index.html"
+                //$(".ounterLink:first").trigger("click")
+            }
+
+        })
+
+    }
     $scope.currentQuestionNumber=0;
     var countDownInterval=null;
     $rootScope.questionCount=0;
@@ -30,7 +44,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $scope.currentQuestionNumber++;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
         activateRespectiveTab();
-        
+
         $scope.currentQuestionStartTime=new Date();
     }
 
@@ -39,7 +53,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $scope.currentQuestionNumber--;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
         activateRespectiveTab();
-        
+
         $scope.currentQuestionStartTime=new Date();
     }
 
@@ -49,7 +63,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     $scope.setThisQuestion=function(index){
         $scope.currentQuestionNumber=index;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
-        
+
         $scope.currentQuestionStartTime=new Date();
     }
 
@@ -58,7 +72,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $scope.currentQuestionNumber=data;
         $scope.currentQuestion=$rootScope.questions[$scope.currentQuestionNumber];
         activateRespectiveTab();
-        
+
         $scope.currentQuestionStartTime=new Date();
     });
 
@@ -132,6 +146,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
 
             	clearInterval(countDownInterval);
                 submitPage();
+                $.cookie("providerJSON","")
                 clearInterval(submitTest)
 
             }
@@ -140,6 +155,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
 
         }
     }
+
 
     /**
      * Actually submits the page
@@ -155,7 +171,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         	questionStats.userId='singhcl';
         	questionStats.examDate=getDateTime();
         	questionStats.attemptNo=1;
-        	
+
         	questionStats.moduleName=getModuleName(j);
         	questionStats.questionId="question_"+j;
         	questionStats.isCorrect='N';
@@ -163,7 +179,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         	questionStats.correctAnswer=$rootScope.questions[j].correct_option;
         	questionStats.score=0;
         	questionStats.timeTaken="00:00:00";
-        	
+
             if($rootScope.questions[j].user_selected_option!='-1'){
                 totalAttempted++;
                 if($rootScope.questions[j].user_selected_option==$rootScope.questions[j].correct_option){
@@ -177,23 +193,23 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
                 }
                 questionStats.timeTaken=$rootScope.questions[j].timeTaken;
             }
-            
+
             questionStatsList.push(questionStats);
         }
         $rootScope.currentExam.total_questions_attempted=totalAttempted;
         $rootScope.currentExam.total_questions_correct=totalCorrect;
-        
+
         if($rootScope.currentExam.is_negative_marks_applicable){
         	$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correct_marks-(totalAttempted-totalCorrect)*$rootScope.currentExam.negativeMarks;
     	}else{
     		$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correctMarks;
-    	}        
+    	}
         $rootScope.currentExam.total_time_taken=findTimeDifference(testStartTime,testFinishTime);
 
         //update modal & save in DB
         saveExamStats(questionStatsList);
     }
-    
+
     /**
      * persist the exam report in DB
      */
@@ -213,41 +229,41 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     	examStats.totalTimeTaken=$rootScope.currentExam.total_time_taken;
     	if($rootScope.currentExam.credit_required && $rootScope.currentExam.credit_required!=""){
     		examStats.credits=$rootScope.currentExam.credit_required;
-    	}    	
-    	
+    	}
+
     	var examReport={};
     	examReport.examScore=examStats;
     	examReport.examStatList=questionStatsList;
-    	
+
     	$http({method: 'POST', url: 'rest/exam/save', data:examReport}).
         success(function(data, status, headers, config) {
-          console.log('exam save successfully. Status:'+status);          
+          console.log('exam save successfully. Status:'+status);
           $location.path("/submitExam");
         }).
         error(function(data, status, headers, config) {
         	console.log('exam save failed. Status:'+status);
         	$location.path("/submitExam");
         });
-    	
+
     }
-    
+
     function getDateTime(){
     	// For todays date;
-    	Date.prototype.today = function () { 
+    	Date.prototype.today = function () {
     	    return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
     	}
     	// For the time now
     	Date.prototype.timeNow = function () {
     	     return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
     	}
-    	
+
     	return new Date().today() + " " + new Date().timeNow();
     }
 
     $scope.renderHtml = function (htmlCode) {
         return $sce.trustAsHtml(htmlCode);
     };
-    
+
     /**
      * finds module name for the selected question
      */
@@ -259,7 +275,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
             }
         }
     };
-    
+
     function findQuestionAttemptTimeDifference(inTime, outTime){
         var diffInMs = outTime - inTime,hrElement='',mintElement='',scndElement='',
             diffInSecs = Math.round( diffInMs / 1000 ),
