@@ -42,16 +42,6 @@ function login(provider){
 
 function getLoginStatus(){
     if(checkAuthenticationStatus().length != 0){
-        $("#signUp")
-            .off("click")
-            .html("Logout")
-            .attr("id","logout")
-            .on("click", function(e){
-                e.preventDefault();
-                openState= false;
-                logOut();
-
-            })
 
         if(openState){
             console.log("inside open state")
@@ -64,11 +54,24 @@ function getLoginStatus(){
             if($.cookie("doNotAskMeAgain")){
                 window.location= "courses.html"
             }else{
-                centerDiv(".popup");
-                $("#redirectCallToAction").show()
-                $(".popup .socialIcon,.socialLinkToggle p:first").hide();
+                if(!$("#logout").length){
+                    centerDiv(".popup");
+                    $("#redirectCallToAction").show()
+                    $(".popup .socialIcon,.socialLinkToggle p:first").hide();
+                }
             }
         }
+        $("#signUp")
+            .off("click")
+            .html("Logout")
+            .attr("id","logout")
+            .on("click", function(e){
+                e.preventDefault();
+                openState= false;
+                logOut();
+
+            })
+
     }
 }
 
@@ -147,11 +150,16 @@ function getUserDetails(parameter){
     var currentProviders    = checkAuthenticationStatus();
 //validate the parameters
     if(currentProviders != null){
+
         for(var i =0; i<currentProviders.length; i ++){
             hello(currentProviders[i]).api(parameter).success(function (json){
                 loginDetais=json;
                 getLoginStatus();
+                if(!$.cookie("providerJSON")){
+
                 $.cookie("providerJSON", JSON.stringify(loginDetais))
+                    console.log("inauthentication::" +$.cookie("providerJSON") )
+                }
                 return  loginDetais;
             }).error(function(){
 

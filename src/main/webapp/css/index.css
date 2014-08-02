@@ -293,6 +293,15 @@ background-position: -506px 0}
     font-size: 18px;
 
 }
+#exam #loginLink{
+    margin-top:100px;
+    height:100%;
+    text-align:center;
+}
+#exam #loginLink .btn{
+    width:60%;
+    padding:40px;
+}
 /* News and Views */
 .sidenav{
     background-color:#fff;

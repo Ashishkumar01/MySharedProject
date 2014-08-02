@@ -31,7 +31,9 @@ IndexModule.controller("indexController", function($rootScope,$scope, $window) {
         });
 
     });*/
-
+if(!$.cookie("providerJSON")){
+    getUserDetails("me")
+}
     $scope.navigatorBar=function(){
         return "partials/navigationbar.html";
     };
