@@ -30,6 +30,24 @@ IndexModule.controller("examController", function($rootScope,$scope,$http,$locat
         });
 
     });
+    //added by PK
+    $(".outerLink").on('click', function(e){
+        e.preventDefault();
+        var currentLink = $(this).attr("href");
+        informUserAboutLogout(currentLink)
+    })
+    function informUserAboutLogout(redirectionLink){
+
+        alert("Are you sure you wish to move out from this section, To revisit you need to login once again!!! :confirmMsg");
+        var informUser = setInterval(function(){
+            if(btnClicked && isOk){
+                logOut()
+                clearInterval(informUser)
+                window.location = redirectionLink;
+            }
+
+        },100)
+    }
 
     $rootScope.template={'url':'partials/exam/partial_examlist.html'};
 
@@ -50,9 +68,12 @@ IndexModule.controller("examController", function($rootScope,$scope,$http,$locat
         $location.path(path);
     };
 
-
+//Added by PK
     $scope.isAdminLinks = true;
-
+    if($.cookie("providerJSON")){
+        $scope.thumbnail = JSON.parse($.cookie("providerJSON")).thumbnail
+        console.log("$scope.thumbnail:::::::::::::::::"+$scope.thumbnail)
+    }
 
 });
 

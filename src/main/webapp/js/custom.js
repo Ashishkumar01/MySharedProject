@@ -11,6 +11,7 @@ var openState= false;
 var isHomePage = false;
 
 if(checkAuthenticationStatus().length != 0){
+//console.log($.cookie("providerJSON"))
     $("#signUp")
         .off("click")
         .html("Logout")
@@ -19,6 +20,7 @@ if(checkAuthenticationStatus().length != 0){
             e.preventDefault();
             openState=false;
             logOut();
+            logOutRoutine();
         })
     if($("#home").length){
         isHomePage = true;
@@ -38,6 +40,7 @@ if(checkAuthenticationStatus().length != 0){
         .html("Sign in")
         .attr("id","signUp")
         .on("click", function(e){
+            logOutRoutine();
             e.preventDefault();
             if($("#home").length){
             isHomePage = true;
@@ -54,8 +57,13 @@ if(checkAuthenticationStatus().length != 0){
             }
         })
     $("#socialLink").show()
+    logOutRoutine();
 
-
+}
+function logOutRoutine(){
+    if($("#exam").length){
+        window.location= "index.html"
+    }
 }
 $("#socialLink img").bind("click", function(){
 	if(openState== false){

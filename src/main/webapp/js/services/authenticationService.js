@@ -16,7 +16,7 @@
  **/
 
 var listOfProviders     =   ["google", "facebook"];     //Add new providers in this array
-
+var loginDetais = null;
 var GOOGLE_CLIENT_ID    =  "554103276018-sc8i6m4161gv9ambbna7q0g55sn3rdqi.apps.googleusercontent.com";
 var FACEBOOK_CLIENT_ID    =  '';
 
@@ -37,36 +37,39 @@ function initializeHello(){
 function login(provider){
     var providerName = provider.toString().toLowerCase();   //Convert to lower case as the helloJS API requires lower case name
     initializeHello();
-    hello(providerName).login({force: false}, function(){
-        if(checkAuthenticationStatus().length != 0){
-            $("#signUp")
-                .off("click")
-                .html("Logout")
-                .attr("id","logout")
-                .on("click", function(e){
-                    e.preventDefault();
-                    openState= false;
-                    logOut();
-                 })
+    hello(providerName).login({force: false},getUserDetails);
+}
 
-            if(openState){
-                console.log("inside open state")
-                $("#socialLink").trigger("click").hide()
-            }
+function getLoginStatus(){
+    if(checkAuthenticationStatus().length != 0){
+        $("#signUp")
+            .off("click")
+            .html("Logout")
+            .attr("id","logout")
+            .on("click", function(e){
+                e.preventDefault();
+                openState= false;
+                logOut();
 
-            $(".testLoginActive").trigger("click")
-            $("#overlay, .popup").hide();
-            if(!$("#course").length){
-                if($.cookie("doNotAskMeAgain")){
-                        window.location= "courses.html"
-                }else{
-                    centerDiv(".popup");
-                    $("#redirectCallToAction").show()
-                    $(".popup .socialIcon,.socialLinkToggle p:first").hide();
-                }
+            })
+
+        if(openState){
+            console.log("inside open state")
+            $("#socialLink").trigger("click").hide()
+        }
+
+        $(".testLoginActive").trigger("click")
+        $("#overlay, .popup").hide();
+        if(!$("#course").length){
+            if($.cookie("doNotAskMeAgain")){
+                window.location= "courses.html"
+            }else{
+                centerDiv(".popup");
+                $("#redirectCallToAction").show()
+                $(".popup .socialIcon,.socialLinkToggle p:first").hide();
             }
         }
-    });
+    }
 }
 
 
@@ -87,6 +90,7 @@ function checkAuthenticationStatus(){
 function logOut(){
 //Find the authentication provider and logout from all provider network
     var currentProviders    = checkAuthenticationStatus();
+    $.cookie("providerJSON","");
     for(var i =0; i<currentProviders.length; i ++){
         hello.logout(currentProviders[i], {force:false}, function(){
             $("#logout")
@@ -106,8 +110,11 @@ function logOut(){
                             isHomePage = false;
                         }
                         centerDiv(".popup");
+                        $("#redirectCallToAction").hide()
+                        $(".popup .socialIcon,.socialLinkToggle p:first").show();
                         $("#overlay").show()
                     }
+
                 })
             $("#socialLink").show();
             $("#courseList .closeWrapper span").trigger("click")
@@ -122,7 +129,11 @@ function logOut(){
  * Returns a JSON containing the details asked for
  */
 function getUserDetails(parameter){
+
     var validQuery = ["me", "me/friends", "me/contacts", "me/followers", "me/following", "me/share"];
+    if(parameter== undefined){
+        parameter= validQuery[0];
+    }
     var correctParameter = false;
     for(var i = 0; i<validQuery.length; i++){
         if(parameter === validQuery[i]){
@@ -138,12 +149,16 @@ function getUserDetails(parameter){
     if(currentProviders != null){
         for(var i =0; i<currentProviders.length; i ++){
             hello(currentProviders[i]).api(parameter).success(function (json){
-
-                return  json;
+                loginDetais=json;
+                getLoginStatus();
+                $.cookie("providerJSON", JSON.stringify(loginDetais))
+                return  loginDetais;
             }).error(function(){
+
                     return null;
                 });
         }
+
     }
     else{
         return null;

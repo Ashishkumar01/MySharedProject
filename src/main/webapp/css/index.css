@@ -219,6 +219,7 @@ background-position: -506px 0}
 	}
 .popupInstruction{
     text-align:center;
+    max-width:300px;
 }
 .popupInstruction .btn{
     margin-right:10px;
