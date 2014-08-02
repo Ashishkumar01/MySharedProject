@@ -19,7 +19,8 @@ IndexModule.controller("UploadController", function($scope,$http,$location) {
 		
 		$http.post('rest/upload/saveQuestions.do',dataToSave).then(function (){
 			alert("Questions uploaded successfully.");
-			$location.path('/examHome');
+                $location.path('/examHome');
+
 		},
 		function(){
 			alert("Question Upload failed.");

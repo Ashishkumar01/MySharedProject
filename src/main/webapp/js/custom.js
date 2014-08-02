@@ -9,6 +9,7 @@ $('.tooltip-social').tooltip({
 })
 var openState= false;
 var isHomePage = false;
+
 if(checkAuthenticationStatus().length != 0){
     $("#signUp")
         .off("click")
@@ -126,13 +127,23 @@ $(".submit").bind("click", function(){
 	}
 	
 })
+var isOk = false;
+btnClicked = false;
 $(".popupInstruction .btn").on('click', function(){
+    btnClicked= true
 	$(this).parent().parent().hide();
 	$("#overlay").hide()
 	if($(this).hasClass("btn-primary")){
-		return true;
+        isOk = true;
+        setTimeout(function(){
+            isOk=false;
+            btnClicked=false;
+        },1000)
 	}else{
-		return false;
+        isOk =false;
+        setTimeout(function(){
+            btnClicked=false;
+        },1000)
 	}
 	
 })

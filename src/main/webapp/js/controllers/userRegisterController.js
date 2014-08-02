@@ -35,10 +35,11 @@ IndexModule.controller("userRegisterController", function($rootScope,$scope,$htt
                 console.log('User registration successful. '+data);
                 alert('Registration successful.');
                 $scope.reset();
-            }).
+                            }).
             error(function(data, status, headers, config) {
                 console.log('User registration failed. '+data);
                 alert('Registration failed.');
+
             });
 
     }

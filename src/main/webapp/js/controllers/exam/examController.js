@@ -51,7 +51,7 @@ IndexModule.controller("examController", function($rootScope,$scope,$http,$locat
     };
 
 
-
+    $scope.isAdminLinks = true;
 
 
 });

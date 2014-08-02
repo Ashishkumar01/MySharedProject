@@ -5,10 +5,12 @@ var app=angular.module('myProjectApp', ['ngSanitize','ngRoute','ui.index.control
 app.run(function($window){
 
     $window.alert = function(alertText) {
+
         var message = $('<p />', { text: alertText }),
             ok = $('<button />', { text: 'Ok', 'class': 'full' });
 
-        dialogue( message.add(ok), 'Alert!' );
+        //dialogue( message.add(ok), 'Alert!' );
+        dialogue( alertText );
     }
 
     /*$window.confirm = function(confirmText,callback) {
@@ -25,8 +27,8 @@ app.run(function($window){
         dialogue( message.add(ok).add(cancel), 'Do you agree?' );
     }*/
 
-    function dialogue(content, title) {
-        $('<div />').qtip({
+    function dialogue(content) {
+       /* $('<div />').qtip({
             content: {
                 text: content,
                 title: title
@@ -52,7 +54,17 @@ app.run(function($window){
                 },
                 hide: function(event, api) { api.destroy(); }
             }
-        });
+        });*/
+        centerDiv(".popupInstruction");
+        $("#alertMsg").html("")
+
+
+        if(content.indexOf(":confirmMsg") !== -1){
+            $(".popupInstruction .btn-default").show()
+        }else{
+            $(".popupInstruction .btn-default").hide()
+        };
+        $("#alertMsg").html(content.replace(":confirmMsg",""))
     }
 });
 

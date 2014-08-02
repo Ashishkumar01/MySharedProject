@@ -55,8 +55,12 @@
                 </li>
                 <li><a href="newsandviews.html">News and views</a>
                 </li>
-                <li><a href="#/upload">Upload Questions</a></li>
-                <li><a href="#/examset">Exam Set</a></li>
+                <li ng-show="isAdminLinks">
+                    <ul class="nav navbar-nav" ng-show="isAdminLinks">
+                        <li><a href="#/upload">Upload Questions</a></li>
+                        <li><a href="#/examset">Exam Set</a></li>
+                    </ul>
+                </li>
                 <li><a href="contact.html">Contact us</a>
                 </li>
             </ul>
@@ -102,7 +106,16 @@
     <div class="ui-layout-east">
         <div ng-include src="template.url"></div>
     </div>
+<div class="popupInstruction">
+    <div class="closeWrapper">
+        <span class="close">X</span>
+    </div>
+    <p id="alertMsg"> Do you want to submit the test</p>
+    <p><a class="btn btn-primary"> OK </a><a class="btn btn-default"> Cancel</a>
+        </ul>
 
+</div>
+<div id="overlay"></div>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/ckeditor/ckeditor.js"></script>
     <script src="lib/ckeditor/adapters/jquery.js"></script>

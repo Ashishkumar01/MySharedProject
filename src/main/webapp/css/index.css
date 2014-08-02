@@ -208,7 +208,7 @@ background-position: -40px -74px}
 .flickr{
 background-position: -506px 0}
 /* Responsive Styles */
-.popup{
+.popup,.popupInstruction{
 	padding:20px;
 	background:#fff;
 	border:1px solid #666;
@@ -217,6 +217,12 @@ background-position: -506px 0}
 	z-index:10000;
 	display:none;
 	}
+.popupInstruction{
+    text-align:center;
+}
+.popupInstruction .btn{
+    margin-right:10px;
+}
 #overlay{
 	width:100%;
 	height:100%;

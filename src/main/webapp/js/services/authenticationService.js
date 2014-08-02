@@ -138,6 +138,7 @@ function getUserDetails(parameter){
     if(currentProviders != null){
         for(var i =0; i<currentProviders.length; i ++){
             hello(currentProviders[i]).api(parameter).success(function (json){
+
                 return  json;
             }).error(function(){
                     return null;

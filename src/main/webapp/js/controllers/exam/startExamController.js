@@ -122,13 +122,22 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
      * submit the test
      */
     $scope.submitTest=function(submitType){
+
         if(submitType){
             submitPage();
         } else {
-            if($window.confirm('Do you want to submit the test?')){
+            alert('Do you want to submit the test? :confirmMsg')
+            var submitTest =setInterval(function(){
+            if(btnClicked && isOk){
+
             	clearInterval(countDownInterval);
                 submitPage();
+                clearInterval(submitTest)
+
             }
+            },100)
+
+
         }
     }
 
@@ -401,9 +410,9 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
 
     function countDownOnComplete() {
         console.log('Countdown timer has completed!');
-        $window.alert('Time allowed has expired. Test will be submitted now.');
-        $scope.submitTest(true);
-    }
+                $window.alert('Time allowed has expired. Test will be submitted now.');
+                 $scope.submitTest(true);
+        }
 
 
 

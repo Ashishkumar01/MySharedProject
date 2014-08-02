@@ -69,7 +69,8 @@ IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$lo
 	    .success(function(data, status, headers, config) {
 	      console.log('Set saved successfully:'+data);
 	      alert('Exam Set saved successfully.');
-	      $location.path('/examHome');
+          $location.path('/examHome');
+
 	    })
 	    .error(function(data, status, headers, config) {
 	    	console.log('set save failed. Status:'+status);
@@ -87,7 +88,8 @@ IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$lo
 			if(($scope.totalQuestionsMarked+parseInt(question.passageQuestionCount))>$scope.totalQuestions){
 				$scope.questionsSelected[question.id]=false;
 				alert('Can not select more questions as set is complete.');
-				return;	
+                return;
+
 			}
 			$scope.totalQuestionsMarked=$scope.totalQuestionsMarked + parseInt(question.passageQuestionCount);
 			if(elementPosition==-1){
