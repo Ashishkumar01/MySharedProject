@@ -1,8 +1,11 @@
 'use strict';
 
 IndexModule.controller("examController", function($rootScope,$scope,$http,$location,examsService) {
+    $scope.beginExamClickedFunc= function(){
+        $scope.beginExamClicked= true;
+    }
     $(function(){
-        $('body').layout({
+/*        $('body').layout({
             closable:					true
             ,	resizable:					true
             ,	slidable:					true	// when closed, pane can 'slide' open over other panes - closes on mouse-out
@@ -27,10 +30,11 @@ IndexModule.controller("examController", function($rootScope,$scope,$http,$locat
 
             ,	stateManagement__enabled:	false // automatic cookie load & save enabled by default
             ,	showDebugMessages:			true // log and/or display messages from debugging & testing code
-        });
+        });*/
 
     });
     //added by PK
+    $scope.beginExamClicked = false;
     $(".outerLink").on('click', function(e){
         e.preventDefault();
         var currentLink = $(this).attr("href");

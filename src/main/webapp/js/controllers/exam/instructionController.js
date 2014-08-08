@@ -3,6 +3,7 @@
 IndexModule.controller("instructionController", function($rootScope,$scope,$location,$http,$routeParams,examsService) {
     $rootScope.template.url='partials/exam/partial_thumbnail.html';
     $scope.agreementDone=false;
+
 console.log("$routeParams.id::"+ $routeParams.id)
     //gets current exam set
     if($routeParams.id){
@@ -35,6 +36,20 @@ console.log("$routeParams.id::"+ $routeParams.id)
 	    .error(function(data, status, headers, config) {
 	    	console.log('current exam data fetch failed. Status:'+status);
 	    });
+    }else{
+        if($scope.beginExamClicked ==false){
+            alert("Either you have used the browser back button or you have submitted your test. You will be redirecting to home page!!!");
+            var checkCookie= setInterval(function(){
+                if(btnClicked && isOk){
+                    logOut();
+                    clearInterval(checkCookie)
+                    window.location="index.html"
+                    //$(".ounterLink:first").trigger("click")
+                }
+
+            })
+
+        }
     }
 
     $scope.close=function(){
@@ -43,11 +58,13 @@ console.log("$routeParams.id::"+ $routeParams.id)
     }
 
     $scope.reviewQuestions=function(){
+        $scope.beginExamClicked = true
         $location.path('/reviewQuestions');
     }
     
     $scope.viewReports=function(){
-    	$location.path('/viewReports');
+        $scope.beginExamClicked = true
+        $location.path('/viewReports');
     }
 
 });

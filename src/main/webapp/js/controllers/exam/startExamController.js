@@ -1,8 +1,10 @@
 'use strict';
 
 IndexModule.controller("startExamController", function($rootScope,$scope,$http,$sce,$location,$window,examsService) {
+
     //added by PK;
-    if(!$.cookie("providerJSON")){
+
+    if(!$.cookie("providerJSON") || $scope.beginExamClicked ==false){
         alert("Either you have used the browser back button or you have submitted your test. You will be redirecting to home page!!!");
        var checkCookie= setInterval(function(){
             if(btnClicked && isOk){
@@ -15,6 +17,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         })
 
     }
+    $scope.beginExamClicked = false;
     $scope.currentQuestionNumber=0;
     var countDownInterval=null;
     $rootScope.questionCount=0;
@@ -161,6 +164,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
      * Actually submits the page
      */
     function submitPage(){
+        $scope.beginExamClicked = true;
         var testFinishTime=new Date();
         var totalAttempted= 0,totalCorrect=0;
         var questionStatsList=[];
@@ -430,7 +434,11 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
                  $scope.submitTest(true);
         }
 
+    var myScroll;
+    myScroll = new IScroll('#exam .ui-layout-east', { mouseWheel: true });
 
+
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
 });
 

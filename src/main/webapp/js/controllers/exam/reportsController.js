@@ -4,7 +4,21 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     $rootScope.template.url='partials/exam/partial_thumbnail.html';
     $scope.examStats={};
     $scope.currentActiveTab='#scoreCard';
+    //Added by PK
 
+    if($scope.beginExamClicked ==false){
+        alert("Either you have used the browser back button or you have submitted your test. You will be redirecting to home page!!!");
+        var checkCookie= setInterval(function(){
+            if(btnClicked && isOk){
+                logOut();
+                clearInterval(checkCookie)
+                window.location="index.html"
+                //$(".ounterLink:first").trigger("click")
+            }
+
+        })
+
+    }
     $http({method: 'GET', url: 'rest/exam/report/1/1'})
     .success(function(data, status, headers, config) {
       console.log('exam data fetched:'+data);

@@ -79,6 +79,17 @@ $("#socialLink img").bind("click", function(){
 	}
 
 })
+var openStateExam = false;
+$("#examNavi").bind("click", function(){
+    if(openStateExam== false){
+        $(this).animate({right:"0"},'fast');
+        $(this).next().animate({right:"-20%"},'fast',function(){openStateExam = true});
+    }else{
+        $(this).animate({right:"20%"},'fast');
+        $(this).next().animate({right:"0"},'fast',function(){openStateExam = false});
+    }
+
+})
 
 $("#signUp").on("click", function(e){
 	e.preventDefault();
