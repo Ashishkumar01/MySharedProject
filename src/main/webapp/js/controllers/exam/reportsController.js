@@ -81,11 +81,13 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     
     $('#reportTab a').click(function (e) {
     	  e.preventDefault()
-    	  $(this).tab('show');    	  
-    	  $(".tab-pane").each(function(){
-    		  $(this).removeClass('active');
-    	  });
-    	  $('#'+this.className).addClass('active');    	  
+        if($(this).attr("id")!== "myTabDrop1"){
+              $(this).tab('show');
+              $(".tab-pane").each(function(){
+                  $(this).removeClass('active');
+              });
+              $('#'+this.className).addClass('active');
+        }
     })
 
 });
