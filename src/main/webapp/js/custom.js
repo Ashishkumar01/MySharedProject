@@ -14,7 +14,7 @@ if(checkAuthenticationStatus().length != 0){
 //console.log($.cookie("providerJSON"))
     if(!$.cookie("providerJSON")){
         console.log("reached provider on load")
-getUserDetails("me")
+        getUserDetails("me")
     }
     $("#signUp")
         .off("click")

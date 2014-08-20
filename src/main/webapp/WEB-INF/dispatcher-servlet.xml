@@ -58,6 +58,17 @@
           class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
           	<property name="driverClass" value="org.h2.Driver"></property>
           	<property name="jdbcUrl" value="jdbc:h2:file:D:/H2/test;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090;USER=admin;PASSWORD=admin"></property>
+    </bean>
+    
+    <bean id="jacksonMessageConverter"
+        class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+    <bean
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jacksonMessageConverter" />
+            </list>
+        </property>
     </bean>    
 		
     <bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper"></bean>

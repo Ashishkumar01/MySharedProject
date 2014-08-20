@@ -71,11 +71,6 @@ app.run(function($window){
 app.config(['$routeProvider','$locationProvider',function( $routeProvider,$locationProvider) {
     //$locationProvider.html5Mode(true);
 
-    $routeProvider.when('/examHome', {
-        templateUrl: 'partials/login/partial_login.html',
-        controller: 'loginController'
-    });
-
     $routeProvider.when('/showInstruction/:id', {
             templateUrl: 'partials/exam/partial_instruction.html',
             controller: 'instructionController'
@@ -104,6 +99,11 @@ app.config(['$routeProvider','$locationProvider',function( $routeProvider,$locat
     $routeProvider.when('/examset', {
         templateUrl: 'partials/exam/partial_examset.html',
         controller: 'ExamsetController'
+    });
+
+    $routeProvider.when('/mapUser', {
+        templateUrl: 'partials/login/partial_mapusertoset.html',
+        controller: 'MapUserController'
     });
     
     $routeProvider.when('/viewReports', {

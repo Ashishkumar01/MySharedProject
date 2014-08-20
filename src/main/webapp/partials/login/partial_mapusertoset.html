@@ -1,0 +1,46 @@
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>User Mapping to Examsets</legend>
+
+        <!-- Search input-->
+        <div class="form-group">
+            <label class="col-sm-4 control-label" for="searchUser">Search User</label>
+            <div class="col-sm-4">
+                <input id="searchUser" ng-model="userEmail" type="search" placeholder="Search User by Email"
+                       class="form-control input-md" required>
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-primary" ng-click="searchExamMapping()">Search</button>
+            </div>
+        </div>
+        <hr/>
+        <!-- Select Multiple -->
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="selectedExamSets">Selected Examsets</label>
+                <div class="col-sm-3">
+                    <select id="selectedExamSets" class="form-control"  size="15" multiple ng-multiple="true"
+                            ng-model="mappedExamsetsKeys" ng-options="item as item.name for item in mappedExamsets"  ng-dblclick="removeThisExam()">
+                    </select>
+                </div>
+
+                <label class="col-sm-2 control-label" for="availableSets">Available Examsets</label>
+                <div class="col-sm-3">
+                    <select id="availableSets" class="form-control"  size="15" multiple ng-multiple="true"
+                            ng-model="selectedExamSets" ng-options="item as item.name for item in availableExamsets" ng-dblclick="selectThisExam()">
+                    </select>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-primary" ng-click="saveExamMapping()" >Save</button>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

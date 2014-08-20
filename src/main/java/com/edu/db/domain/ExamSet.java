@@ -1,6 +1,7 @@
 package com.edu.db.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -59,6 +61,9 @@ public class ExamSet{
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="examSet")
 	private List<ExamSetDtl> examSetDetails;
+	
+	/*@ManyToMany(fetch = FetchType.LAZY, mappedBy = "examSetList")
+	public Set<User> userList;*/
 
 	public String getName() {
 		return name;

@@ -154,6 +154,8 @@ function getUserDetails(parameter){
         for(var i =0; i<currentProviders.length; i ++){
             hello(currentProviders[i]).api(parameter).success(function (json){
                 loginDetais=json;
+                console.log('Logged in User Details: '+JSON.stringify(loginDetais));
+                saveUser(loginDetais);
                 getLoginStatus();
                 if(!$.cookie("providerJSON")){
 
@@ -173,4 +175,31 @@ function getUserDetails(parameter){
     }
 }
 
+/**
+ * saves the user in local DB for use
+ * @param user
+ */
+function saveUser(user){
+    console.log('User:'+JSON.stringify(user));
+    var userToSend={
+                        email:user.email,
+                        first_name:user.first_name,
+                        last_name:user.last_name,
+                        gender:user.gender,
+                        locale:user.locale,
+                        isActive:true
+                    };
 
+    $.ajax({
+        url: 'rest/user/register',
+        type: 'post',
+        data: JSON.stringify(userToSend),
+        contentType: "application/json",
+        success: function (data) {
+            alert('Registration successful.');
+        },
+        error:function(jqXHR, textStatus, errorThrown) {
+            alert("Registration failed.");
+        }
+    });
+}

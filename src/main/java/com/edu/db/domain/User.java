@@ -1,10 +1,17 @@
 package com.edu.db.domain;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="user") 
@@ -16,37 +23,31 @@ public class User {
 	private Long id;
 	
 	@Column(unique=true, nullable=false)
-	private String userId;
-	
-	@Column
 	private String email;
 	
-	@Column(nullable=false)
-	private String password;
-	
-	@Column(nullable=false)
-	private String firstName;
+	@Column
+	private String first_name;
 	
 	@Column
-	private String lastName;
+	private String last_name;
 	
 	@Column
-	private String phone;
-	
-	@Column
-	private String address;
-	
-	@Column
-	private String zipCode;
-	
-	@Column(nullable=false)
 	private String gender;
 	
 	@Column
-	private String sendNews;
+	private String role;
 	
 	@Column
-	private String agreement;
+	private String locale;
+	
+	@Column
+	private boolean isActive;
+	
+	/*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "user_examset", joinColumns = { 
+			@JoinColumn(name = "id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "exam_set_id", nullable = false, updatable = false) })
+	public Set<ExamSet> examSetList;*/
 
 	public Long getId() {
 		return id;
@@ -64,52 +65,20 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getLast_name() {
+		return last_name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
 	public String getGender() {
@@ -120,28 +89,37 @@ public class User {
 		this.gender = gender;
 	}
 
-	public String getSendNews() {
-		return sendNews;
+	public String getRole() {
+		return role;
 	}
 
-	public void setSendNews(String sendNews) {
-		this.sendNews = sendNews;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
-	public String getAgreement() {
-		return agreement;
+	public String getLocale() {
+		return locale;
 	}
 
-	public void setAgreement(String agreement) {
-		this.agreement = agreement;
+	public void setLocale(String locale) {
+		this.locale = locale;
 	}
 
-	public String getUserId() {
-		return userId;
+	public boolean isActive() {
+		return isActive;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 
+/*	public Set<ExamSet> getExamSetList() {
+		return examSetList;
+	}
+
+	public void setExamSetList(Set<ExamSet> examSetList) {
+		this.examSetList = examSetList;
+	}*/
+	
+	
 }

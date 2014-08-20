@@ -1,7 +1,6 @@
 package com.edu.controller.exam;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -142,6 +141,33 @@ public class ExamQuestionSetController{
 			e.printStackTrace();
 		}
 		return set;		
+	}
+	
+	/**
+	 * gets all examsets
+	 * @param examSetId
+	 * @return
+	 */
+	@RequestMapping(value = "/examsets", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Map<String,String>> getAllExamSets() {
+		System.out.println("getExamSet() request received.");
+		List<Map<String,String>> examList=new ArrayList<Map<String,String>>();
+		Map<String,String> json = null;
+		try {
+			List<ExamSet> setList=(List<ExamSet>) examSetRepo.findAll();
+			for(ExamSet exam:setList){
+				json = new HashMap<String,String>();
+				json.put("id", exam.getExamSetId().toString());
+				json.put("name", exam.getName());
+				json.put("code", exam.getCode());			
+				
+				examList.add(json);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return examList;		
 	}
 
 }
