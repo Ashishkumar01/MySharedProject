@@ -15,10 +15,11 @@
 
  **/
 
-var listOfProviders     =   ["google", "facebook"];     //Add new providers in this array
+var listOfProviders     =   ["google", "facebook", "linkedin"];     //Add new providers in this array
 var loginDetais = null;
 var GOOGLE_CLIENT_ID    =  "554103276018-sc8i6m4161gv9ambbna7q0g55sn3rdqi.apps.googleusercontent.com";
-var FACEBOOK_CLIENT_ID    =  '';
+var FACEBOOK_CLIENT_ID  =  '';
+var LINKEDIN_CLIENT_ID  = "e354e0ff-5388-4221-bd51-683f02cc7999";
 
 var OAUTH_PROXY_URL = {
     'local.knarly.com' : 'http://local.knarly.com:5500/proxy'
@@ -28,7 +29,8 @@ var OAUTH_PROXY_URL = {
 function initializeHello(){
     hello.init({
         facebook : FACEBOOK_CLIENT_ID,
-        google   : GOOGLE_CLIENT_ID
+        google   : GOOGLE_CLIENT_ID,
+        linkedin : LINKEDIN_CLIENT_ID
     },{redirect_uri:'http://localhost:8080/omoknow/index.html',oauth_proxy:OAUTH_PROXY_URL});}
 
 //        {redirect_uri:'http://localhost:63342/MySharedProject/src/main/webapp/index.html',oauth_proxy:OAUTH_PROXY_URL});}
