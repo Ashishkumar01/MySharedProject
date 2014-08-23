@@ -1,6 +1,8 @@
 'use strict';
 
 IndexModule.controller("instructionController", function($rootScope,$scope,$location,$http,$routeParams,examsService) {
+
+    if($.cookie("validAdminClick")=="ok"){
     $rootScope.template.url='partials/exam/partial_thumbnail.html';
     $scope.agreementDone=false;
 
@@ -66,7 +68,22 @@ console.log("$routeParams.id::"+ $routeParams.id)
         $scope.beginExamClicked = true
         $location.path('/viewReports');
     }
+        $.cookie("validAdminClick", false)
+    }
+    else{
+        alert("Either you have used the back button or refreshed the page !!!")
+        logOut();
+        var informUser = setInterval(function(){
+            if(btnClicked && isOk){
+                logOut()
+                clearInterval(informUser)
+                window.location="index.html"
+            }
 
+        },100)
+
+
+    }
 });
 
 

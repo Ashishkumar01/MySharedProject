@@ -44,7 +44,7 @@ function login(provider){
 
 function getLoginStatus(){
     if(checkAuthenticationStatus().length != 0){
-
+        $(".instruct").hide()
         if(openState){
             console.log("inside open state")
             $("#socialLink").trigger("click").hide()
@@ -98,6 +98,11 @@ function logOut(){
     $.cookie("providerJSON","");
     for(var i =0; i<currentProviders.length; i ++){
         hello.logout(currentProviders[i], {force:false}, function(){
+            if(!$(".instruct").length){
+                $(".navbar-nav:first").prepend('<li class="instruct">You are not signed in, sign in now!</li>')
+            }else{
+                $(".instruct").show()
+            }
             $("#logout")
                 .off("click")
                 .html("Sign in")

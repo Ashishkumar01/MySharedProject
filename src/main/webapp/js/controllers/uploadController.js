@@ -2,6 +2,7 @@
 IndexModule.controller("UploadController", function($scope,$http,$location) {
 
 if($.cookie("validAdminClick")=="ok"){
+    $("#examNavi, .ui-layout-east").hide()
 	$scope.setFiles = function(element){
 		$scope.questionfile = element.files[0];
 	};

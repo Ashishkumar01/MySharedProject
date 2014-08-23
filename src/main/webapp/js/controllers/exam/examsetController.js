@@ -4,7 +4,7 @@ IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$lo
 console.log($.cookie("validAdminClick"))
 
     if($.cookie("validAdminClick")=="ok"){
-
+        $("#examNavi, .ui-layout-east").hide()
 	$scope.examSet={
 			name:'',
 			code:'',

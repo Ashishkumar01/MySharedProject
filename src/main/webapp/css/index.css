@@ -500,6 +500,8 @@ background-position: -506px 0}
 #course img{
     max-width: 100%;
 }
+
+.instruct{color:#ff0000; padding:15px 20px 5px 0}
 @media (max-width: 767px) {
 .nav-tabs li{
     display:none;

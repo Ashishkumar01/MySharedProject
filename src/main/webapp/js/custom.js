@@ -12,6 +12,7 @@ var isHomePage = false;
 
 if(checkAuthenticationStatus().length != 0){
 //console.log($.cookie("providerJSON"))
+    $(".instruct").hide()
     if(!$.cookie("providerJSON")){
         console.log("reached provider on load")
         getUserDetails("me")
@@ -39,6 +40,7 @@ if(checkAuthenticationStatus().length != 0){
     $("#overlay, .popup").hide();
     //$("#courseList .closeWrapper span").trigger("click")
 }else{
+    $(".navbar-nav:first").prepend('<li class="instruct">You are not signed in, sign in now!</li>')
     $("#logout")
         .off("click")
         .html("Sign in")
@@ -282,8 +284,9 @@ if($("#course").length){
         });
 
 }
-$(".dropdown-menu a").on("click", function(){
+$(".dropdown-menu a, #courseListItem a").on("click", function(e){
+    e.preventDefault()
     //validAdminClick = true;
     $.cookie("validAdminClick","ok")
-
+    window.location= $(this).attr("href")
 })

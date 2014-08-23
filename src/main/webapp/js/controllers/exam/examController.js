@@ -1,6 +1,7 @@
 'use strict';
 
 IndexModule.controller("examController", function($rootScope,$scope,$http,$location,examsService) {
+    $("#examNavi, .ui-layout-east").show()
     $scope.beginExamClickedFunc= function(){
         $scope.beginExamClicked= true;
     }

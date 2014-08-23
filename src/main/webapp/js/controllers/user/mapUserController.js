@@ -2,6 +2,7 @@
 
 IndexModule.controller("MapUserController", function($rootScope,$scope,$http,$location) {
 if($.cookie("validAdminClick")=="ok"){
+    $("#examNavi, .ui-layout-east").hide()
     $scope.userEmail='';
     $scope.mappedExamsets=[];
     $scope.mappedExamsetsKeys=[];
