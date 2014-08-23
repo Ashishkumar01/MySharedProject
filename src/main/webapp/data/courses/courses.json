@@ -2,151 +2,37 @@
     {
         "id": "1",
         "name": "SBI PO 2014",
-        "snippet": "SBI PO"
+        "imgSrc":"course1.jpg",
+        "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
     }
     ,{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
-},{
-    "id": "1",
-    "name": "SBI PO 2013",
-    "snippet": "SBI PO Other"
+    "id": "2",
+    "name": "IBPS PO Exam",
+    "imgSrc":"course1.jpg",
+    "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
 }
+    ,{
+    "id": "3",
+    "name": "SBI PO Exam",
+    "imgSrc":"course1.jpg",
+    "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+}
+    ,{
+    "id": "4",
+    "name": "IBPS IT Officer Exam",
+    "imgSrc":"course1.jpg",
+    "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+}
+    ,{
+    "id": "5",
+    "name": "SEF",
+    "imgSrc":"course1.jpg",
+    "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+}    ,{
+    "id": "6",
+    "name": "FXO",
+    "imgSrc":"course1.jpg",
+    "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+}
+
 ]

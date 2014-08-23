@@ -195,52 +195,95 @@ $(window).resize(function(){
 
 var isAuthenticated = true;
 //Multiple test exam on single course
-$(".testLogin").on("click", function(e){
+$("#courseContainerWrapper").on("click",".testLogin", function(e){
     e.preventDefault();
     $(".testLogin").removeClass("testLoginActive");
     $("#courseList .closeWrapper span").trigger("click")
     $(this).addClass("testLoginActive")
     if(checkAuthenticationStatus().length != 0){
-        showCourseListing(this)
+
+        var email = (JSON.parse($.cookie("providerJSON"))).email;
+        showCourseListing(this,email)
     }else{
         e.preventDefault();
         $("#signUp").trigger("click")
 
     }
 })
-function showCourseListing(obj){
+function showCourseListing(obj, email){
     var htmlContainer = '<div id="courseList">' +
         '<div class="closeWrapper"><h3> Select exam of your choice</h3><span>x</span></div>'
         +'<div id="courseListItemWrapper"><ul id="courseListItem"></ul></div>'
         +'</div>';
 
     $(obj).parent().prepend(htmlContainer);
+    $("#courseList").animate({top:"0px"}, "fast",function(){
+
+        var offset =$("#courseList").offset().top;
+        var baseTop = 75;
+        var scrollTop =$(window).scrollTop();
+        var diff =offset-baseTop;
+
+        if (diff>0){
+            var body = $("body,html");
+            body.animate({scrollTop:diff+"px"}, '500');
+        }
+
+    })
     $("#courseList .closeWrapper span").bind('click', function(){
         $("#courseList").remove();
     })
-    $.ajax({
-        url: "data/courses/courses.json"})
+    $("#courseListItem").css({width:"325px",height:"250px"})
+    $.ajax({type:"POST",
+            url: "rest/user/examsets",
+            data :email,
+            contentType: "application/json"
+        })
         .done(function( data ) {
+                console.log(data)
             var liString ="";
+            if(data.length >0){
             for( var i =0; i<data.length; i++){
                 liString+="<li><a href="+"'exam.html#/showInstruction/"+data[i].id+"'>"+data[i].name+"<\/a><\/li>";
             }
-            $("#courseListItem").html(liString);
-            $("#courseList").animate({top:"0px"}, "fast",function(){
+            $("#courseListItem").html(liString).css({width:"auto",height:"auto",marginTop:"auto",textAlign:"left"}).addClass("noBg");
+            }else{
+                $("#courseListItem").css({width:"325px",height:"150px",marginTop:"100px",textAlign:"center"}).html("You do not have any courses!!!").addClass("noBg");
+            }
 
-                var offset =$("#courseList").offset().top;
-                var baseTop = 75;
-                var scrollTop =$(window).scrollTop();
-                var diff =offset-baseTop;
-
-                if (diff>0){
-                    var body = $("body,html");
-                    body.animate({scrollTop:diff+"px"}, '500');
-                }
-
-            }).addClass("noBg");
-
-
+        }).error(function(){
+            alert("readhech")
         });
 
 }
+
+if($("#course").length){
+    $("#courseContainerWrapper").html("")
+    var htmlTemp =""
+    $.ajax({type:"GET",
+        url: "data/courses/courses.json",
+        contentType: "application/json"
+    }).done(function( data ) {
+            console.log(data)
+            $("#courseContainerWrapper").html("")
+            var liString ="";
+            for( var i =0; i<data.length; i++){
+                htmlTemp += '<div class="col-md-4">';
+                htmlTemp +='<img src="img/'+data[i].imgSrc+'">';
+                htmlTemp +='<h3>'+data[i].name+'</h3>';
+                htmlTemp +='<p>'+data[i].courseDescription+'</p>'
+                htmlTemp +='<p><a class="btn btn-primary testLogin" href="#" role="button">Perform Exam &raquo;</a></p></div>';
+            }
+            $("#courseContainerWrapper").html(htmlTemp)
+
+
+        }).error(function(){
+            alert("readhech")
+        });
+
+}
+$(".dropdown-menu a").on("click", function(){
+    //validAdminClick = true;
+    $.cookie("validAdminClick","ok")
+
+})

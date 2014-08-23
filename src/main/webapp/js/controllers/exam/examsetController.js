@@ -1,6 +1,10 @@
 'use strict';
 
 IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$location) {
+console.log($.cookie("validAdminClick"))
+
+    if($.cookie("validAdminClick")=="ok"){
+
 	$scope.examSet={
 			name:'',
 			code:'',
@@ -105,9 +109,23 @@ IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$lo
 		}		
 		
 		console.log('examSetDetails:'+$scope.examSetQuestions);
-	};	
-	
-	
+	};
+        $.cookie("validAdminClick", false)
+}
+    else{
+    alert("Either you have used the back button or refreshed the page !!!")
+    logOut();
+        var informUser = setInterval(function(){
+            if(btnClicked && isOk){
+                logOut()
+                clearInterval(informUser)
+                window.location="index.html"
+            }
+
+        },100)
+
+
+}
 });
 
 

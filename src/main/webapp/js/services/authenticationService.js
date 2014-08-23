@@ -157,13 +157,16 @@ function getUserDetails(parameter){
             hello(currentProviders[i]).api(parameter).success(function (json){
                 loginDetais=json;
                 console.log('Logged in User Details: '+JSON.stringify(loginDetais));
-                saveUser(loginDetais);
-                getLoginStatus();
                 if(!$.cookie("providerJSON")){
 
-                $.cookie("providerJSON", JSON.stringify(loginDetais))
+                    $.cookie("providerJSON", JSON.stringify(loginDetais))
                     console.log("inauthentication::" +$.cookie("providerJSON") )
                 }
+                saveUser(loginDetais);
+                getLoginStatus();
+                console.log("COOKIE IS READY")
+                console.log($.cookie("providerJSON"))
+
                 return  loginDetais;
             }).error(function(){
 
@@ -182,6 +185,8 @@ function getUserDetails(parameter){
  * @param user
  */
 function saveUser(user){
+  $("#overlay").css("z-index", 10000000).show();
+
     console.log('User:'+JSON.stringify(user));
     var userToSend={
                         email:user.email,
@@ -198,10 +203,14 @@ function saveUser(user){
         data: JSON.stringify(userToSend),
         contentType: "application/json",
         success: function (data) {
-            alert('Registration successful.');
+
+            $("#overlay").css("z-index", 9999);
+            console.log('Registration successful.');
+
         },
         error:function(jqXHR, textStatus, errorThrown) {
             alert("Registration failed.");
+
         }
     });
 }

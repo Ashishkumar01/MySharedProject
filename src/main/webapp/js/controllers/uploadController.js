@@ -1,5 +1,7 @@
 /* UploadController.*/
 IndexModule.controller("UploadController", function($scope,$http,$location) {
+
+if($.cookie("validAdminClick")=="ok"){
 	$scope.setFiles = function(element){
 		$scope.questionfile = element.files[0];
 	};
@@ -43,4 +45,20 @@ IndexModule.controller("UploadController", function($scope,$http,$location) {
 		});
 		
 	};
+    $.cookie("validAdminClick", false)
+}
+else{
+    alert("Either you have used the back button or refreshed the page !!!")
+    logOut();
+    var informUser = setInterval(function(){
+        if(btnClicked && isOk){
+            logOut()
+            clearInterval(informUser)
+            window.location="index.html"
+        }
+
+    },100)
+
+
+}
 });

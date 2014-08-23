@@ -1,6 +1,7 @@
 'use strict';
 
 IndexModule.controller("MapUserController", function($rootScope,$scope,$http,$location) {
+if($.cookie("validAdminClick")=="ok"){
     $scope.userEmail='';
     $scope.mappedExamsets=[];
     $scope.mappedExamsetsKeys=[];
@@ -64,8 +65,23 @@ IndexModule.controller("MapUserController", function($rootScope,$scope,$http,$lo
                 console.log('examset fetch failed. Status:'+status);
             });
     };
-	
-	
+
+    $.cookie("validAdminClick", false)
+}
+else{
+    alert("Either you have used the back button or refreshed the page !!!")
+    logOut();
+    var informUser = setInterval(function(){
+        if(btnClicked && isOk){
+            logOut()
+            clearInterval(informUser)
+            window.location="index.html"
+        }
+
+    },100)
+
+
+}
 });
 
 

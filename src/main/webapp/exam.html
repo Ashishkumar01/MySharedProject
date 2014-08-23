@@ -55,15 +55,17 @@
                 </li>
                 <li><a href="newsandviews.html" class="outerLink">News and views</a>
                 </li>
-                <li ng-show="isAdminLinks">
-                    <ul class="nav navbar-nav" ng-show="isAdminLinks">
+                <li><a href="contact.html" class="outerLink">Contact us</a>
+                </li>
+                <li ng-class="{adminPanel:isAdminLinks==true}" class="dropdown">
+                    <a href="http://getbootstrap.com/javascript/#" id="admin" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
+                    <ul  role="menu" aria-labelledby="admin" class="dropdown-menu nav navbar-nav" ng-show="isAdminLinks">
                         <li><a href="#/upload">Upload Questions</a></li>
                         <li><a href="#/examset">Exam Set</a></li>
                         <li><a href="#/mapUser">Map User</a></li>
                     </ul>
                 </li>
-                <li><a href="contact.html" class="outerLink">Contact us</a>
-                </li>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->

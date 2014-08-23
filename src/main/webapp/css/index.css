@@ -338,7 +338,7 @@ background-position: -506px 0}
     top:376px;
     left:0;
     border:1px solid #efefef;
-    background: #1985A4 url("../img/ajax-loader.gif") center center no-repeat;
+    background: #1985A4;
     border-radius: 10px;
     color:#fff;
 }
@@ -375,7 +375,7 @@ background-position: -506px 0}
 #courseListItem{
     margin: 6px 6px 6px 20px;
     padding:6px;
-
+    background: url("../img/ajax-loader.gif") center center no-repeat
 }
 #courseListItem li{
 
@@ -446,8 +446,8 @@ background-position: -506px 0}
 #exam .info{
     color:#fff;
 }
-.dropdown{
-    display:none !important;
+#exam .dropdown{
+    display:none;
 }
 .nonDropdownDiv.active{
     display: block;
@@ -455,7 +455,9 @@ background-position: -506px 0}
 .dropdownDiv.active{
     display: none ;
 }
-
+.adminPanel{
+    display:block !important;
+}
 #exam .ui-layout-east{
     position: fixed;
     top:160px;
@@ -495,6 +497,9 @@ background-position: -506px 0}
     -o-text-size-adjust: none;
     text-size-adjust: none;
 }
+#course img{
+    max-width: 100%;
+}
 @media (max-width: 767px) {
 .nav-tabs li{
     display:none;
@@ -508,8 +513,8 @@ background-position: -506px 0}
 .dropdownDiv.active{
     display: block ;
 }
-.dropdown{
-    display:block !important;
+#exam .dropdown{
+    display:block;
 }
   .carousel {
     height: 70%;
