@@ -144,6 +144,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
             submitPage();
         } else {
             alert('Do you want to submit the test? :confirmMsg')
+
             var submitTest =setInterval(function(){
             if(btnClicked && isOk){
 
@@ -242,6 +243,8 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     	$http({method: 'POST', url: 'rest/exam/save', data:examReport}).
         success(function(data, status, headers, config) {
           console.log('exam save successfully. Status:'+status);
+
+                $scope.beginExamClicked =true
           $location.path("/submitExam");
         }).
         error(function(data, status, headers, config) {

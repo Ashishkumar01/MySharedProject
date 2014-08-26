@@ -291,3 +291,11 @@ $(".dropdown-menu a").on("click", function(e){
     $.cookie("validAdminClick","ok")
     window.location= $(this).attr("href")
 })
+$(document).on('keydown', null, 'f12',
+    function(e){
+        if(e.keyCode==123 || e.keyCode=="123")
+        {
+         //  e.preventDefault()
+        }
+    }
+);

@@ -2,7 +2,7 @@
 
 IndexModule.controller("instructionController", function($rootScope,$scope,$location,$http,$routeParams,examsService) {
 
-    if($.cookie("validAdminClick")=="ok"){
+    if($.cookie("validAdminClick")=="ok" || $scope.beginExamClicked == true){
     $rootScope.template.url='partials/exam/partial_thumbnail.html';
     $scope.agreementDone=false;
 
@@ -38,9 +38,10 @@ console.log("$routeParams.id::"+ $routeParams.id)
 	    .error(function(data, status, headers, config) {
 	    	console.log('current exam data fetch failed. Status:'+status);
 	    });
-        $.cookie("validAdminClick", false)
+
     }else{
         if($scope.beginExamClicked ==false){
+
             alert("Either you have used the browser back button or you have submitted your test. You will be redirecting to home page!!!");
             var checkCookie= setInterval(function(){
                 if(btnClicked && isOk){
@@ -70,6 +71,7 @@ console.log("$routeParams.id::"+ $routeParams.id)
         $location.path('/viewReports');
     }
         $.cookie("validAdminClick", false)
+        $scope.beginExamClicked = false
     }
     else{
         alert("Either you have used the back button or refreshed the page !!!")

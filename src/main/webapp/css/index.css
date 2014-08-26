@@ -324,7 +324,7 @@ background-position: -506px 0}
     font-family: 'Roboto', sans-serif;
 
 }
-.jumbotron {
+.jumbotron,.bg {
 	background: transparent url("../img/coursesBack.gif") center center;
 }
 .jumbotron h1{

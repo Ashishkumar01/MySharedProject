@@ -7,7 +7,7 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     //Added by PK
 
     if($scope.beginExamClicked ==false){
-        alert("Either you have used the browser back button or you have submitted your test. You will be redirecting to home page!!!");
+        alert("You have already submitted your exam. If you need any exam report.<br> Please contact at<p style='font-size:20px'> support@omoknow.com</p>.<br/>You will be redirecting to home page!!!");
         var checkCookie= setInterval(function(){
             if(btnClicked && isOk){
                 logOut();
@@ -76,7 +76,8 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
 
     $scope.close=function(){
         $rootScope.template.url='partials/exam/partial_examlist.html';
-        $location.path('/examHome');
+       // $location.path('../index.html');
+        window.location= "index.html"
     };
     
     $('#reportTab a').click(function (e) {
