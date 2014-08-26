@@ -10,6 +10,7 @@ For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap
 
 html, body {
   height: 100%;
+overflow-x:hidden;
 }
 
 body {
@@ -38,7 +39,7 @@ body{
 /* Page Sections */
 .section,
 .section-colored {
-  padding: 50px 0;
+  padding: 30px 0;
 }
 
 .section-colored {
@@ -58,7 +59,7 @@ body{
 
 /* Half Page Height Carousel Customization */
 .carousel {
-  height: 80%;
+  height: 90%;
   background:transparent url('../img/hero.jpg') 0 0 no-repeat;
 }
 
@@ -129,6 +130,10 @@ body{
 /* Footer Styles */
 footer {
   margin: 50px 0;
+}
+#home .row a{
+    width:100%;
+    background:#080808;
 }
 #signUp,#logout{
     margin:10px 10px 0 0;
