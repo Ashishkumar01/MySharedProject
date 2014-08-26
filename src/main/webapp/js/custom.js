@@ -199,6 +199,7 @@ var isAuthenticated = true;
 //Multiple test exam on single course
 $("#courseContainerWrapper").on("click",".testLogin", function(e){
     e.preventDefault();
+    $.cookie("validAdminClick","ok")
     $(".testLogin").removeClass("testLoginActive");
     $("#courseList .closeWrapper span").trigger("click")
     $(this).addClass("testLoginActive")
@@ -284,7 +285,7 @@ if($("#course").length){
         });
 
 }
-$(".dropdown-menu a, #courseListItem a").on("click", function(e){
+$(".dropdown-menu a").on("click", function(e){
     e.preventDefault()
     //validAdminClick = true;
     $.cookie("validAdminClick","ok")

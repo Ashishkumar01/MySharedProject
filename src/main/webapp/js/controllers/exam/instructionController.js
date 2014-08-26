@@ -38,6 +38,7 @@ console.log("$routeParams.id::"+ $routeParams.id)
 	    .error(function(data, status, headers, config) {
 	    	console.log('current exam data fetch failed. Status:'+status);
 	    });
+        $.cookie("validAdminClick", false)
     }else{
         if($scope.beginExamClicked ==false){
             alert("Either you have used the browser back button or you have submitted your test. You will be redirecting to home page!!!");
