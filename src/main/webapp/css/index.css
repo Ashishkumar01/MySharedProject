@@ -356,8 +356,18 @@ background-position: -506px 0}
     font-family: 'Roboto', sans-serif;
 
 }
-.jumbotron,.bg {
+.jumbotron{
+    background: transparent url("../img/coursesBack.gif") center center;
+}
+
+.bg {
 	background: transparent url("../img/strip.gif") center center;
+    position:fixed;
+    top:45px;
+    left:0;
+    width:100%;
+    z-index:100000;
+    height:.5em;
 }
 .jumbotron h1{
     color:#E5E8E9;
