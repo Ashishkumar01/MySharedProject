@@ -139,8 +139,20 @@ footer {
     background-color: #5D6A7E;
     margin:.2em;
     padding:.5em;
-    width:30%;
+    width:32%;
     color:#fff;
+    text-align:center;
+}
+#course .col-md-4 .btn-primary, #home .col-md-4 .btn-primary{
+    background: #050a19; /* Old browsers */
+    background: -moz-linear-gradient(top,  #050a19 0%, #154872 50%, #0f3463 52%, #445b7f 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#050a19), color-stop(50%,#154872), color-stop(52%,#0f3463), color-stop(100%,#445b7f)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #050a19 0%,#154872 50%,#0f3463 52%,#445b7f 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #050a19 0%,#154872 50%,#0f3463 52%,#445b7f 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #050a19 0%,#154872 50%,#0f3463 52%,#445b7f 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #050a19 0%,#154872 50%,#0f3463 52%,#445b7f 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#050a19', endColorstr='#445b7f',GradientType=0 ); /* IE6-9 */
+
 }
 #home .col-md-4 img{
     max-width:100% !important;
@@ -361,6 +373,15 @@ background-position: -506px 0}
     background: #1985A4;
     border-radius: 10px;
     color:#fff;
+    background: #050a19; /* Old browsers */
+    background: -moz-linear-gradient(top,  #050a19 0%, #0f3463 86%, #445b7f 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#050a19), color-stop(86%,#0f3463), color-stop(100%,#445b7f)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #050a19 0%,#0f3463 86%,#445b7f 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #050a19 0%,#0f3463 86%,#445b7f 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #050a19 0%,#0f3463 86%,#445b7f 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #050a19 0%,#0f3463 86%,#445b7f 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#050a19', endColorstr='#445b7f',GradientType=0 ); /* IE6-9 */
+
 }
 .noBg{
     background-image: none !important;
