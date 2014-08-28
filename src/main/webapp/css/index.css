@@ -60,7 +60,7 @@ body{
 /* Half Page Height Carousel Customization */
 .carousel {
   height: 70%;
-    margin:55px auto 0 auto;
+    margin:45px auto 0 auto;
   background:transparent url('../img/hero.jpg') 0 0 no-repeat;
 }
 
@@ -357,7 +357,7 @@ background-position: -506px 0}
 
 }
 .jumbotron,.bg {
-	background: transparent url("../img/coursesBack.gif") center center;
+	background: transparent url("../img/strip.gif") center center;
 }
 .jumbotron h1{
     color:#E5E8E9;
