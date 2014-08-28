@@ -59,7 +59,8 @@ body{
 
 /* Half Page Height Carousel Customization */
 .carousel {
-  height: 90%;
+  height: 70%;
+    margin:55px auto 0 auto;
   background:transparent url('../img/hero.jpg') 0 0 no-repeat;
 }
 
@@ -153,6 +154,7 @@ footer {
 	width:340px;
 	right:-300px;
 	top:200px;
+    display: none !important;
 	
 }
 #socialLink img{
