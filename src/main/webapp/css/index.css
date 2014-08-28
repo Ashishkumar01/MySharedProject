@@ -132,6 +132,19 @@ body{
 footer {
   margin: 50px 0;
 }
+#home{
+    background-color: #ECECEC;
+}
+#home .col-md-4{
+    background-color: #5D6A7E;
+    margin:.2em;
+    padding:.5em;
+    width:30%;
+    color:#fff;
+}
+#home .col-md-4 img{
+    max-width:100% !important;
+}
 #home .row a{
     width:100%;
     background:#080808;
