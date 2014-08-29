@@ -135,7 +135,7 @@ footer {
 #home{
     background-color: #ECECEC;
 }
-#home .col-md-4{
+#home .col-lg-4{
     background-color: #5D6A7E;
     margin:.2em;
     padding:.5em;
@@ -553,7 +553,19 @@ background-position: -506px 0}
 }
 
 .instruct{color:#ff0000; padding:15px 20px 5px 0}
+.languageSelection p{
+    padding:5px;
+    margin:5px;
+}
+.languageSelection select{
+    width:90%;
+    font-size:1.3em;
+
+}
 @media (max-width: 767px) {
+    .col-lg-4{
+        width:100% !important;
+    }
 .nav-tabs li{
     display:none;
 }

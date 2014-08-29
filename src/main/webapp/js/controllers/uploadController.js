@@ -49,6 +49,7 @@ if($.cookie("validAdminClick")=="ok"){
     $.cookie("validAdminClick", false)
 }
 else{
+    $(".languageSelection").hide();
     alert("Either you have used the back button or refreshed the page !!!")
     logOut();
     var informUser = setInterval(function(){

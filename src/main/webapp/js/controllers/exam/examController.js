@@ -81,6 +81,9 @@ IndexModule.controller("examController", function($rootScope,$scope,$http,$locat
         $scope.thumbnail = userProfileObject.thumbnail
         $scope.userName = userProfileObject.name;
     }
+    $scope.languageSelection = 'eng';
+    $scope.instructionTemp ="partials/exam/"+$scope.languageSelection+"Instruction.html";
+    $scope.$watch('languageSelection', function(){$scope.instructionTemp ="partials/exam/"+$scope.languageSelection+"Instruction.html";})
 
 });
 

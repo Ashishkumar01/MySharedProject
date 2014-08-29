@@ -6,7 +6,9 @@ IndexModule.controller("instructionController", function($rootScope,$scope,$loca
     $rootScope.template.url='partials/exam/partial_thumbnail.html';
     $scope.agreementDone=false;
 
-console.log("$routeParams.id::"+ $routeParams.id)
+        console.log("$routeParams.id::"+ $routeParams.id)
+        $(".languageSelection").show()
+        alert("")
     //gets current exam set
     if($routeParams.id){
         //load questions of selected exam
@@ -74,6 +76,7 @@ console.log("$routeParams.id::"+ $routeParams.id)
         $scope.beginExamClicked = false
     }
     else{
+        $(".languageSelection").hide();
         alert("Either you have used the back button or refreshed the page !!!")
         logOut();
         var informUser = setInterval(function(){

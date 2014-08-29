@@ -155,7 +155,8 @@ $(".submit").bind("click", function(){
 var isOk = false;
 btnClicked = false;
 $(".popupInstruction .btn").on('click', function(){
-    btnClicked= true
+    btnClicked= true;
+    $(".languageSelection").hide();
 	$(this).parent().parent().hide();
 	$("#overlay").hide()
 	if($(this).hasClass("btn-primary")){

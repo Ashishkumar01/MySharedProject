@@ -5,6 +5,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     //added by PK;
 
     if(!$.cookie("providerJSON") || $scope.beginExamClicked ==false){
+        $(".languageSelection").hide();
         alert("Either you have used the browser back button or you have submitted your test. You will be redirecting to home page!!!");
        var checkCookie= setInterval(function(){
             if(btnClicked && isOk){
