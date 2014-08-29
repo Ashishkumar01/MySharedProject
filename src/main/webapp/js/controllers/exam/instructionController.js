@@ -7,8 +7,10 @@ IndexModule.controller("instructionController", function($rootScope,$scope,$loca
     $scope.agreementDone=false;
 
         console.log("$routeParams.id::"+ $routeParams.id)
-        $(".languageSelection").show()
-        alert("")
+        if(!$scope.beginExamClicked){
+            $(".languageSelection").show()
+            alert("")
+        }
     //gets current exam set
     if($routeParams.id){
         //load questions of selected exam

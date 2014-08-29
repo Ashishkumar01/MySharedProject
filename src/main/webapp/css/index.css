@@ -18,13 +18,22 @@ body {
  /* body padding for fixed top nav */
 }
 body{
-	font-family: 'Roboto', sans-serif; 
-	color:#666; 
+	/*font-family: 'Roboto', sans-serif;*/
+   /* font-family: 'Source Sans Pro', sans-serif;*/
+    font-family: 'PT Sans Narrow', sans-serif;
+	color:#000;
 	margin:0; 
 	padding:0;
-	font-weight:100;
+	/*font-weight:100;*/
+
 
 	}
+body p, a{
+    font-size:1.3em;
+}
+.btn{
+    font-size:1.1em
+}
 
 .img-home-portfolio,
 .img-customer,
@@ -164,7 +173,6 @@ footer {
 #signUp,#logout{
     margin:10px 10px 0 0;
     padding:4px;
-    font-size:1em;
     color:#fff;
 }
 #logoOmoknow{
@@ -353,7 +361,6 @@ background-position: -506px 0}
 .sidenav li.active{
     font-weight:normal !important;
     text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
 
 }
 .jumbotron{

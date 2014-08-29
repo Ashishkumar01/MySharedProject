@@ -16,7 +16,9 @@
     <!-- Add custom CSS here -->
     <link href="css/index.css" rel="stylesheet">
 	
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700italic,700,500,100italic,100|Oswald:400,700,300' rel='stylesheet' type='text/css'>
+<!--link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700italic,700,500,100italic,100|Oswald:400,700,300' rel='stylesheet' type='text/css'-->
+    <!--link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,300italic' rel='stylesheet' type='text/css'-->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
    
 </head>
 
@@ -157,7 +159,7 @@
                     <img src="img/newsAndViews.jpg">
                     <h3><i class="fa fa-folder-open"></i> News and Views</h3>
 
-                    <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                    <p class="Light 300 Italic">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
 					Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
 					</p>
 					<p>
@@ -237,6 +239,20 @@
     <script src="js/services/authenticationService.js"></script>
     <script src="js/custom.js"></script>
 
+    <script type="text/javascript">
+        WebFontConfig = {
+          //  google: { families: [ 'Source+Sans+Pro:200,300,400,700,300italic:latin' ] }
+            google: { families: [ 'PT+Sans+Narrow::latin' ] }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })(); </script>
 </body>
 
 </html>
