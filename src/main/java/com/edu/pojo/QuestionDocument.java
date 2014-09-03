@@ -21,7 +21,7 @@ public class QuestionDocument {
 	private Long id;
 	
 	@Transient
-	private List<Question> questions;
+	private List<Questions> questions;
 	
 	@Column(name="subject", nullable=false)
 	private String subject;
@@ -70,8 +70,11 @@ public class QuestionDocument {
 	@Column(name="time_allowed")
 	private String timeAllowed;
 	
+	@Column(name="language_supported")
+	private String languageSupported;
+	
 	public QuestionDocument() {
-		questions = new ArrayList<Question>();
+		questions = new ArrayList<Questions>();
 	}
 
 	public static QuestionDocument newBeanInstance() {
@@ -206,11 +209,11 @@ public class QuestionDocument {
 		this.id = id;
 	}
 
-	public List<Question> getQuestions() {
+	public List<Questions> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(List<Question> questions) {
+	public void setQuestions(List<Questions> questions) {
 		this.questions = questions;
 	}
 
@@ -221,7 +224,13 @@ public class QuestionDocument {
 	public void setQuestionSubType(String questionSubType) {
 		this.questionSubType = questionSubType;
 	}
-	
-	
+
+	public String getLanguageSupported() {
+		return languageSupported;
+	}
+
+	public void setLanguageSupported(String languageSupported) {
+		this.languageSupported = languageSupported;
+	}	
 
 }

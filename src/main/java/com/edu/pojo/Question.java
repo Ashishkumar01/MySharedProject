@@ -6,6 +6,7 @@ import java.util.List;
 public class Question{
 
 	private String questionStatement;
+	private String language;
 
 	private List<Option> options;
 
@@ -28,5 +29,13 @@ public class Question{
 
 	public void setQuestionStatement(String questionStatement) {
 		this.questionStatement = questionStatement;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 }

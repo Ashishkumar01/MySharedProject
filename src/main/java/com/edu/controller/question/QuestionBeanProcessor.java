@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Component;
 import com.edu.pojo.Option;
 import com.edu.pojo.Question;
 import com.edu.pojo.QuestionDocument;
+import com.edu.pojo.Questions;
 import com.edu.pojo.Table;
 import com.edu.pojo.TableRow;
 import com.edu.util.Validation;
@@ -50,7 +52,7 @@ public class QuestionBeanProcessor {
 		try {
 			String passageQuestionSheet = null;
 			List<String> questionData=null;
-			List<Question> questions=null;
+			List<Questions> questions=null;
 			workbook = WorkbookFactory.create(inputStream);
 			Sheet meataDatasheet = workbook.getSheet(metaDataSheet);
 			Iterator<Row> itrMetaDataRow = meataDatasheet.rowIterator();
@@ -70,7 +72,7 @@ public class QuestionBeanProcessor {
 				questionDocument = QuestionDocument.newBeanInstance();
 				passageQuestionSheet = "NA";	
 				questionData = new LinkedList<String>();
-				questions = new LinkedList<Question>();				
+				questions = new LinkedList<Questions>();				
 				Iterator<Cell> itrMetaDataCell = metaDataRow.cellIterator();
 				int index = 0;
 
@@ -129,6 +131,9 @@ public class QuestionBeanProcessor {
 						case 15:
 							questionDocument.setTimeAllowed(cellValue);							
 							break;
+						case 16:
+							questionDocument.setLanguageSupported(cellValue);							
+							break;
 						
 						default:
 							if(Validation.isNullOrEmpty(passageQuestionSheet)){
@@ -160,10 +165,10 @@ public class QuestionBeanProcessor {
 							questionData.add(getCellValue(cell));
 
 						}
-						questions.add(createQuestion(questionData));
+						questions.add(createQuestions(questionData));
 					}					
 				}else{
-					questions.add(createQuestion(questionData));
+					questions.add(createQuestions(questionData));
 				}
 				
 				questionDocument.setQuestions(questions);
@@ -270,6 +275,28 @@ public class QuestionBeanProcessor {
 		return questionList;
 
 	}
+	
+	/**
+	 * creates question list considering different languages
+	 */
+	private Questions createQuestions(List<String> question) {
+		Questions questions = new Questions();
+		List<Question> questionList=new ArrayList<Question>();
+		List<String> rawQuestionList=new ArrayList<String>();
+
+		if (question.size() > 0) {
+			for(String rawQuestion:question){
+				if(rawQuestion.equalsIgnoreCase("<EOQ>")){
+					questionList.add(createQuestion(rawQuestionList));
+					rawQuestionList=new ArrayList<String>();
+				}else{
+					rawQuestionList.add(rawQuestion);
+				}
+			}			
+		}
+		questions.setQuestions(questionList);
+		return questions;
+	}
 
 	/**
 	 * creates question
@@ -280,6 +307,7 @@ public class QuestionBeanProcessor {
 		if (question.size() > 0) {
 			Iterator<String> itrCell = question.iterator();
 
+			questionType.setLanguage(itrCell.next());
 			questionType.setQuestionStatement(itrCell.next());
 			List<Option> optionList = new LinkedList<Option>();
 			while (itrCell.hasNext()) {

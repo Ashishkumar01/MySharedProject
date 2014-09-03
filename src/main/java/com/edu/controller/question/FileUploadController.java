@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edu.db.repository.QuestionBankRepository;
+import com.edu.pojo.Question;
 import com.edu.pojo.QuestionDocument;
+import com.edu.pojo.Questions;
 
 
 @Controller
@@ -92,10 +94,19 @@ public class FileUploadController{
 	@RequestMapping(method = RequestMethod.POST, value = { "saveQuestions.do" },produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody int saveQuestions(@RequestBody QuestionDocument[] request) throws IOException {
 		int count=0;
+		List<Question> singleQuestion=null;
+		List<Questions> questionList=null;
 		QuestionDocument savedQuestionDocument;
 		for (QuestionDocument questionDocument : request) {
 			savedQuestionDocument=bankRepo.save(questionDocument);
-			FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId()), objectToJSON(questionDocument).getBytes());
+			
+			questionList=questionDocument.getQuestions();
+			for(Questions question:questionList){
+				singleQuestion=question.getQuestions();
+				for(Question rawQuestion:singleQuestion){
+					FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),rawQuestion.getLanguage()), objectToJSON(rawQuestion).getBytes());
+				}				
+			}			
 			count++;
 		}
 		return count;
@@ -118,8 +129,8 @@ public class FileUploadController{
 	 * @param fileId
 	 * @return
 	 */
-	private File getQuestionFile(Long fileId) {
-		File questionFile = new File(questionDir, "Question_"+fileId+".json");
+	private File getQuestionFile(Long fileId,String language) {
+		File questionFile = new File(questionDir, "Question_"+fileId+"_"+language.toLowerCase()+".json");
 		System.out.println(questionFile.getAbsolutePath());
 		
 		return questionFile;

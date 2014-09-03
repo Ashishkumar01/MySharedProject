@@ -18,9 +18,10 @@
 		        Questions Uploaded
 		    </div>
 		    <div class="panel-body">
+                Page
 		        <div ng-class="{'btn btn-mini bth-default':$index!=currentPage,'btn btn-mini btn-info': $index==currentPage}" ng-click="setPage($index)" 
 				 ng-repeat="questiontab in uploadQuestions">
-				 	Page {{$index+1}}
+				 	{{$index+1}}
 				 </div> 
 		
 		        <div class="col-md-12">
@@ -29,20 +30,34 @@
 							<!-- <div class="btn btn-success" ng-click="save($index)">Save Sheet {{$index+1}}</div> -->
 							
 							<div class="col-md-12" ng-show="questiontab.isPassage=='Y'">
-								<div class="col-md-3"> <b>Passage :</b> </div>
-								<div class="col-md-9"> <div ckeditor contenteditable="true" ng-model="questiontab.passage"></div> </div>
+								<div class="col-md-2"> <b>Passage :</b> </div>
+								<div class="col-md-10"> <div ckeditor contenteditable="true" ng-model="questiontab.passage"></div> </div>
 							</div>
 							<br>
-							<div class="col-md-12" ng-repeat="question in questiontab.questions">
-								<div class="col-md-12"> 
-									<div class="col-md-3"> <b>Question {{$index+1}}</b> </div>
-									<div class="col-md-9"> <div ckeditor contenteditable="true" ng-model="question.questionStatement"></div> </div>
-								</div>
-								<div class="col-md-12" ng-repeat="option in question.options"> 
-									<div class="col-md-1"> <input type="checkbox" ng-model="question.options[$index].correct"> </div>
-									<div class="col-md-10"> <div ckeditor contenteditable="true" ng-model="question.options[$index].optionValue"></div> </div>
-								</div>
-							</div>
+
+                            <div class="col-md-12" ng-repeat="question in questiontab.questions">
+                                <div class="col-md-12">
+                                   <div class="row">
+                                        <div class="col-md-6">
+                                            <b>Question {{$index+1}}</b> <span ckeditor contenteditable="true" ng-model="question.questions[0].questionStatement"></span>
+                                        </div>
+                                        <div class="col-md-6" ng-show="question.questions[1].questionStatement">
+                                            <b>Question {{$index+1}}</b> <span ckeditor contenteditable="true" ng-model="question.questions[1].questionStatement"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-repeat="option in question.questions[0].options">
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="question.questions[0].options[$index].correct">
+                                            <span ckeditor contenteditable="true" ng-model="question.questions[0].options[$index].optionValue"></span>
+                                        </div>
+                                        <div class="col-md-6" ng-show="question.questions[1].options[$index].optionValue">
+                                            <input type="checkbox" ng-model="question.questions[1].options[$index].correct">
+                                            <span ckeditor contenteditable="true" ng-model="question.questions[1].options[$index].optionValue"></span>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </div>
 							<hr/>			
 						</div>		                
 		            </div>
