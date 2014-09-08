@@ -1,14 +1,18 @@
 package com.edu.controller.exam;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,10 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.edu.controller.question.FileUploadController;
 import com.edu.db.domain.ExamSet;
 import com.edu.db.domain.ExamSetDtl;
 import com.edu.db.repository.ExamSetRepository;
 import com.edu.db.repository.QuestionBankRepository;
+import com.edu.model.QuestionWithMetadata;
 import com.edu.model.SearchParams;
 import com.edu.pojo.QuestionDocument;
 import com.google.gson.Gson;
@@ -141,6 +147,43 @@ public class ExamQuestionSetController{
 			e.printStackTrace();
 		}
 		return set;		
+	}
+	
+	@RequestMapping(value = "/loadQuestion/{language}", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<QuestionWithMetadata> loadQuestion(@RequestBody List<ExamSetDtl> examSetDtlList,@PathVariable String language) {
+		System.out.println("loadQuestion() request received for examSetId:"+examSetDtlList);
+		List<QuestionWithMetadata> questionsData = new ArrayList<QuestionWithMetadata>();
+		FileUploadController uploadController = new FileUploadController();
+		try 
+		{
+			/*HashMap<String,Object> questionMap = gson.fromJson(questionLinked, HashMap.class);
+			List<ExamSetDtl> examSetDtlList = (List<ExamSetDtl>)questionMap.get("examSetDetails");*/
+			
+				for (ExamSetDtl setDtl:examSetDtlList)
+				{
+					// System.out.println(gson.fromJson(examListItr.next().toString(), HashMap.class));
+					String linkQuestions = setDtl.getLinkedQuestions();
+					System.out.println("linkQuestions:"+linkQuestions);
+					String[] questionList=linkQuestions.split(",");
+					
+					for (String questionId:questionList)
+					{
+						long fileId = Long.parseLong(questionId);
+						File questionFile = uploadController.getQuestionFile(fileId,language);
+						String contents = FileUtils.readFileToString(questionFile, "UTF-8");
+						System.out.println(contents);
+						QuestionWithMetadata questionsInJson =gson.fromJson(contents, QuestionWithMetadata.class);
+						//linkQuestionss.get("questions");
+						//FileReader reader = new FileReader(uploadController.getQuestionFile(fileId));
+						//HashMap questionDataMap = gson.fromJson(reader, HashMap.class);
+						questionsData.add(questionsInJson);
+					}
+				 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return questionsData;		
 	}
 	
 	/**

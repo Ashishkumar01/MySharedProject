@@ -2,6 +2,7 @@ package com.edu.controller.question;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edu.db.repository.QuestionBankRepository;
+import com.edu.model.QuestionWithMetadata;
 import com.edu.pojo.Question;
 import com.edu.pojo.QuestionDocument;
 import com.edu.pojo.Questions;
@@ -30,6 +32,8 @@ import com.edu.pojo.Questions;
 @Controller
 @RequestMapping("upload")
 public class FileUploadController{
+	
+	public static final String PROPERTY_CONF_QUESTION = "question.dir.path";
 
 	@Autowired
 	QuestionBeanProcessor questionProcessor;
@@ -44,8 +48,14 @@ public class FileUploadController{
 	int dirFileCount = 0;
 	
 	public FileUploadController(){
-		questionDir = FileUtils.getFile("../../questiondir");
-		
+		try 
+		{
+			questionDir = FileUtils.getFile("D:/questiondir");
+		} 
+		catch (Exception e1) 
+		{
+			e1.printStackTrace();
+		}
 		if(!questionDir.exists()){
 			try {
 				FileUtils.forceMkdir(questionDir);
@@ -97,19 +107,72 @@ public class FileUploadController{
 		List<Question> singleQuestion=null;
 		List<Questions> questionList=null;
 		QuestionDocument savedQuestionDocument;
+		QuestionWithMetadata questionWithMetadata;
+		List<Question> questionsEnglish;
+		List<Question> questionsHindi;
 		for (QuestionDocument questionDocument : request) {
 			savedQuestionDocument=bankRepo.save(questionDocument);
+			
+			questionWithMetadata=copyQuestionDocument(savedQuestionDocument);
+			questionsEnglish=new ArrayList<Question>();
+			questionsHindi=new ArrayList<Question>();
 			
 			questionList=questionDocument.getQuestions();
 			for(Questions question:questionList){
 				singleQuestion=question.getQuestions();
 				for(Question rawQuestion:singleQuestion){
-					FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),rawQuestion.getLanguage()), objectToJSON(rawQuestion).getBytes());
+					if(rawQuestion.getLanguage().equalsIgnoreCase("HINDI")){
+						questionsHindi.add(rawQuestion);
+					}else{
+						questionsEnglish.add(rawQuestion);
+					}
+					/*FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),rawQuestion.getLanguage()), objectToJSON(rawQuestion).getBytes());*/
 				}				
+			}
+			//create json file for english
+			if(!questionsEnglish.isEmpty()){
+				questionWithMetadata.setQuestions(questionsEnglish);
+				FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),"ENGLISH"), objectToJSON(questionWithMetadata).getBytes());
 			}			
+			
+			//create json file for hindi
+			if(!questionsHindi.isEmpty()){
+				questionWithMetadata.setQuestions(questionsHindi);
+				FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),"HINDI"), objectToJSON(questionWithMetadata).getBytes());
+			}
 			count++;
 		}
 		return count;
+	}
+	
+	/**
+	 * copy question document to another pojo
+	 * @param questionDocument
+	 * @return
+	 */
+	private QuestionWithMetadata copyQuestionDocument(QuestionDocument questionDocument){
+		QuestionWithMetadata questionWithMetadata=new QuestionWithMetadata();
+		questionWithMetadata.setId(questionDocument.getId());
+		questionWithMetadata.setHasImage(questionDocument.getHasImage());
+		questionWithMetadata.setImagePath(questionDocument.getImagePath());
+		questionWithMetadata.setIsGraph(questionDocument.getIsGraph());
+		questionWithMetadata.setIsPassage(questionDocument.getIsPassage());
+		questionWithMetadata.setLanguageSupported(questionDocument.getLanguageSupported());
+		questionWithMetadata.setMetaData(questionDocument.getMetaData());
+		
+		questionWithMetadata.setOptionType(questionDocument.getOptionType());
+		questionWithMetadata.setPassage(questionDocument.getPassage());
+		questionWithMetadata.setPassageQuestionCount(questionDocument.getPassageQuestionCount());
+		questionWithMetadata.setPassageSheetName(questionDocument.getPassageSheetName());
+		questionWithMetadata.setQuestionCategory(questionDocument.getQuestionCategory());
+		questionWithMetadata.setQuestionSubType(questionDocument.getQuestionSubType());
+		questionWithMetadata.setQuestionType(questionDocument.getQuestionType());
+		questionWithMetadata.setSubject(questionDocument.getSubject());
+		questionWithMetadata.setSubjectCategory(questionDocument.getSubjectCategory());
+		questionWithMetadata.setTimeAllowed(questionDocument.getTimeAllowed());
+		questionWithMetadata.setToughnessLevel(questionDocument.getToughnessLevel());
+		
+		return questionWithMetadata;
 	}
 	
 	/**
@@ -129,7 +192,7 @@ public class FileUploadController{
 	 * @param fileId
 	 * @return
 	 */
-	private File getQuestionFile(Long fileId,String language) {
+	public File getQuestionFile(Long fileId,String language) {
 		File questionFile = new File(questionDir, "Question_"+fileId+"_"+language.toLowerCase()+".json");
 		System.out.println(questionFile.getAbsolutePath());
 		

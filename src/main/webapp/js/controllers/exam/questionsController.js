@@ -1,7 +1,7 @@
 'use strict';
 
 IndexModule.controller("questionsController", function($rootScope,$scope) {
-    $scope.questionsArray=new Array($rootScope.currentExam.total_);
+    //$scope.questionsArray=new Array($rootScope.currentExam.total_questions);
     //$scope.questionsArray=new Array(2);
 
     $scope.thisQuestion=function(questionNo){
