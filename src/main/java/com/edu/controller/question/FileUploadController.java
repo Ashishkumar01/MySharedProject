@@ -132,13 +132,15 @@ public class FileUploadController{
 			//create json file for english
 			if(!questionsEnglish.isEmpty()){
 				questionWithMetadata.setQuestions(questionsEnglish);
-				FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),"ENGLISH"), objectToJSON(questionWithMetadata).getBytes());
+				//FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),"ENGLISH"), objectToJSON(questionWithMetadata).getBytes());
+				FileUtils.writeStringToFile(getQuestionFile(savedQuestionDocument.getId(),"ENGLISH"),objectToJSON(questionWithMetadata),"UTF-8");
 			}			
 			
 			//create json file for hindi
 			if(!questionsHindi.isEmpty()){
 				questionWithMetadata.setQuestions(questionsHindi);
-				FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),"HINDI"), objectToJSON(questionWithMetadata).getBytes());
+				//FileUtils.writeByteArrayToFile(getQuestionFile(savedQuestionDocument.getId(),"HINDI"), objectToJSON(questionWithMetadata).getBytes());
+				FileUtils.writeStringToFile(getQuestionFile(savedQuestionDocument.getId(),"HINDI"),objectToJSON(questionWithMetadata),"UTF-8");
 			}
 			count++;
 		}
