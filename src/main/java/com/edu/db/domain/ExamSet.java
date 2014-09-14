@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="exam_set_mst")
@@ -58,6 +59,9 @@ public class ExamSet{
 	
 	@Column(name="attempt_allowed")
 	private int attemptAllowed;
+	
+	@Transient
+	private int currentAttempt;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="examSet")
 	private List<ExamSetDtl> examSetDetails;
@@ -175,6 +179,14 @@ public class ExamSet{
 
 	public void setExamSetId(Long examSetId) {
 		this.examSetId = examSetId;
+	}
+
+	public int getCurrentAttempt() {
+		return currentAttempt;
+	}
+
+	public void setCurrentAttempt(int currentAttempt) {
+		this.currentAttempt = currentAttempt;
 	}
 	
 }

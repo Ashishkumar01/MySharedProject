@@ -176,7 +176,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         	questionStats.examId=$rootScope.currentExam.examSetId;
         	questionStats.userId='singhcl';
         	questionStats.examDate=getDateTime();
-        	questionStats.attemptNo=1;
+        	questionStats.attemptNo=$rootScope.currentExam.currentAttempt;
 
         	questionStats.moduleName=getModuleName(j);
         	questionStats.questionId="question_"+j;
@@ -222,7 +222,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     function saveExamStats(questionStatsList){
     	var examStats={};
     	examStats.examId=$rootScope.currentExam.examSetId;
-    	examStats.attemptNo=1;
+    	examStats.attemptNo=$rootScope.currentExam.currentAttempt;
 
     	examStats.userId='singhcl';
     	examStats.examDate=getDateTime();
@@ -244,8 +244,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     	$http({method: 'POST', url: 'rest/exam/save', data:examReport}).
         success(function(data, status, headers, config) {
           console.log('exam save successfully. Status:'+status);
-
-                $scope.beginExamClicked =true
+          $scope.beginExamClicked =true
           $location.path("/submitExam");
         }).
         error(function(data, status, headers, config) {

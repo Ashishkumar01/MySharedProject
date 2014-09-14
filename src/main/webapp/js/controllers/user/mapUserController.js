@@ -22,10 +22,19 @@ if($.cookie("validAdminClick")=="ok"){
         });
 
     $scope.searchExamMapping=function(){
+    	if(!$scope.userEmail || $scope.userEmail==''){
+    		alert('User Email should be provided.');
+    		$("#searchUser").focus();
+    		return;
+    	}
         $http({method: 'POST', url: 'rest/user/examsets', data:$scope.userEmail})
             .success(function(data, status, headers, config) {
                 console.log('Examsets fetched:'+JSON.stringify(data));
                 $scope.mappedExamsets=data;
+                //remove the mapped elements from avaialble list
+                for(var i=0;i<$scope.mappedExamsets.length;i++){
+                	$scope.availableExamsets.splice($.inArray($scope.selectedExamSets[i], $scope.availableExamsets),1);
+                }
             })
             .error(function(data, status, headers, config) {
                 console.log('examset fetch failed. Status:'+status);
@@ -52,6 +61,11 @@ if($.cookie("validAdminClick")=="ok"){
      * move selected examsets from selected list to available list
      */
     $scope.saveExamMapping=function(){
+    	if(!$scope.userEmail || $scope.userEmail==''){
+    		alert('User Email should be provided.');
+    		$("#searchUser").focus();
+    		return;
+    	}
         var dataToSave={
             email:$scope.userEmail,
             examMappingList:$scope.mappedExamsets

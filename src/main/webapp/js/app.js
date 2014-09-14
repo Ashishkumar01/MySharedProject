@@ -106,7 +106,7 @@ app.config(['$routeProvider','$locationProvider',function( $routeProvider,$locat
         controller: 'MapUserController'
     });
     
-    $routeProvider.when('/viewReports', {
+    $routeProvider.when('/viewReports/:examSetId/:attemptNo', {
         templateUrl: 'partials/reports/partial_examReports.html',
         controller: 'reportsController'
     });

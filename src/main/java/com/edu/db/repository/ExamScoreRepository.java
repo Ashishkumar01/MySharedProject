@@ -22,6 +22,15 @@ public interface ExamScoreRepository extends CrudRepository<ExamScore, Long> {
 	List<ExamScore> findByExamId(String examId);
 	
 	/**
+	 * finds all exam scores for given examId & userId, ordered by attempt no descending
+	 * @param examId
+	 * @param userId
+	 * @param attemptNo
+	 * @return
+	 */
+	List<ExamScore> findByExamIdAndUserIdOrderByAttemptNoDesc(String examId, String userId);
+	
+	/**
 	 * finds all exam scores 
 	 * @param examId
 	 * @param userId
