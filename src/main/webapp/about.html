@@ -7,7 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="ico/favicon.ico">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700italic,700,500,100italic,100|Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
+      <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700italic,700,500,100italic,100|Oswald:400,700,300' rel='stylesheet' type='text/css'>
+      <!--link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,300italic' rel='stylesheet' type='text/css'-->
+      <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 
     <title></title>
 
@@ -154,19 +157,20 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-		<script type="text/javascript">
-  WebFontConfig = {
-    google: { families: [ 'Roboto:400,900,700italic,700,500,100italic,100:latin', 'Oswald:400,700,300:latin' ] }
-  };
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })(); </script>
+    <script type="text/javascript">
+        WebFontConfig = {
+            //  google: { families: [ 'Source+Sans+Pro:200,300,400,700,300italic:latin' ] }
+            google: { families: [ 'PT+Sans+Narrow::latin', 'Source+Sans+Pro:200,300,400,700,300italic:latin', 'Roboto:400,900,700italic,700,500,100italic,100:latin' ] }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })(); </script>
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/bootstrap/bootstrap.min.js"></script>
     <script src="lib/jquery/jquery.cookie.js"> </script>

@@ -1,11 +1,13 @@
 // Activates the Carousel
-$('.carousel').carousel({
-  interval: 5000
-})
+function runCarousel(){
+    $('.carousel').carousel({
+        interval: 5000
+    })
+}
 
 // Activates Tooltips for Social Links
 $('.tooltip-social').tooltip({
-  selector: "a[data-toggle=tooltip]"
+    selector: "a[data-toggle=tooltip]"
 })
 var openState= false;
 var isHomePage = false;
@@ -33,7 +35,7 @@ if(checkAuthenticationStatus().length != 0){
         isHomePage = false;
     }
     if(openState){
-          $("#socialLink").trigger("click").hide()
+        $("#socialLink").trigger("click").hide()
     }else{
         $("#socialLink").hide()
     }
@@ -49,7 +51,7 @@ if(checkAuthenticationStatus().length != 0){
             logOutRoutine();
             e.preventDefault();
             if($("#home").length){
-            isHomePage = true;
+                isHomePage = true;
             }else{
                 isHomePage = false;
             }
@@ -72,13 +74,13 @@ function logOutRoutine(){
     }
 }
 $("#socialLink img").bind("click", function(){
-	if(openState== false){
-	isHomePage = true;
-		$(this).parent().animate({right:"0px"},'fast',function(){openState = true});
-	}else{
-	isHomePage = false;
-		$(this).parent().animate({right:"-300px"},'fast',function(){openState = false});
-	}
+    if(openState== false){
+        isHomePage = true;
+        $(this).parent().animate({right:"0px"},'fast',function(){openState = true});
+    }else{
+        isHomePage = false;
+        $(this).parent().animate({right:"-300px"},'fast',function(){openState = false});
+    }
 
 })
 var openStateExam = false;
@@ -94,89 +96,89 @@ $("#examNavi").bind("click", function(){
 })
 
 $("#signUp").on("click", function(e){
-	e.preventDefault();
-	isHomePage = true;
+    e.preventDefault();
+    isHomePage = true;
     openState= true;
-	
-	if($(".popup").is(":hidden")){
-		if($(this).hasClass("testLogin")){
-			isHomePage = false;
-		}
-		centerDiv(".popup");
 
-	}
+    if($(".popup").is(":hidden")){
+        if($(this).hasClass("testLogin")){
+            isHomePage = false;
+        }
+        centerDiv(".popup");
+
+    }
 })
 
 function centerDiv(obj){
-	var scrollTop= $(window).scrollTop();
-	var scrollLeft= $(window).scrollLeft();
-	var windowWidth=$(window).width()/2;
-	var windowHeight = $(window).height()/2;
-	$(obj).show();
+    var scrollTop= $(window).scrollTop();
+    var scrollLeft= $(window).scrollLeft();
+    var windowWidth=$(window).width()/2;
+    var windowHeight = $(window).height()/2;
+    $(obj).show();
     $("#overlay").show()
-	var divWidth = $(obj).width()/2;
-	var divHeight = $(obj).height()/2;
-	var divLeft= windowWidth - divWidth;
-	var divTop= windowHeight - divHeight;
-	$(obj).css({"top":divTop+scrollTop+'px',"left":divLeft+scrollLeft+'px'}); 
-	}
+    var divWidth = $(obj).width()/2;
+    var divHeight = $(obj).height()/2;
+    var divLeft= windowWidth - divWidth;
+    var divTop= windowHeight - divHeight;
+    $(obj).css({"top":divTop+scrollTop+'px',"left":divLeft+scrollLeft+'px'});
+}
 $(".close").bind("click", function(){
-	isHomePage = false;
-	$(this).parent().parent().hide();
-	$("#overlay").hide()
-	})
+    isHomePage = false;
+    $(this).parent().parent().hide();
+    $("#overlay").hide()
+})
 /*$(".socialIcon li").bind('click', function(){
-		if(isHomePage){
-		window.location= "courses.html"
-		}else{
-			window.location= "exam.html#/showInstruction/test1"
-		}
-})*/
+ if(isHomePage){
+ window.location= "courses.html"
+ }else{
+ window.location= "exam.html#/showInstruction/test1"
+ }
+ })*/
 $(".socialIcon li").bind('click', function(){
-  var socialId= $(this).prop("title");
+    var socialId= $(this).prop("title");
 
- 	if(isHomePage){
- 	//window.location= "courses.html"
-  login(socialId)
- 	}else{
-  login(socialId)
- 	//	window.location= "exam.html#/showInstruction/1"
- 	}
+    if(isHomePage){
+        //window.location= "courses.html"
+        login(socialId)
+    }else{
+        login(socialId)
+        //	window.location= "exam.html#/showInstruction/1"
+    }
 })
 $(".submit").bind("click", function(){
-	var scrollTop= $(window).scrollTop()
-	if($(".popupInstruction").is(":hidden")){
-		
-		centerDiv(".popupInstruction");
-		$("#overlay").show()
-	}
-	
+    var scrollTop= $(window).scrollTop()
+    if($(".popupInstruction").is(":hidden")){
+
+        centerDiv(".popupInstruction");
+        $("#overlay").show()
+    }
+
 })
 var isOk = false;
 btnClicked = false;
 $(".popupInstruction .btn").on('click', function(){
     btnClicked= true;
     $(".languageSelection").hide();
-	$(this).parent().parent().hide();
-	$("#overlay").hide()
-	if($(this).hasClass("btn-primary")){
+    $(this).parent().parent().hide();
+    $("#overlay").hide()
+    if($(this).hasClass("btn-primary")){
         isOk = true;
         setTimeout(function(){
             isOk=false;
             btnClicked=false;
         },1000)
-	}else{
+    }else{
         isOk =false;
         setTimeout(function(){
             btnClicked=false;
         },1000)
-	}
-	
+    }
+
 })
 $("#redirectCallToAction .btn").on("click", function(){
     $(".popup").hide();
     $("#overlay").hide()
-     if($(this).hasClass("btn-primary")){
+    if($(this).hasClass("btn-primary")){
         if($("#redirectCallToAction input:checked").length && !$.cookie("doNotAskMeAgain")){
             $.cookie("doNotAskMeAgain",true)
         }
@@ -188,11 +190,11 @@ $("#redirectCallToAction .btn").on("click", function(){
 })
 
 $(window).resize(function(){
-	if($(".popupInstruction").is(":visible")){
-		centerDiv(".popupInstruction");}
-	else if($(".popup").is(":visible")){
-			centerDiv(".popup");
-		}
+    if($(".popupInstruction").is(":visible")){
+        centerDiv(".popupInstruction");}
+    else if($(".popup").is(":visible")){
+        centerDiv(".popup");
+    }
 })
 
 
@@ -239,24 +241,24 @@ function showCourseListing(obj, email){
     })
     $("#courseListItem").css({width:"325px",height:"250px"})
     $.ajax({type:"POST",
-            url: "rest/user/examsets",
-            data :email,
-            contentType: "application/json"
-        })
+        url: "rest/user/examsets",
+        data :email,
+        contentType: "application/json"
+    })
         .done(function( data ) {
-                console.log(data)
+            console.log(data)
             var liString ="";
             if(data.length >0){
-            for( var i =0; i<data.length; i++){
-                liString+="<li><a href="+"'exam.html#/showInstruction/"+data[i].id+"'>"+data[i].name+"<\/a><\/li>";
-            }
-            $("#courseListItem").html(liString).css({width:"auto",height:"auto",marginTop:"auto",textAlign:"left"}).addClass("noBg");
+                for( var i =0; i<data.length; i++){
+                    liString+="<li><a href="+"'exam.html#/showInstruction/"+data[i].id+"'>"+data[i].name+"<\/a><\/li>";
+                }
+                $("#courseListItem").html(liString).css({width:"auto",height:"auto",marginTop:"auto",textAlign:"left"}).addClass("noBg");
             }else{
                 $("#courseListItem").css({width:"325px",height:"150px",marginTop:"100px",textAlign:"center"}).html("You do not have any courses!!!").addClass("noBg");
             }
 
         }).error(function(){
-            alert("readhech")
+            alert("error refresh and check once again")
         });
 
 }
@@ -282,7 +284,7 @@ if($("#course").length){
 
 
         }).error(function(){
-            alert("readhech")
+            alert("Error !! Reload page once again.")
         });
 
 }
@@ -296,7 +298,129 @@ $(document).on('keydown', null, 'f12',
     function(e){
         if(e.keyCode==123 || e.keyCode=="123")
         {
-         //  e.preventDefault()
+            //  e.preventDefault()
         }
     }
 );
+
+
+var slideAnimRow = $(".slideAnimTableWrapper").not(".secondaryCaousel .slideAnimTableWrapper");
+var slideAnim =$("#myCarousel")
+var slideAnimWidth = slideAnim.width();
+var slideAnimHeight = slideAnim.height();
+var slideAnimRowWidth=slideAnimRow.width();
+function animateSlide(){
+    slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
+        function(){
+            slideAnimRow.find(".slideAnimIcon").html("∆").css({marginTop:"22%", width:"30%"});
+            slideAnimRow.find(".slideAnimMsg").html("Razor sharp cognition engine to deliver an unparalleled adaptive learning infrastructure.")
+            slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
+                function(){
+                    slideAnimRow.find(".msgAnim").addClass("reduceFont");
+                    slideAnimRow.find(".slideAnimIcon").html("ॐ").css({marginTop:"18%", width:"30%"});
+                    slideAnimRow.find(".slideAnimMsg").html("We practically define the science of ontology. <p>Welcome to the new world of learning.</p>")
+                    slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
+                        function(){
+                            reset();
+                            animateSlide()
+                        }
+
+                    )
+                }
+            )
+        }
+    )
+
+
+    /*
+     slideAnimTransition.animate({top:slideAnimHeight+"px"},
+     1500,
+     function(){
+     slideAnimRow.animate({marginLeft:0+"px"}, 1000, function(){$(this).fadeOut(6000,
+     function(){
+     reset();
+     slideAnimRow.find(".slideAnimIcon").html("∆");
+     slideAnimRow.find(".slideAnimMsg").html("Razor sharp cognition engine to deliver an unparalleled adaptive learning infrastructure.")
+     slideAnimTransition.animate({top:slideAnimHeight+"px"},1500,
+     function(){
+     slideAnimRow.animate({marginLeft:0+"px"}, 1000, function(){$(this).fadeOut(6000,
+     function(){
+     reset();
+     slideAnimRow.find(".msgAnim").addClass("reduceFont");
+     slideAnimRow.find(".slideAnimIcon").html("ॐ");
+     slideAnimRow.find(".slideAnimMsg").html("We practically define the science of ontology. <p>Welcome to the new world of learning.</p>")
+     slideAnimTransition.animate({top:slideAnimHeight+"px"},1500,
+     function(){
+     slideAnimRow.animate({marginLeft:0+"px"}, 1000, function(){$(this).fadeOut(6000,function(){
+     reset();
+     animateSlide()
+
+     }
+
+     )}
+     )
+     }
+     )})
+     })
+     }
+     )})
+     })
+
+     })*/
+}
+
+function reset(){
+    //slideAnimTransition.css({top:"-"+slideAnimHeight+"px",width:slideAnimRowWidth+"px"})
+    slideAnimRow.css({display:"none",width:slideAnimRowWidth+"px"})
+    slideAnimRow.find(".slideAnimIcon").html("π").css({marginTop:"10%", width:"25%"});
+    slideAnimRow.find(".msgAnim").removeClass("reduceFont");
+    slideAnimRow.find(".slideAnimMsg").html("Infinitely scalable knowledge engineering infrastructure.");
+
+}
+reset();
+animateSlide();
+$(".secondaryNavHome .col-md-4").on("click", function(){
+    if($(this).hasClass("student")){
+        formCarousel("student")
+    }else if($(this).hasClass("educator")){
+        formCarousel("educator")
+    }else if($(this).hasClass("institute")){
+        formCarousel("institute")
+    }
+
+})
+
+function formCarousel(classParam){
+    $(".carousel").eq(2).remove();
+    var myCarousel =$(".carousel").eq(1)
+    var myCarouselClone =myCarousel.clone();
+    if(!$(".carousel").eq(2).length){
+        myCarousel.after(myCarouselClone)
+        var indicatorLis = $(".carousel:last .carousel-indicators li").not("." + classParam).remove()
+        $(".carousel:last .carousel-indicators" +" "+ "." + classParam).each( function(i, value){
+            $(this).removeClass("active").attr("data-slide-to",i)
+        })
+        $(".carousel:last .item").not("." + classParam).remove();
+        $(".carousel:last .item").removeClass(".next, .left, .right, .active")
+        $(".carousel:last .carousel-inner .item:first").addClass("active")
+        $(".carousel:last .carousel-indicators li:first").addClass("active")
+
+        $(".carousel:last").attr("id", "lastCarousel").show()
+    }
+
+    $(".carousel").eq(1).attr("id", "firstCarousel").hide();
+    setTimeout(function(){
+        runCarousel()
+    },1600)
+}
+runCarousel();
+var imageSrc="";
+$(".secondaryNavHome img").on("mouseover", function(){
+    imageSrc = $(this).attr("src");
+    if(imageSrc.indexOf("_active") == -1){
+        var imageName = imageSrc.substring(imageSrc.indexOf("/"), imageSrc.length).replace(".png", "_active");
+        $(this).attr("src", "img"+imageName+".png")
+    }
+}).on("mouseout", function(){
+        $(this).attr("src",imageSrc);
+    })
