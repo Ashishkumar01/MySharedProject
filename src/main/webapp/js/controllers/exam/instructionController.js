@@ -21,7 +21,7 @@ IndexModule.controller("instructionController", function($rootScope,$scope,$loca
             console.log('Question loaded .... '+$rootScope.currentExam.questions.length);
         }, false);*/
 
-        $http({method: 'GET', url: 'rest/set/examset/'+$routeParams.id})
+        $http({method: 'GET', url: 'rest/set/examset/singhcl/'+$routeParams.id})
 	    .success(function(data, status, headers, config) {
 	      console.log('current exam data fetched:'+JSON.stringify(data));
 	      /*for(var i=0; i<data.examSetDetails.length;i++){
@@ -72,7 +72,7 @@ IndexModule.controller("instructionController", function($rootScope,$scope,$loca
     
     $scope.viewReports=function(){
         $scope.beginExamClicked = true
-        $location.path('/viewReports');
+        $location.path('/viewReports/'+$rootScope.currentExam.examSetId+'/'+$rootScope.currentExam.currentAttempt);
     }
         $.cookie("validAdminClick", false)
         $scope.beginExamClicked = false

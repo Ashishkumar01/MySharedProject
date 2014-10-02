@@ -208,13 +208,13 @@ function saveUser(user){
         data: JSON.stringify(userToSend),
         contentType: "application/json",
         success: function (data) {
-
             $("#overlay").css("z-index", 9999);
             console.log('Registration successful.');
 
         },
         error:function(jqXHR, textStatus, errorThrown) {
-            alert("Registration failed.");
+        	console.log('Registration failed.');
+            //alert("Registration failed.");
 
         }
     });

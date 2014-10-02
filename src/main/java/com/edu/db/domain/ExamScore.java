@@ -20,7 +20,10 @@ public class ExamScore{
 	private String examId;
 	
 	@Column(name="user_id",nullable=false)
-	private String userId;		
+	private String userId;
+	
+	@Column(name="attempt_no", nullable=false)
+	private int attemptNo;
 	
 	@Column(name="exam_date")
 	private String examDate;
@@ -57,9 +60,6 @@ public class ExamScore{
 	
 	@Column
 	private int credits;
-	
-	@Column(name="attempt_no", nullable=false)
-	private int attemptNo;
 	
 	@Column(name="exam_status")
 	private String examStatus;

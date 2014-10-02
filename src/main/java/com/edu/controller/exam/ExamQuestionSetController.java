@@ -24,8 +24,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edu.controller.question.FileUploadController;
+import com.edu.db.domain.ExamScore;
 import com.edu.db.domain.ExamSet;
 import com.edu.db.domain.ExamSetDtl;
+import com.edu.db.repository.ExamScoreRepository;
 import com.edu.db.repository.ExamSetRepository;
 import com.edu.db.repository.QuestionBankRepository;
 import com.edu.model.QuestionWithMetadata;
@@ -43,6 +45,9 @@ public class ExamQuestionSetController{
 	
 	@Autowired
 	ExamSetRepository examSetRepo;
+	
+	@Autowired
+	ExamScoreRepository examScoreRepo;
 	
 	@Autowired
 	Gson gson;
@@ -133,8 +138,13 @@ public class ExamQuestionSetController{
 		return questionDocList;		
 	}
 	
-	@RequestMapping(value = "/examset/{examSetId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ExamSet getExamSet(@PathVariable String examSetId) {
+	/**
+	 * gets examset for a given examsetId
+	 * @param examSetId
+	 * @return
+	 */
+	@RequestMapping(value = "/examset/{userId}/{examSetId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ExamSet getExamSet(@PathVariable String examSetId, @PathVariable String userId) {
 		System.out.println("getExamSet() request received for examSetId:"+examSetId);
 		ExamSet set=null;
 		try {
@@ -143,12 +153,26 @@ public class ExamQuestionSetController{
 				set=setList.get(0);
 				System.out.println("No of Questions Attached: "+set.getExamSetDetails().size());				
 			}
+			//now find the last attempt number by the user for current exam
+			List<ExamScore> scoreList=examScoreRepo.findByExamIdAndUserIdOrderByAttemptNoDesc(examSetId, userId);
+			if(scoreList!=null && !scoreList.isEmpty()){
+				System.out.println("current Attempt no: "+scoreList.get(0).getAttemptNo());
+				set.setCurrentAttempt(scoreList.get(0).getAttemptNo()+1);
+			}else{
+				set.setCurrentAttempt(1);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return set;		
 	}
 	
+	/**
+	 * load questions for selected language
+	 * @param examSetDtlList
+	 * @param language
+	 * @return
+	 */
 	@RequestMapping(value = "/loadQuestion/{language}", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<QuestionWithMetadata> loadQuestion(@RequestBody List<ExamSetDtl> examSetDtlList,@PathVariable String language) {
 		System.out.println("loadQuestion() request received for examSetId:"+examSetDtlList);

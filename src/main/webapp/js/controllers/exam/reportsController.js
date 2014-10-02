@@ -4,6 +4,8 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     $rootScope.template.url='partials/exam/partial_thumbnail.html';
     $scope.examStats={};
     $scope.currentActiveTab='#scoreCard';
+    console.log('examSetId:'+$routeParams.examSetId);
+    console.log('attemptNo:'+$routeParams.attemptNo);
     //Added by PK
 
     if($scope.beginExamClicked ==false){
@@ -19,7 +21,7 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
         })
 
     }
-    $http({method: 'GET', url: 'rest/exam/report/1/1'})
+    $http({method: 'GET', url: 'rest/exam/report/'+$routeParams.examSetId+'/'+$routeParams.attemptNo})
     .success(function(data, status, headers, config) {
       console.log('exam data fetched:'+data);
       $scope.examStats=data;

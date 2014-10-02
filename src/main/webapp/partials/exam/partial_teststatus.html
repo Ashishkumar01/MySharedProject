@@ -22,6 +22,7 @@
                     <th>Score</th>
                     <th>Total Time Allowed</th>
                     <th>Total Time Taken</th>
+                    <th>Exam Attempt</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,12 +30,13 @@
                     <td>{{currentExam.totalQuestions}}</td>
                     <td>{{currentExam.maxMarks}}</td>
                     <td>{{currentExam.total_questions_attempted}}</td>
-                    <td>{{currentExam.total_questions - currentExam.total_questions_attempted}}</td>
+                    <td>{{currentExam.totalQuestions - currentExam.total_questions_attempted}}</td>
                     <td>{{currentExam.total_questions_correct}}</td>
                     <td>{{currentExam.total_questions_attempted - currentExam.total_questions_correct}}</td>
                     <td>{{currentExam.score_obtained}}</td>
                     <td>{{currentExam.totalTimeAllowed}}</td>
                     <td>{{currentExam.total_time_taken}}</td>
+                    <td>{{currentExam.currentAttempt}}</td>
                 </tr>
             </tbody>
         </table>
