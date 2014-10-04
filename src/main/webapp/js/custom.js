@@ -42,7 +42,7 @@ if(checkAuthenticationStatus().length != 0){
     $("#overlay, .popup").hide();
     //$("#courseList .closeWrapper span").trigger("click")
 }else{
-    $(".navbar-nav:first").prepend('<li class="instruct">You are not signed in, sign in now!</li>')
+   // $(".navbar-nav:first").prepend('<li class="instruct">You are not signed in, sign in now!</li>')
     $("#logout")
         .off("click")
         .html("Sign in")
@@ -278,7 +278,7 @@ if($("#course").length){
                 htmlTemp +='<img src="img/'+data[i].imgSrc+'">';
                 htmlTemp +='<h3>'+data[i].name+'</h3>';
                 htmlTemp +='<p>'+data[i].courseDescription+'</p>'
-                htmlTemp +='<p><a class="btn btn-primary testLogin" href="#" role="button">Perform Exam &raquo;</a></p></div>';
+                htmlTemp +='<p><a class="btn btn-primary testLogin" href="#" role="button">Take Test &raquo;</a></p></div>';
             }
             $("#courseContainerWrapper").html(htmlTemp)
 
@@ -312,13 +312,15 @@ var slideAnimRowWidth=slideAnimRow.width();
 function animateSlide(){
     slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
         function(){
-            slideAnimRow.find(".slideAnimIcon").html("∆").css({marginTop:"22%", width:"30%"});
-            slideAnimRow.find(".slideAnimMsg").html("Razor sharp cognition engine to deliver an unparalleled adaptive learning infrastructure.")
+            slideAnimRow.find(".slideAnimIcon").html('<img src="img/delta.jpg"/>')
+                //.css({marginTop:"22%", width:"30%"});
+            //slideAnimRow.find(".slideAnimMsg").html("Razor sharp cognition engine to deliver an unparalleled adaptive learning infrastructure.")
             slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
                 function(){
-                    slideAnimRow.find(".msgAnim").addClass("reduceFont");
-                    slideAnimRow.find(".slideAnimIcon").html("ॐ").css({marginTop:"18%", width:"30%"});
-                    slideAnimRow.find(".slideAnimMsg").html("We practically define the science of ontology. <p>Welcome to the new world of learning.</p>")
+                   // slideAnimRow.find(".msgAnim").addClass("reduceFont");
+                    slideAnimRow.find(".slideAnimIcon").html('<img src="img/om.jpg"/>')
+                        //.css({marginTop:"18%", width:"30%"});
+                    //slideAnimRow.find(".slideAnimMsg").html("We practically define the science of ontology. <p>Welcome to the new world of learning.</p>")
                     slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
                         function(){
                             reset();
@@ -372,9 +374,10 @@ function animateSlide(){
 function reset(){
     //slideAnimTransition.css({top:"-"+slideAnimHeight+"px",width:slideAnimRowWidth+"px"})
     slideAnimRow.css({display:"none",width:slideAnimRowWidth+"px"})
-    slideAnimRow.find(".slideAnimIcon").html("π").css({marginTop:"10%", width:"25%"});
-    slideAnimRow.find(".msgAnim").removeClass("reduceFont");
-    slideAnimRow.find(".slideAnimMsg").html("Infinitely scalable knowledge engineering infrastructure.");
+    slideAnimRow.find(".slideAnimIcon").html('<img src="img/pi.jpg"/>')
+        //.css({marginTop:"10%", width:"25%"});
+    //slideAnimRow.find(".msgAnim").removeClass("reduceFont");
+    //slideAnimRow.find(".slideAnimMsg").html("Infinitely scalable knowledge engineering infrastructure.");
 
 }
 reset();

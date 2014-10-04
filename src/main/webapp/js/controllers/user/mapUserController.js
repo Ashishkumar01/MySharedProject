@@ -67,7 +67,7 @@ if($.cookie("validAdminClick")=="ok"){
             });
     };
 
-    $.cookie("validAdminClick", false)
+    $.cookie("validAdminClick", "ok")
 }
 else{
     $(".languageSelection").hide();

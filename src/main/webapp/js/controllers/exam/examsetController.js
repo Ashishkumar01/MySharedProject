@@ -110,7 +110,7 @@ console.log($.cookie("validAdminClick"))
 		
 		console.log('examSetDetails:'+$scope.examSetQuestions);
 	};
-        $.cookie("validAdminClick", false)
+        $.cookie("validAdminClick", "ok")
 }
     else{
         $(".languageSelection").hide();

@@ -78,8 +78,9 @@ body p, a{
     background:#FFDE00;
     display:table;
     height:100%;
+    width:100%;
     position:relative;
-
+    margin:auto 0;
 }
 .slideAnimTransition{
     height:100%;
@@ -97,10 +98,9 @@ body p, a{
     text-align:center;
 }
 .slideAnimIcon{
-    display:table-cell;
-    float:left;
-    width:30%;
-    margin-top:10%;
+    display:block;
+    text-align:center;
+    width:100%;
 
 }
 .slideAnimMsg{
@@ -108,7 +108,6 @@ body p, a{
     margin-top:10%;
     display:table-cell;
     vertical-align:bottom;
-    float:left;
     font-size:15%;
     text-transform: uppercase;
     line-height: 100%;
@@ -121,7 +120,7 @@ body p, a{
     display:table-cell;
     vertical-align:middle;
     line-height:10%;
-    margin:auto !important
+    text-align:center;
 }
 .call2ActionLink{
     text-align:left;
@@ -271,7 +270,7 @@ body p, a{
     margin-bottom:0;
 }
 #myCarousel, #lastCarousel{
-    height:40% !important;
+    height:350px !important;
     background:none !important;
 }
 #myCarousel h1, #lastCarousel h1{
@@ -350,7 +349,7 @@ footer {
     margin: 50px 0;
 }
 #home{
-    background-color: #ECECEC;
+    background-color: #FFF;
 }
 #home .col-lg-4{
 
@@ -371,7 +370,13 @@ footer {
 #signUp,#logout{
     margin:10px 10px 0 0;
     padding:4px;
-    color:#fff;
+    color:#000;
+}
+.navbar-inverse .navbar-nav > li > a{
+    color:#000;
+}
+.navbar-inverse .navbar-nav > li > a:hover{
+    color:#000;
 }
 #logoOmoknow{
     display:block;
@@ -547,24 +552,26 @@ footer {
 }
 .sidenav li{
     padding:0px;
-    color:#245269 !important;
+    color:#000 !important;
     background-color: #F8F9FA;
     border-bottom:1px dotted #e0dfe3;
     margin-bottom:0px;
 }
 .sidenav li a{
-
+    color:#000 !important;
     padding:10px !important;
 }
 .sidenav li.active{
     font-weight:normal !important;
-    text-transform: uppercase;
+    background:#efefef;
 
 }
 .jumbotron{
-    background: transparent url("../img/coursesBack.gif") center center;
+    background: #fff;
 }
-
+sup{
+    font-size:8px;
+ }
 #profile .jumbotron{
     background: none;
 }
@@ -579,7 +586,7 @@ footer {
     height:.5em;
 }
 .jumbotron h1{
-    color:#E5E8E9;
+    color:#000;
 }
 .dropdown ul li a:hover{
     color:#666 !important;
@@ -659,6 +666,39 @@ footer {
 }
 #redirectCallToAction .btn{
     margin:10px;
+}
+#lastCarousel .carousel-caption{
+    color:#000;
+    font-size:120%;
+}
+.carousel-caption{
+    bottom:auto !important;
+    top:10px !important;
+}
+.carousel-caption h3{
+    font-size:250%;
+    text-align:left;
+    text-shadow: none !important;
+    color:#000;
+    margin-bottom: 30px;
+}
+.carousel-caption .contentWrapper{
+    text-align:left;
+    text-shadow: none !important;
+
+}
+.carousel-caption .contentWrapper p{
+    color:#000;
+    font-size:150%;
+    width:95%;
+    padding-left:15%;
+    padding-top:2%;
+    position:relative;
+}
+.carousel-caption .contentWrapper img{
+    position:absolute;
+    left:0;
+    top:0;
 }
 .col-md-4{
     position: relative;
@@ -766,6 +806,9 @@ footer {
 }
 
 .instruct{color:#ff0000; padding:15px 20px 5px 0}
+.languageSelection{
+    display:none;
+}
 .languageSelection p{
     padding:5px;
     margin:5px;
@@ -775,7 +818,7 @@ footer {
     font-size:1.3em;
 
 }
-#home .navbar-inverse{
+.navbar-inverse{
     background: transparent;
     color:#000;
     border:none;
@@ -788,16 +831,19 @@ footer {
     z-index:1001 !important;
 }
 .aboutUs{
-    color:#fff;
+    color:#000;
     height:100%;
-    background:url("../img/aboutusBg.jpg") top left no-repeat;
+    /*background:url("../img/aboutusBg.jpg") top left no-repeat;*/
     font-size:200%;
-    padding:10% 0 20% 0;
+   /* padding:10% 0 20% 0;*/
 }
 .aboutUs h2{
-    font-size:500%;
+    font-size:200%;
     font-weight:bold;
     text-transform:uppercase;
+}
+.ui-layout-north{
+    visibility: hidden;
 }
 footer{
     text-align:center;
