@@ -1,12 +1,11 @@
 package com.edu.controller.exam;
 
 import java.io.File;
-import java.io.FileReader;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +27,7 @@ import com.edu.db.domain.ExamScore;
 import com.edu.db.domain.ExamSet;
 import com.edu.db.domain.ExamSetDtl;
 import com.edu.db.repository.ExamScoreRepository;
+import com.edu.db.repository.ExamSetQuestionRepository;
 import com.edu.db.repository.ExamSetRepository;
 import com.edu.db.repository.QuestionBankRepository;
 import com.edu.model.QuestionWithMetadata;
@@ -50,6 +50,9 @@ public class ExamQuestionSetController{
 	ExamScoreRepository examScoreRepo;
 	
 	@Autowired
+	ExamSetQuestionRepository examSetQuestionRepo;
+	
+	@Autowired
 	Gson gson;
 	
 	/**
@@ -61,6 +64,7 @@ public class ExamQuestionSetController{
 		System.out.println("saveExamSet() data received:"+examSet);
 		try {
 			Map<String,ExamSetDtl> tempMap=new HashMap<String,ExamSetDtl>();
+			List<ExamSetDtl> existingDtlList = new ArrayList<ExamSetDtl>();
 			System.out.println("saveExamSet() save ExamSet:"+examSet.getTotalQuestions());
 			List<ExamSetDtl> tempDtlList=examSet.getExamSetDetails();
 			//sort dtlList in order of Subject
@@ -74,33 +78,58 @@ public class ExamQuestionSetController{
 			/*convert dtls to below format
 			 * "subject":"Quantitative Aptitude","start_number":0,"end_number":9,"active": true,"linked_questions": "0,1,2"
 			 * */
-			int questionNo=1;
-			for(int i=0; i<tempDtlList.size(); i++){
-				questionNo=i+1;
+			int questionNo=0;
+			for(int i=0; i<tempDtlList.size(); i++)
+			{
+				questionNo=questionNo+1;
 				tempDtl=tempDtlList.get(i);
-				if(tempMap.containsKey(tempDtl.getSubject())){
-					ExamSetDtl tempSetDtl=tempMap.get(tempDtl.getSubject());
-					tempSetDtl.setEndIndex(questionNo);
-					tempSetDtl.setLinkedQuestions(tempSetDtl.getLinkedQuestions()+","+questionNo);					
-				}else{
-					ExamSetDtl tempSetDtl=new ExamSetDtl();
-					tempSetDtl.setStartIndex(questionNo);
-					tempSetDtl.setEndIndex(questionNo);
-					tempSetDtl.setLinkedQuestions(""+questionNo);
-					tempSetDtl.setSubject(tempDtl.getSubject());
-					tempSetDtl.setActive(true);
-					tempSetDtl.setExamSet(examSet);
-					
-					tempMap.put(tempDtl.getSubject(),tempSetDtl);
+				if (tempDtl.getId() != null)
+				{
+					tempDtl.setExamSet(examSet);
+					existingDtlList.add(tempDtl);
+					tempDtl.setModifiedTime(new Timestamp(System.currentTimeMillis()));
+					tempMap.put(tempDtl.getSubject(),tempDtl);
+					questionNo = tempDtl.getLinkedQuestions().split(",").length;
+				}
+				else 
+				{
+					if(tempMap.containsKey(tempDtl.getSubject()))
+					{
+						ExamSetDtl tempSetDtl=tempMap.get(tempDtl.getSubject());
+						tempSetDtl.setEndIndex(questionNo);
+						tempSetDtl.setLinkedQuestions(tempSetDtl.getLinkedQuestions()+","+questionNo);					
+					}
+					else
+					{
+						ExamSetDtl tempSetDtl=new ExamSetDtl();
+						tempSetDtl.setStartIndex(questionNo);
+						tempSetDtl.setEndIndex(questionNo);
+						tempSetDtl.setLinkedQuestions(""+questionNo);
+						tempSetDtl.setSubject(tempDtl.getSubject());
+						tempSetDtl.setActive(true);
+						tempSetDtl.setCreatedTime(new Timestamp(System.currentTimeMillis()));
+						tempSetDtl.setModifiedTime(new Timestamp(System.currentTimeMillis()));
+						tempSetDtl.setExamSet(examSet);
+						
+						tempMap.put(tempDtl.getSubject(),tempSetDtl);
+					}
 				}
 			}
 			
+			if (existingDtlList != null && existingDtlList.size() > 0)
+				examSetQuestionRepo.delete(existingDtlList);
+			
 			//set the ordered examsetDtl
 			List<ExamSetDtl> finalDtlList=new ArrayList<ExamSetDtl>();
-			for(ExamSetDtl temp:tempMap.values()){
+			for(ExamSetDtl temp:tempMap.values())
+			{
+				if (temp.getId() != null)
+					temp.setId(null);
+				
 				finalDtlList.add(temp);
 			}
 			examSet.setExamSetDetails(finalDtlList);
+			
 			examSetRepo.save(examSet);
 			
 		} catch (Exception e) {
@@ -136,6 +165,24 @@ public class ExamQuestionSetController{
 			e.printStackTrace();
 		}
 		return questionDocList;		
+	}
+	
+	@RequestMapping(value = "/examsetbycode/{examSetCode}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ExamSet getExamSetByCode(@PathVariable String examSetCode) 
+	{
+		System.out.println("getExamSetByCode() request received for examSetCode:"+examSetCode);
+		ExamSet set=null;
+		try {
+			List<ExamSet> setList=examSetRepo.findByCode(examSetCode);
+			if(setList!=null && !setList.isEmpty()){
+				set=setList.get(0);
+				set.setQuestionDetails(this.loadQuestion(set.getExamSetDetails(), "english"));
+				System.out.println("No of Questions Attached: "+set.getExamSetDetails().size());				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return set;		
 	}
 	
 	/**

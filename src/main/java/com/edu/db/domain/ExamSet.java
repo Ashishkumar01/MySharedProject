@@ -1,7 +1,6 @@
 package com.edu.db.domain;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.CascadeType;
@@ -10,10 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.edu.model.QuestionWithMetadata;
 
 @Entity
 @Table(name="exam_set_mst")
@@ -62,6 +62,9 @@ public class ExamSet{
 	
 	@Transient
 	private int currentAttempt;
+	
+	@Transient
+	private List<QuestionWithMetadata> questionDetails;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="examSet")
 	private List<ExamSetDtl> examSetDetails;
@@ -187,6 +190,14 @@ public class ExamSet{
 
 	public void setCurrentAttempt(int currentAttempt) {
 		this.currentAttempt = currentAttempt;
+	}
+
+	public List<QuestionWithMetadata> getQuestionDetails() {
+		return questionDetails;
+	}
+
+	public void setQuestionDetails(List<QuestionWithMetadata> questionDetails) {
+		this.questionDetails = questionDetails;
 	}
 	
 }

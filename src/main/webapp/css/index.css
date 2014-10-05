@@ -380,8 +380,8 @@ footer {
 }
 #logoOmoknow{
     display:block;
-    width:131px;
-    height:44px;
+    width:180px;
+    height:50px;
     background:transparent url("../img/logo.png") 0 0 no-repeat;
 }
 #socialLink{
@@ -680,7 +680,7 @@ sup{
     text-align:left;
     text-shadow: none !important;
     color:#000;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 .carousel-caption .contentWrapper{
     text-align:left;
@@ -689,10 +689,10 @@ sup{
 }
 .carousel-caption .contentWrapper p{
     color:#000;
-    font-size:150%;
+    font-size:140%;
     width:95%;
     padding-left:15%;
-    padding-top:2%;
+    padding-top:0;
     position:relative;
 }
 .carousel-caption .contentWrapper img{
@@ -823,6 +823,10 @@ sup{
     color:#000;
     border:none;
 
+}
+.carousel-indicators li{
+    background-color:#000;
+    border:1px solid #000;
 }
 .addOpa{
     background: #fff !important;

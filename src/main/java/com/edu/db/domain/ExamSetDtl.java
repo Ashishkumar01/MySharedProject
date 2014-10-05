@@ -1,6 +1,6 @@
 package com.edu.db.domain;
 
-import java.util.List;
+import java.sql.Timestamp;
 
 import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.Column;
@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.springframework.data.annotation.Reference;
 
 @Entity
 @Table(name="exam_set_dtl")
@@ -43,6 +42,12 @@ public class ExamSetDtl{
 	 */
 	@Column(name="linked_questions",nullable=false)
 	private String linkedQuestions;
+	
+	@Column(name="created_time")
+	private Timestamp createdTime;
+	
+	@Column(name="modified_time")
+	private Timestamp modifiedTime;
 	
 	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -103,6 +108,22 @@ public class ExamSetDtl{
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public Timestamp getCreatedTime() {
+		return createdTime;
+	}
+
+	public void setCreatedTime(Timestamp createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public Timestamp getModifiedTime() {
+		return modifiedTime;
+	}
+
+	public void setModifiedTime(Timestamp modifiedTime) {
+		this.modifiedTime = modifiedTime;
 	}
 		
 }

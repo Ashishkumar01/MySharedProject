@@ -1,154 +1,129 @@
-<div class="panel-group" id="accordion">
-  <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
-          Enter Exam Set Details
-        </a>
+          Exam Set Details
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in">
+    <div id="collapseOne">
       <div class="panel-body">
         	<form class="form-horizontal" role="form" name="examSetForm">
 			   <div class="form-group">
 			   	  <br>
-			      <label for="name" class="col-sm-2 control-label">Name</label>
-			      <div class="col-sm-3">
+			      <label for="name" class="col-sm-1 control-label">Name</label>
+			      <div class="col-sm-2">
 			         <input type="text" class="form-control" id="name" ng-model="examSet.name"
-			            placeholder="Enter Exam Set Name">
+			            placeholder="Enter Exam Set Name" required>
 			      </div>
-			      
-			      <label for="CodeId" class="col-sm-2 control-label">Code</label>
-			      <div class="col-sm-3">
+			      <label for="CodeId" class="col-sm-1 control-label">Code</label>
+			      <div class="col-sm-2">
 			         <input type="text" class="form-control" id="CodeId" ng-model="examSet.code"
-			            placeholder="Enter Set Code">
+			            placeholder="Enter Set Code" >
 			      </div>
-			      <div class="col-sm-2"></div>
+			      <div class="col-sm-3">
+			            <button type="button" class="btn btn-primary pull-left" ng-click="searchExamSet()"><span class="glyphicon glyphicon-search"></span></button>
+			      </div>
+			     
+			       <div class="col-sm-3"></div>
 			   </div>
 			   <div class="form-group">
-			      <label for="PackageId" class="col-sm-2 control-label">Package</label>
-			      <div class="col-sm-3">
+			       <label for="PackageId" class="col-sm-1 control-label">Package</label>
+			      <div class="col-sm-2">
 			         <input type="text" class="form-control" id="PackageId" ng-model="examSet.packageName"
 			            placeholder="Enter Package Name">
 			      </div>
-			      <label for="SnippetId" class="col-sm-2 control-label">Snippet</label>
-			      <div class="col-sm-3">
+			      <label for="SnippetId" class="col-sm-1 control-label">Snippet</label>
+			      <div class="col-sm-2">
 			         <input type="text" class="form-control" id="SnippetId" ng-model="examSet.packageSnippet"
 			            placeholder="Enter Exam Snippet">
 			      </div>
-			      <div class="col-sm-2"></div>
-			   </div>
-			   <div class="form-group">
-			      <label for="TotalQuestionsId" class="col-sm-2 control-label">Total Questions</label>
-			      <div class="col-sm-3">
+			     <label for="TotalQuestionsId" class="col-sm-1 control-label">Total Questions</label>
+			      <div class="col-sm-2">
 			         <input type="text" class="form-control" id="TotalQuestionsId"  ng-model="examSet.totalQuestions"
-			            placeholder="Total Questions in the set">
+			            placeholder="Total Questions in the set" >
 			      </div>
-			      <label for="MaxMarksId" class="col-sm-2 control-label">Max. Marks</label>
-			      <div class="col-sm-3">
-			         <input type="number" class="form-control" id="MaxMarksId" ng-model="examSet.maxMarks"
-			            placeholder="Maximum Marks for the set">
+			       <div class="col-sm-3"></div>
+			   </div>
+			   
+			   <div class="form-group">
+					 <label for="MaxMarksId" class="col-sm-1 control-label">Max. Marks</label>
+			      <div class="col-sm-2">
+			         <input type="text" class="form-control" id="MaxMarksId" ng-model="examSet.maxMarks"
+			            placeholder="Maximum Marks for the set" >
 			      </div>
-			      <div class="col-sm-2"></div>
-			   </div>  
-			    <div class="form-group">
-			      <label for="TotalTimeId" class="col-sm-2 control-label">Total Time</label>
-			      <div class="col-sm-3">
-			         <input type="number" class="form-control" id="TotalTimeId" ng-model="examSet.totalTimeAllowed" 
+			       <label for="TotalTimeId" class="col-sm-1 control-label">Total Time</label>
+			      <div class="col-sm-2">
+			         <input type="text" class="form-control" id="TotalTimeId" ng-model="examSet.totalTimeAllowed" 
 			            placeholder="Total Time allowed for the set">
 			      </div>
-			      <label for="CorrectMarksId" class="col-sm-2 control-label">Correct Marks</label>
-			      <div class="col-sm-3">
-			         <input type="number" class="form-control" id="CorrectMarksId" ng-model="examSet.correctMarks"
-			            placeholder="Marks for every Correct Question">
+			      <label for="CorrectMarksId" class="col-sm-1 control-label">Correct Marks</label>
+			      <div class="col-sm-2">
+			         <input type="text" class="form-control" id="CorrectMarksId" ng-model="examSet.correctMarks"
+			            placeholder="Marks for every Correct Question" >
 			      </div>
-			      <div class="col-sm-2"></div>
-			   </div>  
+			       <div class="col-sm-3"></div>
+			   </div>
 			   <div class="form-group">
-			      <label for="NegativeMarkingId" class="col-sm-2 control-label">Negative Marking</label>
-			      <div class="col-sm-3">
+			      <label for="NegativeMarkingId" class="col-sm-1 control-label">Negative Marking</label>
+			      <div class="col-sm-2">
 			         <input type="checkbox" id="NegativeMarkingId" ng-model="examSet.isNegativeMarks" 
 			            placeholder="Negative Marking">
 			      </div>
-			      <label for="NegativeMarksId" class="col-sm-2 control-label">Negative Marks</label>
-			      <div class="col-sm-3">
+			      <label for="NegativeMarksId" class="col-sm-1 control-label">Negative Marks</label>
+			      <div class="col-sm-2">
 			         <input type="number" class="form-control" id="NegativeMarksId" ng-model="examSet.negativeMarks" 
 			            placeholder="Negative Marks">
 			      </div>
-			      <div class="col-sm-2"></div>
+			       <div class="col-sm-6"></div>
 			   </div>  
-			   <!-- <div class="form-group">
-			      <div class="col-sm-11">
-			         <button type="button" class="btn btn-primary pull-right">Add Question</button>
-			      </div>
-			   </div>  --> 
+			   <hr>
+			   <fieldset>
+				   <h2 class="panel-title">
+		          		Question Search Criteria
+		      		</h2>
+		      		
+				   <div class="form-group">
+				   	  <br>
+				      <label for="subject" class="col-sm-1 control-label">Subject</label>
+				      <div class="col-sm-2">
+				         <select class="form-control" id="subject" ng-model="subject" ng-options="x.key as x.value for x in subjectArray" required></select>
+				      </div>
+				      
+				      <label for="searchCriteria" class="col-sm-1 control-label">Subject Criteria</label>
+				      <div class="col-sm-2">
+				         <select class="form-control" id="subjectCriteria" ng-model="subjectCriteria" ng-options="x.key as x.value for x in subjectCriteriaArray"></select>
+				      </div>
+				      <div class="col-sm-6">
+				      		<button type="button" class="btn btn-primary pull-left" ng-click="saveSet()" >Save Set</button>
+				        	<button type="button" class="btn btn-primary pull-left" ng-click="searchQuestions()" >Search Questions</button>
+				      </div>
+				   </div>
+			   </fieldset>
 			</form>			        	
       </div>
-    </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">
-          Enter Question Search Criteria
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
-      <div class="panel-body">
-        	<form class="form-horizontal" role="form" name="examSearchForm">
-			   <div class="form-group">
-			   	  <br>
-			      <label for="subject" class="col-sm-2 control-label">Subject</label>
-			      <div class="col-sm-3">
-			         <!-- <input type="text" class="form-control" id="subject" ng-model="subject" placeholder="Enter subject"> -->
-			         <select class="form-control" id="subject" ng-model="subject" ng-options="x.key as x.value for x in subjectArray"></select>
-			      </div>
-			      
-			      <label for="searchCriteria" class="col-sm-2 control-label">Subject Criteria</label>
-			      <div class="col-sm-3">
-			         <!-- <input type="text" class="form-control" id="searchCriteria" ng-model="subjectCriteria" placeholder="Enter subject criteria"> -->
-			         <select class="form-control" id="subjectCriteria" ng-model="subjectCriteria" ng-options="x.key as x.value for x in subjectCriteriaArray"></select>
-			      </div>
-			      <div class="col-sm-2"></div>
-			   </div>
-			   <div class="form-group">
-			      <div class="col-sm-11">
-			      		<button type="button" class="btn btn-primary pull-right" ng-click="saveSet()" ng-show="totalQuestionsMarked>0">Save Set</button>
-			        	<button type="button" class="btn btn-primary pull-right" ng-click="searchQuestions()">Get Questions</button>			         
-			      </div>
-			   </div>
-			</form>			        	
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default" ng-show="questions && questions.length>0">
-    	<div class="panel-body">
-        	<table class="table table-bordered" ng-show="questions && questions.length>0">
-			    <thead class="success">
-			        <tr>
-			            <th>Select</th>
-			            <th>Subject</th>
-			            <th>Subject Category</th>
-			            <th>Question Type</th>					            
-			            <th>Question/Passage</th>
-			            <th>No. of Questions</th>
-			        </tr>
-			    </thead>
-			    <tbody>
-			    	<tr ng-repeat="question in questions">
-			            <td class="text-center"> 
-			            	<input type="checkbox" ng-model="questionsSelected[question.id]" ng-change="addQuestion(question)"> 
-			            </td>
-			            <td class="text-center">{{question.subject}}</td>
-			            <td class="text-center">{{question.subjectCategory}}</td>
-			            <td class="text-center">{{question.questionType}}</td>
-			            
-			            <td class="text-center">{{question.passage}}</td>
-			            <td class="text-center">{{question.passageQuestionCount}}</td>
-			        </tr>					        
-			    </tbody>
-			</table>	
-      </div>
-  </div>
-</div>
+   	<div class="panel-body">
+       	<table class="table table-bordered" ng-show="questions && questions.length>0">
+		    <thead class="success">
+		        <tr>
+		            <th>Select</th>
+		            <th>Subject</th>
+		            <th>Subject Category</th>
+		            <th>Question Type</th>					            
+		            <th>Question/Passage</th>
+		            <th>No. of Questions</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="question in questions">
+		            <td class="text-center"> 
+		            	<input type="checkbox" ng-model="questionsSelected[question.id]" ng-change="addQuestion(question)"> 
+		            </td>
+		            <td class="text-center">{{question.subject}}</td>
+		            <td class="text-center">{{question.subjectCategory}}</td>
+		            <td class="text-center">{{question.questionType}}</td>
+		            
+		            <td class="text-center">{{question.passage}}</td>
+		            <td class="text-center">{{question.passageQuestionCount}}</td>
+		        </tr>					        
+		    </tbody>
+		</table>	
+     </div>
