@@ -190,8 +190,8 @@ public class ExamQuestionSetController{
 	 * @param examSetId
 	 * @return
 	 */
-	@RequestMapping(value = "/examset/{userId}/{examSetId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ExamSet getExamSet(@PathVariable String examSetId, @PathVariable String userId) {
+	@RequestMapping(value = "/examset/{examSetId}", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ExamSet getExamSet(@PathVariable String examSetId, @RequestBody String userId) {
 		System.out.println("getExamSet() request received for examSetId:"+examSetId);
 		ExamSet set=null;
 		try {

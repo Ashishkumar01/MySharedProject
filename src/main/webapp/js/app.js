@@ -1,6 +1,6 @@
 'use strict';
 
-var app=angular.module('myProjectApp', ['ngSanitize','ngRoute','ui.index.controllers'])
+var app=angular.module('myProjectApp', ['ngSanitize','ngRoute','ui.index.controllers','googlechart'])
 
 app.run(function($window){
 
@@ -81,7 +81,7 @@ app.config(['$routeProvider','$locationProvider',function( $routeProvider,$locat
             controller:  'startExamController'
         });
 
-    $routeProvider.when('/submitExam', {
+    $routeProvider.when('/submitExam/:userId', {
         templateUrl: 'partials/exam/partial_teststatus.html',
         controller:  'instructionController'
     });
@@ -106,9 +106,16 @@ app.config(['$routeProvider','$locationProvider',function( $routeProvider,$locat
         controller: 'MapUserController'
     });
     
-    $routeProvider.when('/viewReports/:examSetId/:attemptNo', {
+    //Reports of current attempt of exam
+    $routeProvider.when('/viewReports/:examSetId/:attemptNo/:userId', {
         templateUrl: 'partials/reports/partial_examReports.html',
         controller: 'reportsController'
+    });
+    
+    //Reports of all tests of logged in user
+    $routeProvider.when('/userReport', {
+        templateUrl: 'partials/reports/partial_userReports.html',
+        controller: 'userReportsController'
     });
     /*$routeProvider.otherwise({ redirectTo: '/home' });*/
 }]);

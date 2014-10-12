@@ -1,0 +1,120 @@
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        View Report
+    </div>
+    <div class="panel-body">
+        
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+			<ul class="nav nav-tabs" id="reportTab">
+			  <li class="active"><a href="" class="scoreCard"  data-toggle="tab">Score Card</a></li>
+			  <li><a href="" class="questionReport"  data-toggle="tab">Question Report</a></li>
+			  <li><a href="" class="topicReport" data-toggle="tab">Topic Report</a></li>
+                <li class="dropdown">
+                    <a href="http://getbootstrap.com/javascript/#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                        <li><a href="http://getbootstrap.com/javascript/#dropdown1" class="scoreCard" tabindex="-1" role="tab" data-toggle="tab">Score Card</a></li>
+                        <li><a href="http://getbootstrap.com/javascript/#dropdown2" class="questionReport" tabindex="-1" role="tab" data-toggle="tab">Question Report</a></li>
+                        <li><a href="http://getbootstrap.com/javascript/#dropdown2" class="topicReport" tabindex="-1" role="tab" data-toggle="tab">Topic Report</a></li>
+                    </ul>
+                </li>
+			</ul>
+			
+			<!-- Tab panes -->
+			<div class="tab-content">
+			  <div class="tab-pane active" id="scoreCard">
+					<div google-chart chart="chartScore" style="{{cssStyle}}" on-ready="chartReady()"></div>		  		
+					
+					<div google-chart chart="chartTime" style="{{cssStyle}}" on-ready="chartReady()"></div>
+			  </div>
+			  <div class="tab-pane" id="questionReport">
+					Report 2
+			  </div>
+			  <div class="tab-pane" id="topicReport">
+					Report3
+			  </div>
+			</div>
+
+<!--             DROPDOWN TAB PANE START
+
+            Tab panes
+            <div class="tab-content">
+                <div class="tab-pane active" id="dropdown1">
+                    <div ng-include src="'partials/reports/partial_scoreCard.html'"></div>
+                </div>
+                <div class="tab-pane" id="timeManagement">...</div>
+                <div class="tab-pane" id="dropdown2">
+                    <br>
+                    <table class="table table-bordered">
+                        <thead class="success">
+                        <tr>
+                            <th>S.No</th>
+                            <th>Question Status</th>
+                            <th>Your Answer</th>
+                            <th>Correct Answer</th>
+                            <th>Your Score</th>
+                            <th>Your Time</th>
+                            <th>Level</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="currentQuestion in examStats.examStatList">
+                            <td class="text-center">{{$index+1}}</td>
+                            <td class="text-center"><span ng-class="{'glyphicon glyphicon-ok':currentQuestion.isCorrect=='Y','glyphicon glyphicon-remove':currentQuestion.isCorrect=='N'}"></span></td>
+                            <td class="text-center">{{currentQuestion.userAnswer==-1?'NA':currentQuestion.userAnswer}}</td>
+                            <td class="text-center">{{currentQuestion.correctAnswer}}</td>
+
+                            <td class="text-center">{{currentQuestion.score}}</td>
+                            <td>{{currentQuestion.timeTaken}}</td>
+                            <td class="text-center">{{currentQuestion.level}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="dropdown3">
+                    <br>
+                    <table class="table table-bordered">
+                        <thead class="success">
+                        <tr>
+                            <th>Module Name</th>
+                            <th>Total Questions</th>
+                            <th>Attempted Questions</th>
+                            <th>Correct Questions</th>
+                            <th>Incorrect Questions</th>
+                            <th>Unattempted Questions</th>
+                            <th>Score</th>
+                            <th>Time Taken</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="moduleData in moduleDetails">
+                            <td class="text-center">{{moduleData.moduleName}}</td>
+                            <td class="text-center">{{moduleData.questionCount}}</td>
+                            <td class="text-center">{{moduleData.attempted}}</td>
+                            <td class="text-center">{{moduleData.correct}}</td>
+
+                            <td class="text-center">{{moduleData.attempted-moduleData.correct}}</td>
+                            <td class="text-center">{{moduleData.questionCount-moduleData.attempted}}</td>
+                            <td class="text-center">{{ moduleData.score}}</td>
+                            <td class="text-center">-NA-</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            DROPDOWN TAB PANE ENDS -->
+        </div>
+    </div>
+
+    <div class="panel-footer clearfix">
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-primary" ng-click="close()">
+                <span class="glyphicon glyphicon-log-out"></span> Close
+            </button>
+        </div>
+
+    </div>
+</div>
+

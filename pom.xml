@@ -140,7 +140,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>Educomp</finalName>
+		<finalName>omoknow</finalName>
 
 		<plugins>
 			<plugin>

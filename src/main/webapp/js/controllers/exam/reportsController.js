@@ -21,7 +21,7 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
         })
 
     }
-    $http({method: 'GET', url: 'rest/exam/report/'+$routeParams.examSetId+'/'+$routeParams.attemptNo})
+    $http({method: 'POST', url: 'rest/exam/report/'+$routeParams.examSetId+'/'+$routeParams.attemptNo, data:$routeParams.userId})
     .success(function(data, status, headers, config) {
       console.log('exam data fetched:'+data);
       $scope.examStats=data;

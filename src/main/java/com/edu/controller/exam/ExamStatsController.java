@@ -61,18 +61,18 @@ public class ExamStatsController{
 	/**
 	 * fetches exam stats
 	 */
-	@RequestMapping(value = "/report/{examId}/{attemptNo}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ExamReport getExamStats(@PathVariable String examId,@PathVariable String attemptNo) {
-		System.out.println("getExamStats() request received. examId:"+examId+" attemptNo:"+attemptNo);
+	@RequestMapping(value = "/report/{examId}/{attemptNo}", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ExamReport getExamStats(@PathVariable String examId,@PathVariable String attemptNo,@RequestBody String userId) {
+		System.out.println("getExamStats() request received. examId:"+examId+" attemptNo:"+attemptNo+" userId:"+userId);
 		ExamReport examReport=new ExamReport();
 		try {
 			//code to fetch exam stats
-			List<ExamScore> examScoreList=examRepo.findByExamIdAndUserIdAndAttemptNo(examId, "singhcl", Integer.parseInt(attemptNo));
+			List<ExamScore> examScoreList=examRepo.findByExamIdAndUserIdAndAttemptNo(examId, userId, Integer.parseInt(attemptNo));
 			if(examScoreList!=null && examScoreList.size()>0){
 				System.out.println("examScoreList size:"+examScoreList.size());
 				examReport.setExamScore(examScoreList.get(0));
 				
-				List<ExamStats> examStatsList=examStatsRepo.findByExamIdAndUserIdAndAttemptNo(examId, "singhcl", Integer.parseInt(attemptNo));
+				List<ExamStats> examStatsList=examStatsRepo.findByExamIdAndUserIdAndAttemptNo(examId, userId, Integer.parseInt(attemptNo));
 				if(examStatsList!=null){
 					System.out.println("examStatsList size:"+examStatsList.size());
 					examReport.setExamStatList(examStatsList);

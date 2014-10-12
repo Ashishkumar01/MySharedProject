@@ -34,6 +34,12 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     $scope.currentQuestion.timeTaken="00:00:00";
     $scope.tabsData = $rootScope.currentExam.examSetDetails;
     //$rootScope.questionCount=$scope.questions.length;
+    $scope.userId='test';
+	if ($.cookie("providerJSON")) {
+		var userProfileObject = JSON.parse($.cookie("providerJSON"));
+		$scope.userId = userProfileObject.email;
+		console.log('userId for Examinee: '+$scope.userId);
+	}
 
     //timer code
     var timerElement=$("#timer"),hourElem = '',
@@ -174,7 +180,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         for(var j=0; j<$rootScope.questions.length;j++){
         	questionStats={};
         	questionStats.examId=$rootScope.currentExam.examSetId;
-        	questionStats.userId='singhcl';
+        	questionStats.userId=$scope.userId;
         	questionStats.examDate=getDateTime();
         	questionStats.attemptNo=$rootScope.currentExam.currentAttempt;
 
@@ -224,7 +230,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     	examStats.examId=$rootScope.currentExam.examSetId;
     	examStats.attemptNo=$rootScope.currentExam.currentAttempt;
 
-    	examStats.userId='singhcl';
+    	examStats.userId=$scope.userId;
     	examStats.examDate=getDateTime();
     	examStats.totalQuestions=$rootScope.currentExam.totalQuestions;
     	examStats.totalAttempted=$rootScope.currentExam.total_questions_attempted;
@@ -245,11 +251,11 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         success(function(data, status, headers, config) {
           console.log('exam save successfully. Status:'+status);
           $scope.beginExamClicked =true
-          $location.path("/submitExam");
+          $location.path("/submitExam/"+$scope.userId);
         }).
         error(function(data, status, headers, config) {
         	console.log('exam save failed. Status:'+status);
-        	$location.path("/submitExam");
+        	$location.path("/submitExam/"+$scope.userId);
         });
 
     }
