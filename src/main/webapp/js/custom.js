@@ -11,14 +11,71 @@ $('.tooltip-social').tooltip({
 })
 var openState= false;
 var isHomePage = false;
+/*
+ if(checkAuthenticationStatus().length != 0){
+ //console.log($.cookie("providerJSON"))
+ $(".instruct").hide()
+ if(!$.cookie("providerJSON")){
+ console.log("reached provider on load")
+ getUserDetails("me")
+ }
+ $("#signUp")
+ .off("click")
+ .html("Logout")
+ .attr("id","logout")
+ .on("click", function(e){
+ e.preventDefault();
+ openState=false;
+ logOut();
+ logOutRoutine();
+ })
+ if($("#home").length){
+ isHomePage = true;
+ }else{
+ isHomePage = false;
+ }
+ if(openState){
+ $("#socialLink").trigger("click").hide()
+ }else{
+ $("#socialLink").hide()
+ }
+ $("#overlay, .popup").hide();
+ //$("#courseList .closeWrapper span").trigger("click")
+ }else{
+ // $(".navbar-nav:first").prepend('<li class="instruct">You are not signed in, sign in now!</li>')
+ $("#logout")
+ .off("click")
+ .html("Sign in")
+ .attr("id","signUp")
+ .on("click", function(e){
+ logOutRoutine();
+ e.preventDefault();
+ if($("#home").length){
+ isHomePage = true;
+ }else{
+ isHomePage = false;
+ }
+ openState= true;
+ if($(".popup").is(":hidden")){
+ if($(this).hasClass("testLogin")){
+ isHomePage = false;
+ }
+ centerDiv(".popup");
 
-if(checkAuthenticationStatus().length != 0){
+ }
+ })
+ $("#socialLink").show()
+ logOutRoutine();
+
+ }
+ */
+if($.cookie("providerJSON")){
 //console.log($.cookie("providerJSON"))
     $(".instruct").hide()
-    if(!$.cookie("providerJSON")){
-        console.log("reached provider on load")
-        getUserDetails("me")
-    }
+    //if(!$.cookie("providerJSON")){
+    //  console.log("reached provider on load")
+    //getUserDetails("me")
+    //}
     $("#signUp")
         .off("click")
         .html("Logout")
@@ -42,7 +99,7 @@ if(checkAuthenticationStatus().length != 0){
     $("#overlay, .popup").hide();
     //$("#courseList .closeWrapper span").trigger("click")
 }else{
-   // $(".navbar-nav:first").prepend('<li class="instruct">You are not signed in, sign in now!</li>')
+    // $(".navbar-nav:first").prepend('<li class="instruct">You are not signed in, sign in now!</li>')
     $("#logout")
         .off("click")
         .html("Sign in")
@@ -68,6 +125,7 @@ if(checkAuthenticationStatus().length != 0){
     logOutRoutine();
 
 }
+
 function logOutRoutine(){
     if($("#exam").length){
         window.location= "index.html"
@@ -206,7 +264,7 @@ $("#courseContainerWrapper").on("click",".testLogin", function(e){
     $(".testLogin").removeClass("testLoginActive");
     $("#courseList .closeWrapper span").trigger("click")
     $(this).addClass("testLoginActive")
-    if(checkAuthenticationStatus().length != 0){
+    if($.cookie("providerJSON")){
 
         var email = (JSON.parse($.cookie("providerJSON"))).email;
         showCourseListing(this,email)
@@ -313,13 +371,13 @@ function animateSlide(){
     slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
         function(){
             slideAnimRow.find(".slideAnimIcon").html('<img src="img/delta.jpg"/>')
-                //.css({marginTop:"22%", width:"30%"});
+            //.css({marginTop:"22%", width:"30%"});
             //slideAnimRow.find(".slideAnimMsg").html("Razor sharp cognition engine to deliver an unparalleled adaptive learning infrastructure.")
             slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
                 function(){
-                   // slideAnimRow.find(".msgAnim").addClass("reduceFont");
+                    // slideAnimRow.find(".msgAnim").addClass("reduceFont");
                     slideAnimRow.find(".slideAnimIcon").html('<img src="img/om.jpg"/>')
-                        //.css({marginTop:"18%", width:"30%"});
+                    //.css({marginTop:"18%", width:"30%"});
                     //slideAnimRow.find(".slideAnimMsg").html("We practically define the science of ontology. <p>Welcome to the new world of learning.</p>")
                     slideAnimRow.fadeIn(3000).delay(6000).fadeOut(3000,
                         function(){
@@ -375,7 +433,7 @@ function reset(){
     //slideAnimTransition.css({top:"-"+slideAnimHeight+"px",width:slideAnimRowWidth+"px"})
     slideAnimRow.css({display:"none",width:slideAnimRowWidth+"px"})
     slideAnimRow.find(".slideAnimIcon").html('<img src="img/pi.jpg"/>')
-        //.css({marginTop:"10%", width:"25%"});
+    //.css({marginTop:"10%", width:"25%"});
     //slideAnimRow.find(".msgAnim").removeClass("reduceFont");
     //slideAnimRow.find(".slideAnimMsg").html("Infinitely scalable knowledge engineering infrastructure.");
 
