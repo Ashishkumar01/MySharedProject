@@ -23,7 +23,7 @@ import com.google.gson.Gson;
 
 @RestController
 @RequestMapping("/user")
-public class UserRegister {
+public class UserRegisterController {
 	
 	@Autowired
 	UserRepository repository;
@@ -62,7 +62,7 @@ public class UserRegister {
 			System.out.println("User mapping data:"+userExamMappings);
 			UserExamMappings examMappings=gson.fromJson(userExamMappings, UserExamMappings.class);
 			String email=examMappings.getEmail();
-			List<UserExamset> userExamsetList = examsetRepo.findByEmail(email);
+			List<UserExamset> userExamsetList = examsetRepo.findByEmail(email.toLowerCase());
 			if(!userExamsetList.isEmpty()){
 				for(UserExamset set:userExamsetList){
 					examsetRepo.delete(set.getId());
@@ -73,7 +73,7 @@ public class UserRegister {
 			List<UserXExam> examMappingList=examMappings.getExamMappingList();
 			for(UserXExam userXExam:examMappingList){
 				userExamset=new UserExamset();
-				userExamset.setEmail(email);
+				userExamset.setEmail(email.toLowerCase());
 				userExamset.setExamSetId(userXExam.getId());
 				userExamset.setExamSetName(userXExam.getName());
 				
@@ -94,7 +94,7 @@ public class UserRegister {
 		List<Map<String,String>> examList=new ArrayList<Map<String,String>>();
 		Map<String,String> json = null;
 		try {
-			List<UserExamset> setList=(List<UserExamset>) examsetRepo.findByEmail(userEmail);
+			List<UserExamset> setList=(List<UserExamset>) examsetRepo.findByEmail(userEmail.toLowerCase());
 			for(UserExamset exam:setList){
 				json = new HashMap<String,String>();
 				json.put("id", exam.getExamSetId().toString());

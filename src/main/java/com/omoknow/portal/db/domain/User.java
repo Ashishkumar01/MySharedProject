@@ -38,6 +38,9 @@ public class User {
 	private String role;
 	
 	@Column
+	private String group;
+	
+	@Column
 	private String locale;
 	
 	@Column
