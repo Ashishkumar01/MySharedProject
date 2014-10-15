@@ -1,6 +1,6 @@
 'use strict';
 
-IndexModule.controller("MapUserController", function($rootScope,$scope,$http,$location) {
+IndexModule.controller("MapUserController", function($rootScope,$scope,$http,$location,$filter) {
 if($.cookie("validAdminClick")=="ok"){
     $("#examNavi, .ui-layout-east").hide()
     $scope.userEmail='';
@@ -32,8 +32,10 @@ if($.cookie("validAdminClick")=="ok"){
                 console.log('Matched Examsets fetched:'+JSON.stringify(data));
                 $scope.mappedExamsets=data;
                 //remove the mapped elements from avaialble list
+                var index = 0;
                 for(var i=0;i<$scope.mappedExamsets.length;i++){
-                	$scope.availableExamsets.splice($.inArray($scope.selectedExamSets[i], $scope.availableExamsets),1);
+                	index = $filter('arrayFilter')($scope.mappedExamsets[i], $scope.availableExamsets);
+                	$scope.availableExamsets.splice(index,1);
                 }
             })
             .error(function(data, status, headers, config) {
@@ -46,7 +48,8 @@ if($.cookie("validAdminClick")=="ok"){
      */
     $scope.selectThisExam=function(){
         $scope.mappedExamsets.push($scope.selectedExamSets[0]);
-        $scope.availableExamsets.splice($.inArray($scope.selectedExamSets[0], $scope.availableExamsets),1);
+        var index = $filter('arrayFilter')($scope.selectedExamSets[0], $scope.availableExamsets);
+        $scope.availableExamsets.splice(index,1);
     };
 
     /**
@@ -54,7 +57,8 @@ if($.cookie("validAdminClick")=="ok"){
      */
     $scope.removeThisExam=function(){
         $scope.availableExamsets.push($scope.mappedExamsetsKeys[0]);
-        $scope.mappedExamsets.splice($.inArray($scope.mappedExamsetsKeys[0], $scope.mappedExamsets),1);
+        var index = $filter('arrayFilter')($scope.mappedExamsetsKeys[0], $scope.mappedExamsets);
+        $scope.mappedExamsets.splice(index,1);
     };
 
     /**
