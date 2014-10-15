@@ -27,8 +27,8 @@
 			   <div class="form-group">
 			       <label for="PackageId" class="col-sm-1 control-label">Package</label>
 			      <div class="col-sm-2">
-			         <input type="text" class="form-control" id="PackageId" ng-model="examSet.packageName"
-			            placeholder="Enter Package Name">
+			       	 <select class="form-control" id="PackageId"ng-model="examSet.packageName"  ng-options="x.key as x.value for x in packageData">
+			       	 </select>
 			      </div>
 			      <label for="SnippetId" class="col-sm-1 control-label">Snippet</label>
 			      <div class="col-sm-2">
@@ -101,29 +101,6 @@
       </div>
   </div>
    	<div class="panel-body">
-       	<table class="table table-bordered" ng-show="questions && questions.length>0">
-		    <thead class="success">
-		        <tr>
-		            <th>Select</th>
-		            <th>Subject</th>
-		            <th>Subject Category</th>
-		            <th>Question Type</th>					            
-		            <th>Question/Passage</th>
-		            <th>No. of Questions</th>
-		        </tr>
-		    </thead>
-		    <tbody>
-		    	<tr ng-repeat="question in questions">
-		            <td class="text-center"> 
-		            	<input type="checkbox" ng-model="questionsSelected[question.id]" ng-change="addQuestion(question)"> 
-		            </td>
-		            <td class="text-center">{{question.subject}}</td>
-		            <td class="text-center">{{question.subjectCategory}}</td>
-		            <td class="text-center">{{question.questionType}}</td>
-		            
-		            <td class="text-center">{{question.passage}}</td>
-		            <td class="text-center">{{question.passageQuestionCount}}</td>
-		        </tr>					        
-		    </tbody>
-		</table>	
-     </div>
+   	
+   	<div id="grid1" ui-grid="gridOptions" ui-grid-selection class="grid" ui-grid-resize-columns ></div>
+ </div>

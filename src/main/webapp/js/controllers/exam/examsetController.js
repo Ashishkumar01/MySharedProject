@@ -21,9 +21,11 @@ if($.cookie("validAdminClick")=="ok"){
 				examSetDetails:[]
 		};
 		$scope.questionsSelected=[];
+		$scope.packageData=[];
 		$scope.totalQuestionsMarked=0;
 		$scope.examSetQuestions=[];
 		$scope.examSetSubjects=[];
+		$scope.questionData = [];
 		$scope.subject='';
 		$scope.subjectCriteria='';
 		$scope.subjectArray=[
@@ -40,7 +42,50 @@ if($.cookie("validAdminClick")=="ok"){
 			    	                     {key:'HISTORY', value:'History'}
 		    	                    ];
 	
+		$scope.gridOptions = 
+		{
+			enableColumnResizing: true,
+			enableRowSelection: true,
+			enableSelectAll: true
+		};
+		 
+		$scope.gridOptions.columnDefs = [
+		    { name:'id', field: 'id', displayName:'ID', width:50, enableHiding : true },
+		    { name:'subject', field: 'subject', displayName:'Subject', width:150 },
+		    { name:'subjectCategory', field: 'subjectCategory', displayName:'Subject Category', width:130 },
+		    { name:'quesrionType', field: 'questionType', displayName:'Question Type', width:130  },
+		    { name:'questionPassage', field: 'questionPassage', displayName:'Question/Passage', width:630 },
+		    { name:'passageQuestionCount', field: 'passageQuestionCount', displayName:'No. of Questions', width:130 },
+		  ];
+		
+		$scope.gridOptions.multiSelect = true;
+		
+		$scope.gridOptions.onRegisterApi = function(gridApi)
+	  	  {
+	  	      //set gridApi on scope
+	  	      $scope.gridApi = gridApi;
+	  	      gridApi.selection.on.rowSelectionChanged($scope,function(row)
+	  	      {
+	  	        	$scope.addQuestion(row);
+	  	      });
+	  	   };
+		
 		$scope.examSet = angular.copy($scope.initial);
+		
+		$.ajax({type:"GET",
+	        url: "data/courses/courses.json",
+	        contentType: "application/json"
+	    }).done(function( data ) {
+	            for( var i =0; i<data.length; i++)
+	            {
+	            	if (data[i].active == "true")
+	            		$scope.packageData.push({key:data[i].id,value:data[i].name});
+	            }
+	            console.log('packageData: '+$scope.packageData);
+	        }).error(function()
+	        {
+	            alert("Error !! Reload page once again.")
+	        });
 		
     $scope.resetExamSet=function()
 	{    
@@ -86,6 +131,8 @@ if($.cookie("validAdminClick")=="ok"){
 	    				  $scope.questions.push(data[j]);
 	    		  }
     		  }
+
+	    	  $scope.gridOptions.data = $scope.questions;
     	  }
 	      
 	    })
@@ -103,15 +150,9 @@ if($.cookie("validAdminClick")=="ok"){
 	      
 	      $scope.examSet  = data;
 	      $scope.questions = data.questionDetails; 
-	      var selectedQuestionIds = data.examSetDetails[0].linkedQuestions.split(',');
-	      
-	      for(var j=0; j < selectedQuestionIds.length;j++)
-	      {
-	    	  $scope.questionsSelected[selectedQuestionIds[j]] = true;
-	      }
-	      $scope.examSetQuestions = data.examSetDetails[0].linkedQuestions.split(',').map(Number);
+    	  $scope.gridOptions.data = $scope.questions;
+    	  
 	      console.log('Question Details for exam data:\n'+JSON.stringify($scope.questions));
-	      console.log('Selected Question for exam data:\n'+JSON.stringify($scope.questionsSelected));
 	   
 	    })
 	    .error(function(data, status, headers, config) {
@@ -146,15 +187,15 @@ if($.cookie("validAdminClick")=="ok"){
 	/**
 	 * add selected question in set
 	 */
-	$scope.addQuestion=function(question)
+	$scope.addQuestion=function(row)
 	{
+		var question = row.entity;
 		var elementPosition = $.inArray(question.id,$scope.examSetQuestions);
 		console.log('elementPosition:'+$.inArray(question.id,$scope.examSetQuestions));
-		if($scope.questionsSelected[question.id])
+		if(row.isSelected)
 		{
 			if(($scope.totalQuestionsMarked+parseInt(question.passageQuestionCount)) > $scope.totalQuestions)
 			{
-				$scope.questionsSelected[question.id]=false;
 				alert('Can not select more questions as set is complete.');
                 return;
 			}

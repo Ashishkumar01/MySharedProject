@@ -27,6 +27,7 @@ import com.omoknow.portal.model.QuestionWithMetadata;
 import com.omoknow.portal.pojo.Question;
 import com.omoknow.portal.pojo.QuestionDocument;
 import com.omoknow.portal.pojo.Questions;
+import com.omoknow.portal.util.SystemPropertyUtil;
 
 
 @Controller
@@ -50,7 +51,7 @@ public class FileUploadController{
 	public FileUploadController(){
 		try 
 		{
-			questionDir = FileUtils.getFile("D:/questiondir");
+			questionDir = FileUtils.getFile(new SystemPropertyUtil().getPropValues(PROPERTY_CONF_QUESTION));
 		} 
 		catch (Exception e1) 
 		{
