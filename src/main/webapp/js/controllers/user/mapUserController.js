@@ -7,6 +7,7 @@ if($.cookie("validAdminClick")=="ok"){
     $scope.mappedExamsets=[];
     $scope.mappedExamsetsKeys=[];
     $scope.availableExamsets=[];
+    $scope.finalAvailableExamsets=[];
     $scope.selectedExamSets=[];
 
     /**
@@ -16,21 +17,25 @@ if($.cookie("validAdminClick")=="ok"){
         .success(function(data, status, headers, config) {
             console.log('Available Examsets fetched:'+JSON.stringify(data));
             $scope.availableExamsets=data;
+            $scope.finalAvailableExamsets=angular.copy(data);
         })
         .error(function(data, status, headers, config) {
             console.log('examset fetch failed. Status:'+status);
         });
 
+    /**
+     * find examsets mapped to the user & remove these mappings from Available sets
+     */
     $scope.searchExamMapping=function(){
-    	if(!$scope.userEmail || $scope.userEmail==''){
-    		alert('User Email should be provided.');
-    		$("#searchUser").focus();
-    		return;
-    	}
-        $http({method: 'POST', url: 'rest/user/examsets', data:$scope.userEmail})
+    	if($scope.userEmail && $scope.userEmail.length>0){
+    		$http({method: 'POST', url: 'rest/user/examsets', data:$scope.userEmail})
             .success(function(data, status, headers, config) {
                 console.log('Matched Examsets fetched:'+JSON.stringify(data));
-                $scope.mappedExamsets=data;
+                $scope.mappedExamsets=data;  
+                if(!data || data.length==0){
+                	alert('Examsets mapping does not exist.');
+                	return;
+                }                              
                 //remove the mapped elements from avaialble list
                 var index = 0;
                 for(var i=0;i<$scope.mappedExamsets.length;i++){
@@ -41,6 +46,7 @@ if($.cookie("validAdminClick")=="ok"){
             .error(function(data, status, headers, config) {
                 console.log('examset fetch failed. Status:'+status);
             });
+    	}        
     };
 
     /**
@@ -76,8 +82,12 @@ if($.cookie("validAdminClick")=="ok"){
         }
         $http({method: 'POST', url: 'rest/user/mapExam', data: JSON.stringify(dataToSave)})
             .success(function(data, status, headers, config) {
-                alert('Mapping done successfully.');
-                console.log('Examsets mapping saved:'+data);
+            	alert('Examsets mapped successfully.');
+                //Reset the page
+                $scope.availableExamsets=$scope.finalAvailableExamsets;
+                $scope.mappedExamsets=[];
+                $scope.userEmail='';
+                $("#searchUser").focus();
             })
             .error(function(data, status, headers, config) {
                 alert('Mapping failed');
