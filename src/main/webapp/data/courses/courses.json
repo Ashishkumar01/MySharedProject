@@ -2,35 +2,41 @@
     {
         "id": "1",
         "name": "SBI PO 2014",
+        "active" : "true",
         "imgSrc":"course1.jpg",
         "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
     }
     ,{
     "id": "2",
     "name": "IBPS PO Exam",
+    "active" : "true",
     "imgSrc":"course1.jpg",
     "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
 }
     ,{
     "id": "3",
     "name": "SBI PO Exam",
+    "active" : "true",
     "imgSrc":"course1.jpg",
     "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
 }
     ,{
     "id": "4",
     "name": "IBPS IT Officer Exam",
+    "active" : "true",
     "imgSrc":"course1.jpg",
     "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
 }
     ,{
     "id": "5",
     "name": "SEF",
+    "active" : "true",
     "imgSrc":"course1.jpg",
     "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
 }    ,{
     "id": "6",
     "name": "FXO",
+    "active" : "true",
     "imgSrc":"course1.jpg",
     "courseDescription": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
 }
