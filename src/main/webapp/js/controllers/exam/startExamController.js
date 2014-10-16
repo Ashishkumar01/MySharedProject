@@ -184,8 +184,9 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         	questionStats.examDate=getDateTime();
         	questionStats.attemptNo=$rootScope.currentExam.currentAttempt;
 
-        	questionStats.moduleName=getModuleName(j);
-        	questionStats.questionId="question_"+j;
+        	//questionStats.moduleName=getModuleName(j);
+        	questionStats.moduleName=$rootScope.questions[j].subject;
+        	questionStats.questionId="question_"+(j+1);
         	questionStats.isCorrect='N';
         	questionStats.userAnswer=$rootScope.questions[j].user_selected_option;
         	questionStats.correctAnswer=$rootScope.questions[j].correct_option;
@@ -281,9 +282,10 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
      * finds module name for the selected question
      */
     function getModuleName(questionNo){
+    	var actualQNo=questionNo+1;
         for(var i=0; i<$scope.tabsData.length; i++){
-            if(questionNo>=$scope.tabsData[i].startIndex
-                && questionNo<=$scope.tabsData[i].endIndex){
+            if(actualQNo>=$scope.tabsData[i].startIndex
+                && actualQNo<=$scope.tabsData[i].endIndex){
                 return $scope.tabsData[i].subject;
             }
         }

@@ -128,6 +128,7 @@ IndexModule
 						tempQuestion.question_type = thisQuestion.question_type;
 						tempQuestion.status = "unattempted";
 						tempQuestion.user_selected_option = "-1";
+						tempQuestion.subject = thisQuestion.subject;
 
 						// should be last addition in question object as passage includes cloning of above setups
 						console.log('isPassage: '+ thisQuestion.isPassage);
