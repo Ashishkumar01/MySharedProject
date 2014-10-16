@@ -51,12 +51,12 @@ function validateToken(token) {
 
 function getUserInfo() {
     $.ajax({
-       // url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + acToken,
-        url: 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
+        url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + acToken,
+        //url: 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
         data: null,
         success: function(resp) {
             user    =   resp;
-            console.log(user);
+            console.log('Logged in User:'+user);
             //$('#uName').text('Welcome ' + user.name);
             //$('#imgHolder').attr('src', user.picture);
             $.cookie("providerJSON", JSON.stringify(resp))
