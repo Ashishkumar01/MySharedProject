@@ -3,6 +3,7 @@ package com.omoknow.portal.db.domain;
 import java.util.List;
 
 import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.annotations.Unique;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,7 @@ public class ExamSet{
 	@Column(name="set_name", nullable=false)
 	private String name;
 	
+	@Unique
 	@Column(name="set_code",nullable=false)
 	private String code;		
 	

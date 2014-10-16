@@ -1,6 +1,6 @@
 'use strict';
 
-IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$location,$timeout) {
+IndexModule.controller("ExamsetController", function($rootScope, $scope, $http, $location, $timeout, $interval, $q) {
 console.log($.cookie("validAdminClick"))
 
 if($.cookie("validAdminClick")=="ok"){
@@ -42,11 +42,45 @@ if($.cookie("validAdminClick")=="ok"){
 			    	                     {key:'HISTORY', value:'History'}
 		    	                    ];
 	
+		var fakeI18n = function( title )
+		{
+		    var deferred = $q.defer();
+		    $interval( function() {
+		      deferred.resolve( 'col: ' + title );
+		    }, 1000, 1);
+		    return deferred.promise;
+		};
+		
 		$scope.gridOptions = 
 		{
+			enableRowHeaderSelection : true,
 			enableColumnResizing: true,
 			enableRowSelection: true,
-			enableSelectAll: true
+			enableSelectAll: true,
+			exporterMenuCsv: true,
+		    enableGridMenu: true,
+		    gridMenuTitleFilter: fakeI18n,
+		    gridMenuCustomItems: [
+		      {
+		        title: 'Rotate Grid',
+		        action: function ($event) {
+		          this.grid.element.toggleClass('rotated');
+		        }
+		      }
+		    ],
+		    onRegisterApi: function( gridApi ){
+		      $scope.gridApi = gridApi;
+		      
+		      // interval of zero just to allow the directive to have initialized
+		      $interval( function() {
+		        gridApi.core.addToGridMenu( gridApi.grid, [{ title: 'Dynamic item'}]);
+		      }, 0, 1);
+		      
+		      gridApi.selection.on.rowSelectionChanged($scope,function(row)
+	  	      {
+	  	        	$scope.addQuestion(row);
+	  	      });
+		    }
 		};
 		 
 		$scope.gridOptions.columnDefs = [
@@ -54,21 +88,11 @@ if($.cookie("validAdminClick")=="ok"){
 		    { name:'subject', field: 'subject', displayName:'Subject', width:150 },
 		    { name:'subjectCategory', field: 'subjectCategory', displayName:'Subject Category', width:130 },
 		    { name:'quesrionType', field: 'questionType', displayName:'Question Type', width:130  },
-		    { name:'questionPassage', field: 'questionPassage', displayName:'Question/Passage', width:630 },
+		    { name:'passage', field: 'passage', displayName:'Question/Passage', width:630 },
 		    { name:'passageQuestionCount', field: 'passageQuestionCount', displayName:'No. of Questions', width:130 },
 		  ];
 		
 		$scope.gridOptions.multiSelect = true;
-		
-		$scope.gridOptions.onRegisterApi = function(gridApi)
-	  	{
-	  	      //set gridApi on scope
-	  	      $scope.gridApi = gridApi;
-	  	      gridApi.selection.on.rowSelectionChanged($scope,function(row)
-	  	      {
-	  	        	$scope.addQuestion(row);
-	  	      });
-	  	};
 		
 		$scope.examSet = angular.copy($scope.initial);
 		
@@ -131,10 +155,8 @@ if($.cookie("validAdminClick")=="ok"){
 	    				  $scope.questions.push(data[j]);
 	    		  }
     		  }
-
 	    	  $scope.gridOptions.data = $scope.questions;
     	  }
-	      
 	    })
 	    .error(function(data, status, headers, config) {
 	    	console.log('question data fetch failed. Status:'+status);
@@ -180,6 +202,12 @@ if($.cookie("validAdminClick")=="ok"){
 	{
 		console.log('Question Array length: '+$scope.examSetQuestions.length+' Subject Array length: '+$scope.examSetSubjects.length );
 		$scope.examSet.examSetDetails = [];
+		if($scope.examSetQuestions.length > 0)
+		{
+			alert('Please select some questions in grid to save examset.');
+            return;
+		}
+		
 		for(var j=0; j<$scope.examSetQuestions.length;j++){
 			$scope.examSet.examSetDetails.push({'linkedQuestions':$scope.examSetQuestions[j],'subject':$scope.examSetSubjects[j]});
 		}

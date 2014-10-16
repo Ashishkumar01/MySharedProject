@@ -1,6 +1,6 @@
 'use strict';
 
-var app=angular.module('myProjectApp', ['ngSanitize','ngRoute','ui.index.controllers','googlechart', 'ui.grid', 'ui.grid.selection', 'ui.grid.autoResize'])
+var app=angular.module('myProjectApp', ['ngSanitize','ngRoute','ui.index.controllers','googlechart', 'ui.grid', 'ui.grid.exporter', 'ui.grid.selection', 'ui.grid.autoResize'])
 
 app.run(function($window){
 
