@@ -64,7 +64,6 @@ public class ExamQuestionSetController{
 		System.out.println("saveExamSet() data received:"+examSet);
 		try {
 			Map<String,ExamSetDtl> tempMap=new HashMap<String,ExamSetDtl>();
-			List<ExamSetDtl> existingDtlList = new ArrayList<ExamSetDtl>();
 			System.out.println("saveExamSet() save ExamSet:"+examSet.getTotalQuestions());
 			List<ExamSetDtl> tempDtlList=examSet.getExamSetDetails();
 			//sort dtlList in order of Subject
@@ -78,33 +77,24 @@ public class ExamQuestionSetController{
 			/*convert dtls to below format
 			 * "subject":"Quantitative Aptitude","start_number":0,"end_number":9,"active": true,"linked_questions": "0,1,2"
 			 * */
-			int questionNo=0;
+			int questionNo=1;
 			for(int i=0; i<tempDtlList.size(); i++)
 			{
-				questionNo=questionNo+1;
+				questionNo=i+1;
 				tempDtl=tempDtlList.get(i);
-				if (tempDtl.getId() != null)
-				{
-					tempDtl.setExamSet(examSet);
-					existingDtlList.add(tempDtl);
-					tempDtl.setModifiedTime(new Timestamp(System.currentTimeMillis()));
-					tempMap.put(tempDtl.getSubject(),tempDtl);
-					questionNo = tempDtl.getLinkedQuestions().split(",").length;
-				}
-				else 
-				{
+				
 					if(tempMap.containsKey(tempDtl.getSubject()))
 					{
 						ExamSetDtl tempSetDtl=tempMap.get(tempDtl.getSubject());
 						tempSetDtl.setEndIndex(questionNo);
-						tempSetDtl.setLinkedQuestions(tempSetDtl.getLinkedQuestions()+","+questionNo);					
+						tempSetDtl.setLinkedQuestions(tempSetDtl.getLinkedQuestions()+","+tempDtl.getLinkedQuestions());					
 					}
 					else
 					{
 						ExamSetDtl tempSetDtl=new ExamSetDtl();
 						tempSetDtl.setStartIndex(questionNo);
 						tempSetDtl.setEndIndex(questionNo);
-						tempSetDtl.setLinkedQuestions(""+questionNo);
+						tempSetDtl.setLinkedQuestions(""+tempDtl.getLinkedQuestions());
 						tempSetDtl.setSubject(tempDtl.getSubject());
 						tempSetDtl.setActive(true);
 						tempSetDtl.setCreatedTime(new Timestamp(System.currentTimeMillis()));
@@ -114,21 +104,16 @@ public class ExamQuestionSetController{
 						tempMap.put(tempDtl.getSubject(),tempSetDtl);
 					}
 				}
-			}
-			
-			if (existingDtlList != null && existingDtlList.size() > 0)
-				examSetQuestionRepo.delete(existingDtlList);
 			
 			//set the ordered examsetDtl
 			List<ExamSetDtl> finalDtlList=new ArrayList<ExamSetDtl>();
 			for(ExamSetDtl temp:tempMap.values())
 			{
-				if (temp.getId() != null)
-					temp.setId(null);
-				
 				finalDtlList.add(temp);
 			}
 			examSet.setExamSetDetails(finalDtlList);
+			if (examSet.getExamSetId() > 0)
+				examSetRepo.delete(examSet.getExamSetId());
 			
 			examSetRepo.save(examSet);
 			

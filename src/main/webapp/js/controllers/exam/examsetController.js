@@ -1,6 +1,6 @@
 'use strict';
 
-IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$location) {
+IndexModule.controller("ExamsetController", function($rootScope,$scope,$http,$location,$timeout) {
 console.log($.cookie("validAdminClick"))
 
 if($.cookie("validAdminClick")=="ok"){
@@ -61,14 +61,14 @@ if($.cookie("validAdminClick")=="ok"){
 		$scope.gridOptions.multiSelect = true;
 		
 		$scope.gridOptions.onRegisterApi = function(gridApi)
-	  	  {
+	  	{
 	  	      //set gridApi on scope
 	  	      $scope.gridApi = gridApi;
 	  	      gridApi.selection.on.rowSelectionChanged($scope,function(row)
 	  	      {
 	  	        	$scope.addQuestion(row);
 	  	      });
-	  	   };
+	  	};
 		
 		$scope.examSet = angular.copy($scope.initial);
 		
@@ -147,10 +147,22 @@ if($.cookie("validAdminClick")=="ok"){
 	    .success(function(data, status, headers, config) 
 	    {
 	      console.log('exam data fetched:'+JSON.stringify(data));
-	      
+	      $scope.examSetSubjects = [];
 	      $scope.examSet  = data;
 	      $scope.questions = data.questionDetails; 
     	  $scope.gridOptions.data = $scope.questions;
+    	  
+    	  $timeout(function() {
+    		  $scope.gridApi.selection.selectAllRows();
+    	    }, 500);
+    	  
+    	  $scope.examSetQuestions = data.examSetDetails[0].linkedQuestions.split(',').map(Number);
+    	  $scope.totalQuestionsMarked = $scope.questions.length;
+    	  
+    	  for(var j=0; j < $scope.questions.length;j++)
+	      {
+    		  $scope.examSetSubjects.push($scope.questions[j].subject);
+	      }
     	  
 	      console.log('Question Details for exam data:\n'+JSON.stringify($scope.questions));
 	   
@@ -167,6 +179,7 @@ if($.cookie("validAdminClick")=="ok"){
 	$scope.saveSet=function()
 	{
 		console.log('Question Array length: '+$scope.examSetQuestions.length+' Subject Array length: '+$scope.examSetSubjects.length );
+		$scope.examSet.examSetDetails = [];
 		for(var j=0; j<$scope.examSetQuestions.length;j++){
 			$scope.examSet.examSetDetails.push({'linkedQuestions':$scope.examSetQuestions[j],'subject':$scope.examSetSubjects[j]});
 		}
