@@ -112,8 +112,9 @@ public class ExamQuestionSetController{
 				finalDtlList.add(temp);
 			}
 			examSet.setExamSetDetails(finalDtlList);
-			if (examSet.getExamSetId() > 0)
+			if (examSet.getExamSetId() !=null && examSet.getExamSetId() > 0){
 				examSetRepo.delete(examSet.getExamSetId());
+			}				
 			
 			examSetRepo.save(examSet);
 			

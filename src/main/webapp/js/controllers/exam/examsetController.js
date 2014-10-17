@@ -202,11 +202,12 @@ if($.cookie("validAdminClick")=="ok"){
 	{
 		console.log('Question Array length: '+$scope.examSetQuestions.length+' Subject Array length: '+$scope.examSetSubjects.length );
 		$scope.examSet.examSetDetails = [];
-		if($scope.examSetQuestions.length > 0)
+		if($scope.examSetQuestions.length == 0)
 		{
 			alert('Please select some questions in grid to save examset.');
             return;
 		}
+		console.log('Question Array length: '+$scope.examSetQuestions.length+' Subject Array length: '+$scope.examSetSubjects.length );
 		
 		for(var j=0; j<$scope.examSetQuestions.length;j++){
 			$scope.examSet.examSetDetails.push({'linkedQuestions':$scope.examSetQuestions[j],'subject':$scope.examSetSubjects[j]});
