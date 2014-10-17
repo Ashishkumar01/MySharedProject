@@ -46,7 +46,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         minuteElem = '',secondElem = '';
     var startTime = new Date(),
         expiryTime = new Date();
-    initialize_timer(0,40,0);
+    initialize_timer($rootScope.currentExam.totalTimeAllowed);
     countDownInterval = setInterval(countDown, 1000 );
 
     $scope.nextQuestion=function(){
@@ -337,7 +337,11 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         minuteElem = '',secondElem = '';
     var startTime = new Date(),
         expiryTime = new Date();*/
-    function initialize_timer(hrs,mins,seconds){
+    function initialize_timer(totalTimeAllowed){
+    	var timeAllowed=parseInt(totalTimeAllowed);
+    	var hrs=Math.floor(timeAllowed/60);
+    	var mins=timeAllowed%60;
+    	var seconds=0;
         // Set up expiry time
         expiryTime.setHours( expiryTime.getHours() + hrs );
         expiryTime.setMinutes( expiryTime.getMinutes() + mins );
