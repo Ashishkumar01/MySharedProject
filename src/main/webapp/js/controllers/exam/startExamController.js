@@ -212,8 +212,8 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
         $rootScope.currentExam.total_questions_attempted=totalAttempted;
         $rootScope.currentExam.total_questions_correct=totalCorrect;
 
-        if($rootScope.currentExam.is_negative_marks_applicable){
-        	$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correct_marks-(totalAttempted-totalCorrect)*$rootScope.currentExam.negativeMarks;
+        if($rootScope.currentExam.isNegativeMarks){
+        	$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correctMarks-((totalAttempted-totalCorrect)*$rootScope.currentExam.negativeMarks);
     	}else{
     		$rootScope.currentExam.score_obtained=totalCorrect*$rootScope.currentExam.correctMarks;
     	}

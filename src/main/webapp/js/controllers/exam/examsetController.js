@@ -30,6 +30,8 @@ if($.cookie("validAdminClick")=="ok"){
 		$scope.subjectCriteria='';
 		$scope.subjectArray=[
 			                     {key:'QUANTITATIVE_APTITUDE', value:'Quantitative Aptitude'},
+			                     {key:'NUMERICAL ABILITY', value:'NUMERICAL ABILITY'},
+			                     {key:'ALGEBRA', value:'ALGEBRA'},
 			                     {key:'GENERAL_AWARENESS', value:'GA'},
 			                     {key:'ENGLISH_LANGUAGE', value:'English'},
 			                     {key:'REASONING', value:'Reasoning'}
