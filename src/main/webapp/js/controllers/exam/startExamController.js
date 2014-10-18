@@ -1,6 +1,6 @@
 'use strict';
 
-IndexModule.controller("startExamController", function($rootScope,$scope,$http,$sce,$location,$window,examsService) {
+IndexModule.controller("startExamController", function($rootScope,$scope,$http,$sce,$location,$window,$timeout,examsService) {
 
     //added by PK;
 
@@ -454,6 +454,12 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
 
 
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    
+    //Activate the first tab by default
+    $timeout(function(){
+    	$scope.toggleActive(0,true);
+    },100);    
+    
 
 });
 

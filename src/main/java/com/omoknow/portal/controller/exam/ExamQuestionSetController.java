@@ -80,7 +80,7 @@ public class ExamQuestionSetController{
 			int questionNo=1;
 			for(int i=0; i<tempDtlList.size(); i++)
 			{
-				questionNo=i+1;
+				questionNo=i;
 				tempDtl=tempDtlList.get(i);
 				
 					if(tempMap.containsKey(tempDtl.getSubject()))
@@ -184,7 +184,14 @@ public class ExamQuestionSetController{
 			List<ExamSet> setList=examSetRepo.findByExamSetId(Long.parseLong(examSetId));
 			if(setList!=null && !setList.isEmpty()){
 				set=setList.get(0);
-				System.out.println("No of Questions Attached: "+set.getExamSetDetails().size());				
+				System.out.println("No of Questions Attached: "+set.getExamSetDetails().size());
+				//Sort the list of examsets by startIndex to order modules in question sequence
+				Collections.sort(set.getExamSetDetails(), new Comparator<ExamSetDtl>(){
+					public int compare(ExamSetDtl o1, ExamSetDtl o2) {
+						return Integer.valueOf(o1.getStartIndex()).compareTo(Integer.valueOf(o2.getStartIndex()));
+					}					
+				});
+				
 			}
 			//now find the last attempt number by the user for current exam
 			List<ExamScore> scoreList=examScoreRepo.findByExamIdAndUserIdOrderByAttemptNoDesc(examSetId, userId);
