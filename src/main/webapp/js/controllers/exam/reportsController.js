@@ -60,7 +60,11 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     	  }
     	  
       }
-      console.log($scope.moduleDetails);
+      console.log('ModuleDetails in reportsController: '+$scope.moduleDetails);
+      for(var i=0; i<$scope.moduleDetails.length; i++){
+    	  $scope.moduleDetails[i].timeTaken=CommonUtilService.convertSecondsToExpandedForm($scope.moduleDetails[i].timeTaken);
+      }
+      
     })
     .error(function(data, status, headers, config) {
     	console.log('report data fetch failed. Status:'+status);
