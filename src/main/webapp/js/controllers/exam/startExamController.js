@@ -230,6 +230,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     	var examStats={};
     	examStats.examId=$rootScope.currentExam.examSetId;
     	examStats.attemptNo=$rootScope.currentExam.currentAttempt;
+    	examStats.examStatus='COMPLETE';
 
     	examStats.userId=$scope.userId;
     	examStats.examDate=getDateTime();

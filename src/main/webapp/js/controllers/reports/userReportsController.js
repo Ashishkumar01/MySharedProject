@@ -11,6 +11,8 @@ IndexModule.controller("userReportsController", function($rootScope,$scope,$loca
 	 /**
      * Data setup for Score Line Chart
      */
+	$scope.cssStyle = "height:300px; width:100%;";
+	$scope.cssStyleFullPage = "height:500px; width:100%;";
     $scope.chartScoreData = {};
     $scope.chartScoreData.type = "LineChart";
     $scope.chartScoreData.displayed = false;
@@ -29,7 +31,7 @@ IndexModule.controller("userReportsController", function($rootScope,$scope,$loca
     };
     
     $scope.chartScore = $scope.chartScoreData;
-    $scope.cssStyle = "height:300px; width:100%;";
+    
     
     $scope.chartReady = function () {
         fixGoogleChartsBarsBootstrap();
@@ -55,31 +57,61 @@ IndexModule.controller("userReportsController", function($rootScope,$scope,$loca
         "pointSize": 7
     };    
     $scope.chartTime = $scope.chartTimeData;
+    
+    /**
+     * Data setup for Question Attempted Line Chart
+     */
+    $scope.chartQuestionAttemptedData = {};
+    $scope.chartQuestionAttemptedData.type = "LineChart";
+    $scope.chartQuestionAttemptedData.displayed = false;
+    $scope.chartQuestionAttemptedData.options = {
+        "title": "Number of Questions Attempted",
+        "displayExactValues": true,
+        "vAxis": {
+            "title": ""
+         },
+        "hAxis": {
+            "title": "Test Name"
+        },
+        //"legend": { "position": "top" },
+        "pointShape": 'diamond',
+        "pointSize": 7
+    };    
+    $scope.chartQuestionAttempted = $scope.chartQuestionAttemptedData;
+
 
 	
 	$scope.testScoreArray=[['Test', 'Score']];
 	$scope.testTimeArray=[['Test', 'Time']];
+	$scope.testQuestionAttemptedArray=[['Test', 'Number of Questions Attempted']];
 	
     $http({method: 'POST', url: 'rest/reports/exams', data:$scope.userId})
     .success(function(data, status, headers, config) {
       console.log('exam data fetched:'+JSON.stringify(data));
       	  $scope.examStats=data;
-      	  var graphScoreData=[],graphTimeData=[];
+      	  var graphScoreData=[],graphTimeData=[],questionAttemptedData=[];
     	  for(var j=0; j<$scope.examStats.length; j++){
     		  graphScoreData=[];
     		  graphTimeData=[];
+    		  questionAttemptedData=[];
+    		  
     		  graphScoreData.push('Test'+$scope.examStats[j].examScore['examId']+'_'+$scope.examStats[j].examScore['attemptNo']);
     		  graphScoreData.push($scope.examStats[j].examScore['scoreObtained']);
     		  
     		  graphTimeData.push('Test'+$scope.examStats[j].examScore['examId']+'_'+$scope.examStats[j].examScore['attemptNo']);
     		  graphTimeData.push(CommonUtilService.convertExpandedTimeToInteger($scope.examStats[j].examScore['totalTimeTaken'])/60);
     		  
+    		  questionAttemptedData.push('Test'+$scope.examStats[j].examScore['examId']+'_'+$scope.examStats[j].examScore['attemptNo']);
+    		  questionAttemptedData.push($scope.examStats[j].examScore['totalAttempted']);
+    		  
     		  $scope.testScoreArray.push(graphScoreData);
     		  $scope.testTimeArray.push(graphTimeData);
+    		  $scope.testQuestionAttemptedArray.push(questionAttemptedData);
     	  }
     	  console.log('$scope.testScoreArray '+$scope.testScoreArray);
     	  $scope.chartScoreData.data=$scope.testScoreArray;
     	  $scope.chartTimeData.data=$scope.testTimeArray;
+    	  $scope.chartQuestionAttemptedData.data=$scope.testQuestionAttemptedArray;
       })
     .error(function(data, status, headers, config) {
     	console.log('report data fetch failed. Status:'+status);
