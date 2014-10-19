@@ -5,7 +5,7 @@ IndexModule
 				"examController",
 				function($rootScope, $scope, $http, $location, examsService) {
 					$("#examNavi, .ui-layout-east").show()
-
+                    bindjQueryFunctions();
 					$scope.beginExamClickedFunc = function() {
 						$scope.beginExamClicked = true;
 						//var tempQuestion = {};
@@ -106,7 +106,7 @@ IndexModule
 						var userProfileObject = JSON.parse($
 								.cookie("providerJSON"))
 						console.log(userProfileObject)
-						$scope.thumbnail = userProfileObject.thumbnail
+						$scope.thumbnail = userProfileObject.picture
 						$scope.userName = userProfileObject.name;
 					}
 					$scope.languageSelection = 'english';

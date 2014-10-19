@@ -1,6 +1,8 @@
 'use strict';
 
 IndexModule.controller("indexController", function($rootScope,$scope, $window) {
+
+    bindjQueryFunctions();
     /*var childWindow=null;*/
 /*    $(function(){
         $('body').layout({
@@ -31,9 +33,10 @@ IndexModule.controller("indexController", function($rootScope,$scope, $window) {
         });
 
     });*/
-if(!$.cookie("providerJSON")){
-    getUserDetails("me")
-}
+//if(!$.cookie("providerJSON")){
+    //getUserDetails("me")
+//}
+
     $scope.navigatorBar=function(){
         return "partials/navigationbar.html";
     };

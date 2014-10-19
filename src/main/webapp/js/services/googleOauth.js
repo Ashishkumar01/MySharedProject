@@ -2,6 +2,7 @@
 var OAUTHURL    =   'https://accounts.google.com/o/oauth2/auth?';
 var VALIDURL    =   'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=';
 var SCOPE       =   'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email';
+//var SCOPE       ='https://www.googleapis.com/auth/userinfo.profile';
 var CLIENTID    =   '554103276018-sc8i6m4161gv9ambbna7q0g55sn3rdqi.apps.googleusercontent.com';
 var REDIRECT    =   'http://localhost:8080/omoknow/index.html'
 var LOGOUT      =   'http://accounts.google.com/Logout';
@@ -51,14 +52,15 @@ function validateToken(token) {
 
 function getUserInfo() {
     $.ajax({
-        url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + acToken,
+       url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + acToken,
         //url: 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
         data: null,
         success: function(resp) {
             user    =   resp;
-            console.log('Logged in User:'+user);
+            console.log(user);
             //$('#uName').text('Welcome ' + user.name);
             //$('#imgHolder').attr('src', user.picture);
+            console.log(user)
             $.cookie("providerJSON", JSON.stringify(resp))
             if(loggedIn){
                 $(".instruct").hide()

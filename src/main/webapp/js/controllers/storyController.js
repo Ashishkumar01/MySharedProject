@@ -4,6 +4,10 @@
 IndexModule.controller("storyController", function($rootScope,$location,$anchorScroll, $scope, $timeout, $sce, storyDetailsService) {
          $scope.loading=false;
          //Load one story when called
+
+    $("body").attr("id","newsAndViews");
+
+   // $location.path("/news").replace();
          $scope.loadAStory = function() {
              if($rootScope.storyDetails){
                  try{
@@ -21,13 +25,15 @@ IndexModule.controller("storyController", function($rootScope,$location,$anchorS
          //Load a specific story when called
          $scope.loadThisStory = function(storyId) {
              $scope.loading=true;
-             storyDetailsService.getStory(storyId).then(function(story){
+            storyDetailsService.getStory(storyId).then(function(story){
                  $rootScope.storyDetails.push(story);
                  $scope.loading=false;
                  //Scroll to anchor after 500ms after story load
                  $timeout(function(){
-                     $location.hash(storyId);
-                     $anchorScroll();
+                  $location.hash(storyId);
+                  $anchorScroll();
+                    // jQuery("body").scrollTo( "#"+storyId );
+
                  },500);
              });
          };
@@ -55,6 +61,7 @@ IndexModule.controller("storyController", function($rootScope,$location,$anchorS
             }else{
                 $location.hash(id);
                 $anchorScroll();
+
             }
         });
 

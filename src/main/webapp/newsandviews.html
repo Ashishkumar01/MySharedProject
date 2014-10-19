@@ -277,9 +277,9 @@
     </dir-disqus>-->
 </div>
 
-<div ng-controller="userRegisterController">
+<!--div ng-controller="userRegisterController">
     <div ng-include src="registerUser()"/>
-</div>
+</div-->
 <div class="popup socialLinkToggle">
     <p> Login here to access the courses</p>
     <ul class="socialIcon">
@@ -321,31 +321,49 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wf, s);
     })(); </script>
-<script src="lib/jquery/jquery.cookie.js"> </script>
-
+<script src="lib/jquery/jquery-1.11.0.min.js"></script>
+<script src="js/custom.js"></script>
 <script src="lib/angular/angular.min.js"></script>
+<script src="lib/ckeditor/ckeditor.js"></script>
+<script src="lib/ckeditor/adapters/jquery.js"></script>
+
+
 <script src="lib/angular/angular-resource.min.js"></script>
 <script src="lib/angular/angular-cookies.min.js"></script>
 <script src="lib/angular/angular-sanitize.min.js"></script>
 <script src="lib/angular/angular-route.min.js"></script>
-<!--<script src="lib/angular/ng-infinite-scroll.js"></script>-->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
-<!--<script src="lib/bootstrap/ui-bootstrap-0.9.0.min.js"></script>
-<script src="lib/bootstrap/ui-bootstrap-tpls-0.9.0.min.js"></script>-->
-
+<script src="lib/jquery/jquery.cookie.js"></script>
+<script src="lib/jquery/iscroll.js"></script>
+<!--script src="lib/jquery/jquery.qtip.min.js"></script-->
 <script src="js/app.js"></script>
 <script src="js/services/modules.js"></script>
+<script src="js/services/storySnippetService.js"></script>
+<script src="js/controllers/common/coursesController.js"></script>
+<script src="js/controllers/exam/questionsController.js"></script>
+<script src="js/controllers/exam/examController.js"></script>
+<script src="js/controllers/exam/startExamController.js"></script>
 <script src="js/controllers/indexController.js"></script>
 <script src="js/services/storySnippetService.js"></script>
 <script src="js/controllers/storySnippetController.js"></script>
 <script src="js/controllers/storyController.js"></script>
-<script src="js/controllers/userRegisterController.js"></script>
 <script src="js/controllers/learningModuleController.js"></script>
-<script src="js/directives/infinite.scroll.js"></script>
+<!--script src="js/directives/infinite.scroll.js"></script-->
 <script src="js/directives/dir.disqus.js"></script>
-<script src="lib/helloJs/hello.js"></script>
-<script src="js/services/authenticationService.js"></script>
+
+<script src="js/controllers/exam/instructionController.js"></script>
+<script src="js/controllers/exam/reportsController.js"></script>
+<script src="js/controllers/exam/examsetController.js"></script>
+<script src="js/controllers/user/mapUserController.js"></script>
+<script src="js/controllers/uploadController.js"></script>
+<script src="js/controllers/common/indexjQueryController.js"></script>
+<script src="js/directives/dir.dynamic.tabs.js"></script>
+<script src="js/directives/ckeditor.js"></script>
+<script src="js/services/googleOauth.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/controllers/reports/userReportsController.js"></script>
+<script src="js/directives/ng-google-chart.js"></script>
+<script src="js/filters/array.filter.js"></script>
 
 </body>
 </html>

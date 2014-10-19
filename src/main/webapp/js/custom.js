@@ -1,3 +1,20 @@
+var openState= false;
+var isHomePage = false;
+var isOk = false;
+function centerDiv(obj){
+    var scrollTop= $(window).scrollTop();
+    var scrollLeft= $(window).scrollLeft();
+    var windowWidth=$(window).width()/2;
+    var windowHeight = $(window).height()/2;
+    $(obj).show();
+    $("#overlay").show()
+    var divWidth = $(obj).width()/2;
+    var divHeight = $(obj).height()/2;
+    var divLeft= windowWidth - divWidth;
+    var divTop= windowHeight - divHeight;
+    $(obj).css({"top":divTop+scrollTop+'px',"left":divLeft+scrollLeft+'px'});
+}
+function bindjQueryFunctions(){
 // Activates the Carousel
 function runCarousel(){
     $('.carousel').carousel({
@@ -9,8 +26,8 @@ function runCarousel(){
 $('.tooltip-social').tooltip({
     selector: "a[data-toggle=tooltip]"
 })
-var openState= false;
-var isHomePage = false;
+//var openState= false;
+//var isHomePage = false;
 /*
  if(checkAuthenticationStatus().length != 0){
  //console.log($.cookie("providerJSON"))
@@ -167,19 +184,6 @@ $("#signUp").on("click", function(e){
     }
 })
 
-function centerDiv(obj){
-    var scrollTop= $(window).scrollTop();
-    var scrollLeft= $(window).scrollLeft();
-    var windowWidth=$(window).width()/2;
-    var windowHeight = $(window).height()/2;
-    $(obj).show();
-    $("#overlay").show()
-    var divWidth = $(obj).width()/2;
-    var divHeight = $(obj).height()/2;
-    var divLeft= windowWidth - divWidth;
-    var divTop= windowHeight - divHeight;
-    $(obj).css({"top":divTop+scrollTop+'px',"left":divLeft+scrollLeft+'px'});
-}
 $(".close").bind("click", function(){
     isHomePage = false;
     $(this).parent().parent().hide();
@@ -212,7 +216,6 @@ $(".submit").bind("click", function(){
     }
 
 })
-var isOk = false;
 btnClicked = false;
 $(".popupInstruction .btn").on('click', function(){
     btnClicked= true;
@@ -485,3 +488,4 @@ $(".secondaryNavHome img").on("mouseover", function(){
 }).on("mouseout", function(){
         $(this).attr("src",imageSrc);
     })
+}

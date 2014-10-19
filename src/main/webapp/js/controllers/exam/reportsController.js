@@ -81,7 +81,7 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     }
 
     $scope.close=function(){
-        $rootScope.template.url='partials/exam/partial_examlist.html';
+        $rootScope.template.url='../partials/exam/partial_examlist.html';
        // $location.path('../index.html');
         window.location= "index.html"
     };

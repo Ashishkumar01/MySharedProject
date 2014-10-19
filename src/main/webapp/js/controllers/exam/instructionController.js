@@ -1,7 +1,7 @@
 'use strict';
 
 IndexModule.controller("instructionController", function($rootScope,$scope,$location,$http,$routeParams,examsService) {
-
+alert("reached")
 	  if($.cookie("validAdminClick")=="ok" || $scope.beginExamClicked == true)
 	  {
 	    $rootScope.template.url='partials/exam/partial_thumbnail.html';
@@ -16,7 +16,8 @@ IndexModule.controller("instructionController", function($rootScope,$scope,$loca
         $scope.userId=$routeParams.userId;
     	if ($.cookie("providerJSON")) {
     		var userProfileObject = JSON.parse($.cookie("providerJSON"));
-    		$scope.userId = userProfileObject.email;    		
+    		$scope.userId = userProfileObject.email;
+            console.log($.cookie("providerJSON"))
     	}
     	console.log('userId for instructionController: '+$scope.userId);
 	    //gets current exam set
