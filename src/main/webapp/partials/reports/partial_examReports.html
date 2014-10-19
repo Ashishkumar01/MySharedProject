@@ -50,7 +50,7 @@
 					            <td class="text-center">{{currentQuestion.userAnswer==-1?'NA':currentQuestion.userAnswer}}</td>
 					            <td class="text-center">{{currentQuestion.correctAnswer}}</td>
 					            
-					            <td class="text-center">{{currentQuestion.score}}</td>
+					            <td class="text-center"><p ng-class="{'bg-danger':(currentQuestion.isCorrect=='N' && currentQuestion.userAnswer!=-1)}">{{currentQuestion.score}}</p></td>
 					            <td>{{currentQuestion.timeTaken}}</td>
 					            <td class="text-center">{{currentQuestion.level}}</td>
 					        </tr>					        
@@ -81,8 +81,8 @@
 					            
 					            <td class="text-center">{{moduleData.attempted-moduleData.correct}}</td>
 					            <td class="text-center">{{moduleData.questionCount-moduleData.attempted}}</td>
-					            <td class="text-center">{{ moduleData.score}}</td>
-					            <td class="text-center">-NA-</td>
+					            <td class="text-center">{{moduleData.score}}</td>
+					            <td class="text-center">{{moduleData.timeTaken}}</td>
 					        </tr>					        
 					    </tbody>
 					</table>

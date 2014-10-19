@@ -1,6 +1,6 @@
 'use strict';
 
-IndexModule.controller("reportsController", function($rootScope,$scope,$location,$routeParams,$http) {
+IndexModule.controller("reportsController", function($rootScope,$scope,$location,$routeParams,$http,CommonUtilService) {
     $rootScope.template.url='partials/exam/partial_thumbnail.html';
     $scope.examStats={};
     $scope.currentActiveTab='#scoreCard';
@@ -42,7 +42,7 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     		  if($scope.examStats.examStatList[i].userAnswer==$scope.examStats.examStatList[i].correctAnswer){
     			  moduleData.correct+=1;
     		  }    		 
-    		  //moduleData.timeTaken+=$scope.examStats.examStatList[i].timeTaken;
+    		  moduleData.timeTaken+=CommonUtilService.convertExpandedTimeToInteger($scope.examStats.examStatList[i].timeTaken);
     	  }else{
     		  moduleData={moduleName:'',questionCount:0,score:0,attempted:0,correct:0,timeTaken:0};
     		  moduleData.moduleName=$scope.examStats.examStatList[i].moduleName;
@@ -54,7 +54,7 @@ IndexModule.controller("reportsController", function($rootScope,$scope,$location
     		  if($scope.examStats.examStatList[i].userAnswer==$scope.examStats.examStatList[i].correctAnswer){
     			  moduleData.correct=1;
     		  } 
-    		  //moduleData.timeTaken=$scope.examStats.examStatList[i].timeTaken;
+    		  moduleData.timeTaken=CommonUtilService.convertExpandedTimeToInteger($scope.examStats.examStatList[i].timeTaken);
     		  
     		  $scope.moduleDetails.push(moduleData);
     	  }

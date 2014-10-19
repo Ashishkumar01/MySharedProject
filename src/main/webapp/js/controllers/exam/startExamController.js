@@ -201,7 +201,7 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
                     questionStats.score=$rootScope.currentExam.correctMarks;
                 }else{
                 	if($rootScope.currentExam.isNegativeMarks){
-                		questionStats.score=$rootScope.currentExam.negativeMarks;
+                		questionStats.score=0-$rootScope.currentExam.negativeMarks;
                 	}
                 }
                 questionStats.timeTaken=$rootScope.questions[j].timeTaken;
@@ -243,6 +243,8 @@ IndexModule.controller("startExamController", function($rootScope,$scope,$http,$
     	if($rootScope.currentExam.credit_required && $rootScope.currentExam.credit_required!=""){
     		examStats.credits=$rootScope.currentExam.credit_required;
     	}
+    	//Total Negative Marks
+    	examStats.negativeMarks=$rootScope.currentExam.total_questions_correct*$rootScope.currentExam.correctMarks - $rootScope.currentExam.score_obtained;
 
     	var examReport={};
     	examReport.examScore=examStats;

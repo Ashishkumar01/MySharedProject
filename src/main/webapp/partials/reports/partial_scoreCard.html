@@ -28,10 +28,10 @@
 	            <td>{{examStats.examScore.totalCorrect}}/{{examStats.examScore.totalAttempted - examStats.examScore.totalCorrect}}</td>
 	        </tr>
 	        <tr>
+	        	<td>Left Question/Left question Marks</td>
+	            <td>{{examStats.examScore.totalQuestions - examStats.examScore.totalAttempted}}/{{examStats.examScore.totalQuestions - examStats.examScore.totalAttempted}}</td>
 	            <td>Right Marks/Negative Marks</td>
 	            <td>{{examStats.examScore.scoreObtained + examStats.examScore.negativeMarks}}/{{examStats.examScore.negativeMarks}}</td>
-	            <td>Left Question/Left question Marks</td>
-	            <td>{{examStats.examScore.totalQuestions - examStats.examScore.totalAttempted}}/{{examStats.examScore.totalQuestions - examStats.examScore.totalAttempted}}</td>
 	        </tr>
 	    </tbody>
 	</table>	
