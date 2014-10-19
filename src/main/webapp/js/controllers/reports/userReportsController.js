@@ -1,6 +1,6 @@
 'use strict';
 
-IndexModule.controller("userReportsController", function($rootScope,$scope,$location,$http) {
+IndexModule.controller("userReportsController", function($rootScope,$scope,$location,$http,CommonUtilService) {
 	$scope.userId='test';
 	if ($.cookie("providerJSON")) {
 		var userProfileObject = JSON.parse($.cookie("providerJSON"));
@@ -14,26 +14,6 @@ IndexModule.controller("userReportsController", function($rootScope,$scope,$loca
     $scope.chartScoreData = {};
     $scope.chartScoreData.type = "LineChart";
     $scope.chartScoreData.displayed = false;
-    $scope.chartScoreData.data=[
-      ['Test', 'Score'],
-      ['Test 1', 26],
-      ['Test 2',	117],
-      ['Test 3',	137],
-      ['Test 4',	17],
-      ['Test 5',	194],
-      ['Test 6',	135],
-      ['Test 7',	93],
-      ['Test 8',	11],
-      ['Test 9',	49],
-      ['Test 10',	90],
-      ['Test 11',	41],
-      ['Test 12',	95],
-      ['Test 13',	183],
-      ['Test 14',	118],
-      ['Test 15',	65],
-      ['Test 16',	110]
-    ]
-
     $scope.chartScoreData.options = {
         "title": "Total Score",
         "displayExactValues": true,
@@ -41,7 +21,7 @@ IndexModule.controller("userReportsController", function($rootScope,$scope,$loca
             "title": "Score", "gridlines": {"count": 10}
         },
         "hAxis": {
-            "title": "Test"
+            "title": "Test Name"
         },
         //"legend": { "position": "top" },
         "pointShape": 'diamond',
@@ -61,40 +41,19 @@ IndexModule.controller("userReportsController", function($rootScope,$scope,$loca
     $scope.chartTimeData = {};
     $scope.chartTimeData.type = "LineChart";
     $scope.chartTimeData.displayed = false;
-    $scope.chartTimeData.data=[
-      ['Test', 'Time'],
-      ['Test 1', 44],
-      ['Test 2',	49],
-      ['Test 3',	48],
-      ['Test 4',	60],
-      ['Test 5',	35],
-      ['Test 6',	55],
-      ['Test 7',	60],
-      ['Test 8',	11],
-      ['Test 9',	49],
-      ['Test 10',	50],
-      ['Test 11',	41],
-      ['Test 12',	55],
-      ['Test 13',	35],
-      ['Test 14',	25],
-      ['Test 15',	60],
-      ['Test 16',	50]
-    ]
-
     $scope.chartTimeData.options = {
         "title": "Total Time",
         "displayExactValues": true,
         "vAxis": {
-            "title": "Time"
+            "title": "Time(Minutes)"
         },
         "hAxis": {
-            "title": "Test"
+            "title": "Test Name"
         },
         //"legend": { "position": "top" },
         "pointShape": 'diamond',
         "pointSize": 7
-    };
-    
+    };    
     $scope.chartTime = $scope.chartTimeData;
 
 	
@@ -113,12 +72,14 @@ IndexModule.controller("userReportsController", function($rootScope,$scope,$loca
     		  graphScoreData.push($scope.examStats[j].examScore['scoreObtained']);
     		  
     		  graphTimeData.push('Test'+$scope.examStats[j].examScore['examId']+'_'+$scope.examStats[j].examScore['attemptNo']);
-    		  graphTimeData.push($scope.examStats[j].examScore['totalTimeTaken']);
+    		  graphTimeData.push(CommonUtilService.convertExpandedTimeToInteger($scope.examStats[j].examScore['totalTimeTaken'])/60);
     		  
-    		  //$scope.testTimeArray.push(graphTimeData);
+    		  $scope.testScoreArray.push(graphScoreData);
+    		  $scope.testTimeArray.push(graphTimeData);
     	  }
     	  console.log('$scope.testScoreArray '+$scope.testScoreArray);
     	  $scope.chartScoreData.data=$scope.testScoreArray;
+    	  $scope.chartTimeData.data=$scope.testTimeArray;
       })
     .error(function(data, status, headers, config) {
     	console.log('report data fetch failed. Status:'+status);
