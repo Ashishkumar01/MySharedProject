@@ -57,7 +57,7 @@
     <bean id="dataSource" 
           class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
           	<property name="driverClass" value="org.h2.Driver"></property>
-          	<property name="jdbcUrl" value="jdbc:h2:file:D:/H2/test;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090;USER=admin;PASSWORD=admin"></property>
+          	<property name="jdbcUrl" value="jdbc:h2:file:E:/H2/test;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090;USER=admin;PASSWORD=admin"></property>
     </bean>
     
     <bean id="jacksonMessageConverter"
