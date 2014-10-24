@@ -28,6 +28,7 @@ if($.cookie("validAdminClick")=="ok"){
 		$scope.questionData = [];
 		$scope.subject='';
 		$scope.subjectCriteria='';
+		$scope.questionSearchParameters={subject:'',subjectCategory:''};
 		$scope.subjectArray=[
 			                     {key:'QUANTITATIVE_APTITUDE', value:'Quantitative Aptitude'},
 			                     {key:'NUMERICAL ABILITY', value:'NUMERICAL ABILITY'},
@@ -120,15 +121,15 @@ if($.cookie("validAdminClick")=="ok"){
         
 	$scope.searchQuestions=function()
 	{
-		var searchParams={};
+/*		var searchParams={};
 		if($scope.subject!=''){
 			searchParams.subject=$scope.subject;
 		}
 		if($scope.subjectCriteria!=''){
 			searchParams.subjectCriteria=$scope.subjectCriteria;
-		}
+		}*/
 		
-		$http({method: 'POST', url: 'rest/set/questions', data:searchParams})
+		$http({method: 'POST', url: 'rest/set/questions', data:questionSearchParameters})
 	    .success(function(data, status, headers, config) {
 	      console.log('question data fetched:'+data);
 	       

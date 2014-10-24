@@ -13,19 +13,4 @@ public interface QuestionBankRepository extends CrudRepository<QuestionDocument,
 	 */
 	List<QuestionDocument> findAll();
 	
-	/**
-	 * gets questions for Subject
-	 * @param subject
-	 * @return
-	 */
-	List<QuestionDocument> findBySubject(String subject);
-	
-	/**
-	 * gets questions for subject & subject category
-	 * @param subject
-	 * @param subjectCategory
-	 * @return
-	 */
-	List<QuestionDocument> findBySubjectAndSubjectCategory(String subject, String subjectCategory);
-
 }

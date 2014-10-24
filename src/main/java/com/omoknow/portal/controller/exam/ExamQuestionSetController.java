@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.omoknow.portal.controller.question.FileUploadController;
 import com.omoknow.portal.db.domain.ExamScore;
 import com.omoknow.portal.db.domain.ExamSet;
@@ -31,9 +32,9 @@ import com.omoknow.portal.db.repository.ExamSetQuestionRepository;
 import com.omoknow.portal.db.repository.ExamSetRepository;
 import com.omoknow.portal.db.repository.QuestionBankRepository;
 import com.omoknow.portal.model.QuestionWithMetadata;
-import com.omoknow.portal.model.SearchParams;
 import com.omoknow.portal.pojo.QuestionDocument;
-import com.google.gson.Gson;
+import com.omoknow.portal.pojo.QuestionSearchParameters;
+import com.omoknow.portal.service.QuestionBankService;
 
 
 @Controller
@@ -54,6 +55,9 @@ public class ExamQuestionSetController{
 	
 	@Autowired
 	Gson gson;
+	
+	@Autowired
+	QuestionBankService questionBankService;
 	
 	/**
 	 * persists exam stats
@@ -131,28 +135,22 @@ public class ExamQuestionSetController{
 	 * fetches exam stats
 	 */
 	@RequestMapping(value = "/questions", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<QuestionDocument> getQuestions(@RequestBody SearchParams searchParams) {
-		System.out.println("getExamStats() request received. subject:"+searchParams.getSubject()+" subjectCategory:"+searchParams.getSubjectCriteria());
+	public @ResponseBody List<QuestionDocument> getQuestions(@RequestBody QuestionSearchParameters questionSearchParameters) {
+		System.out.println("getExamStats() request received. subject:"+questionSearchParameters.getSubject()+" subjectCategory:"+questionSearchParameters.getSubjectCategory());
 		List<QuestionDocument> questionDocList=null;
 		try {
-			String subject=searchParams.getSubject();
-			String subjectCategory=searchParams.getSubjectCriteria();
-			
-			if((subject!=null && !"".equals(subject)) || (subjectCategory!=null && !"".equals(subjectCategory))){
-				if(subjectCategory!=null && !"".equals(subjectCategory)){
-					questionDocList=bankRepo.findBySubjectAndSubjectCategory(subject, subjectCategory);
-				}else{
-					questionDocList=bankRepo.findBySubject(subject);
-				}
-			}else{
-				questionDocList=bankRepo.findAll();
-			}			
+			questionDocList=questionBankService.findQuestions(questionSearchParameters);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return questionDocList;		
 	}
 	
+	/**
+	 * gets examset by code
+	 * @param examSetCode
+	 * @return
+	 */
 	@RequestMapping(value = "/examsetbycode/{examSetCode}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ExamSet getExamSetByCode(@PathVariable String examSetCode) 
 	{

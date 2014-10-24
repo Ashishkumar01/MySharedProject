@@ -19,7 +19,7 @@
                         http://www.springframework.org/schema/data/jpa
                         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-	<context:component-scan base-package="com.omoknow.portal.controller,com.omoknow.portal.db.domain" />
+	<context:component-scan base-package="com.omoknow.portal.controller,com.omoknow.portal.db.domain,com.omoknow.portal.service" />
 	<mvc:annotation-driven/>
 	
 	<jpa:repositories base-package="com.omoknow.portal.db.repository" /> 

@@ -84,12 +84,12 @@
 				   	  <br>
 				      <label for="subject" class="col-sm-1 control-label">Subject</label>
 				      <div class="col-sm-2">
-				         <select class="form-control" id="subject" ng-model="subject" ng-options="x.key as x.value for x in subjectArray" required></select>
+				         <select class="form-control" id="subject" ng-model="questionSearchParameters.subject" ng-options="x.key as x.value for x in subjectArray" required></select>
 				      </div>
 				      
 				      <label for="searchCriteria" class="col-sm-1 control-label">Subject Criteria</label>
 				      <div class="col-sm-2">
-				         <select class="form-control" id="subjectCriteria" ng-model="subjectCriteria" ng-options="x.key as x.value for x in subjectCriteriaArray"></select>
+				         <select class="form-control" id="subjectCriteria" ng-model="questionSearchParameters.subjectCategory" ng-options="x.key as x.value for x in subjectCriteriaArray"></select>
 				      </div>
 				      <div class="col-sm-6">
 				      		<button type="button" class="btn btn-primary pull-left" ng-click="saveSet()" >Save Set</button>
