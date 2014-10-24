@@ -15,6 +15,8 @@ function centerDiv(obj){
     $(obj).css({"top":divTop+scrollTop+'px',"left":divLeft+scrollLeft+'px'});
 }
 function bindjQueryFunctions(){
+
+$(".carousel").height($(window).height())
 // Activates the Carousel
 function runCarousel(){
     $('.carousel').carousel({
@@ -256,6 +258,7 @@ $("#redirectCallToAction .btn").on("click", function(){
 })
 
 $(window).resize(function(){
+    $(".carousel").height($(window).height())
     if($(".popupInstruction").is(":visible")){
         centerDiv(".popupInstruction");}
     else if($(".popup").is(":visible")){
