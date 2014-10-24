@@ -1,6 +1,6 @@
 'use strict';
 
-var app=angular.module('myProjectApp', ['ngSanitize','ngRoute','ui.index.controllers','googlechart'])
+var app=angular.module('myProjectApp', ['ngSanitize','ngRoute','ui.index.controllers','googlechart','ui.grid', 'ui.grid.exporter', 'ui.grid.selection', 'ui.grid.autoResize'])
 
 app.run(function($window){
 
@@ -71,19 +71,21 @@ app.run(function($window){
 app.config(['$routeProvider','$locationProvider',function( $routeProvider,$locationProvider) {
     //$locationProvider.html5Mode(true);
 
-    $routeProvider.when('/', {
+    /*$routeProvider.when('/', {
         templateUrl: 'partials/common/partial_index.html',
         controller: 'commonjQueryController'
-    });
+    });*/
     $routeProvider.when('/courses', {
         templateUrl: 'partials/common/partial_courses.html',
         controller: 'coursesController'
     });
     $routeProvider.when('/about', {
-        templateUrl: 'partials/common/partial_about.html'
+        templateUrl: 'partials/common/partial_about.html',
+        controller: 'otherPagesController'
     });
     $routeProvider.when('/contact', {
-        templateUrl: 'partials/common/partial_contact.html'
+        templateUrl: 'partials/common/partial_contact.html',
+        controller: 'otherPagesController'
     });
 
     $routeProvider.when('/showInstruction/:id', {

@@ -2,8 +2,9 @@
 
 IndexModule
     .controller("coursesController", function($rootScope,$scope, $http, $window) {
-        $("body").attr("id", "courses")
-        bindjQueryFunctions();
+        $("body").attr("id", "courses");
+        $scope.showIndex = false;
+        //bindjQueryFunctions();
 
 
         $http.get('data/courses/courses.json', {

@@ -2,7 +2,8 @@
 
 IndexModule
     .controller("commonjQueryController", function($rootScope,$scope, $window) {
-    $("body").attr("id","home")
+    jQuery("body").attr("id","home");
+
     bindjQueryFunctions();
 
 })

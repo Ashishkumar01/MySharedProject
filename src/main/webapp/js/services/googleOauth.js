@@ -16,6 +16,7 @@ var loggedIn    =   false;
 
 
 function login() {
+
     var win         =   window.open(_url, "windowname1", 'width=800, height=600');
 
     var pollTimer   =   window.setInterval(function() {
@@ -75,7 +76,7 @@ function getUserInfo() {
                     if($.cookie("doNotAskMeAgain")){
                         window.location= "courses.html"
                     }else{
-                        if(!$("#logout").length){
+                        if(!loggedIn){
                             centerDiv(".popup");
                             $("#redirectCallToAction").show()
                             $(".popup .socialIcon,.socialLinkToggle p:first").hide();

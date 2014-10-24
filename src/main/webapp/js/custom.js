@@ -86,6 +86,11 @@ $('.tooltip-social').tooltip({
 
  }
  */
+    if($("#home").length){
+        $(".indexWrapper").show()
+    }else{
+        $(".indexWrapper").hide()
+    }
 if($.cookie("providerJSON")){
 //console.log($.cookie("providerJSON"))
     $(".instruct").hide()
@@ -196,7 +201,7 @@ $(".close").bind("click", function(){
  window.location= "exam.html#/showInstruction/test1"
  }
  })*/
-$(".socialIcon li").bind('click', function(){
+$(".socialIcon li").unbind("click").bind('click', function(){
     var socialId= $(this).prop("title");
 
     if(isHomePage){
@@ -243,7 +248,7 @@ $("#redirectCallToAction .btn").on("click", function(){
         if($("#redirectCallToAction input:checked").length && !$.cookie("doNotAskMeAgain")){
             $.cookie("doNotAskMeAgain",true)
         }
-        window.location="courses.html";
+        window.location="index.html#/courses";
 
     }else{
 
@@ -261,7 +266,7 @@ $(window).resize(function(){
 
 var isAuthenticated = true;
 //Multiple test exam on single course
-$("#courseContainerWrapper").on("click",".testLogin", function(e){
+$("#courseContainerWrapper").off('click','.testLogin').on("click",".testLogin", function(e){
     e.preventDefault();
     $.cookie("validAdminClick","ok")
     $(".testLogin").removeClass("testLoginActive");
